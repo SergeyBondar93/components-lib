@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
+    "pre-commit": "yarn lint --quiet",
     "lint": "eslint \"packages/**/{src,stories,test}/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "yarn lint --fix --quiet",
     "compile": "yarn lerna run compile",
@@ -17,19 +18,6 @@
     "publish:from-git": "lerna publish from-git --yes",
     "version:release": "lerna version --yes --no-push --conventional-commits --conventional-graduate -m \"chore(release): version update\"",
     "version:beta": "lerna version --yes --no-push --conventional-commits --conventional-prerelease --preid beta -m \"chore(release): version update\""
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn build && yarn lint && yarn test",
-      "commit-msg": "yarn commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix --quiet",
-      "git add"
-    ]
   },
   "author": "Cherehapa",
   "license": "MIT",
@@ -57,7 +45,7 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react-hooks": "next",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "lerna": "^5.1.2",
     "lint-staged": "^13.0.1",
     "prettier": "2.7.0",

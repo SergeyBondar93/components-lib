@@ -47,3 +47,5 @@ package-lock.json
 
 # VS Code folder
 .vscode/
+
+.storybook-static
