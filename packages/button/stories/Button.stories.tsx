@@ -11,5 +11,5 @@ const Template: Story = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: "I am button! V2 LOL",
+  children: "I am button! V2 LOL EEE FROM GH ACTIONS",
 };
