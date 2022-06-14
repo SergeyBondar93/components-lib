@@ -12,7 +12,7 @@
     "compile": "yarn lerna run compile",
     "clean": "yarn lerna run clean",
     "build": "yarn clean && yarn compile",
-    "build:storybook": "build-storybook -c .storybook -o .storybook-static --quiet",
+    "build:storybook": "build-storybook -c .storybook -o .storybook --quiet",
     "deploy": "bash ./copy-to-publish.sh && bash ./publish.sh",
     "storybook": "start-storybook -p 9009",
     "publish:from-git": "lerna publish from-git --yes",
