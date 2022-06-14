@@ -1,0 +1,77 @@
+{
+  "name": "@che/ui-kit",
+  "version": "0.0.0",
+  "description": "Cherehapa's UI Kit",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "eslint \"packages/**/{src,stories,test}/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "yarn lint --fix --quiet",
+    "compile": "yarn lerna run compile",
+    "clean": "yarn lerna run clean",
+    "build": "yarn clean && yarn compile",
+    "build:storybook": "build-storybook -c .storybook -o .storybook-static --quiet",
+    "deploy": "bash ./copy-to-publish.sh && bash ./publish.sh",
+    "storybook": "start-storybook -p 9009",
+    "publish:from-git": "lerna publish from-git --yes",
+    "version:release": "lerna version --yes --no-push --conventional-commits --conventional-graduate -m \"chore(release): version update\"",
+    "version:beta": "lerna version --yes --no-push --conventional-commits --conventional-prerelease --preid beta -m \"chore(release): version update\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn build && yarn lint && yarn test",
+      "commit-msg": "yarn commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix --quiet",
+      "git add"
+    ]
+  },
+  "author": "Cherehapa",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "webpack": "^5.73.0",
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@storybook/addon-a11y": "^6.5.9",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-backgrounds": "^6.5.9",
+    "@storybook/addon-docs": "^6.5.9",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-knobs": "^6.4.0",
+    "@storybook/addon-storysource": "^6.5.9",
+    "@storybook/addon-viewport": "^6.5.9",
+    "@storybook/addons": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/theming": "^6.5.9",
+    "@typescript-eslint/eslint-plugin": "5.12.0",
+    "@typescript-eslint/parser": "5.12.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-react-hooks": "next",
+    "husky": "^7.0.4",
+    "lerna": "^5.1.2",
+    "lint-staged": "^13.0.1",
+    "prettier": "2.7.0",
+    "rimraf": "^3.0.2",
+    "storybook": "^6.5.9",
+    "tsdx": "^0.14.1",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "resolutions": {
+    "typescript": "4.7.3"
+  }
+}
