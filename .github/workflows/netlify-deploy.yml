@@ -25,11 +25,13 @@ jobs:
         run: yarn install
       - name: Build storybook
         run: yarn build:storybook
-      - name: Publish docs
+      - name: Deploy to Netlify
         if: success()
-        uses: nwtgck/actions-netlify@v1.2.3
+        uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: .storybook-static
+          publish-dir: '.storybook_static'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
 
