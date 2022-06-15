@@ -34,10 +34,10 @@ jobs:
       run: yarn build
     - name: Lint 
       run: yarn lint
-    - name: Git init
-      run: | 
-        git config --local user.name "GH Actions"
-        git config --local user.email "gh@actions.com"
+    # - name: Git init
+    #   run: | 
+    #     git config --local user.name "GH Actions"
+    #     git config --local user.email "gh@actions.com"
     # - name: Git log
     #   run: git log
     # - name: Update versions
