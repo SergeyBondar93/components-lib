@@ -16,8 +16,7 @@
     "deploy": "bash ./copy-to-publish.sh && bash ./publish.sh",
     "storybook": "start-storybook -p 9009",
     "publish:from-git": "lerna publish from-git --yes",
-    "version:release": "lerna version --yes --no-push --conventional-commits --conventional-graduate -m \"chore(release): version update\"",
-    "version:beta": "lerna version --yes --no-push --conventional-commits --conventional-prerelease --preid beta -m \"chore(release): version update\""
+    "version:release": "lerna version --yes --no-push --conventional-commits --no-commit-hooks"
   },
   "author": "Cherehapa",
   "license": "MIT",
