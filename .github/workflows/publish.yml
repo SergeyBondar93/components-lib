@@ -41,6 +41,7 @@ jobs:
         git config --local user.email "gh@actions.com"
     - name: Update versions
       if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
+      run: git log
       run: yarn lerna:version
     - name: Publish
       if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
