@@ -15,7 +15,7 @@
     "build:storybook": "build-storybook -c .storybook -o storybook-static --quiet",
     "deploy": "bash ./copy-to-publish.sh && bash ./publish.sh",
     "storybook": "start-storybook -p 9009",
-    "publish:from-git": "lerna publish from-git --yes --conventional-commits --no-commit-hooks -m \"chore(release): Publish\"",
+    "lerna:publish": "lerna publish from-git --yes",
     "lerna:version": "yarn lerna version --yes --no-push --conventional-commits --no-commit-hooks -m \"chore(release): Publish\"",
     "push:tags": "git push --follow-tags --no-verify"
   },
