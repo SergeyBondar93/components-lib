@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@3.1.8...@cheaaa/button@3.2.0) (2022-06-15)
+
+
+### Features
+
+* **button:** update text ([2a1525a](https://github.com/SergeyBondar93/liba/commit/2a1525a243b9e73b16858f1e079ec778f1313ed7))
+
+
+
+
+
 ## 3.1.8 (2022-06-15)
 
 **Note:** Version bump only for package @cheaaa/button
