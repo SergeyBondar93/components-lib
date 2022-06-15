@@ -3,7 +3,7 @@ import { FC } from "react";
 export const Button: FC<any> = ({ children }) => {
   return (
     <div>
-      <button>{children}</button>
+      <button type="submit">{children}</button>
     </div>
   );
 };
