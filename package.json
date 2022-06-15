@@ -16,9 +16,7 @@
     "deploy": "bash ./copy-to-publish.sh && bash ./publish.sh",
     "storybook": "start-storybook -p 9009",
     "install:ci": "yarn install --no-progress --frozen-lockfile",
-    "lerna:publish": "lerna publish from-git --yes --no-verify-access",
-    "lerna:version": "yarn lerna version --yes --no-push --conventional-commits --no-commit-hooks -m \"chore(release): Publish\"",
-    "lerna:publish:new": "lerna publish --yes --include-merged-tags --no-verify-access --conventional-commits --no-commit-hooks -m \"chore(release): Publish\"",
+    "lerna:publish": "lerna publish --yes --include-merged-tags --no-verify-access --conventional-commits --no-commit-hooks -m \"chore(release): Publish\"",
     "push:tags": "git push --follow-tags --no-verify"
   },
   "author": "Cherehapa",
