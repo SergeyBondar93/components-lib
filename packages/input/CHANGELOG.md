@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.3 (2022-06-15)
+
+
+### Bug Fixes
+
+* **button:** update storybook ([624ce3d](https://github.com/SergeyBondar93/liba/commit/624ce3d895cd8299ed3c9ba8183364b2197b0be2))
+
+
+
+
+
 ## 1.2.2 (2022-06-15)
 
 **Note:** Version bump only for package @cheaaa/input
