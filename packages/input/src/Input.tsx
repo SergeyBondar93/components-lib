@@ -1,7 +1,7 @@
 export const Input = () => {
   return (
     <div>
-      <input value="Hello World!I am profi or not!" />
+      <input value="Hello World!I am profi or not!Kek" />
     </div>
   );
 };
