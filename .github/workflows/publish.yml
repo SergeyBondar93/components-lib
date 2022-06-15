@@ -29,14 +29,14 @@ jobs:
     - run: yarn install --no-progress --frozen-lockfile
     - run: yarn build
     - run: yarn lint
-    - name: Update versions
-        # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
-        run: yarn lerna:version
-    - name: Publish
-        # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
-        run: yarn lerna:publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-    - name: Push tags
-        run: yarn push:tags
-        # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') }}
+    # - name: Update versions
+    #     # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
+    #     run: yarn lerna:version
+    # - name: Publish
+    #     # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
+    #     run: yarn lerna:publish
+    #     env:
+    #       NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+    # - name: Push tags
+    #     run: yarn push:tags
+    #     # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') }}
