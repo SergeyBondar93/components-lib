@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.6](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@2.0.5...@cheaaa/input@2.0.6) (2022-06-15)
+
+
+### Bug Fixes
+
+* **input:** kek \n\n BREAKING CHANGE: test ([155650a](https://github.com/SergeyBondar93/liba/commit/155650a0b8fcbb10cb3f2fae75e7a2cffb14629b))
+
+
+
+
+
 ## [2.0.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@2.0.4...@cheaaa/input@2.0.5) (2022-06-15)
 
 

@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/input",
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"description": "<>",
 	"browser": "src/index.ts",
 	"main": "src/index.ts",
