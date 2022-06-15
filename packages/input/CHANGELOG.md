@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@2.0.4...@cheaaa/input@2.0.5) (2022-06-15)
+
+
+### Bug Fixes
+
+* **input:** change api\n\nBREAKING CHANGE: this is serious ([f1939fe](https://github.com/SergeyBondar93/liba/commit/f1939fe24d82a7a1b9dc71c38b09323ceb839114))
+
+
+
+
+
 ## [2.0.4](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@2.0.3...@cheaaa/input@2.0.4) (2022-06-15)
 
 **Note:** Version bump only for package @cheaaa/input
