@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/SergeyBondar93/liba/compare/@che/button@1.2.0...@che/button@1.3.0) (2022-06-15)
+
+
+### Features
+
+* **button:** change api ([47b301f](https://github.com/SergeyBondar93/liba/commit/47b301f2ae11f750e4849cbecde8b402626bc671))
+
+
+
+
+
 # [1.2.0](https://github.com/SergeyBondar93/liba/compare/@che/button@1.1.2...@che/button@1.2.0) (2022-06-15)
 
 
