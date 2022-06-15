@@ -30,9 +30,8 @@ jobs:
     - run: yarn build
     - run: yarn lint
     - name: Git init
-        run: | 
-          git config --local user.name "GH Actions"
-          git config --local user.email "gh@actions.com"
+        run: git config --local user.name "GH Actions" 
+        run: git config --local user.email "gh@actions.com"
         env:
           NPM_ACCESS_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
     - name: Update versions
