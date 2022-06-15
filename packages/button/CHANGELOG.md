@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/SergeyBondar93/liba/compare/@che/button@2.2.1...@che/button@2.3.0) (2022-06-15)
+
+
+### Features
+
+* **button:** update btn ([59125c8](https://github.com/SergeyBondar93/liba/commit/59125c8366b4ec85b889f08daa3c7f6f5c59a028))
+
+
+
+
+
 ## [2.2.1](https://github.com/SergeyBondar93/liba/compare/@che/button@2.2.0...@che/button@2.2.1) (2022-06-15)
 
 **Note:** Version bump only for package @che/button
