@@ -26,17 +26,26 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - run: yarn install --no-progress --frozen-lockfile
-    - run: yarn build
-    - run: yarn lint
-    # - name: Update versions
-    #     # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
-    #     run: yarn lerna:version
-    # - name: Publish
-    #     # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
-    #     run: yarn lerna:publish
-    #     env:
-    #       NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-    # - name: Push tags
-    #     run: yarn push:tags
-    #     # if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') }}
+    - name: Install modules 
+      run: yarn install --no-progress --frozen-lockfile
+    - name: Build 
+      run: yarn build
+    - name: Lint 
+      run: yarn lint
+    - name: Git init
+      run: | 
+        git config --local user.name "GH Actions"
+        git config --local user.email "gh@actions.com"
+      env:
+        NPM_ACCESS_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
+    - name: Update versions
+      if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
+      run: yarn lerna:version
+    - name: Publish
+      if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
+      run: yarn lerna:publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+    - name: Push tags
+      run: yarn push:tags
+      if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') }}
