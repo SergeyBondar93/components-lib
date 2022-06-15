@@ -2,7 +2,6 @@
 	"name": "@che/button",
 	"version": "2.4.1",
 	"description": "<>",
-	"browser": "src/index.ts",
 	"main": "src/index.ts",
 	"module": "dist/button.esm.js",
 	"types": "dist/index.d.ts",
