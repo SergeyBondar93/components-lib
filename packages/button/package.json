@@ -1,6 +1,6 @@
 {
 	"name": "@che/button",
-	"version": "1.3.0",
+	"version": "2.0.0",
 	"description": "<>",
 	"browser": "src/index.ts",
 	"main": "src/index.ts",
