@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.9 (2022-06-15)
+
+
+### Bug Fixes
+
+* **input:** update value ([e901db3](https://github.com/SergeyBondar93/liba/commit/e901db331290ba808a0b8c8c7fe00c609361f556))
+
+
+
+
+
 ## 1.2.8 (2022-06-15)
 
 **Note:** Version bump only for package @cheaaa/input
