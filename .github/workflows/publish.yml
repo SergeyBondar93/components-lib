@@ -43,7 +43,7 @@ jobs:
       if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
       run: yarn lerna:publish
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN2 }}
+        NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN2 }}
     - name: Push tags
       run: yarn push:tags
       if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') }}
