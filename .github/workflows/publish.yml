@@ -34,7 +34,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install modules 
-      run: yarn install --no-progress --frozen-lockfile
+      run: yarn install:ci
     - name: Build 
       run: yarn build
     - name: Lint 

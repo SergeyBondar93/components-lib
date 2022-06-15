@@ -22,11 +22,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Install modules
-        run: yarn install
+        run: yarn install:ci
       - name: Build storybook
         run: yarn build:storybook
-      - name: Shower
-        run: ls
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
