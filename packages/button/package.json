@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/button",
-	"version": "3.1.5",
+	"version": "3.1.6",
 	"description": "<>",
 	"browser": "src/index.ts",
 	"main": "src/index.ts",
