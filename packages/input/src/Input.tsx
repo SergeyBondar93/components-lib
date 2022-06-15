@@ -1,7 +1,7 @@
 export const Input = () => {
   return (
     <div>
-      <input />
+      <input value="Hello!" />
     </div>
   );
 };
