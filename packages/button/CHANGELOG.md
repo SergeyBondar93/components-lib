@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@3.0.0...@cheaaa/button@3.1.0) (2022-06-15)
+
+
+### Features
+
+* **button:** change child ([94232c0](https://github.com/SergeyBondar93/liba/commit/94232c0d3b52604b13f9725942ea0727379d37a6))
+
+
+
+
+
 # 3.0.0 (2022-06-15)
 
 
