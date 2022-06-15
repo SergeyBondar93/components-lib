@@ -39,16 +39,16 @@ jobs:
       run: | 
         git config --local user.name "GH Actions"
         git config --local user.email "gh@actions.com"
-    - name: Git log
-      run: git log
-    - name: Update versions
-      if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
-      run: yarn lerna:version
+    # - name: Git log
+    #   run: git log
+    # - name: Update versions
+    #   if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
+    #   run: yarn lerna:version
     - name: Publish
       if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') && github.event.ref == 'refs/heads/master' }}
-      run: yarn lerna:publish
+      run: yarn lerna:publish:new
       env:
         NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN2 }}
-    - name: Push tags
-      run: yarn push:tags
-      if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') }}
+    # - name: Push tags
+    #   run: yarn push:tags
+    #   if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') }}
