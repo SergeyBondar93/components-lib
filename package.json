@@ -1,7 +1,7 @@
 {
   "name": "@che/ui-kit",
   "version": "0.0.0",
-  "description": "Cherehapa's UI Kit",
+  "description": "Cherehapa's UI Kit test",
   "workspaces": [
     "packages/*"
   ],
