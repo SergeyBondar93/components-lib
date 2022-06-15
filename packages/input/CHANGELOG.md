@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.2.10...@cheaaa/input@2.0.0) (2022-06-15)
+
+
+### Bug Fixes
+
+* **input:** fix ([c3d934a](https://github.com/SergeyBondar93/liba/commit/c3d934a15adfa1770f6fbd7e2ad93f74a11f8768))
+
+
+### BREAKING CHANGES
+
+* **input:** lol kek test
+
+
+
+
+
 ## [1.2.10](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.2.9...@cheaaa/input@1.2.10) (2022-06-15)
 
 
