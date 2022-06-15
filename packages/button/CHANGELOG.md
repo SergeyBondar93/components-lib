@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/SergeyBondar93/liba/compare/@che/button@2.4.0...@che/button@2.4.1) (2022-06-15)
+
+**Note:** Version bump only for package @che/button
+
+
+
+
+
 # [2.4.0](https://github.com/SergeyBondar93/liba/compare/@che/button@2.2.1...@che/button@2.4.0) (2022-06-15)
 
 
