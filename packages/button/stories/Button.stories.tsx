@@ -21,6 +21,7 @@ export default {
     component: disabled,
     onClick: disabled,
     target: disabled,
+    type: disabled,
   },
 } as Meta;
 
@@ -31,9 +32,11 @@ interface IStoryParams {
   disabled: boolean;
   shouldFitContent: boolean;
 }
+// eslint-disable-next-line no-console
+const onClick = () => console.log("Clicked!");
 
 const ButtonTemplate: Story<IStoryParams> = (args) => {
-  return <Button {...args} />;
+  return <Button {...args} onClick={onClick} />;
 };
 const LinkComponent = (props) => <a {...props} />;
 
@@ -41,9 +44,9 @@ const LinkTemplate: Story<IStoryParams> = (args) => {
   return (
     <>
       <h4>Custom Link Component</h4>
-      <Button component={LinkComponent} {...args} />
+      <Button component={LinkComponent} {...args} onClick={onClick} />
       <h4>Added href attribute for make link</h4>
-      <Button {...args} />
+      <Button {...args} onClick={onClick} />
     </>
   );
 };
@@ -118,7 +121,7 @@ const ThemedTemplate = (args) => {
               <th style={cellStyles}></th>
               {appearanecs.map((appearance) => (
                 <th key={appearance} style={cellStyles}>
-                  <Button appearance={appearance} {...args} />
+                  <Button appearance={appearance} {...args} onClick={onClick} />
                 </th>
               ))}
             </tr>
@@ -133,6 +136,7 @@ const ThemedTemplate = (args) => {
                         appearance={appearance}
                         baseAppearance={baseAppearance}
                         {...args}
+                        onClick={onClick}
                       />
                     </th>
                   ))}
