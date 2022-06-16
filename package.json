@@ -23,22 +23,13 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@storybook/builder-webpack5": "^6.5.9",
-    "@storybook/manager-webpack5": "^6.5.9",
-    "webpack": "^5.73.0",
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
-    "@storybook/addon-a11y": "^6.5.9",
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-backgrounds": "^6.5.9",
-    "@storybook/addon-docs": "^6.5.9",
-    "@storybook/addon-info": "^5.3.21",
-    "@storybook/addon-knobs": "^6.4.0",
-    "@storybook/addon-storysource": "^6.5.9",
-    "@storybook/addon-viewport": "^6.5.9",
-    "@storybook/addons": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/cli": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/react": "^6.5.9",
-    "@storybook/theming": "^6.5.9",
     "@typescript-eslint/eslint-plugin": "5.12.0",
     "@typescript-eslint/parser": "5.12.0",
     "eslint-config-prettier": "8.3.0",
@@ -51,13 +42,17 @@
     "prettier": "2.7.0",
     "rimraf": "^3.0.2",
     "storybook": "^6.5.9",
-    "tsdx": "^0.14.1",
     "ts-loader": "^9.3.0",
-    "typescript": "^4.7.3"
+    "tsdx": "^0.14.1",
+    "typescript": "^4.7.3",
+    "color": "^4.2.0",
+    "webpack": "^5.73.0"
   },
   "dependencies": {
+    "classnames": "^2.3.1",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-jss": "^10.9.0"
   },
   "resolutions": {
     "typescript": "4.7.3"

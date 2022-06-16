@@ -34,21 +34,6 @@ module.exports = {
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       'react/no-array-index-key': 'warn',
-      // 'import/no-unresolved': [
-      //     'error',
-      //     {
-      //         ignore: [
-      //             '@/pages/',
-      //             '@/components/',
-      //             '@/libs/',
-      //             '@/models/',
-      //             '@/store',
-      //             '@/persistedState/',
-      //             '@/styles/',
-      //             '@/assets/',
-      //         ],
-      //     },
-      // ],
       'import/order': [
           'error',
           {

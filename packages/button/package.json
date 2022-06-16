@@ -1,10 +1,10 @@
 {
 	"name": "@cheaaa/button",
-	"version": "3.2.0",
+	"version": "1.0.0",
 	"description": "<>",
 	"browser": "src/index.ts",
 	"main": "src/index.ts",
-	"module": "dist/button.esm.js",
+	"module": "dist/input.esm.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"compile": "tsdx build --format esm --verbose",
@@ -22,7 +22,7 @@
 	},
 	"private": false,
 	"peerDependencies": {
-		"react": "^18.1.0"
-	},
-	"gitHead": "5a2647203c6a2ea9a9f899f974ff420f11777634"
+		"react": "^18.1.0",
+		"@cheaaa/theme": "*"
+	}
 }
