@@ -5,5 +5,5 @@ export const INPUT_COMPONENTS_NAMES = {
   prefixWrapper: "prefixWrapper",
   postfixWrapper: "postfixWrapper",
   clearIcon: "clearIcon",
-  placeholder: "placeholder",
+  label: "label",
 } as const;

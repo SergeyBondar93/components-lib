@@ -8,10 +8,11 @@ export const defaultButtonTheme: Required<ComponentTheme<ComponentNames>> = {
     borderRadius: "10px",
     border: "1px solid rgba(113, 130, 153, 0.25)",
     backgroundColor: "#FFF",
-    minWidth: "150px",
+    minWidth: "220px",
     display: "inline-flex",
     alignItems: "center",
     boxSizing: "border-box",
+    height: "45px",
 
     position: "relative",
 
@@ -22,27 +23,44 @@ export const defaultButtonTheme: Required<ComponentTheme<ComponentNames>> = {
     '&[data-shouldfitcontent="true"]': {
       width: "100%",
     },
-    '&[data-focused="true"]': {
-      border: "1px solid #636AFF",
-    },
     '&[data-invalid="true"]': {
       border: "1px solid #FF6666",
     },
     '&[data-valid="true"]': {
       border: "1px solid #2CA95E",
     },
+
+    '&[data-focused="true"]': {
+      alignItems: "flex-end",
+      border: "1px solid #636AFF",
+    },
+    '&[data-hasvalue="true"]': {
+      alignItems: "flex-end",
+    },
   },
   [INPUT_COMPONENTS_NAMES.input]: {
     backgroundColor: "#FFF",
     border: "none",
     outline: "none",
-    padding: "9px 12px",
+    padding: "14px 14px",
     borderRadius: "9px",
     width: "100%",
-    fontSize: "15.5px",
+    fontSize: "13px",
+
+    "&:not(:focus)::placeholder": {
+      opacity: 0,
+    },
+
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
       opacity: 0.7,
+    },
+
+    '&[data-focused="true"]': {
+      padding: "6px 14px",
+    },
+    '&[data-hasvalue="true"]': {
+      padding: "6px 14px",
     },
   },
   [INPUT_COMPONENTS_NAMES.prefixWrapper]: {
@@ -78,18 +96,23 @@ export const defaultButtonTheme: Required<ComponentTheme<ComponentNames>> = {
       fill: "#2CA95E",
     },
   },
-  [INPUT_COMPONENTS_NAMES.placeholder]: {
-    fontSize: "15.5px",
+  [INPUT_COMPONENTS_NAMES.label]: {
+    fontSize: "13px",
     position: "absolute",
     transition: "0.2s",
     color: "#718299",
+
+    top: "50%",
+    transform: "translateY(-50%)",
     '&[data-focused="true"]': {
-      transform: "scale(.7) translateX(-25%) translateY(-25px)",
-      background: "#FFF",
+      fontSize: "10px",
+      top: "10px",
+      color: "#636AFF",
     },
     '&[data-hasvalue="true"]': {
-      transform: "scale(.7) translateX(-25%) translateY(-25px)",
-      background: "#FFF",
+      fontSize: "10px",
+      top: "10px",
+      color: "#636AFF",
     },
   },
 };

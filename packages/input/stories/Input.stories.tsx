@@ -43,7 +43,7 @@ interface IStoryParams {
   isClearable: boolean;
   shouldFitContent: boolean;
 }
-
+const wrapperStyles = { marginBottom: "15px" };
 const InputTemplate: Story<IStoryParams> = (args) => {
   const [value, setValue] = useState("");
 
@@ -51,22 +51,49 @@ const InputTemplate: Story<IStoryParams> = (args) => {
     setValue(args.value);
   }, [args.value]);
 
-  return <Input {...args} value={value} onChange={setValue} />;
+  return (
+    <>
+      <div style={wrapperStyles}>
+        <Input
+          {...args}
+          value={value}
+          onChange={setValue}
+          placeholder="Иванов"
+          label="Фамилия"
+        />
+      </div>
+      <div style={wrapperStyles}>
+        <Input
+          {...args}
+          value={value}
+          onChange={setValue}
+          placeholder="Иван"
+          label="Имя"
+        />
+      </div>
+      <div style={wrapperStyles}>
+        <Input
+          {...args}
+          value={value}
+          onChange={setValue}
+          placeholder="Иванович"
+          label="Отчество"
+        />
+      </div>
+    </>
+  );
 };
 
 export const Default = InputTemplate.bind({});
 
 Default.args = {
-  isFloatingPlaceholder: false,
+  value: "",
   disabled: false,
   shouldFitContent: false,
   isClearable: false,
   invalid: false,
-  value: "This is value",
-  placeholder: "This is placeholder",
+  valid: false,
 };
-
-const WrapperStyles = { marginBottom: "15px" };
 
 const CardInput = ({ withPrefix, withPostfix, ...args }) => {
   // NOT FOR PRODUCTION
@@ -80,77 +107,96 @@ const CardInput = ({ withPrefix, withPostfix, ...args }) => {
     const onlyDigitsValue = value.replace(/\D/gi, "");
     let res = "";
 
-    for (let i = 0; i < Math.min(onlyDigitsValue.length, 16); i += 4) {
+    for (let i = 0; i < Math.min(onlyDigitsValue.length, 19); i += 4) {
       res += `${onlyDigitsValue.substring(i, i + 4)} `;
     }
 
     return res.trim();
   }, [value]);
 
-  return <Input {...args} value={_value} onChange={setValue} />;
+  return (
+    <Input
+      {...args}
+      value={_value}
+      onChange={setValue}
+      baseAppearance="visiblePlaceholder"
+      appearance="card"
+      id="ccn"
+      type="tel"
+      inputmode="numeric"
+      pattern="[0-9\s]{13,19}"
+      autocomplete="cc-number"
+      maxlength="19"
+      labelProps={{ for: "ccn" }}
+    />
+  );
 };
 
-const CardTemplate: Story<IStoryParams | any> = ({
+const Cards: Story<IStoryParams | any> = ({
   withPrefix,
   withPostfix,
   ...args
 }) => {
+  const placeholder = "0000 0000 0000 0000";
+
   return (
     <div>
-      <div style={WrapperStyles}>
+      <div style={wrapperStyles}>
         <CardInput
           {...args}
+          value="1234 5678 9123 4567"
+          placeholder={placeholder}
           prefix={withPrefix && <Mir />}
           postfix={withPostfix && <Mir />}
         />
       </div>
-      <div style={WrapperStyles}>
+      <div style={wrapperStyles}>
         <CardInput
           {...args}
+          value="1234 5678 9123 4567"
+          placeholder={placeholder}
           prefix={withPrefix && <Maestro />}
           postfix={withPostfix && <Maestro />}
         />
       </div>
-      <div style={WrapperStyles}>
+      <div style={wrapperStyles}>
         <CardInput
           {...args}
+          value="1234 5678 9123 4567"
+          placeholder={placeholder}
           prefix={withPrefix && <VisaElectron />}
           postfix={withPostfix && <VisaElectron />}
         />
       </div>
-      <div style={WrapperStyles}>
+      <div style={wrapperStyles}>
         <CardInput
           {...args}
+          value="1234 5678 9123 4567"
+          placeholder={placeholder}
           prefix={withPrefix && <MasterCard />}
           postfix={withPostfix && <MasterCard />}
         />
       </div>
-      <div style={WrapperStyles}>
+      <div style={wrapperStyles}>
         <CardInput
           {...args}
+          value="1234 5678 9123 4567"
+          placeholder={placeholder}
           prefix={withPrefix && <NoName />}
           postfix={withPostfix && <NoName />}
         />
       </div>
-      <div style={WrapperStyles}>
+      <div style={wrapperStyles}>
         <CardInput
           {...args}
+          value="1234 5678 9123 4567"
+          placeholder={placeholder}
           prefix={withPrefix && <Visa />}
           postfix={withPostfix && <Visa />}
         />
       </div>
     </div>
   );
-};
-
-export const Card = CardTemplate.bind({});
-
-Card.args = {
-  ...Default.args,
-  withPrefix: false,
-  withPostfix: true,
-  value: "1234 5678 9123 4567",
-  placeholder: "0000 0000 0000 0000",
 };
 
 const PromocodeInput = (args) => {
@@ -195,7 +241,7 @@ const PromocodeInput = (args) => {
         }}
       >
         <h3>Valid promocode: 1234</h3>
-        <div style={WrapperStyles}>
+        <div style={wrapperStyles}>
           <Input
             {...args}
             invalid={promoInputState === "error"}
@@ -203,6 +249,7 @@ const PromocodeInput = (args) => {
             disabled={promoInputState === "loading"}
             onChange={handleChangePromocode}
             value={promocode}
+            baseAppearance="visiblePlaceholder"
             appearance="promocode"
             placeholder="Введите промокод"
             postfix={
@@ -219,26 +266,44 @@ const PromocodeInput = (args) => {
             }
           />
         </div>
-
-        <div style={WrapperStyles}>
-          <Input {...args} appearance="main" />
-        </div>
       </JssProvider>
     </ThemeProvider>
   );
 };
 
-const LastNameInputs = () => {
-  return <></>;
-};
-
 const ThemedTemplate = (args) => {
   return (
-    <>
-      <PromocodeInput {...args} />
-      <LastNameInputs />
-    </>
+    <ThemeProvider theme={theme}>
+      <JssProvider
+        generateId={({ key }, styleSheet) => {
+          if (!styleSheet?.options.classNamePrefix) {
+            if (process.env.NODE_ENV === "development") {
+              console.error(
+                "classNamePrefix not passed in some createUseStyles function"
+              );
+            }
+          }
+
+          styleSheet?.options.classNamePrefix;
+
+          return styleSheet?.options.classNamePrefix + key;
+        }}
+      >
+        <Cards {...args} />
+        <PromocodeInput {...args} />
+      </JssProvider>
+    </ThemeProvider>
   );
 };
 
 export const Themed = ThemedTemplate.bind({});
+
+Themed.args = {
+  withPrefix: false,
+  withPostfix: true,
+  disabled: false,
+  shouldFitContent: false,
+  isClearable: false,
+  invalid: false,
+  valid: false,
+};

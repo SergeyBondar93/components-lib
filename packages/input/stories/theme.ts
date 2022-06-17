@@ -34,8 +34,34 @@ export const theme = {
       base: {
         [INPUT_COMPONENTS_NAMES.wrapper]: {},
       },
-      main: {
-        [INPUT_COMPONENTS_NAMES.wrapper]: {},
+
+      visiblePlaceholder: {
+        [INPUT_COMPONENTS_NAMES.wrapper]: {
+          '&[data-focused="true"]': {
+            alignItems: "center",
+          },
+          '&[data-hasvalue="true"]': {
+            alignItems: "center",
+          },
+        },
+        [INPUT_COMPONENTS_NAMES.input]: {
+          padding: "12px",
+          '&[data-focused="true"]': {
+            padding: "12px",
+          },
+          '&[data-hasvalue="true"]': {
+            padding: "12px",
+          },
+          "&:not(:focus)::placeholder": {
+            opacity: 1,
+          },
+        },
+      },
+
+      card: {
+        [INPUT_COMPONENTS_NAMES.wrapper]: {
+          height: "41px",
+        },
       },
       promocode: {
         [INPUT_COMPONENTS_NAMES.wrapper]: {
@@ -43,6 +69,7 @@ export const theme = {
           borderRadius: "0px",
           border: "none",
           borderBottom: "1px solid #636AFF",
+          height: "35px",
           '&[data-focused="true"]': {
             border: "none",
             borderBottom: "1px solid #636AFF",
@@ -57,8 +84,17 @@ export const theme = {
           },
         },
         [INPUT_COMPONENTS_NAMES.input]: {
+          padding: "8px",
           paddingLeft: "0px",
           borderRadius: "0px",
+          '&[data-focused="true"]': {
+            padding: "8px",
+            paddingLeft: "0px",
+          },
+          '&[data-hasvalue="true"]': {
+            padding: "8px",
+            paddingLeft: "0px",
+          },
         },
         [INPUT_COMPONENTS_NAMES.postfixWrapper]: {
           marginRight: 0,

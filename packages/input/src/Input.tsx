@@ -45,11 +45,11 @@ export const Input = ({
   onChange,
   value,
   placeholder = "",
-
-  isFloatingPlaceholder = false,
-
+  label = "",
   onFocus,
   onBlur,
+  labelProps = {},
+  ...rest
 }: IInputProps | any) => {
   const classes = useStyles();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -127,11 +127,11 @@ export const Input = ({
       "clearIcon"
     );
 
-    const placeholderClassName = getClassName<ComponentNames>(
+    const labelClassName = getClassName<ComponentNames>(
       classes,
       baseAppearance,
       appearance,
-      "placeholder"
+      "label"
     );
 
     return {
@@ -140,7 +140,7 @@ export const Input = ({
       prefixWrapperClassName,
       postfixWrapperClassName,
       clearIconClassName,
-      placeholderClassName,
+      labelClassName,
     };
   }, [classes, baseAppearance, appearance]);
 
@@ -159,19 +159,14 @@ export const Input = ({
     setFloatingLeft(left);
   }, [prefix]);
 
-  const isShowPlaceholder = useMemo(() => {
-    if (isFloatingPlaceholder) return true;
-
-    return !value && !isFocused;
-  }, [isFloatingPlaceholder, value, isFocused]);
-
   return (
     <div
-      data-shouldfitcontent={String(shouldFitContent)}
-      data-invalid={String(invalid)}
-      data-valid={String(valid)}
-      data-disabled={String(disabled)}
-      data-focused={String(isFocused)}
+      data-shouldfitcontent={String(!!shouldFitContent)}
+      data-invalid={String(!!invalid)}
+      data-valid={String(!!valid)}
+      data-disabled={String(!!disabled)}
+      data-focused={String(!!isFocused)}
+      data-hasvalue={String(!!value)}
       className={classNames.wrapperClassName}
       onClick={handleClick}
     >
@@ -182,7 +177,9 @@ export const Input = ({
       )}
 
       <input
-        data-disabled={String(disabled)}
+        data-disabled={String(!!disabled)}
+        data-focused={String(!!isFocused)}
+        data-hasvalue={String(!!value)}
         className={classNames.inputClassName}
         disabled={disabled}
         ref={inputRef}
@@ -192,18 +189,21 @@ export const Input = ({
         name="name"
         value={value}
         onChange={handleChange}
+        placeholder={placeholder}
+        {...rest}
       />
 
-      {isShowPlaceholder && (
+      {label && (
         <span
           style={{
             left: floatingLeft,
           }}
           data-focused={String(isFocused)}
           data-hasvalue={String(!!value)}
-          className={classNames.placeholderClassName}
+          className={classNames.labelClassName}
+          {...labelProps}
         >
-          {placeholder}
+          {label}
         </span>
       )}
 
