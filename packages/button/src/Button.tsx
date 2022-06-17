@@ -1,12 +1,12 @@
 import { getClassName } from "@cheaaa/theme/src";
-import { useCallback, useMemo } from "react";
+import { PropsWithChildren, useCallback, useMemo } from "react";
 
 import { useStyles } from "./styles/styles";
 import { ComponentNames } from "./styles/types";
 
 export type ButtonTags = "button" | "span" | "a";
 
-export interface IButtonProps {
+export interface IButtonProps extends PropsWithChildren {
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 
   href?: string;

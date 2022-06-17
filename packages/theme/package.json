@@ -8,7 +8,6 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"compile": "tsdx build --format esm --verbose",
-		"publish-files": "gulp --cwd . publish-files",
 		"build": "yarn clean && yarn compile",
 		"clean": "rimraf dist lib .publish node_modules"
 	},
