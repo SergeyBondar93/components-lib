@@ -1,7 +1,7 @@
 import {
   BUTTON_COMPONENTS_NAMES,
   BUTTON_COMPONENT_NAMESPACE,
-} from "@cheaaa/button/src";
+} from "@cheaaa/button";
 
 import {
   INPUT_COMPONENT_NAMESPACE,

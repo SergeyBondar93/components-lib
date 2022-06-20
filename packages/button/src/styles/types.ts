@@ -1,4 +1,4 @@
-import { Styles } from "@cheaaa/theme/src";
+import { Styles } from "@cheaaa/theme";
 
 import { BUTTON_COMPONENTS_NAMES } from "./consts";
 

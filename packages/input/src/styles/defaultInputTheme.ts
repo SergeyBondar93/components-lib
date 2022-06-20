@@ -1,4 +1,4 @@
-import { ComponentTheme } from "@cheaaa/theme/src";
+import { ComponentTheme } from "@cheaaa/theme";
 
 import { INPUT_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";

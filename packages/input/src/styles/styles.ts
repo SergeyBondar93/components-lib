@@ -1,4 +1,4 @@
-import { createClasses, ITheme } from "@cheaaa/theme/src";
+import { createClasses, ITheme } from "@cheaaa/theme";
 import { createUseStyles } from "react-jss";
 
 import {

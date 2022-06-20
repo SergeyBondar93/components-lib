@@ -1,5 +1,5 @@
 import { Story, Meta } from "@storybook/react";
-import { Button } from "@cheaaa/button/src";
+import { Button } from "@cheaaa/button";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
 

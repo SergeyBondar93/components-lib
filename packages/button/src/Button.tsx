@@ -1,4 +1,4 @@
-import { getClassName } from "@cheaaa/theme/src";
+import { getClassName } from "@cheaaa/theme";
 import { PropsWithChildren, useCallback, useMemo } from "react";
 
 import { useStyles } from "./styles/styles";

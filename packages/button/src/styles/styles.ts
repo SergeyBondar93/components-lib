@@ -1,4 +1,4 @@
-import { createClasses } from "@cheaaa/theme/src";
+import { createClasses } from "@cheaaa/theme";
 import { createUseStyles } from "react-jss";
 
 import { BUTTON_COMPONENT_NAMESPACE } from "./consts";

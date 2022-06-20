@@ -2,14 +2,14 @@
 	"name": "@cheaaa/button",
 	"version": "1.3.0",
 	"description": "<>",
-	"browser": "src/index.ts",
-	"main": "src/index.ts",
-	"module": "dist/input.esm.js",
+	"main": "dist/index.js",
+	"source": "src/index.ts",
+	"module": "dist/button.esm.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
 		"test2": "jest",
-		"compile": "tsdx build --format esm --verbose",
+		"compile": "tsdx build --format cjs,esm --verbose",
 		"build": "yarn clean && yarn compile",
 		"clean": "rimraf dist lib .publish node_modules"
 	},
@@ -24,6 +24,6 @@
 	"private": false,
 	"peerDependencies": {
 		"@cheaaa/theme": "*",
-		"react": "^18.1.0"
+		"react": ">=17.0.2"
 	}
 }
