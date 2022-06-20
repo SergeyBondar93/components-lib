@@ -23,7 +23,8 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/theme": "^1.2.1"
+		"@cheaaa/theme": "^1.2.1",
+		"@cheaaa/utils": "^1.1.1"
 	},
 	"peerDependencies": {
 		"react": ">=17.0.2"
