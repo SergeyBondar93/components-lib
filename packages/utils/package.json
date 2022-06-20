@@ -1,0 +1,28 @@
+{
+	"name": "@cheaaa/utils",
+	"version": "1.0.0",
+	"description": "<>",
+	"browser": "src/index.ts",
+	"main": "src/index.ts",
+	"module": "dist/input.esm.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"compile": "tsdx build --format esm --verbose",
+		"build": "yarn clean && yarn compile",
+		"clean": "rimraf dist lib .publish node_modules"
+	},
+	"files": [
+		"dist"
+	],
+	"author": "Cherehapa",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"private": false,
+	"devDependencies": {},
+	"dependencies": {},
+	"peerDependencies": {
+		"react": "^18.1.0"
+	}
+}

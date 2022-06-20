@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react";
 import { Button } from "@cheaaa/button/src";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
 
 import { Input } from "../src";
@@ -46,10 +46,15 @@ interface IStoryParams {
 const wrapperStyles = { marginBottom: "15px" };
 const InputTemplate: Story<IStoryParams> = (args) => {
   const [value, setValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setValue(args.value);
   }, [args.value]);
+
+  const handleFocus = () => {
+    inputRef.current?.focus();
+  };
 
   return (
     <>
@@ -60,6 +65,7 @@ const InputTemplate: Story<IStoryParams> = (args) => {
           onChange={setValue}
           placeholder="Иванов"
           label="Фамилия"
+          ref={inputRef}
         />
       </div>
       <div style={wrapperStyles}>
@@ -80,6 +86,7 @@ const InputTemplate: Story<IStoryParams> = (args) => {
           label="Отчество"
         />
       </div>
+      <button onClick={handleFocus}>Focus on first input</button>
     </>
   );
 };
@@ -123,10 +130,10 @@ const CardInput = ({ withPrefix, withPostfix, ...args }) => {
       appearance="card"
       id="ccn"
       type="tel"
-      inputmode="numeric"
+      inputMode="numeric"
       pattern="[0-9\s]{13,19}"
-      autocomplete="cc-number"
-      maxlength="19"
+      autoComplete="cc-number"
+      maxLength="19"
       labelProps={{ for: "ccn" }}
     />
   );
@@ -199,7 +206,7 @@ const Cards: Story<IStoryParams | any> = ({
   );
 };
 
-const PromocodeInput = (args) => {
+const PromocodeInput = ({ withPrefix, withPostfix, ...args }) => {
   const [promocode, setPromocode] = useState("");
   const [promoInputState, setPromoInputState] = useState<
     "none" | "error" | "success" | "loading"

@@ -74,6 +74,7 @@ export const defaultButtonTheme: Required<ComponentTheme<ComponentNames>> = {
     alignItems: "center",
   },
   [INPUT_COMPONENTS_NAMES.clearIcon]: {
+    alignSelf: "center",
     marginRight: "5px",
     flexShrink: 0,
     width: "15px",
