@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.5.5...@cheaaa/input@1.6.0) (2022-06-20)
+
+
+### Features
+
+* add pulse caret to code input ([3e9aa46](https://github.com/SergeyBondar93/liba/commit/3e9aa46a726a4e2a66df24f3bff04b0c8528c0a3))
+
+
+
+
+
 ## [1.5.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.5.4...@cheaaa/input@1.5.5) (2022-06-20)
 
 **Note:** Version bump only for package @cheaaa/input
