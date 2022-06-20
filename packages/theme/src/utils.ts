@@ -48,7 +48,7 @@ export const getClassName = <T extends string>(
     classes[getAppearanceClass([componentName, appearance, animationState])],
   ]);
 
-  return classNames(...uniqieClasses);
+  return classNames(...[...uniqieClasses]);
 };
 
 const createStylesFromTheme = (
