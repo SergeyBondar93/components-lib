@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.2.4...@cheaaa/theme@1.2.5) (2022-06-20)
+
+
+### Bug Fixes
+
+* create classname ([fdf27c6](https://github.com/SergeyBondar93/liba/commit/fdf27c63c7d1fa9d17c56b57591c8f5cc10b1ef2))
+
+
+
+
+
 ## [1.2.4](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.2.3...@cheaaa/theme@1.2.4) (2022-06-20)
 
 
