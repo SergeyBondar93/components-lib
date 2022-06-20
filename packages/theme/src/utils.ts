@@ -35,7 +35,7 @@ export const getClassName = <T extends string>(
   componentName: T,
   animationState?: string
 ) => {
-  const uniqieClasses = new Set([
+  const uniqieClasses = [
     classes[componentName],
     classes[getAppearanceClass([componentName, "base"])],
     classes[getAppearanceClass([componentName, baseAppearance])],
@@ -46,9 +46,9 @@ export const getClassName = <T extends string>(
       getAppearanceClass([componentName, baseAppearance, animationState])
     ],
     classes[getAppearanceClass([componentName, appearance, animationState])],
-  ]);
+  ];
 
-  return classNames(...[...uniqieClasses]);
+  return classNames(...uniqieClasses);
 };
 
 const createStylesFromTheme = (
