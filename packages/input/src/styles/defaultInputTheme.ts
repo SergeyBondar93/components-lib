@@ -3,7 +3,7 @@ import { ComponentTheme } from "@cheaaa/theme/src";
 import { INPUT_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
-export const defaultButtonTheme: Required<ComponentTheme<ComponentNames>> = {
+export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
   [INPUT_COMPONENTS_NAMES.wrapper]: {
     borderRadius: "10px",
     border: "1px solid rgba(113, 130, 153, 0.25)",

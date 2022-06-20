@@ -1,12 +1,29 @@
-import { createClasses } from "@cheaaa/theme/src";
+import { createClasses, ITheme } from "@cheaaa/theme/src";
 import { createUseStyles } from "react-jss";
 
-import { INPUT_COMPONENT_NAMESPACE } from "./consts";
-import { defaultButtonTheme } from "./defaultTheme";
+import {
+  INPUT_COMPONENT_NAMESPACE,
+  CODE_INPUT_COMPONENT_NAMESPACE,
+} from "./consts";
+import { defaultInputTheme } from "./defaultInputTheme";
+import { defaultCodeInputTheme, shakeAnimation } from "./defaultCodeInputTheme";
 
-export const useStyles = createUseStyles(
-  createClasses(defaultButtonTheme, INPUT_COMPONENT_NAMESPACE),
+export const useBaseStyles = createUseStyles(
+  createClasses(defaultInputTheme, INPUT_COMPONENT_NAMESPACE),
   {
     name: "input",
+  }
+);
+
+export const useCodeInputStyles = createUseStyles(
+  (theme: ITheme) => ({
+    ...shakeAnimation,
+    ...createClasses(
+      defaultCodeInputTheme,
+      CODE_INPUT_COMPONENT_NAMESPACE
+    )(theme),
+  }),
+  {
+    name: "code-input",
   }
 );

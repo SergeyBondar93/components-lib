@@ -6,6 +6,7 @@ import {
 import {
   INPUT_COMPONENT_NAMESPACE,
   INPUT_COMPONENTS_NAMES,
+  CODE_INPUT_COMPONENT_NAMESPACE,
 } from "./../src/styles/consts";
 
 export const theme = {
@@ -98,6 +99,34 @@ export const theme = {
         },
         [INPUT_COMPONENTS_NAMES.postfixWrapper]: {
           marginRight: 0,
+        },
+      },
+    },
+    [CODE_INPUT_COMPONENT_NAMESPACE]: {
+      base: {
+        [INPUT_COMPONENTS_NAMES.wrapper]: {
+          borderRadius: "0px",
+          border: "none",
+          borderBottom: "3px solid rgba(113, 130, 153, 0.25)",
+          width: "25px",
+          height: "35px",
+          margin: "3px",
+          '&[data-invalid="true"]': {
+            border: "none",
+            borderBottom: "3px solid #FF6666",
+            animation: "none",
+          },
+          '&[data-valid="true"]': {
+            border: "none",
+            borderBottom: "3px solid #2CA95E",
+          },
+          '&[data-focused="true"]': {
+            border: "none",
+            borderBottom: "3px solid #636AFF",
+          },
+        },
+        [INPUT_COMPONENTS_NAMES.input]: {
+          fontSize: "20px",
         },
       },
     },

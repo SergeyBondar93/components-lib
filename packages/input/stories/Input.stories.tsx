@@ -3,7 +3,7 @@ import { Button } from "@cheaaa/button/src";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
 
-import { Input } from "../src";
+import { CodeInput, Input } from "../src";
 
 import {
   Mir,
@@ -314,3 +314,80 @@ Themed.args = {
   invalid: false,
   valid: false,
 };
+
+const CodeInputTemplate = ({ fieldsCount, ...args }) => {
+  const [value, setValue] = useState([]);
+  const [state, setState] = useState<"none" | "error" | "success" | "loading">(
+    "none"
+  );
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+    setState("none");
+  };
+
+  const handleComplete = (v) => {
+    setState("loading");
+    setTimeout(() => {
+      const isValid = v.join("") === new Array(fieldsCount).fill("1").join("");
+      setState(isValid ? "success" : "error");
+    }, 1000);
+  };
+
+  const handleClear = () => {
+    setState("none");
+    setValue([]);
+  };
+
+  return (
+    <>
+      <button onClick={handleClear}>Clear state</button>
+      <h3>Valid code: 11111 etc</h3>
+      <CodeInput
+        value={value}
+        onChange={handleChange}
+        fieldsCount={fieldsCount}
+        invalid={state === "error"}
+        valid={state === "success"}
+        disabled={["loading", "success"].includes(state)}
+        onComplete={handleComplete}
+        isFocused
+        {...args}
+      />
+    </>
+  );
+};
+
+export const CodeInputDefault = CodeInputTemplate.bind({});
+
+CodeInputDefault.args = {
+  fieldsCount: 5,
+};
+
+const CodeInputThemedTemplate = (args) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <JssProvider
+        generateId={({ key }, styleSheet) => {
+          if (!styleSheet?.options.classNamePrefix) {
+            if (process.env.NODE_ENV === "development") {
+              console.error(
+                "classNamePrefix not passed in some createUseStyles function"
+              );
+            }
+          }
+
+          styleSheet?.options.classNamePrefix;
+
+          return styleSheet?.options.classNamePrefix + key;
+        }}
+      >
+        <CodeInputTemplate {...args} />
+      </JssProvider>
+    </ThemeProvider>
+  );
+};
+
+export const CodeInputThemed = CodeInputThemedTemplate.bind({});
+
+CodeInputThemed.args = CodeInputDefault.args;
