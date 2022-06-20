@@ -58,6 +58,14 @@ export const theme = {
           },
         },
       },
+      "with-delete-icon": {
+        [INPUT_COMPONENTS_NAMES.postfixWrapper]: {
+          position: "absolute",
+          right: "-24px",
+          top: "-12px",
+          cursor: "pointer",
+        },
+      },
 
       card: {
         [INPUT_COMPONENTS_NAMES.wrapper]: {

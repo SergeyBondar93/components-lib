@@ -14,6 +14,7 @@ import {
   Visa,
 } from "./CardIcons";
 import { theme } from "./theme";
+import { DeleteEmailIcon } from "./DeleteEmailIcon";
 
 // const disabled = {
 //   table: {
@@ -278,6 +279,42 @@ const PromocodeInput = ({ withPrefix, withPostfix, ...args }) => {
   );
 };
 
+const defaultEmails = ["lol@mail.com", "kek@mail.com", "cheburek@mail.com"];
+
+const Emails = () => {
+  const [emails, setEmails] = useState(defaultEmails);
+
+  const handleDelete = (idx) => () => {
+    const newEmails = [...emails];
+    newEmails.splice(idx, 1);
+    setEmails(newEmails);
+  };
+
+  const handleChange = (idx) => (newEmail) => {
+    const newEmails = [...emails];
+    newEmails[idx] = newEmail;
+    setEmails(newEmails);
+  };
+
+  return (
+    <>
+      <h3>Emails: </h3>
+      {emails.map((email, idx) => (
+        <div style={wrapperStyles} key={idx}>
+          <Input
+            appearance="with-delete-icon"
+            onChange={handleChange(idx)}
+            value={email}
+            placeholder="ivanov@mail.com"
+            label="Email"
+            postfix={<DeleteEmailIcon onClick={handleDelete(idx)} />}
+          />
+        </div>
+      ))}
+    </>
+  );
+};
+
 const ThemedTemplate = (args) => {
   return (
     <ThemeProvider theme={theme}>
@@ -298,6 +335,8 @@ const ThemedTemplate = (args) => {
       >
         <Cards {...args} />
         <PromocodeInput {...args} />
+
+        <Emails />
       </JssProvider>
     </ThemeProvider>
   );
