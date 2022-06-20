@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.2 (2022-06-20)
+
+**Note:** Version bump only for package @cheaaa/button
+
+
+
+
+
 ## [1.3.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.3.0...@cheaaa/button@1.3.1) (2022-06-20)
 
 **Note:** Version bump only for package @cheaaa/button
