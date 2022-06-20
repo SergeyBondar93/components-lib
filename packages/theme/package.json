@@ -2,6 +2,7 @@
 	"name": "@cheaaa/theme",
 	"version": "1.2.2",
 	"description": "<>",
+	"browser": "src/index.ts",
 	"main": "dist/index.js",
 	"source": "src/index.ts",
 	"module": "dist/theme.esm.js",
