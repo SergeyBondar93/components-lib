@@ -390,6 +390,7 @@ const CodeInputTemplate = ({ fieldsCount, ...args }) => {
         valid={state === "success"}
         disabled={["loading", "success"].includes(state)}
         onComplete={handleComplete}
+        label=" "
         isFocused
         {...args}
       />

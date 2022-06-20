@@ -23,6 +23,13 @@ export const shakeAnimation = {
   },
 };
 
+export const pulseAnimation = {
+  "@keyframes blinkCaret": {
+    "from, to": { opacity: "0" },
+    "50%": { opacity: "1" },
+  },
+};
+
 export const defaultCodeInputTheme: Required<ComponentTheme<ComponentNames>> = {
   [INPUT_COMPONENTS_NAMES.wrapper]: {
     borderRadius: "10px",
@@ -36,6 +43,7 @@ export const defaultCodeInputTheme: Required<ComponentTheme<ComponentNames>> = {
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
+    position: "relative",
 
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
@@ -60,7 +68,7 @@ export const defaultCodeInputTheme: Required<ComponentTheme<ComponentNames>> = {
     outline: "none",
     width: "100%",
     fontSize: "45px",
-
+    caretColor: "transparent",
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
       opacity: 0.7,
@@ -81,5 +89,32 @@ export const defaultCodeInputTheme: Required<ComponentTheme<ComponentNames>> = {
   [INPUT_COMPONENTS_NAMES.prefixWrapper]: {},
   [INPUT_COMPONENTS_NAMES.postfixWrapper]: {},
   [INPUT_COMPONENTS_NAMES.clearIcon]: {},
-  [INPUT_COMPONENTS_NAMES.label]: {},
+  [INPUT_COMPONENTS_NAMES.label]: {
+    left: "50%!important",
+    transform: "translateX(-50%)",
+    position: "absolute",
+    bottom: "14px",
+    height: "2px",
+    width: "28px",
+    background: "rgba(113, 130, 153, 0.25)",
+    animation: "$blinkCaret 1s step-end infinite",
+
+    '&[data-disabled="true"]': {
+      cursor: "not-allowed",
+      opacity: 0.7,
+    },
+    '&[data-hasvalue="true"]': {
+      visibility: "hidden",
+    },
+    '&[data-valid="true"]': {
+      visibility: "hidden",
+    },
+    '&[data-invalid="true"]': {
+      visibility: "hidden",
+    },
+    '&[data-focused="true"]': {
+      background: "#636AFF",
+      visibility: "visible",
+    },
+  },
 };

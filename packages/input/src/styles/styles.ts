@@ -6,7 +6,11 @@ import {
   CODE_INPUT_COMPONENT_NAMESPACE,
 } from "./consts";
 import { defaultInputTheme } from "./defaultInputTheme";
-import { defaultCodeInputTheme, shakeAnimation } from "./defaultCodeInputTheme";
+import {
+  defaultCodeInputTheme,
+  pulseAnimation,
+  shakeAnimation,
+} from "./defaultCodeInputTheme";
 
 export const useBaseStyles = createUseStyles(
   createClasses(defaultInputTheme, INPUT_COMPONENT_NAMESPACE),
@@ -18,6 +22,7 @@ export const useBaseStyles = createUseStyles(
 export const useCodeInputStyles = createUseStyles(
   (theme: ITheme) => ({
     ...shakeAnimation,
+    ...pulseAnimation,
     ...createClasses(
       defaultCodeInputTheme,
       CODE_INPUT_COMPONENT_NAMESPACE

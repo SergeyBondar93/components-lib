@@ -133,6 +133,9 @@ export const theme = {
             borderBottom: "3px solid #636AFF",
           },
         },
+        [INPUT_COMPONENTS_NAMES.label]: {
+          display: "none",
+        },
         [INPUT_COMPONENTS_NAMES.input]: {
           fontSize: "20px",
         },
