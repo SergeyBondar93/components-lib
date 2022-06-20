@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/input",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"description": "<>",
 	"main": "dist/index.js",
 	"source": "src/index.ts",
@@ -23,7 +23,7 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/theme": "^1.2.0"
+		"@cheaaa/theme": "^1.2.1"
 	},
 	"peerDependencies": {
 		"react": ">=17.0.2"
