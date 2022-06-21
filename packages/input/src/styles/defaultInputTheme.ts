@@ -10,7 +10,6 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     backgroundColor: "#FFF",
     minWidth: "220px",
     display: "inline-flex",
-    alignItems: "center",
     boxSizing: "border-box",
     height: "45px",
 
