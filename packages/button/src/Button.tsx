@@ -1,26 +1,25 @@
 import { getClassName } from "@cheaaa/theme";
 import { PropsWithChildren, useCallback, useMemo } from "react";
+import { IThemedProps } from "@cheaaa/theme";
 
 import { useStyles } from "./styles/styles";
 import { ComponentNames } from "./styles/types";
 
 export type ButtonTags = "button" | "span" | "a";
 
-export interface IButtonProps extends PropsWithChildren {
+export interface IButtonProps extends PropsWithChildren, IThemedProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-
   href?: string;
   target?: "_self" | "_blank" | "_parent" | "_top";
-
-  baseAppearance?: string;
-
-  appearance?: string;
-
   type?: "button" | "reset" | "submit";
-
-  /* custom component */
+  /**
+   * Кастомный компонент, например Link from react-router
+   */
   component?: React.ElementType;
-  /* styles */
+
+  /**
+   * Делает width: 100%
+   */
   shouldFitContent?: boolean;
   disabled?: boolean;
 }
