@@ -2,6 +2,7 @@
 	"name": "@cheaaa/input",
 	"version": "1.7.0",
 	"description": "<>",
+	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
 	"module": "dist/input.esm.js",
 	"types": "dist/index.d.ts",

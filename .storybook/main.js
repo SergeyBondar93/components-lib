@@ -4,5 +4,12 @@ module.exports = {
   framework: '@storybook/react',
   core: {
     builder: 'webpack5'
-  }
+  },
+  webpackFinal: async (config) => {
+       
+    config.resolve.mainFields = ['build:storybook', 'browser', 'module', 'main']
+  
+
+    return config;
+},
 };
