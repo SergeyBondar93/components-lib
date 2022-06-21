@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/button",
-	"version": "1.3.4",
+	"version": "1.3.5",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.8](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.2.7...@cheaaa/theme@1.2.8) (2022-06-21)
+
+
+### Bug Fixes
+
+* remove extra fields in package json ([62a2006](https://github.com/SergeyBondar93/liba/commit/62a2006e8a5b0aa770dcbf9db71a5d45271788bd))
+
+
+
+
+
 ## [1.2.7](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.2.6...@cheaaa/theme@1.2.7) (2022-06-21)
 
 
