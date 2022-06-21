@@ -1,6 +1,5 @@
-import { Story, Meta } from "@storybook/react";
 import { Button } from "@cheaaa/button";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
 
 import { CodeInput, Input } from "../src";
@@ -16,36 +15,13 @@ import {
 import { theme } from "./theme";
 import { DeleteEmailIcon } from "./DeleteEmailIcon";
 
-// const disabled = {
-//   table: {
-//     disable: true,
-//   },
-// };
-
 export default {
-  component: Input,
   title: "Input",
-  // argTypes: {
-  //   href: disabled,
-  //   baseAppearance: disabled,
-  //   appearance: disabled,
-  //   component: disabled,
-  //   onClick: disabled,
-  //   target: disabled,
-  //   type: disabled,
-  // },
-} as Meta;
+};
 
-interface IStoryParams {
-  children: string;
-  value: string;
-  invalid: boolean;
-  disabled: boolean;
-  isClearable: boolean;
-  shouldFitContent: boolean;
-}
 const wrapperStyles = { marginBottom: "15px" };
-const InputTemplate: Story<IStoryParams> = (args) => {
+
+const InputTemplate = (args) => {
   const [value, setValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -103,7 +79,15 @@ Default.args = {
   valid: false,
 };
 
-const CardInput = ({ withPrefix, withPostfix, ...args }) => {
+interface ICardInputProps
+  extends Omit<IThemedTemplateProps, "withPrefix" | "withPostfix"> {
+  value: string;
+  placeholder: string;
+  prefix?: ReactNode;
+  postfix?: ReactNode;
+}
+
+const CardInput = (args: ICardInputProps) => {
   // NOT FOR PRODUCTION
   const [value, setValue] = useState("");
 
@@ -129,22 +113,16 @@ const CardInput = ({ withPrefix, withPostfix, ...args }) => {
       onChange={setValue}
       baseAppearance="visiblePlaceholder"
       appearance="card"
-      id="ccn"
       type="tel"
       inputMode="numeric"
       pattern="[0-9\s]{13,19}"
       autoComplete="cc-number"
-      maxLength="19"
-      labelProps={{ for: "ccn" }}
+      maxLength={19}
     />
   );
 };
 
-const Cards: Story<IStoryParams | any> = ({
-  withPrefix,
-  withPostfix,
-  ...args
-}) => {
+const Cards = ({ withPrefix, withPostfix, ...args }: IThemedTemplateProps) => {
   const placeholder = "0000 0000 0000 0000";
 
   return (
@@ -315,7 +293,17 @@ const Emails = () => {
   );
 };
 
-const ThemedTemplate = (args) => {
+interface IThemedTemplateProps {
+  withPrefix: boolean;
+  withPostfix: boolean;
+  disabled: boolean;
+  shouldFitContent: boolean;
+  isClearable: boolean;
+  invalid: boolean;
+  valid: boolean;
+}
+
+const ThemedTemplate = (args: IThemedTemplateProps) => {
   return (
     <ThemeProvider theme={theme}>
       <JssProvider

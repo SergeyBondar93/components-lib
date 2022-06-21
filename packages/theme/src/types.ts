@@ -42,3 +42,16 @@ export type PxSizeWithSpace = ` ${PxSize}`;
 export type Margin = `${PxSize}${PxSizeWithSpace | ""}${PxSizeWithSpace | ""}${
   | PxSizeWithSpace
   | ""}`;
+
+export interface IThemedProps {
+  /**
+   * Базовый внешний вид описанный в теме, действует на все компоненты этого типа.
+   * Описывается в теме в base
+   */
+  baseAppearance?: string;
+
+  /**
+   * Специфичный аппиранс, для изменения стилей описанных в base
+   */
+  appearance?: string;
+}

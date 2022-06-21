@@ -1,7 +1,6 @@
 import { getClassName } from "@cheaaa/theme";
 import {
   forwardRef,
-  PropsWithChildren,
   useCallback,
   useEffect,
   useMemo,
@@ -12,24 +11,9 @@ import { useCombinedRefs } from "@cheaaa/utils";
 
 import { ClearIcon } from "./ClearIcon";
 import { ComponentNames } from "./styles/types";
+import { IBaseInputProps } from "./types";
 
-export interface IInputProps extends PropsWithChildren {
-  baseAppearance?: string;
-  appearance?: string;
-
-  prefix?: any;
-  postfix?: any;
-
-  isClearable?: boolean;
-
-  shouldFitContent?: boolean;
-  disabled?: boolean;
-  invalid?: boolean;
-}
-
-// Добавить маску
-
-export const BaseInput = forwardRef(
+export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
   (
     {
       baseAppearance = "base",
@@ -40,11 +24,8 @@ export const BaseInput = forwardRef(
       valid,
       prefix,
       postfix,
-
       type,
-
       isClearable = false,
-
       onChange,
       value,
       placeholder = "",
@@ -54,10 +35,9 @@ export const BaseInput = forwardRef(
       labelProps = {},
       classes,
       ...rest
-    }: IInputProps | any,
+    },
     ref: React.MutableRefObject<HTMLInputElement>
   ) => {
-    // const classes = useStyles();
     const iternalInputRef = useRef<HTMLInputElement>(null);
     const mergedRef = useCombinedRefs(ref, iternalInputRef);
     const prefixRef = useRef<HTMLSpanElement>(null);
@@ -89,8 +69,6 @@ export const BaseInput = forwardRef(
     );
 
     const handleClick = useCallback(() => {
-      // eslint-disable-next-line no-unused-expressions
-      // TODO скомбинировать рефы с пришедшим из форвард рефа
       !disabled && mergedRef.current?.focus();
     }, [disabled]);
 
@@ -193,18 +171,17 @@ export const BaseInput = forwardRef(
           className={classNames.inputClassName}
           disabled={disabled}
           ref={mergedRef}
-          type={type}
           onFocus={handleFocus}
           onBlur={handleBlur}
           name="name"
-          value={value}
+          value={String(value)}
           onChange={handleChange}
           placeholder={placeholder}
           {...rest}
         />
 
         {label && (
-          <span
+          <label
             style={{
               left: floatingLeft,
             }}
@@ -214,7 +191,7 @@ export const BaseInput = forwardRef(
             {...labelProps}
           >
             {label}
-          </span>
+          </label>
         )}
 
         {isClearable && (

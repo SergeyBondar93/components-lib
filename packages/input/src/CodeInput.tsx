@@ -11,6 +11,7 @@ import {
 import { BaseInput } from "./BaseInput";
 import { IGNORED_META_KEYS } from "./consts";
 import { useCodeInputStyles } from "./styles/styles";
+import { ICodeInputProps } from "./types";
 import { getInputValue, isNumber } from "./utils";
 
 export const CodeInput = ({
@@ -21,7 +22,7 @@ export const CodeInput = ({
   onComplete,
   invalid,
   ...props
-}: any) => {
+}: ICodeInputProps) => {
   const classes = useCodeInputStyles();
   const [value, setValue] = useState(new Array(fieldsCount).fill(""));
   const inputsRefs = useRef(
@@ -139,7 +140,7 @@ export const CodeInput = ({
             key={i}
             classes={classes}
             ref={ref}
-            maxLength="1"
+            maxLength={1}
             autoComplete="off"
             type="tel"
             data-min-max="0:9"
