@@ -2,9 +2,7 @@
 	"name": "@cheaaa/input",
 	"version": "1.6.0",
 	"description": "<>",
-	"browser": "src/index.ts",
 	"main": "dist/index.js",
-	"source": "src/index.ts",
 	"module": "dist/input.esm.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
