@@ -79,7 +79,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     width: "15px",
     height: "15px",
     padding: "8px 8px 8px 0px",
-
+    boxSizing: "content-box",
     cursor: "pointer",
 
     fill: "rgba(113, 130, 153, 0.25)",
