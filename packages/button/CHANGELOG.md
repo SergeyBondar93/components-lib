@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.4](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.3.3...@cheaaa/button@1.3.4) (2022-06-21)
+
+
+### Bug Fixes
+
+* remove extra fields in package json ([62a2006](https://github.com/SergeyBondar93/liba/commit/62a2006e8a5b0aa770dcbf9db71a5d45271788bd))
+
+
+
+
+
 ## [1.3.3](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.3.2...@cheaaa/button@1.3.3) (2022-06-20)
 
 **Note:** Version bump only for package @cheaaa/button
