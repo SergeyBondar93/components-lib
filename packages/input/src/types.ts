@@ -23,7 +23,7 @@ export interface IBaseInputProps extends InputHTMLAttributes, IThemedProps {
   value: string | number | boolean;
 
   /**
-   * В базовой версии виден вместо placeholder пока не в фокусу/нет value,
+   * В базовой версии виден вместо placeholder пока не в фокусе/нет value,
    * при фокусе отодвигается вверх и виден placeholder
    */
   label?: ReactNode;
