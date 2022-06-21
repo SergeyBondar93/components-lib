@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.11.0...@cheaaa/input@1.12.0) (2022-06-21)
+
+
+### Bug Fixes
+
+* fix clearIcon styles ([18924a1](https://github.com/SergeyBondar93/liba/commit/18924a1b663fa4e8cddc094920c81f2ee1f4d99e))
+* remove extra fields in package json ([62a2006](https://github.com/SergeyBondar93/liba/commit/62a2006e8a5b0aa770dcbf9db71a5d45271788bd))
+* remove input style ([f54b025](https://github.com/SergeyBondar93/liba/commit/f54b025f5fd940b7a57dddf1683d5e2fa0790d37))
+
+
+### Features
+
+* add pulse caret to code input ([3e9aa46](https://github.com/SergeyBondar93/liba/commit/3e9aa46a726a4e2a66df24f3bff04b0c8528c0a3))
+
+
+
+
+
 # [1.11.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.10.0...@cheaaa/input@1.11.0) (2022-06-21)
 
 
