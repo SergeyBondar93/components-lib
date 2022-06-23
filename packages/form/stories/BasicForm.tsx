@@ -8,19 +8,14 @@ import {
   formActions,
   formFieldValueSelector,
   formIsShowAllErrorsSelector,
+  formTochedSelector,
   formValuesSelector,
 } from "../src/slice";
 
 import { BASIC_FORM_FIELDS } from "./consts";
 import { InputWithError } from "./InputWithError";
+import { IBasicFormModel } from "./types";
 import { validateBaseForm } from "./validation";
-
-interface IBasicFormModel {
-  [BASIC_FORM_FIELDS.age]?: string;
-  [BASIC_FORM_FIELDS.firstname]?: string;
-  [BASIC_FORM_FIELDS.lastname]?: string;
-  [BASIC_FORM_FIELDS.emails]?: string[];
-}
 
 const emailsSelector = (formName) =>
   createSelector(
@@ -111,10 +106,15 @@ const AddEmail = ({ formName }) => {
   );
 };
 
-export const BasicForm = ({ formName }: any) => {
+interface IBasicFormProps {
+  formName: string;
+}
+
+export const BasicForm = ({ formName }: IBasicFormProps) => {
   const lastnameRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const isShowAllErrors = useSelector(formIsShowAllErrorsSelector(formName));
+  const touched = useSelector(formTochedSelector<IBasicFormModel>(formName));
 
   const toggleShowAllErrors = () => {
     dispatch(
@@ -134,6 +134,24 @@ export const BasicForm = ({ formName }: any) => {
     );
   };
 
+  // Функция добавлена что бы отображать ошибки на полях при начале ввода а не при потере фокуса как по дефолту
+  const handleSetIsTouched =
+    (fieldName: typeof BASIC_FORM_FIELDS[keyof typeof BASIC_FORM_FIELDS]) =>
+    () => {
+      if (!touched[fieldName]) {
+        // задержка нужна что бы поле поставилось touched только после валидации
+        setTimeout(() => {
+          dispatch(
+            formActions.setFieldTouched({
+              formName: formName,
+              name: fieldName,
+              isTouched: true,
+            })
+          );
+        });
+      }
+    };
+
   return (
     <Form formName={formName} validate={validateBaseForm}>
       <div style={wrapperStyles}>
@@ -150,6 +168,7 @@ export const BasicForm = ({ formName }: any) => {
         <FormField
           component={InputWithError}
           name={BASIC_FORM_FIELDS.firstname}
+          onChange={handleSetIsTouched(BASIC_FORM_FIELDS.firstname)}
           placeholder="Ivan"
           label="Firstname"
         />
@@ -165,6 +184,7 @@ export const BasicForm = ({ formName }: any) => {
         <FormField
           component={InputWithError}
           name={BASIC_FORM_FIELDS.lastname}
+          onChange={handleSetIsTouched(BASIC_FORM_FIELDS.lastname)}
           placeholder="Ivanov"
           label="Lastname"
           ref={lastnameRef}
@@ -181,6 +201,7 @@ export const BasicForm = ({ formName }: any) => {
         <FormField
           component={InputWithError}
           name={BASIC_FORM_FIELDS.age}
+          onChange={handleSetIsTouched(BASIC_FORM_FIELDS.age)}
           placeholder="30"
           label="Age"
         />

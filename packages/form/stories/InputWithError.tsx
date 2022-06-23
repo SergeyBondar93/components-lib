@@ -3,7 +3,6 @@ import { forwardRef } from "react";
 
 interface IInputWithErrorProps extends IInputProps {
   error?: string;
-  innerRef?: any;
 }
 
 const errorStyles = {
@@ -15,7 +14,7 @@ const errorStyles = {
 export const InputWithError = forwardRef<
   HTMLInputElement,
   IInputWithErrorProps
->(({ error, innerRef, ...props }: IInputWithErrorProps, ref) => {
+>(({ error, ...props }: IInputWithErrorProps, ref) => {
   return (
     <>
       <Input {...props} ref={ref} />

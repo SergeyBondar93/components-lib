@@ -75,7 +75,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
     const handleChange: React.ChangeEventHandler<HTMLInputElement> =
       useCallback(
         (e) => {
-          !disabled && onChange?.(e.target.value);
+          !disabled && onChange?.(e.target.value, e);
         },
         [disabled, onChange]
       );

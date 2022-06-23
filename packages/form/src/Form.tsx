@@ -13,7 +13,7 @@ interface IFormProps
   extends PropsWithChildren,
     DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {
   formName: string;
-  validate: any;
+  validate: (model: any) => object;
 }
 
 export const Form = ({

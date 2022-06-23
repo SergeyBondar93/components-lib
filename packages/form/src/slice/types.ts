@@ -1,9 +1,31 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 
-export type FormState<TToched = {}, TErrors = {}, TValues = {}> = {
-  toched: TToched;
-  errors: TErrors;
-  values: TValues;
+type TochedModel<TModel> = {
+  [Key in keyof TModel]: TModel[Key] extends object
+    ? TochedModel<TModel[Key]>
+    : boolean;
+};
+
+type ErrorsModel<TModel> = {
+  [Key in keyof TModel]: TModel[Key] extends object
+    ? TochedModel<TModel[Key]>
+    : string | string[];
+};
+/*
+TODO Возможно понадобится тип который принимает модель и делает из неё тип ошибок, 
+где ошибка может быть на каждом уровне вложенности 
+например 
+Model = { a: { b: c: { string } } }
+Result = 
+ { a: ErrorType } |
+ { a: { b: ErrorType } } |
+ { a: { b: { c: ErrorType} } } |
+*/
+
+export type FormState<TModel = {}> = {
+  toched: TochedModel<TModel>;
+  errors: ErrorsModel<TModel>;
+  values: TModel;
   isShowAllErrors: boolean;
 };
 
