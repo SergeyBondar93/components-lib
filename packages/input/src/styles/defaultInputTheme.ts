@@ -22,19 +22,18 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     '&[data-shouldfitcontent="true"]': {
       width: "100%",
     },
-    '&[data-invalid="true"]': {
-      border: "1px solid #FF6666",
-    },
     '&[data-valid="true"]': {
       border: "1px solid #2CA95E",
     },
-
     '&[data-focused="true"]': {
       alignItems: "flex-end",
       border: "1px solid #636AFF",
     },
     '&[data-hasvalue="true"]': {
       alignItems: "flex-end",
+    },
+    '&[data-invalid="true"]': {
+      border: "1px solid #FF6666",
     },
   },
   [INPUT_COMPONENTS_NAMES.input]: {
