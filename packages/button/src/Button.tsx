@@ -1,5 +1,5 @@
 import { getClassName } from "@cheaaa/theme";
-import { PropsWithChildren, useCallback, useMemo } from "react";
+import { ReactNode, useCallback, useMemo } from "react";
 import { IThemedProps } from "@cheaaa/theme";
 
 import { useStyles } from "./styles/styles";
@@ -7,11 +7,12 @@ import { ComponentNames } from "./styles/types";
 
 export type ButtonTags = "button" | "span" | "a";
 
-export interface IButtonProps extends PropsWithChildren, IThemedProps {
+export interface IButtonProps extends IThemedProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   href?: string;
   target?: "_self" | "_blank" | "_parent" | "_top";
   type?: "button" | "reset" | "submit";
+  children: ReactNode;
   /**
    * Кастомный компонент, например Link from react-router
    */
