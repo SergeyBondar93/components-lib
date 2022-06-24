@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.13.0...@cheaaa/input@1.14.0) (2022-06-23)
+
+
+### Features
+
+* add custom behavior to touch field from app ([b5e4643](https://github.com/SergeyBondar93/liba/commit/b5e4643d9e709df62ddf251857f7f2326ef6a11e))
+
+
+
+
+
 # [1.13.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.12.0...@cheaaa/input@1.13.0) (2022-06-23)
 
 
