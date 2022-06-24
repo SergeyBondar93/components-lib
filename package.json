@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "pre-commit": "yarn lint --quiet",
-    "lint": "eslint \"packages/**/{src,stories,test}/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "tsc --noEmit && eslint \"packages/**/{src,stories,test}/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "yarn lint --fix --quiet",
     "compile": "yarn lerna run compile",
     "clean": "yarn lerna run clean",
