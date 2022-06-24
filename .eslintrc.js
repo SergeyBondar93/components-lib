@@ -67,6 +67,7 @@ module.exports = {
       '@typescript-eslint/no-use-before-define': ['warn'],
       '@typescript-eslint/unbound-method': ['warn'],
       '@typescript-eslint/prefer-regexp-exec': 'warn',
+      "@typescript-eslint/no-unused-vars": ["error"],
       // Prettier conflicts
       'import/newline-after-import': 0,
       'react/jsx-indent': 0,

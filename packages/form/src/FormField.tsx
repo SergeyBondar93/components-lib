@@ -11,7 +11,7 @@ import {
 } from "./slice";
 import { IFormFieldComponentProps } from "./types";
 
-export type FieldProps<TComponentProps> = Omit<
+export type FormFieldProps<TComponentProps> = Omit<
   TComponentProps,
   keyof IFormFieldComponentProps
 > & {
@@ -28,7 +28,7 @@ const Field = function <TProps>(
     onBlur,
     name,
     ...props
-  }: FieldProps<TProps>,
+  }: FormFieldProps<TProps>,
   ref
 ): React.ReactElement<TProps> {
   const formName = useFormName();

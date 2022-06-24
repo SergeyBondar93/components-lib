@@ -24,7 +24,6 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       valid,
       prefix,
       postfix,
-      type,
       isClearable = false,
       onChange,
       value,
@@ -173,7 +172,6 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
           ref={mergedRef}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          name="name"
           value={String(value)}
           onChange={handleChange}
           placeholder={placeholder}

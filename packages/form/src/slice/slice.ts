@@ -21,7 +21,7 @@ import {
 } from "./utils";
 
 export interface IFormState {
-  [key: string]: FormState<{}, {}, {}>;
+  [key: string]: FormState<{}>;
 }
 
 export interface IStoreWithFormState {

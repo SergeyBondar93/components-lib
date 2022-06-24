@@ -185,6 +185,7 @@ const Cards = ({ withPrefix, withPostfix, ...args }: IThemedTemplateProps) => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PromocodeInput = ({ withPrefix, withPostfix, ...args }) => {
   const [promocode, setPromocode] = useState("");
   const [promoInputState, setPromoInputState] = useState<

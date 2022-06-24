@@ -40,7 +40,7 @@ export const CodeInput = ({
       const newValue = getInputValue([...text], fieldsCount);
       onChange(newValue);
     },
-    [value, onChange]
+    [value, onChange, fieldsCount]
   );
 
   const changeFocus = useCallback(
@@ -110,7 +110,7 @@ export const CodeInput = ({
         }
       }
     },
-    [value, changeFocus, onChange, isCompleted]
+    [value, changeFocus, onChange]
   );
 
   useEffect(() => {

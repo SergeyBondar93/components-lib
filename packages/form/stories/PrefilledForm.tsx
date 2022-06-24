@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { formActions } from "../src/slice";
+import { formActions } from "../src";
 
 import { BasicForm } from "./BasicForm";
 import { BASIC_FORM_FIELDS, PREFILLED_FORM_NAME } from "./consts";

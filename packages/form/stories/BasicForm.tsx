@@ -2,15 +2,15 @@ import { createSelector } from "@reduxjs/toolkit";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Form } from "../src/Form";
-import { FormField } from "../src/FormField";
 import {
+  Form,
+  FormField,
   formActions,
   formFieldValueSelector,
   formIsShowAllErrorsSelector,
   formTochedSelector,
   formValuesSelector,
-} from "../src/slice";
+} from "../src";
 
 import { BASIC_FORM_FIELDS } from "./consts";
 import { InputWithError } from "./InputWithError";

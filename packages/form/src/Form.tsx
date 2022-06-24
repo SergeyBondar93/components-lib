@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FormProvider } from "./context";
 import { formActions, formValuesSelector } from "./slice";
 
-interface IFormProps
+export interface IFormProps
   extends PropsWithChildren,
     DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {
   formName: string;

@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import { formsReducer, FORMS_STATE_NAMESPACE } from "../src/slice";
+import { formsReducer, FORMS_STATE_NAMESPACE } from "../src";
 
 import { BaseForm } from "./BaseForm";
 import { PrefilledForm } from "./PrefilledForm";
