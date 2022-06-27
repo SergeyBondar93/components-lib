@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@1.4.0...@cheaaa/form@1.4.1) (2022-06-27)
+
+
+### Bug Fixes
+
+* forms add async validation ([f2d34d0](https://github.com/SergeyBondar93/liba/commit/f2d34d0c9ab11d72476a9e95524f0f72a4764646))
+
+
+
+
+
 # [1.4.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@1.3.0...@cheaaa/form@1.4.0) (2022-06-24)
 
 
