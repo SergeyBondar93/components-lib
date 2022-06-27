@@ -73,7 +73,7 @@ export const Button = ({
       onClick={onClick}
       disabled={disabled}
       href={disabled ? undefined : href}
-      shouldfitcontent={String(shouldFitContent)}
+      shouldfitcontent={String(!!shouldFitContent)}
       {...props}
     />
   );

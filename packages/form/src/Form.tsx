@@ -13,7 +13,7 @@ export interface IFormProps
   extends PropsWithChildren,
     DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {
   formName: string;
-  validate: (model: any) => object;
+  validate?: (model: any) => object;
 }
 
 export const Form = ({
@@ -26,8 +26,12 @@ export const Form = ({
   const formModel = useSelector(formValuesSelector(formName, {}));
 
   useEffect(() => {
-    const errors = validate(formModel);
-    dispatch(formActions.setErrors({ formName: formName, errors }));
+    (async () => {
+      if (validate) {
+        const errors = await validate(formModel);
+        dispatch(formActions.setErrors({ formName: formName, errors }));
+      }
+    })();
   }, [formModel, validate]);
 
   return (
