@@ -98,7 +98,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
   [INPUT_COMPONENTS_NAMES.label]: {
     fontSize: "13px",
     position: "absolute",
-    transition: "0.2s",
+    transition: "all .1s ease",
     color: "#718299",
 
     top: "50%",
