@@ -4,3 +4,4 @@ export { TabList } from "./TabList";
 export { TabPanel } from "./TabPanel";
 export * from "./slice";
 export * from "./styles";
+export * from "./types";
