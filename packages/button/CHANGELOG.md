@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.8](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.3.7...@cheaaa/button@1.3.8) (2022-06-27)
+
+
+### Bug Fixes
+
+* fix btn type ([14a06b9](https://github.com/SergeyBondar93/liba/commit/14a06b9fe013cc56d65621aaa39b85688dd47e0c))
+* forms add async validation ([f2d34d0](https://github.com/SergeyBondar93/liba/commit/f2d34d0c9ab11d72476a9e95524f0f72a4764646))
+
+
+
+
+
 ## [1.3.7](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.3.6...@cheaaa/button@1.3.7) (2022-06-24)
 
 
