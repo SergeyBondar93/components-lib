@@ -56,10 +56,12 @@ export const tabsSelector =
   (state: IStoreWithTabsState): ITabs<T> =>
     (state[TABS_STATE_NAMESPACE][tabsName] as ITabs<T>) || defaultTabsState;
 
-export const activePanelNameTabsSelector = <T extends {}>(tabsName: string) =>
+export const activePanelNameTabsSelector = <T extends string>(
+  tabsName: string
+) =>
   createSelector(
-    tabsSelector<T>(tabsName),
-    ({ activePanelName }) => activePanelName
+    tabsSelector(tabsName),
+    ({ activePanelName }) => activePanelName as T
   );
 
 export const { reducer: tabsReducer, actions: tabsActions } = TabsSlice;
