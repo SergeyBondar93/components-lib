@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tabs@1.1.1...@cheaaa/tabs@1.1.2) (2022-06-29)
+
+
+### Bug Fixes
+
+* add generic to activePanelNameSelector ([735b0f5](https://github.com/SergeyBondar93/liba/commit/735b0f5ed67b9069ae97e28613d727d21ea5e4f0))
+
+
+
+
+
 ## [1.1.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tabs@1.1.0...@cheaaa/tabs@1.1.1) (2022-06-28)
 
 
