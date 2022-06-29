@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.15.1 (2022-06-28)
+
+
+### Bug Fixes
+
+* change default input transition ([c4b8335](https://github.com/SergeyBondar93/liba/commit/c4b8335fe7cd30ad4a43d788ee1f9b84a655b594))
+
+
+
+
+
 # [1.15.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.14.0...@cheaaa/input@1.15.0) (2022-06-24)
 
 
