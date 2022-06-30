@@ -102,7 +102,11 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     color: "#718299",
 
     top: "50%",
+    cursor: "text",
     transform: "translateY(-50%)",
+    '&[data-disabled="true"]': {
+      cursor: "not-allowed",
+    },
     '&[data-focused="true"]': {
       fontSize: "10px",
       top: "10px",

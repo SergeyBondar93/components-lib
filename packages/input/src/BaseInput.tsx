@@ -183,6 +183,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
             style={{
               left: floatingLeft,
             }}
+            data-disabled={String(!!disabled)}
             data-focused={String(isFocused)}
             data-hasvalue={String(!!value)}
             className={classNames.labelClassName}

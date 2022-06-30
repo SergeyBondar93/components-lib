@@ -58,7 +58,7 @@ export interface IBaseInputProps extends InputHTMLAttributes, IThemedProps {
   valid?: boolean;
 
   /**
-   * Добавляет компонентам wrapper input clearIcon дата аттрибут {data-disabled="true"}
+   * Добавляет компонентам wrapper input clearIcon label дата аттрибут {data-disabled="true"}
    * можно описать его в теме и получить нужный вид этого состояния
    */
   disabled?: boolean;
