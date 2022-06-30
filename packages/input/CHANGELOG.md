@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.15.1...@cheaaa/input@1.15.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* fix input cursor on label ([59e1576](https://github.com/SergeyBondar93/liba/commit/59e1576a88336cd6b3dcb480ea1b438703036751))
+
+
+
+
+
 ## 1.15.1 (2022-06-28)
 
 
