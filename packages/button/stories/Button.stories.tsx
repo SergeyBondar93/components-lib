@@ -1,5 +1,8 @@
 import { Story, Meta } from "@storybook/react";
+import { ReactNode } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
+import { BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Button } from "../src";
 
@@ -40,13 +43,67 @@ const ButtonTemplate: Story<IStoryParams> = (args) => {
 };
 const LinkComponent = (props) => <a {...props} />;
 
-const LinkTemplate: Story<IStoryParams> = (args) => {
+interface ICustomComponentProps {
+  children: ReactNode;
+  color: "red" | "green" | "blue";
+}
+
+const MyCustomComponent = ({
+  children,
+  color,
+  ...props
+}: ICustomComponentProps) => {
+  return (
+    <div style={{ color }} {...props}>
+      {children}
+    </div>
+  );
+};
+
+interface ICustomComponentTemplateProps {
+  disabled: boolean;
+  shouldFitContent: boolean;
+}
+
+const CustomComponentTemplate: Story<ICustomComponentTemplateProps> = (
+  args
+) => {
   return (
     <>
       <h4>Custom Link Component</h4>
-      <Button component={LinkComponent} {...args} onClick={onClick} />
+      <Button
+        href="https://google.com"
+        component={LinkComponent}
+        {...args}
+        onClick={onClick}
+      >
+        I am link!
+      </Button>
       <h4>Added href attribute for make link</h4>
-      <Button {...args} onClick={onClick} />
+      <Button href="https://google.com" {...args} onClick={onClick}>
+        I am link!
+      </Button>
+      <h4>React Router Link</h4>
+      <BrowserRouter>
+        <Button
+          href="https://google.com"
+          {...args}
+          component={Link}
+          to={"/"}
+          onClick={onClick}
+        >
+          I am link!
+        </Button>
+      </BrowserRouter>
+      <h4>Cusrom component </h4>
+      <Button
+        {...args}
+        component={MyCustomComponent}
+        color="green"
+        onClick={onClick}
+      >
+        Custom div component
+      </Button>
     </>
   );
 };
@@ -60,9 +117,9 @@ Default.args = {
   shouldFitContent: false,
 };
 
-export const CustomLinkComponent = LinkTemplate.bind({});
+export const CustomComponent = CustomComponentTemplate.bind({});
 
-CustomLinkComponent.argTypes = {
+CustomComponent.argTypes = {
   href: disabled,
   baseAppearance: disabled,
   appearance: disabled,
@@ -72,10 +129,7 @@ CustomLinkComponent.argTypes = {
   type: disabled,
 };
 
-CustomLinkComponent.args = {
-  children: "I am link!",
-  href: "https://google.com",
-  target: "_blank",
+CustomComponent.args = {
   disabled: false,
   shouldFitContent: false,
 };

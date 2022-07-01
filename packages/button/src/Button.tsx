@@ -7,23 +7,23 @@ import { ComponentNames } from "./styles/types";
 
 export type ButtonTags = "button" | "span" | "a";
 
-export interface IButtonProps extends IThemedProps {
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  href?: string;
-  target?: "_self" | "_blank" | "_parent" | "_top";
-  type?: "button" | "reset" | "submit";
-  children: ReactNode;
-  /**
-   * Кастомный компонент, например Link from react-router
-   */
-  component?: React.ElementType;
+export type IButtonProps<TProps> = TProps &
+  IThemedProps & {
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    href?: string;
+    type?: "button" | "reset" | "submit";
+    children: ReactNode;
+    /**
+     * Кастомный компонент, например Link from react-router
+     */
+    component?: React.ComponentType<TProps>;
 
-  /**
-   * Делает width: 100%
-   */
-  shouldFitContent?: boolean;
-  disabled?: boolean;
-}
+    /**
+     * Делает width: 100%
+     */
+    shouldFitContent?: boolean;
+    disabled?: boolean;
+  };
 
 export const getElement = (disabled?: boolean, href?: string): ButtonTags => {
   if (href) {
@@ -33,7 +33,7 @@ export const getElement = (disabled?: boolean, href?: string): ButtonTags => {
   return "button";
 };
 
-export const Button = ({
+export const Button = function <TProps>({
   baseAppearance = "base",
   appearance = "base",
   type = "button",
@@ -43,7 +43,7 @@ export const Button = ({
   onClick: onClickProps,
   shouldFitContent,
   ...props
-}: IButtonProps) => {
+}: IButtonProps<TProps>): React.ReactElement<TProps> {
   const classes = useStyles();
 
   const onClick = useCallback(
@@ -74,7 +74,7 @@ export const Button = ({
       disabled={disabled}
       href={disabled ? undefined : href}
       shouldfitcontent={String(!!shouldFitContent)}
-      {...props}
+      {...(props as any)}
     />
   );
 };
