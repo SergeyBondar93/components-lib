@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@1.5.0...@cheaaa/form@1.6.0) (2022-07-04)
+
+
+### Bug Fixes
+
+* **forms:** fix dispatch errors in validate fn ([7d852da](https://github.com/SergeyBondar93/liba/commit/7d852dadce08c1d8033e982bc9133fbd8fabdb1e))
+
+
+### Features
+
+* **forms:** add isTouchAfterChange prop ([f0bb5fc](https://github.com/SergeyBondar93/liba/commit/f0bb5fc118a38869ac149b7cdf2243c7ebb99b17))
+
+
+
+
+
 # [1.5.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@1.4.2...@cheaaa/form@1.5.0) (2022-07-04)
 
 
