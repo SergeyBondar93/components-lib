@@ -17,6 +17,10 @@ export type FormFieldProps<TComponentProps> = Omit<
 > & {
   component: React.ComponentType<TComponentProps & IFormFieldComponentProps>;
   name: string;
+
+  /**
+   * Если true, ставит поле touched не только при onBlur но и при onChange
+   */
   isTouchAfterChange?: boolean;
   onChange?: IFormFieldComponentProps["onChange"];
   onBlur?: IFormFieldComponentProps["onBlur"];

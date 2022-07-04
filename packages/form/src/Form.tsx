@@ -31,10 +31,8 @@ export const Form = ({
         const errors = await validate(formModel);
 
         // TODO можно прикрутить проверку если прошлый
-        // объект ошибок deepEqual такой же как новый - не кидать экшн
-        if (Object.values(errors).filter(Boolean).length) {
-          dispatch(formActions.setErrors({ formName: formName, errors }));
-        }
+        // объект ошибок deepEqual. если старый такой же как новый - не кидать экшн
+        dispatch(formActions.setErrors({ formName: formName, errors }));
       }
     })();
   }, [formModel, validate]);
