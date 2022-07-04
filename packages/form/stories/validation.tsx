@@ -12,7 +12,7 @@ const isValidEmail = (email) => {
   return emailRegex.test(email);
 };
 
-export const validateBaseForm = (model) => {
+export const validateBaseForm = async (model) => {
   const { firstname = "", lastname = "", age = "", emails = [] } = model;
 
   const $age = age?.trim();
@@ -54,5 +54,5 @@ export const validateBaseForm = (model) => {
     }
   });
 
-  return new Promise((res) => setTimeout(res, 2000)).then(() => errors);
+  return new Promise((res) => setTimeout(res)).then(() => errors);
 };
