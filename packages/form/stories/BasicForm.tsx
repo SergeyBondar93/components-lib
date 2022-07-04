@@ -69,6 +69,7 @@ const Emails = ({ formName }) => {
             component={InputWithError}
             name={`${BASIC_FORM_FIELDS.emails}[${idx}]`}
             placeholder="ivanov@mail.com"
+            actionMetaParams={{ changedEmail: idx }}
             label="Email"
           />
           <button

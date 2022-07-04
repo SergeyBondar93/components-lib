@@ -22,6 +22,12 @@ export type FormFieldProps<TComponentProps> = Omit<
    * Если true, ставит поле touched не только при onBlur но и при onChange
    */
   isTouchAfterChange?: boolean;
+
+  /**
+   * передав, в action помимо payload добавится поле {meta} с переденными данными
+   */
+  actionMetaParams?: any;
+
   onChange?: IFormFieldComponentProps["onChange"];
   onBlur?: IFormFieldComponentProps["onBlur"];
 };
@@ -33,6 +39,7 @@ const Field = function <TProps>(
     onBlur,
     name,
     isTouchAfterChange,
+    actionMetaParams,
     ...props
   }: FormFieldProps<TProps>,
   ref
@@ -53,7 +60,9 @@ const Field = function <TProps>(
   const handleChange = useCallback(
     (...args) => {
       const value = args[0];
-      dispatch(formActions.setFieldValue({ formName, value, name }));
+      dispatch(
+        formActions.setFieldValue({ formName, value, name }, actionMetaParams)
+      );
 
       if (isTouchAfterChange && !isTouched) {
         /**
@@ -69,7 +78,7 @@ const Field = function <TProps>(
 
       onChange?.(...args);
     },
-    [name, onChange, formName, isTouchAfterChange, isTouched]
+    [name, onChange, formName, isTouchAfterChange, isTouched, actionMetaParams]
   );
 
   const handleBlur = useCallback(
