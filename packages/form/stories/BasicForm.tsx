@@ -8,7 +8,6 @@ import {
   formActions,
   formFieldValueSelector,
   formIsShowAllErrorsSelector,
-  formTochedSelector,
   formValuesSelector,
 } from "../src";
 
@@ -114,7 +113,6 @@ export const BasicForm = ({ formName }: IBasicFormProps) => {
   const lastnameRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const isShowAllErrors = useSelector(formIsShowAllErrorsSelector(formName));
-  const touched = useSelector(formTochedSelector<IBasicFormModel>(formName));
 
   const toggleShowAllErrors = () => {
     dispatch(
@@ -134,24 +132,6 @@ export const BasicForm = ({ formName }: IBasicFormProps) => {
     );
   };
 
-  // Функция добавлена что бы отображать ошибки на полях при начале ввода а не при потере фокуса как по дефолту
-  const handleSetIsTouched =
-    (fieldName: typeof BASIC_FORM_FIELDS[keyof typeof BASIC_FORM_FIELDS]) =>
-    () => {
-      if (!touched[fieldName]) {
-        // задержка нужна что бы поле поставилось touched только после валидации
-        setTimeout(() => {
-          dispatch(
-            formActions.setFieldTouched({
-              formName: formName,
-              name: fieldName,
-              isTouched: true,
-            })
-          );
-        });
-      }
-    };
-
   return (
     <Form formName={formName} validate={validateBaseForm}>
       <div style={wrapperStyles}>
@@ -168,7 +148,7 @@ export const BasicForm = ({ formName }: IBasicFormProps) => {
         <FormField
           component={InputWithError}
           name={BASIC_FORM_FIELDS.firstname}
-          onChange={handleSetIsTouched(BASIC_FORM_FIELDS.firstname)}
+          isTouchAfterChange
           placeholder="Ivan"
           label="Firstname"
         />
@@ -184,7 +164,7 @@ export const BasicForm = ({ formName }: IBasicFormProps) => {
         <FormField
           component={InputWithError}
           name={BASIC_FORM_FIELDS.lastname}
-          onChange={handleSetIsTouched(BASIC_FORM_FIELDS.lastname)}
+          isTouchAfterChange
           placeholder="Ivanov"
           label="Lastname"
           ref={lastnameRef}
@@ -201,7 +181,7 @@ export const BasicForm = ({ formName }: IBasicFormProps) => {
         <FormField
           component={InputWithError}
           name={BASIC_FORM_FIELDS.age}
-          onChange={handleSetIsTouched(BASIC_FORM_FIELDS.age)}
+          isTouchAfterChange
           placeholder="30"
           label="Age"
         />

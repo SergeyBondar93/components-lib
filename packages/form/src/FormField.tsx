@@ -17,6 +17,7 @@ export type FormFieldProps<TComponentProps> = Omit<
 > & {
   component: React.ComponentType<TComponentProps & IFormFieldComponentProps>;
   name: string;
+  isTouchAfterChange?: boolean;
   onChange?: IFormFieldComponentProps["onChange"];
   onBlur?: IFormFieldComponentProps["onBlur"];
 };
@@ -27,6 +28,7 @@ const Field = function <TProps>(
     onChange,
     onBlur,
     name,
+    isTouchAfterChange,
     ...props
   }: FormFieldProps<TProps>,
   ref
@@ -48,9 +50,22 @@ const Field = function <TProps>(
     (...args) => {
       const value = args[0];
       dispatch(formActions.setFieldValue({ formName, value, name }));
+
+      if (isTouchAfterChange && !isTouched) {
+        /**
+         TODO зарежка нужна потому что валидация выполняется асинхронно 
+         и необходимо дождаться пока она закончится после onChange
+         */
+        setTimeout(() => {
+          dispatch(
+            formActions.setFieldTouched({ formName, name, isTouched: true })
+          );
+        }, 0);
+      }
+
       onChange?.(...args);
     },
-    [name, onChange, formName]
+    [name, onChange, formName, isTouchAfterChange, isTouched]
   );
 
   const handleBlur = useCallback(
