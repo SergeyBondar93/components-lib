@@ -90,11 +90,14 @@ const AddEmail = ({ formName }) => {
 
   const handleAddEmail = () => {
     dispatch(
-      formActions.setFieldValue({
-        formName: formName,
-        name: `${BASIC_FORM_FIELDS.emails}[${emails.length}]`,
-        value: "",
-      })
+      formActions.setFieldValue(
+        {
+          formName: formName,
+          name: `${BASIC_FORM_FIELDS.emails}[${emails.length}]`,
+          value: "",
+        },
+        { someMetaParam: 42 }
+      )
     );
   };
 
