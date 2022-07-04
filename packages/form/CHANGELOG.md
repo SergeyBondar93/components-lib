@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@1.4.2...@cheaaa/form@1.5.0) (2022-07-04)
+
+
+### Features
+
+* **forms:** add isTouchAfterChange prop ([f0bb5fc](https://github.com/SergeyBondar93/liba/commit/f0bb5fc118a38869ac149b7cdf2243c7ebb99b17))
+
+
+
+
+
 ## 1.4.2 (2022-07-04)
 
 **Note:** Version bump only for package @cheaaa/form
