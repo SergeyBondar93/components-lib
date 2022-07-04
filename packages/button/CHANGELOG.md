@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.4.0 (2022-07-01)
+
+
+### Features
+
+* improve button types ([fae783d](https://github.com/SergeyBondar93/liba/commit/fae783de318f0b72926475c9d8a161136d4357ec))
+
+
+
+
+
 ## [1.3.8](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.3.7...@cheaaa/button@1.3.8) (2022-06-27)
 
 
