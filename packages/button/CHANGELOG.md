@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.4.0...@cheaaa/button@1.5.0) (2022-07-06)
+
+
+### Features
+
+* add icon button ([54afb8c](https://github.com/SergeyBondar93/liba/commit/54afb8c716323acfdbf1cc75a4195a45013e0aae))
+
+
+
+
+
 # 1.4.0 (2022-07-01)
 
 
