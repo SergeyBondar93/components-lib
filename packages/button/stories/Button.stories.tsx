@@ -4,9 +4,12 @@ import { ThemeProvider, JssProvider } from "react-jss";
 import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { Button } from "../src";
+import { Button, IconButton } from "../src";
 
+import { DeleteIcon, NavArrowIcon, SendIcon, BasketIcon } from "./Icons";
 import { theme } from "./theme";
+
+const wrapperStyles = { marginBottom: "15px" };
 
 const disabled = {
   table: {
@@ -41,7 +44,9 @@ const onClick = () => console.log("Clicked!");
 const ButtonTemplate: Story<IStoryParams> = (args) => {
   return <Button {...args} onClick={onClick} />;
 };
-const LinkComponent = (props) => <a {...props} />;
+const LinkComponent = (props) => {
+  return <a {...props} />;
+};
 
 interface ICustomComponentProps {
   children: ReactNode;
@@ -207,3 +212,63 @@ const ThemedTemplate = (args) => {
 export const Themed = ThemedTemplate.bind({});
 
 Themed.args = Default.args;
+
+interface IIconButtonTemplateProps {
+  disabled: boolean;
+  shouldFitContent: boolean;
+  width: number;
+  height: number;
+  children: never;
+  // component: never;
+}
+
+const IconButtonTemplate: Story<IIconButtonTemplateProps> = ({
+  width,
+  height,
+  ...args
+}) => {
+  return (
+    <>
+      <div style={wrapperStyles}>
+        <IconButton
+          {...args}
+          onClick={onClick}
+          icon={<DeleteIcon width={width} height={height} />}
+        />
+      </div>
+      <div style={wrapperStyles}>
+        <IconButton
+          {...args}
+          component={LinkComponent}
+          target="_blank"
+          href="https://google.com"
+          onClick={onClick}
+          icon={<NavArrowIcon width={width} height={height} />}
+        />
+      </div>
+      <div style={wrapperStyles}>
+        <IconButton
+          {...args}
+          onClick={onClick}
+          icon={<SendIcon width={width} height={height} />}
+        />
+      </div>
+      <div style={wrapperStyles}>
+        <IconButton
+          {...args}
+          onClick={onClick}
+          icon={<BasketIcon width={width} height={height} />}
+        />
+      </div>
+    </>
+  );
+};
+
+export const IconButtons = IconButtonTemplate.bind({});
+
+IconButtons.args = {
+  type: "button",
+  disabled: false,
+  width: 25,
+  height: 25,
+};

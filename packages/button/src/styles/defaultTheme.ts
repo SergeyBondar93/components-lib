@@ -11,10 +11,14 @@ export const defaultButtonTheme: Required<ComponentTheme<ComponentNames>> = {
     backgroundColor: "#B1BAC7",
     textDecoration: "none",
     cursor: "pointer",
+    transition: "0.2s transform",
+    "&:active:enabled": {
+      transform: "scale(0.9)",
+    },
     "&:hover": {
       background: "#718299",
     },
-    "&[disabled]": {
+    '&[data-disabled="true"]': {
       cursor: "not-allowed",
       opacity: 0.7,
     },
@@ -23,3 +27,32 @@ export const defaultButtonTheme: Required<ComponentTheme<ComponentNames>> = {
     },
   },
 };
+
+export const defaultIconButtonTheme: Required<ComponentTheme<ComponentNames>> =
+  {
+    [BUTTON_COMPONENTS_NAMES.wrapper]: {
+      boxSizing: "border-box",
+      padding: "4px",
+      display: "inline-flex",
+      justifyContent: "center",
+      borderRadius: "10px",
+      border: "none",
+      backgroundColor: "transparent",
+      textDecoration: "none",
+      cursor: "pointer",
+      transition: "0.2s transform",
+      "&:hover": {
+        filter: "brightness(85%)",
+      },
+      '&:active[data-disabled="false"]': {
+        transform: "scale(0.9)",
+      },
+      '&[data-disabled="true"]': {
+        cursor: "not-allowed",
+        opacity: 0.7,
+      },
+      '&[shouldfitcontent="true"]': {
+        width: "100%",
+      },
+    },
+  };

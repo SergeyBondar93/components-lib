@@ -35,7 +35,7 @@ export const theme = {
         [BUTTON_COMPONENTS_NAMES.wrapper]: {
           background: "#636AFF",
           color: "#FFF",
-          "&:hover": {
+          "&:hover:enabled": {
             background: color("#636AFF").darken(0.1).toString(),
           },
         },
@@ -44,7 +44,7 @@ export const theme = {
         [BUTTON_COMPONENTS_NAMES.wrapper]: {
           background: "#EDF4FE",
           color: "#636AFF",
-          "&:hover": {
+          "&:hover:enabled": {
             background: color("#EDF4FE").darken(0.1).toString(),
             color: color("#636AFF").darken(0.1).toString(),
           },
@@ -54,7 +54,7 @@ export const theme = {
         [BUTTON_COMPONENTS_NAMES.wrapper]: {
           background: "#41CC78",
           color: "#FFF",
-          "&:hover": {
+          "&:hover:enabled": {
             background: color("#41CC78").darken(0.1).toString(),
           },
         },
@@ -63,7 +63,7 @@ export const theme = {
         [BUTTON_COMPONENTS_NAMES.wrapper]: {
           background: "#FFECEC",
           color: "#FF6666",
-          "&:hover": {
+          "&:hover:enabled": {
             background: color("#FFECEC").darken(0.1).toString(),
             color: color("#FF6666").darken(0.1).toString(),
           },
@@ -73,7 +73,7 @@ export const theme = {
         [BUTTON_COMPONENTS_NAMES.wrapper]: {
           background: "#FF6666",
           color: "#FFF",
-          "&:hover": {
+          "&:hover:enabled": {
             background: color("#FF6666").darken(0.1).toString(),
           },
         },
