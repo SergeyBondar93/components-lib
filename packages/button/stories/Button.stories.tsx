@@ -1,12 +1,19 @@
 import { Story, Meta } from "@storybook/react";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
 import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { Button, IconButton } from "../src";
+import { Button, ButtonGroup, IconButton } from "../src";
 
-import { DeleteIcon, NavArrowIcon, SendIcon, BasketIcon } from "./Icons";
+import {
+  DeleteIcon,
+  NavArrowIcon,
+  SendIcon,
+  BasketIcon,
+  ManIcon,
+  WomanIcon,
+} from "./Icons";
 import { theme } from "./theme";
 
 const wrapperStyles = { marginBottom: "15px" };
@@ -272,3 +279,121 @@ IconButtons.args = {
   width: 25,
   height: 25,
 };
+
+const ButtonGroupsTemplate = ({ isSecondBtnDisabled }) => {
+  const [multiValue, setMultiValue] = useState<string[]>([]);
+  const [singleValue, setSingleValue] = useState<null | string>(null);
+
+  return (
+    <>
+      <h2>Multi value</h2>
+      <ButtonGroup isMultiValue value={multiValue} onChange={setMultiValue}>
+        <Button value="one" onClick={onClick}>
+          One
+        </Button>
+        <Button disabled={isSecondBtnDisabled} value="two" onClick={onClick}>
+          Two
+        </Button>
+        <Button value="three" onClick={onClick}>
+          Three
+        </Button>
+      </ButtonGroup>
+
+      <p>Value: {multiValue.join(", ")}</p>
+      <h2>Single value</h2>
+      <ButtonGroup value={singleValue} onChange={setSingleValue}>
+        <Button value="one" onClick={onClick}>
+          One
+        </Button>
+        <Button disabled={isSecondBtnDisabled} value="two" onClick={onClick}>
+          Two
+        </Button>
+        <Button value="three" onClick={onClick}>
+          Three
+        </Button>
+      </ButtonGroup>
+
+      <p>Value: {singleValue}</p>
+    </>
+  );
+};
+
+export const ButtonGroupsBasic = ButtonGroupsTemplate.bind({});
+
+ButtonGroupsBasic.args = {
+  isSecondBtnDisabled: true,
+};
+
+const ButtonGroupsThemedTemplate = () => {
+  const [multiValue, setMultiValue] = useState<string[]>([]);
+  const [gender, setGender] = useState<null | string>("man");
+  const [currency, setCurrency] = useState<null | string>("usd");
+
+  return (
+    <ThemeProvider theme={theme}>
+      <JssProvider generateId={({ key }) => key}>
+        <h2>Default</h2>
+        <ButtonGroup isMultiValue value={multiValue} onChange={setMultiValue}>
+          <Button value="one" onClick={onClick}>
+            One
+          </Button>
+          <Button value="two" onClick={onClick}>
+            Two
+          </Button>
+          <Button value="three" onClick={onClick}>
+            Three
+          </Button>
+        </ButtonGroup>
+        <p>Value: {multiValue.join(", ")}</p>
+
+        <h2>Gender</h2>
+        <ButtonGroup appearance="gender" value={gender} onChange={setGender}>
+          <Button
+            appearance="gender"
+            disabled={gender === "man"}
+            value="man"
+            onClick={onClick}
+          >
+            <ManIcon />М
+          </Button>
+          <Button
+            appearance="gender"
+            disabled={gender === "woman"}
+            value="woman"
+            onClick={onClick}
+          >
+            <WomanIcon />Ж
+          </Button>
+        </ButtonGroup>
+        <p>Value: {gender}</p>
+
+        <h2>Cyrrencies</h2>
+        <ButtonGroup
+          appearance="currencies"
+          value={currency}
+          onChange={setCurrency}
+        >
+          <Button
+            disabled={currency === "usd"}
+            appearance="currencies"
+            value="usd"
+            onClick={onClick}
+          >
+            Доллар
+          </Button>
+          <Button
+            disabled={currency === "eur"}
+            appearance="currencies"
+            value="eur"
+            onClick={onClick}
+          >
+            Евро
+          </Button>
+        </ButtonGroup>
+        <p>Value: {currency}</p>
+      </JssProvider>
+    </ThemeProvider>
+  );
+};
+
+export const ButtonGroupsThemed = ButtonGroupsThemedTemplate.bind({});

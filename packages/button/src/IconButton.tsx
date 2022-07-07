@@ -16,7 +16,7 @@ export const IconButton = function <TProps>({
   const classes = useIconButtonStyles();
 
   return (
-    <BaseButton classes={classes} {...(props as any)}>
+    <BaseButton classes={props.classes || classes} {...(props as any)}>
       {icon}
     </BaseButton>
   );
