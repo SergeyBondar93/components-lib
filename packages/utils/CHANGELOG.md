@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.2.0 (2022-07-07)
+
+
+### Features
+
+* create checkbox component ([e082417](https://github.com/SergeyBondar93/liba/commit/e082417b898a35edfb12a0a7ba58caa059c5be47))
+
+
+
+
+
 ## [1.1.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/utils@1.1.4...@cheaaa/utils@1.1.5) (2022-06-21)
 
 
