@@ -13,7 +13,7 @@ export const theme = {
   components: {
     [BUTTON_COMPONENT_NAMESPACE]: {
       promo: {
-        [BUTTON_COMPONENTS_NAMES.wrapper]: {
+        [BUTTON_COMPONENTS_NAMES.button]: {
           background: "#FFF",
           padding: 0,
           color: "#636AFF",
@@ -26,7 +26,7 @@ export const theme = {
         },
       },
       promoSuccess: {
-        [BUTTON_COMPONENTS_NAMES.wrapper]: {
+        [BUTTON_COMPONENTS_NAMES.button]: {
           color: "#2CA95E",
         },
       },

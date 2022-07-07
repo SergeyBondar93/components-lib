@@ -1,6 +1,9 @@
-import { TABS_COMPONENTS_NAMES } from "./consts";
+import { ComponentTheme } from "@cheaaa/theme";
 
-export const defaultTheme: any = {
+import { TABS_COMPONENTS_NAMES } from "./consts";
+import { ComponentNames } from "./types";
+
+export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [TABS_COMPONENTS_NAMES.tabList]: {
     position: "relative",
     maxWidth: "100%",

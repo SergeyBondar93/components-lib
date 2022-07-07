@@ -97,16 +97,20 @@ export const theme = {
           height: "48px",
           width: "120px",
           color: "#718299",
-          opacity: 0.8,
+          opacity: 0.7,
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
-
           marginRight: "0px",
           marginBottom: "0px",
           padding: "0px",
           borderRadius: "0px",
           border: "1px solid #718299",
+
+          "& svg": {
+            fill: "#718299",
+            marginRight: "8px",
+          },
           "&:active:enabled": {
             transform: "none",
           },
@@ -115,7 +119,10 @@ export const theme = {
             opacity: 1,
           },
           '&[data-selected="true"]': {
-            color: "#718299",
+            "& svg": {
+              fill: "#636AFF",
+            },
+            color: "#636AFF",
             background: "transparent",
             opacity: 1,
           },

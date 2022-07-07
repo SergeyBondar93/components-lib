@@ -16,7 +16,7 @@ export const defaultButtonTheme: Required<
     backgroundColor: "#B1BAC7",
     textDecoration: "none",
     cursor: "pointer",
-    transition: "0.2s transform",
+    transition: "0.2s",
     "&:active:enabled": {
       transform: "scale(0.9)",
     },

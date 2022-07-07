@@ -35,6 +35,9 @@ export default {
     onClick: disabled,
     target: disabled,
     type: disabled,
+    value: disabled,
+    isSelected: disabled,
+    classes: disabled,
   },
 } as Meta;
 
@@ -324,7 +327,12 @@ ButtonGroupsBasic.args = {
   isSecondBtnDisabled: true,
 };
 
-const ButtonGroupsThemedTemplate = () => {
+ButtonGroupsBasic.argTypes = {
+  shouldFitContent: disabled,
+  disabled: disabled,
+};
+
+const ButtonGroupsThemedTemplate = ({}) => {
   const [multiValue, setMultiValue] = useState<string[]>([]);
   const [gender, setGender] = useState<null | string>("man");
   const [currency, setCurrency] = useState<null | string>("usd");
@@ -397,3 +405,8 @@ const ButtonGroupsThemedTemplate = () => {
 };
 
 export const ButtonGroupsThemed = ButtonGroupsThemedTemplate.bind({});
+
+ButtonGroupsThemed.argTypes = ButtonGroupsBasic.argTypes;
+ButtonGroupsThemed.args = {
+  isSecondBtnDisabled: true,
+};
