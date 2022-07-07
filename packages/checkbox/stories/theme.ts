@@ -34,6 +34,22 @@ export const theme = {
           marginTop: "4px",
         },
       },
+      group: {
+        [CHECKBOX_COMPONENTS_NAMES.groupWrapper]: {
+          padding: "10px 0px",
+          border: "1px solid black",
+          borderRadius: "5px",
+          width: "320px",
+          "& label": {
+            "&:hover": {
+              background: "#EDF4FE",
+            },
+          },
+        },
+        [CHECKBOX_COMPONENTS_NAMES.wrapper]: {
+          padding: "0px 15px",
+        },
+      },
     },
   },
 };

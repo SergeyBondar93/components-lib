@@ -23,11 +23,10 @@
   },
   "private": false,
   "dependencies": {
-    "@cheaaa/theme": "^1.2.9",
-    "@reduxjs/toolkit": "^1.6.1",
-    "react-redux": "^7.2.4"
+    "@cheaaa/utils": "^1.1.5"
   },
   "peerDependencies": {
+    "@cheaaa/theme": "^1.2.9",
     "react": ">=17.0.2"
   }
 }

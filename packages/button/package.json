@@ -22,6 +22,9 @@
     "access": "public"
   },
   "private": false,
+  "dependencies": {
+    "@cheaaa/utils": "^1.1.5"
+  },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
     "react-router-dom": "^6.3.0"

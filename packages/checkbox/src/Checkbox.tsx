@@ -5,7 +5,7 @@ import { CheckedIcon } from "./CheckedIcon";
 import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
 
-interface ICheckboxProps extends IThemedProps {
+export interface ICheckboxProps extends IThemedProps {
   checked: boolean;
   onChange: (checked: boolean, e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
@@ -25,6 +25,7 @@ export const Checkbox = ({
   uncheckedIcon,
 }: ICheckboxProps) => {
   const classes = useStyles();
+
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       onChange?.(e.target.checked, e);

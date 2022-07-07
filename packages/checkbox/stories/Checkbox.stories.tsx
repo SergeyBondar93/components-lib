@@ -3,6 +3,7 @@ import { ThemeProvider, JssProvider } from "react-jss";
 import { Meta } from "@storybook/react";
 
 import { Checkbox } from "../src";
+import { CheckboxGroup } from "../src/CheckboxGroup";
 
 import { CompareCheckedIcon, CompareUncheckedIcon } from "./Icons";
 import { theme } from "./theme";
@@ -72,4 +73,75 @@ export const CheckboxStory = CheckboxTemplate.bind({});
 
 CheckboxStory.args = {
   disabled: false,
+};
+
+export const CheckboxGroupStory = () => {
+  const [value, setValue] = useState<string[]>([]);
+
+  const handleChange = (newValue: string[], clickedBy: string) => {
+    if (clickedBy === "fullWeekend") {
+      const newValues = newValue.includes("fullWeekend")
+        ? [...new Set([...newValue, "saturday", "sunday"])]
+        : newValue.filter((day) => !["saturday", "sunday"].includes(day));
+
+      setValue(newValues);
+
+      return;
+    }
+
+    setValue(newValue);
+  };
+
+  const isFullWeekend = value.includes("fullWeekend");
+  const options = [
+    {
+      value: "monday",
+      label: "Понедельник",
+    },
+    {
+      value: "tuesday",
+      label: "Вторник",
+    },
+    {
+      value: "wednesday",
+      label: "Среда",
+    },
+    {
+      value: "thursday",
+      label: "Четверг",
+    },
+    {
+      value: "friday",
+      label: "Пятница",
+    },
+    {
+      value: "fullWeekend",
+      label: "Полные выходные",
+    },
+    {
+      value: "saturday",
+      label: "Суббота",
+      disabled: isFullWeekend,
+    },
+    {
+      value: "sunday",
+      label: "Воскресенье",
+      disabled: isFullWeekend,
+    },
+  ].map((option) => ({ ...option, appearance: "group" }));
+
+  return (
+    <ThemeProvider theme={theme}>
+      <JssProvider generateId={({ key }) => key}>
+        <CheckboxGroup
+          appearance="group"
+          value={value}
+          onChange={handleChange}
+          options={options}
+        />
+
+        <p>Value: {value.join(", ")}</p>
+      </JssProvider>
+    </ThemeProvider>
+  );
 };

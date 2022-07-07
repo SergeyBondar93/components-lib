@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode } from "react";
 import { useMemo } from "react";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
+import { toggleElementInArray } from "@cheaaa/utils";
 
 import { useButtonGroupStyles } from "./styles";
 import { ButtonGroupComponentNames } from "./styles/types";
@@ -46,14 +47,6 @@ interface IButtonInButtonGroup {
   value: string;
   onClick?: () => void;
 }
-
-const toggleElementInArray = (array: any[], element: any) => {
-  if (array.some((elem) => elem === element)) {
-    return array.filter((elem) => elem !== element);
-  }
-
-  return [...array, element];
-};
 
 export const ButtonGroup = ({
   baseAppearance = "base",
@@ -102,7 +95,7 @@ export const ButtonGroup = ({
         classes,
       });
     });
-  }, [children, isMultiValue]);
+  }, [children, isMultiValue, onChange, classes]);
 
   return <div className={className}>{buttons}</div>;
 };

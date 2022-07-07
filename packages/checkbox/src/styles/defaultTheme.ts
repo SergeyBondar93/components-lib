@@ -4,11 +4,16 @@ import { CHECKBOX_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
+  [CHECKBOX_COMPONENTS_NAMES.groupWrapper]: {
+    display: "flex",
+    flexDirection: "column",
+  },
   [CHECKBOX_COMPONENTS_NAMES.wrapper]: {
     height: "30px",
     cursor: "pointer",
     display: "inline-flex",
     alignItems: "center",
+    userSelect: "none",
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
       opacity: 0.7,
@@ -27,7 +32,6 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     width: "20px",
     height: "20px",
     transition: "background-color 0.1s ease-in-out",
-    userSelect: "none",
 
     '&[data-checked="true"]': {
       backgroundColor: "#636AFF",
