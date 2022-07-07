@@ -3,8 +3,8 @@ import { toggleElementInArray } from "@cheaaa/utils";
 import { useMemo } from "react";
 
 import { Checkbox, ICheckboxProps } from "./Checkbox";
-import { useStyles } from "./styles";
-import { ComponentNames } from "./styles/types";
+import { useCheckboxStyles } from "./styles";
+import { CheckboxComponentNames } from "./styles/types";
 
 interface ICheckboxGroupOptions
   extends Omit<ICheckboxProps, "checked" | "onChange"> {
@@ -18,10 +18,6 @@ interface ICheckboxGroupProps extends IThemedProps {
   options: ICheckboxGroupOptions[];
 }
 
-/**
- сделать сторю где передаём onChange в чекбокс который выбирает выходные
- */
-
 export const CheckboxGroup = ({
   baseAppearance = "base",
   appearance = "base",
@@ -30,10 +26,10 @@ export const CheckboxGroup = ({
   options,
   ...props
 }: ICheckboxGroupProps) => {
-  const classes = useStyles();
+  const classes = useCheckboxStyles();
 
   const className = useMemo(() => {
-    return getClassName<ComponentNames>(
+    return getClassName<CheckboxComponentNames>(
       classes!,
       baseAppearance,
       appearance,

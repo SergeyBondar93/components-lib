@@ -1,10 +1,26 @@
 import {
   CHECKBOX_COMPONENTS_NAMES,
   CHECKBOX_COMPONENT_NAMESPACE,
-} from "./../src/styles/consts";
+  SWITCHER_COMPONENTS_NAMES,
+  SWITCH_COMPONENT_NAMESPACE,
+} from "./../src";
 
 export const theme = {
   components: {
+    [SWITCH_COMPONENT_NAMESPACE]: {
+      mode: {
+        [SWITCHER_COMPONENTS_NAMES.wrapper]: {
+          height: "64px",
+        },
+        [SWITCHER_COMPONENTS_NAMES.iconWrapper]: {
+          height: "64px",
+          width: "32px",
+          '&[data-checked="true"]': {
+            backgroundColor: "transparent",
+          },
+        },
+      },
+    },
     [CHECKBOX_COMPONENT_NAMESPACE]: {
       big: {
         [CHECKBOX_COMPONENTS_NAMES.wrapper]: {
@@ -13,7 +29,6 @@ export const theme = {
         [CHECKBOX_COMPONENTS_NAMES.iconWrapper]: {
           width: "40px",
           height: "40px",
-
           "& svg": {
             width: "30px",
             height: "30px",

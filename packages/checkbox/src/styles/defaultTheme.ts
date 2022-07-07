@@ -1,9 +1,11 @@
 import { ComponentTheme } from "@cheaaa/theme";
 
-import { CHECKBOX_COMPONENTS_NAMES } from "./consts";
-import { ComponentNames } from "./types";
+import { CHECKBOX_COMPONENTS_NAMES, SWITCHER_COMPONENTS_NAMES } from "./consts";
+import { CheckboxComponentNames, SwitcherComponentNames } from "./types";
 
-export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
+export const defaultCheckboxTheme: Required<
+  ComponentTheme<CheckboxComponentNames>
+> = {
   [CHECKBOX_COMPONENTS_NAMES.groupWrapper]: {
     display: "flex",
     flexDirection: "column",
@@ -31,7 +33,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     backgroundColor: "#FFF",
     width: "20px",
     height: "20px",
-    transition: "background-color 0.1s ease-in-out",
+    transition: "0.2s",
 
     '&[data-checked="true"]': {
       backgroundColor: "#636AFF",
@@ -40,4 +42,34 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [CHECKBOX_COMPONENTS_NAMES.label]: {
     marginLeft: "8px",
   },
+};
+
+export const defaultSwitchTheme: Required<
+  ComponentTheme<SwitcherComponentNames>
+> = {
+  [SWITCHER_COMPONENTS_NAMES.groupWrapper]: defaultCheckboxTheme.groupWrapper,
+  [SWITCHER_COMPONENTS_NAMES.wrapper]: defaultCheckboxTheme.wrapper,
+  [SWITCHER_COMPONENTS_NAMES.input]: defaultCheckboxTheme.wrapper,
+  [SWITCHER_COMPONENTS_NAMES.iconWrapper]: {
+    ...defaultCheckboxTheme.iconWrapper,
+    width: "40px",
+    transition: "0.2s",
+    position: "relative",
+  },
+  [SWITCHER_COMPONENTS_NAMES.toggler]: {
+    height: "18px",
+    width: "18px",
+    borderRadius: "50%",
+    position: "absolute",
+    transition: "0.2s",
+    left: "1px",
+    backgroundColor: "#FF6666",
+
+    '&[data-checked="true"]': {
+      left: "calc(100% - 1px)",
+      transform: "translateX(-100%)",
+      backgroundColor: "#41CC78",
+    },
+  },
+  [SWITCHER_COMPONENTS_NAMES.label]: defaultCheckboxTheme.label,
 };

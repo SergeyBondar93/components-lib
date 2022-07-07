@@ -2,10 +2,15 @@ import { useState } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
 import { Meta } from "@storybook/react";
 
-import { Checkbox } from "../src";
-import { CheckboxGroup } from "../src/CheckboxGroup";
+import { Checkbox, ITogglerProps, Switcher } from "../src";
+import { CheckboxGroup } from "../src";
 
-import { CompareCheckedIcon, CompareUncheckedIcon } from "./Icons";
+import {
+  CompareCheckedIcon,
+  CompareUncheckedIcon,
+  NightIcon,
+  SunIcon,
+} from "./Icons";
 import { theme } from "./theme";
 
 const wrapperStyles = { marginBottom: "15px" };
@@ -28,43 +33,81 @@ export default {
   },
 } as Meta;
 
+const ModeToggler = ({ checked }: ITogglerProps) => {
+  const styles = checked
+    ? { top: "calc(100% - 1px)", transform: "translateY(-100%)" }
+    : { top: "1px" };
+
+  return (
+    <div
+      style={{
+        height: "30px",
+        width: "30px",
+        position: "absolute",
+        transition: "0.2s",
+        ...styles,
+      }}
+    >
+      {" "}
+      {checked ? <SunIcon /> : <NightIcon />}{" "}
+    </div>
+  );
+};
+
 const CheckboxTemplate = ({ disabled }) => {
   const [value, setValue] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
-      <JssProvider generateId={({ key }) => key}>
-        <div style={wrapperStyles}>
-          <Checkbox
-            disabled={disabled}
-            checked={value}
-            onChange={setValue}
-            label="Default"
-          />
-        </div>
+      <div style={wrapperStyles}>
+        <Checkbox
+          disabled={disabled}
+          checked={value}
+          onChange={setValue}
+          label="Default"
+        />
+      </div>
+      <div style={wrapperStyles}>
+        <Switcher
+          disabled={disabled}
+          checked={value}
+          onChange={setValue}
+          label="Switcher"
+        />
+      </div>
 
-        <div style={wrapperStyles}>
-          <Checkbox
-            disabled={disabled}
-            checked={value}
-            onChange={setValue}
-            appearance="big"
-            label="Themed"
-          />
-        </div>
+      <div style={wrapperStyles}>
+        <Switcher
+          disabled={disabled}
+          checked={value}
+          onChange={setValue}
+          toggler={ModeToggler}
+          appearance="mode"
+          label="Themed Switcher (Light / Dark mode)"
+        />
+      </div>
 
-        <div style={wrapperStyles}>
-          <Checkbox
-            disabled={disabled}
-            checked={value}
-            onChange={setValue}
-            checkedIcon={<CompareCheckedIcon />}
-            uncheckedIcon={<CompareUncheckedIcon />}
-            appearance="compare"
-            label="Themed With custom Icons"
-          />
-        </div>
-      </JssProvider>
+      <div style={wrapperStyles}>
+        <Checkbox
+          disabled={disabled}
+          checked={value}
+          onChange={setValue}
+          appearance="big"
+          label="Themed"
+        />
+      </div>
+
+      <div style={wrapperStyles}>
+        <Checkbox
+          disabled={disabled}
+          checked={value}
+          onChange={setValue}
+          checkedIcon={<CompareCheckedIcon />}
+          uncheckedIcon={<CompareUncheckedIcon />}
+          appearance="compare"
+          label="Themed With custom Icons"
+        />
+      </div>
     </ThemeProvider>
   );
 };
