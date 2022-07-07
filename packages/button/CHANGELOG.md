@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.5.0...@cheaaa/button@1.6.0) (2022-07-07)
+
+
+### Features
+
+* add button group ([52910c7](https://github.com/SergeyBondar93/liba/commit/52910c742ea73fe9892ac46cbee1b63ada494fe3))
+* add checkbox component ([cb94c8b](https://github.com/SergeyBondar93/liba/commit/cb94c8b45d4bb62bc24b3524a7a3837cde655547))
+* add icon button ([54afb8c](https://github.com/SergeyBondar93/liba/commit/54afb8c716323acfdbf1cc75a4195a45013e0aae))
+* create checkbox component ([e082417](https://github.com/SergeyBondar93/liba/commit/e082417b898a35edfb12a0a7ba58caa059c5be47))
+
+
+
+
+
 # [1.5.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.4.0...@cheaaa/button@1.5.0) (2022-07-06)
 
 

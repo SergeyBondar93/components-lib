@@ -1,6 +1,6 @@
 {
   "name": "@cheaaa/button",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "<>",
   "build:storybook": "src/index.ts",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
   },
   "private": false,
   "dependencies": {
-    "@cheaaa/utils": "^1.1.5"
+    "@cheaaa/utils": "^1.2.0"
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
