@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.0...@cheaaa/button@1.7.1) (2022-07-08)
+
+
+### Bug Fixes
+
+* change btn press animation ([5e875b9](https://github.com/SergeyBondar93/liba/commit/5e875b9a27543b064224b567bdcad4d06bae15a6))
+
+
+
+
+
 # [1.7.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.6.0...@cheaaa/button@1.7.0) (2022-07-08)
 
 
