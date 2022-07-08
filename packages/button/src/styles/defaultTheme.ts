@@ -18,7 +18,7 @@ export const defaultButtonTheme: Required<
     cursor: "pointer",
     transition: "0.2s",
     "&:active:enabled": {
-      transform: "scale(0.9)",
+      transform: "scale(0.93)",
     },
     "&:hover": {
       background: "#718299",
