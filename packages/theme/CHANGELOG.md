@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.10 (2022-07-11)
+
+
+### Bug Fixes
+
+* fix tsconfigs, add rollup image plugin ([6380d27](https://github.com/SergeyBondar93/liba/commit/6380d272ef79220e4644deeb1c1b3ac925a1658f))
+
+
+
+
+
 ## [1.2.9](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.2.8...@cheaaa/theme@1.2.9) (2022-06-21)
 
 **Note:** Version bump only for package @cheaaa/theme
