@@ -2,7 +2,6 @@ import { ComponentTheme } from "@cheaaa/theme";
 
 import { TOOLTIP_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
-//  @ts-ignore
 import ArrowIcon from "./ArrowIcon.svg";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {

@@ -3,6 +3,7 @@ import {
   TOOLTIP_COMPONENT_NAMESPACE,
 } from "./../src";
 import ArrowIcon from "./ArrowIcon.svg";
+
 export const theme = {
   components: {
     [TOOLTIP_COMPONENT_NAMESPACE]: {
