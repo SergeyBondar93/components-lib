@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/blanket@1.1.0...@cheaaa/blanket@1.1.1) (2022-07-09)
+
+
+### Bug Fixes
+
+* fix file ext ([60c3634](https://github.com/SergeyBondar93/liba/commit/60c3634392a5da6555cdc73f3a808922a3efb6e1))
+
+
+
+
+
 # 1.1.0 (2022-07-08)
 
 
