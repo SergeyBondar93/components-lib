@@ -23,8 +23,9 @@
 	},
 	"private": false,
 	"dependencies": {
-		"react-tooltip": "^4.2.21",
-		"@cheaaa/portal": "^1.1.1"
+		"@cheaaa/theme": "^1.2.9",
+		"@cheaaa/portal": "^1.1.1",
+		"react-tooltip": "^4.2.21"
 	},
 	"peerDependencies": {
 		"react": ">=17.0.2"

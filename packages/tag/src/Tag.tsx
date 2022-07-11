@@ -6,7 +6,6 @@ import { ComponentNames, useStyles } from "./styles";
 interface TagProps extends IThemedProps {
   onClick?: (name?: string) => void;
   name?: string;
-  appearance?: string;
   prefix?: JSX.Element;
   postfix?: JSX.Element;
   children: ReactNode;
