@@ -173,15 +173,16 @@ export const CustomTitleComponent = () => {
           titleButtonProps={{
             component: Checkbox,
             onChange: handleSetDefaultValue,
-            label: "Weekdays!",
+            label: "Custom component - checkbox",
             checked: !!value.weekdays.length,
+            appearance: "red",
           }}
         >
           <CheckboxGroup
             onChange={(newValue) => setValue({ weekdays: newValue })}
             value={value.weekdays}
             options={[
-              { label: "One", value: "one" },
+              { label: "One", value: "one", appearance: "red" },
               { label: "Two", value: "two" },
               { label: "Three", value: "three" },
             ]}

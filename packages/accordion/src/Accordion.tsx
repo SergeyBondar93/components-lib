@@ -59,6 +59,12 @@ export const Accordion = ({
   }, [isOpenProps]);
 
   const classNames = useMemo(() => {
+    const wrapperClassName = getClassName<ComponentNames>(
+      classes,
+      baseAppearance,
+      appearance,
+      "wrapper"
+    );
     const titleClassName = getClassName<ComponentNames>(
       classes,
       baseAppearance,
@@ -85,6 +91,7 @@ export const Accordion = ({
     );
 
     return {
+      wrapperClassName,
       titleClassName,
       iconClassName,
       bodyClassName,
@@ -101,7 +108,7 @@ export const Accordion = ({
   }, [getHeightStyles, isOpen, height]);
 
   return (
-    <div>
+    <div className={classNames.wrapperClassName}>
       <Button
         shouldFitContent
         onClick={() => setIsOpen(!isOpen)}
