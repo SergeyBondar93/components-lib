@@ -103,6 +103,7 @@ export const Accordion = ({
       <Button
         shouldFitContent
         onClick={() => setIsOpen(!isOpen)}
+        // TODO сделать строку дефолтного аппиранса константой и экспортировать
         appearance={titleButtonProps.appearance || "accordion-title"}
         {...titleButtonProps}
       >

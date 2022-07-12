@@ -9,7 +9,7 @@ export interface IBaseCheckboxProps extends IThemedProps {
   checked: boolean;
   onChange: (checked: boolean, e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
-  label?: string;
+  label?: ReactNode;
   checkedIcon?: ReactNode;
   uncheckedIcon?: ReactNode;
   classes: Classes<string>;

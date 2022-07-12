@@ -16,9 +16,13 @@ export const defaultCheckboxTheme: Required<
     display: "inline-flex",
     alignItems: "center",
     userSelect: "none",
+    transition: "0.2s",
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
       opacity: 0.7,
+    },
+    '&:active[data-disabled="false"]': {
+      transform: "scale(0.97)",
     },
   },
   [CHECKBOX_COMPONENTS_NAMES.input]: {

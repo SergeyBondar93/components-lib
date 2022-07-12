@@ -6,8 +6,10 @@ import { toggleElementInArray } from "@cheaaa/utils";
 import { useButtonGroupStyles } from "./styles";
 import { ButtonGroupComponentNames } from "./styles/types";
 
-type MultiOnChangeFn = (value: string[]) => void;
-type SingleOnChangeFn = (value: string | null) => void;
+type ValueType = string | number | boolean | any;
+
+type MultiOnChangeFn = (value: ValueType[]) => void;
+type SingleOnChangeFn = (value: ValueType | null) => void;
 
 interface IButtonGroupPropsMultiValue {
   onChange: MultiOnChangeFn;
@@ -17,7 +19,7 @@ interface IButtonGroupPropsMultiValue {
    * Для стилизации используется data attribute {data-selected="true" | | "false"}
    * внутри [BUTTON_GROUP_COMPONENT_NAMESPACE][appearance][BUTTON_GROUP_COMPONENTS_NAMES.button]
    */
-  value: string[];
+  value: ValueType[];
   isMultiValue: true;
   children: ReactNode;
 }
@@ -30,7 +32,7 @@ interface IButtonGroupPropsSingleValue {
    * Для стилизации используется data attribute {data-selected="true" | | "false"}
    * внутри [BUTTON_GROUP_COMPONENT_NAMESPACE][appearance][BUTTON_GROUP_COMPONENTS_NAMES.button]
    */
-  value: string | null;
+  value: ValueType | null;
   isMultiValue?: false;
   children: any;
 }
@@ -44,7 +46,7 @@ interface IButtonInButtonGroup {
    * value значение для управления состоянием isSelected кнопки.
    * передаётся в качестве value в ButtonGroup
    */
-  value: string;
+  value: ValueType;
   onClick?: () => void;
 }
 

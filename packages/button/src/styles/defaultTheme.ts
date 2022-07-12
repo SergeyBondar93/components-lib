@@ -68,6 +68,7 @@ export const defaultButtonGroupTheme: Required<
 > = {
   [BUTTON_GROUP_COMPONENTS_NAMES.wrapper]: {
     display: "inline-flex",
+    flexWrap: "wrap",
   },
   [BUTTON_GROUP_COMPONENTS_NAMES.button]: {
     marginRight: "8px",
@@ -81,7 +82,7 @@ export const defaultButtonGroupTheme: Required<
     transition: "0.2s transform",
     color: "#636AFF",
     "&:active:enabled": {
-      transform: "scale(0.9)",
+      transform: "scale(0.93)",
     },
     "&:hover": {
       background: "#EDF4FE",
