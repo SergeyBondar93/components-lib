@@ -5,8 +5,7 @@ import { toggleElementInArray } from "@cheaaa/utils";
 
 import { useButtonGroupStyles } from "./styles";
 import { ButtonGroupComponentNames } from "./styles/types";
-
-type ValueType = string | number | boolean | any;
+import { ValueType } from "./BaseButton";
 
 type MultiOnChangeFn = (value: ValueType[]) => void;
 type SingleOnChangeFn = (value: ValueType | null) => void;

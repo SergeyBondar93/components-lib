@@ -7,6 +7,8 @@ import { ButtonComponentNames } from "./styles/types";
 
 export type ButtonTags = "button" | "span" | "a";
 
+export type ValueType = string | number | boolean | any;
+
 export type IBaseButtonProps<TProps> = TProps &
   IThemedProps & {
     onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -33,7 +35,7 @@ export type IBaseButtonProps<TProps> = TProps &
      * value значение для управления состоянием isSelected кнопки.
      * передаётся в качестве value в ButtonGroup
      */
-    value?: string;
+    value?: ValueType;
     /**
      * Добавляет data-selected={String(!!isSelected)}
      * для стилизации выбранных кнопок (value) в ButtonsGroup
