@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.3...@cheaaa/button@1.7.4) (2022-07-12)
+
+
+### Bug Fixes
+
+* fix button styles ([f54560c](https://github.com/SergeyBondar93/liba/commit/f54560cb05ea4a8881c7c7710cfa9a3ad9c4317c))
+* fix tsconfigs, add rollup image plugin ([6380d27](https://github.com/SergeyBondar93/liba/commit/6380d272ef79220e4644deeb1c1b3ac925a1658f))
+* import checkbox styles, fix btn types ([cdf5cc5](https://github.com/SergeyBondar93/liba/commit/cdf5cc518530bad9c258a05e62734bc22f437523))
+
+
+
+
+
 ## [1.7.3](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.2...@cheaaa/button@1.7.3) (2022-07-12)
 
 
