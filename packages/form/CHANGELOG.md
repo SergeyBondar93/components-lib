@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.8.2 (2022-07-11)
+
+
+### Bug Fixes
+
+* fix tsconfigs, add rollup image plugin ([6380d27](https://github.com/SergeyBondar93/liba/commit/6380d272ef79220e4644deeb1c1b3ac925a1658f))
+
+
+
+
+
 ## [1.8.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@1.8.0...@cheaaa/form@1.8.1) (2022-07-07)
 
 **Note:** Version bump only for package @cheaaa/form
