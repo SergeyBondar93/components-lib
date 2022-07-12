@@ -27,7 +27,9 @@ export interface IAccordionProps extends IThemedProps {
   /**
    * Props для кастомизации Title Button,
    */
-  titleButtonProps?: IButtonProps<{}>;
+  titleButtonProps?: IButtonProps<any>;
+  // TODO Типизирование передаваемого кастомного компонента вместо кнокпи не удалось нормально сделать
+  // достаточно болезненное занятие, что бы при передаче компонента показывались пропсы которые относятся к нему
 }
 
 export const Accordion = ({

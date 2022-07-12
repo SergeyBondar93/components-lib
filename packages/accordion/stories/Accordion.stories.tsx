@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckboxGroup, Switcher } from "@cheaaa/checkbox";
+import { Checkbox, CheckboxGroup, Switcher } from "@cheaaa/checkbox";
 import { Meta } from "@storybook/react";
 import { ThemeProvider } from "react-jss";
 
@@ -150,3 +150,44 @@ const CustomHeightTemplate = () => {
 };
 
 export const CustomHeight = CustomHeightTemplate.bind({});
+
+export const CustomTitleComponent = () => {
+  const [value, setValue] = useState<{ weekdays: string[] }>({ weekdays: [] });
+
+  const handleSetDefaultValue = (checked) => {
+    setValue({ weekdays: checked ? ["one"] : [] });
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          width: "320px",
+          background: "white",
+          borderRadius: "10px",
+        }}
+      >
+        <Accordion
+          title={"Дни недели"}
+          isOpen={!!value.weekdays.length}
+          titleButtonProps={{
+            component: Checkbox,
+            onChange: handleSetDefaultValue,
+            label: "Weekdays!",
+            checked: !!value.weekdays.length,
+          }}
+        >
+          <CheckboxGroup
+            onChange={(newValue) => setValue({ weekdays: newValue })}
+            value={value.weekdays}
+            options={[
+              { label: "One", value: "one" },
+              { label: "Two", value: "two" },
+              { label: "Three", value: "three" },
+            ]}
+          />
+        </Accordion>
+      </div>
+    </ThemeProvider>
+  );
+};
