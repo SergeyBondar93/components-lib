@@ -71,9 +71,9 @@ export const defaultButtonGroupTheme: Required<
     flexWrap: "wrap",
   },
   [BUTTON_GROUP_COMPONENTS_NAMES.button]: {
-    marginRight: "8px",
-    marginBottom: "8px",
-    padding: "5px 8px",
+    marginRight: "5px",
+    marginBottom: "5px",
+    padding: "4px 8px",
     borderRadius: "8px",
     border: "1px solid #636AFF",
     backgroundColor: "transparent",
