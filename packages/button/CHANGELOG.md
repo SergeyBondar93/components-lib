@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.6](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.5...@cheaaa/button@1.7.6) (2022-07-13)
+
+
+### Bug Fixes
+
+* fix btn styles in btn group ([dd3a5c5](https://github.com/SergeyBondar93/liba/commit/dd3a5c5d7df9e4bc14cd1da56f9229a6505bde96))
+* fix button passing appearance to custom component ([b480a3b](https://github.com/SergeyBondar93/liba/commit/b480a3bbe01693a0647e7009900aa3c3002c77b0))
+
+
+
+
+
 ## [1.7.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.4...@cheaaa/button@1.7.5) (2022-07-12)
 
 
