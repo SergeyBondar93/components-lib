@@ -53,20 +53,23 @@ export const Accordion = ({
   const [height, setHeight] = useState(0);
   const bodyRef = useRef<HTMLDivElement>(null);
   const childrenWrapperRef = useRef<HTMLDivElement>(null);
+  const [overflow, setOverflow] = useState<"hidden" | "initial">("initial");
 
   const animationRef = useRef<any>(true);
 
   useEffect(() => {
-    const observer = new ResizeObserver(([a]) => {
+    let timeout: ReturnType<typeof setTimeout> | null = null;
+    const observer = new ResizeObserver(([entry]) => {
       animationRef.current = false;
-      setHeight(a.contentRect.height);
-      setTimeout(() => {
+      setHeight(entry.contentRect.height);
+      timeout = setTimeout(() => {
         animationRef.current = true;
       }, 600);
     });
     childrenWrapperRef.current && observer.observe(childrenWrapperRef.current);
 
     return () => {
+      timeout && clearTimeout(timeout);
       childrenWrapperRef.current &&
         observer.unobserve(childrenWrapperRef.current);
     };
@@ -75,6 +78,22 @@ export const Accordion = ({
   useEffect(() => {
     setIsOpen(isOpenProps);
   }, [isOpenProps]);
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout> | null = null;
+
+    if (isOpen) {
+      timeout = setTimeout(() => {
+        setOverflow("initial");
+      }, 600);
+    } else {
+      setOverflow("hidden");
+    }
+
+    return () => {
+      timeout && clearTimeout(timeout);
+    };
+  }, [isOpen]);
 
   const classNames = useMemo(() => {
     const wrapperClassName = getClassName<ComponentNames>(
@@ -146,6 +165,7 @@ export const Accordion = ({
         className={classNames.bodyClassName}
         style={{
           height: _height,
+          overflow,
           transition: animationRef.current ? animationDuration : undefined,
         }}
       >

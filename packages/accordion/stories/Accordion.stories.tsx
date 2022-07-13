@@ -232,7 +232,7 @@ export const WithSelectComponent = () => {
       >
         <Accordion isOpen title={"Дни недели"}>
           <Weekdays />
-          <Select options={options} />
+          <Select options={options} isMulti />
         </Accordion>
       </div>
     </ThemeProvider>
