@@ -13,7 +13,6 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     padding: "5px 8px",
     whiteSpace: "nowrap",
     overflow: "hidden",
-    border: "1px solid black",
   },
   [TAG_COMPONENTS_NAMES.prefix]: {
     marginRight: "6px",
