@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.1 (2022-07-13)
+
+
+### Bug Fixes
+
+* change tag default styles ([d7fe7b3](https://github.com/SergeyBondar93/liba/commit/d7fe7b3f8a41ae2df162bc4ce50a0520c7172c81))
+
+
+
+
+
 # 1.1.0 (2022-07-11)
 
 
