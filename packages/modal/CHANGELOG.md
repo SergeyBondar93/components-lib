@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.2.0 (2022-07-13)
+
+
+### Features
+
+* change accordion computing body size ([770e778](https://github.com/SergeyBondar93/liba/commit/770e7783f161c77cc7c0903145a3b4ad5ffcd4de))
+
+
+
+
+
 ## [1.1.3](https://github.com/SergeyBondar93/liba/compare/@cheaaa/modal@1.1.2...@cheaaa/modal@1.1.3) (2022-07-11)
 
 

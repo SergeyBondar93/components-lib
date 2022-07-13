@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@1.1.7...@cheaaa/accordion@1.2.0) (2022-07-13)
+
+
+### Bug Fixes
+
+* fix computition accordion body overflow ([5a1e973](https://github.com/SergeyBondar93/liba/commit/5a1e9731e1590125c9d1acf74336735eba972b2b))
+
+
+### Features
+
+* change accordion computing body size ([770e778](https://github.com/SergeyBondar93/liba/commit/770e7783f161c77cc7c0903145a3b4ad5ffcd4de))
+
+
+
+
+
 ## [1.1.7](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@1.1.6...@cheaaa/accordion@1.1.7) (2022-07-13)
 
 **Note:** Version bump only for package @cheaaa/accordion
