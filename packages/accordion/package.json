@@ -27,6 +27,7 @@
     "@cheaaa/utils": "^1.2.1"
   },
   "devDependencies": {
+    "react-select": "^5.4.0",
     "@cheaaa/checkbox": "^1.3.2"
   },
   "peerDependencies": {

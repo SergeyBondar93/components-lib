@@ -1,4 +1,3 @@
-import { ComponentTheme } from "@cheaaa/theme";
 import {
   ENTERED,
   ENTERING,
@@ -8,9 +7,9 @@ import {
 } from "react-transition-group/Transition";
 
 import { MODAL_COMPONENTS_NAMES, DEFAULT_ANIMATION_DURATION } from "./consts";
-import { ComponentNames } from "./types";
+import { ModalTheme } from "./types";
 
-export const defaultModalTheme: Required<ComponentTheme<ComponentNames>> = {
+export const defaultModalTheme: ModalTheme = {
   [ENTERING]: {
     [MODAL_COMPONENTS_NAMES.modalContent]: {
       transform: "scale(0.8) translate(-50%, -50%)",

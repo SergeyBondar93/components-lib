@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Checkbox, CheckboxGroup, Switcher } from "@cheaaa/checkbox";
 import { Meta } from "@storybook/react";
 import { ThemeProvider } from "react-jss";
+import Select from "react-select";
 
 import { Accordion } from "../src";
 
@@ -187,6 +188,51 @@ export const CustomTitleComponent = () => {
               { label: "Three", value: "three" },
             ]}
           />
+        </Accordion>
+      </div>
+    </ThemeProvider>
+  );
+};
+
+export const WithIternalAccordion = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          width: "320px",
+          background: "white",
+          borderRadius: "10px",
+        }}
+      >
+        <Accordion title={"Дни недели"}>
+          <Accordion title={"Дни недели"}>
+            <Accordion title={"Дни недели"}>
+              <Weekdays />
+            </Accordion>
+          </Accordion>
+        </Accordion>
+      </div>
+    </ThemeProvider>
+  );
+};
+
+const options = new Array(30)
+  .fill(0)
+  .map((_, i) => ({ value: i, label: `Option № ${i}` }));
+
+export const WithSelectComponent = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          width: "320px",
+          background: "white",
+          borderRadius: "10px",
+        }}
+      >
+        <Accordion isOpen title={"Дни недели"}>
+          <Weekdays />
+          <Select options={options} />
         </Accordion>
       </div>
     </ThemeProvider>

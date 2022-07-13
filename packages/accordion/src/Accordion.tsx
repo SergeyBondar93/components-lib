@@ -20,6 +20,12 @@ export interface IAccordionProps extends IThemedProps {
   isOpen?: boolean;
 
   /**
+   * Длительность анимации разворачивания, не больше 0.5s
+   *
+   */
+  animationDuration?: `0.${number}s`;
+
+  /**
    * Функция для вычисления кастомной высоты body. Принимает isOpen и высчитанную высоту самим компонентом
    */
   getHeightStyles?: GetHeightStylesFn;
@@ -40,6 +46,7 @@ export const Accordion = ({
   children,
   getHeightStyles,
   titleButtonProps = {},
+  animationDuration = "0.2s",
 }: IAccordionProps) => {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(isOpenProps);
@@ -47,12 +54,23 @@ export const Accordion = ({
   const bodyRef = useRef<HTMLDivElement>(null);
   const childrenWrapperRef = useRef<HTMLDivElement>(null);
 
+  const animationRef = useRef<any>(true);
+
   useEffect(() => {
-    const top = bodyRef.current?.getBoundingClientRect().top!;
-    const bottom = childrenWrapperRef.current?.getBoundingClientRect().bottom!;
-    const height = bottom - top;
-    setHeight(height);
-  }, [children]);
+    const observer = new ResizeObserver(([a]) => {
+      animationRef.current = false;
+      setHeight(a.contentRect.height);
+      setTimeout(() => {
+        animationRef.current = true;
+      }, 600);
+    });
+    childrenWrapperRef.current && observer.observe(childrenWrapperRef.current);
+
+    return () => {
+      childrenWrapperRef.current &&
+        observer.unobserve(childrenWrapperRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     setIsOpen(isOpenProps);
@@ -128,6 +146,7 @@ export const Accordion = ({
         className={classNames.bodyClassName}
         style={{
           height: _height,
+          transition: animationRef.current ? animationDuration : undefined,
         }}
       >
         <div

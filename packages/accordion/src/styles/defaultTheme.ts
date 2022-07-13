@@ -15,8 +15,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     },
   },
   [ACCORDION_COMPONENTS_NAMES.body]: {
-    overflow: "hidden",
-    transition: "0.3s",
+    // overflow: "hidden",
     position: "relative",
   },
   [ACCORDION_COMPONENTS_NAMES.childrenWrapper]: {},
