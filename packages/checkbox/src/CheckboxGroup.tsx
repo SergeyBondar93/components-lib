@@ -7,7 +7,7 @@ import { useCheckboxStyles } from "./styles";
 import { CheckboxComponentNames } from "./styles/types";
 
 interface ICheckboxGroupOptions
-  extends Omit<ICheckboxProps, "checked" | "onChange"> {
+  extends Omit<ICheckboxProps, "value" | "onChange"> {
   value: string;
   onChange?: (clickedBy: string) => void;
 }
@@ -55,7 +55,7 @@ export const CheckboxGroup = ({
             key={checkboxValue}
             {...option}
             onChange={handleChange}
-            checked={isSelected}
+            value={isSelected}
             {...props}
           />
         );

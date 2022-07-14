@@ -62,7 +62,7 @@ const CheckboxTemplate = ({ disabled }) => {
       <div style={wrapperStyles}>
         <Checkbox
           disabled={disabled}
-          checked={value}
+          value={value}
           onChange={setValue}
           label="Default"
         />
@@ -70,7 +70,7 @@ const CheckboxTemplate = ({ disabled }) => {
       <div style={wrapperStyles}>
         <Switcher
           disabled={disabled}
-          checked={value}
+          value={value}
           onChange={setValue}
           label="Switcher"
         />
@@ -79,7 +79,7 @@ const CheckboxTemplate = ({ disabled }) => {
       <div style={wrapperStyles}>
         <Switcher
           disabled={disabled}
-          checked={value}
+          value={value}
           onChange={setValue}
           toggler={ModeToggler}
           appearance="mode"
@@ -90,7 +90,7 @@ const CheckboxTemplate = ({ disabled }) => {
       <div style={wrapperStyles}>
         <Checkbox
           disabled={disabled}
-          checked={value}
+          value={value}
           onChange={setValue}
           appearance="big"
           label="Themed"
@@ -100,7 +100,7 @@ const CheckboxTemplate = ({ disabled }) => {
       <div style={wrapperStyles}>
         <Checkbox
           disabled={disabled}
-          checked={value}
+          value={value}
           onChange={setValue}
           checkedIcon={<CompareCheckedIcon />}
           uncheckedIcon={<CompareUncheckedIcon />}

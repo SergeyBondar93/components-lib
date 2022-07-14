@@ -6,7 +6,7 @@ import { CheckedIcon } from "./CheckedIcon";
 import { CheckboxComponentNames } from "./styles/types";
 
 export interface IBaseCheckboxProps extends IThemedProps {
-  checked: boolean;
+  value: boolean;
   onChange: (checked: boolean, e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   label?: ReactNode;
@@ -18,7 +18,7 @@ export interface IBaseCheckboxProps extends IThemedProps {
 export const CheckboxBase = ({
   baseAppearance = "base",
   appearance = "base",
-  checked,
+  value,
   onChange,
   disabled,
   label,
@@ -38,10 +38,10 @@ export const CheckboxBase = ({
   }, []);
 
   const icon = useMemo(() => {
-    return checked
+    return value
       ? checkedIcon || <CheckedIcon fill={"#FFF"} />
       : uncheckedIcon || null;
-  }, [checked, checkedIcon, uncheckedIcon]);
+  }, [value, checkedIcon, uncheckedIcon]);
 
   const classNames = useMemo(() => {
     const wrapperClassName = getClassName<CheckboxComponentNames>(
@@ -89,14 +89,14 @@ export const CheckboxBase = ({
           display: "none",
         }}
         type={"checkbox"}
-        checked={checked}
+        checked={value}
         disabled={disabled}
         onClick={handleClick}
         onChange={handleInputChange}
       />
       <div
         className={classNames.iconWrapperClassName}
-        data-checked={String(!!checked)}
+        data-checked={String(!!value)}
       >
         {icon}
       </div>

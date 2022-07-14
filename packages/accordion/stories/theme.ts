@@ -14,6 +14,7 @@ export const theme = {
           background: "transparent",
           paddingLeft: "20px",
           textAlign: "start",
+          transformOrigin: "20%",
           "&:hover": {
             background: "transparent",
           },
@@ -24,6 +25,7 @@ export const theme = {
       filters: {
         [CHECKBOX_COMPONENTS_NAMES.wrapper]: {
           padding: "0px 12px",
+          transformOrigin: "20%",
           "&:hover": {
             background: "#EDF4FE",
           },
