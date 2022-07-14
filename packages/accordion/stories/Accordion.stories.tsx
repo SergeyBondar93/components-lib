@@ -96,7 +96,7 @@ const AccordionTemplate = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Switcher checked={isOpenAll} onChange={setIsOpenAll} label="Open All" />
+      <Switcher value={isOpenAll} onChange={setIsOpenAll} label="Open All" />
       <div
         style={{
           width: "320px",
