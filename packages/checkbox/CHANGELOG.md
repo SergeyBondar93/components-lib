@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2022-07-14)
+
+
+### Features
+
+* change checkbox api, checked -> value ([3c4b8ba](https://github.com/SergeyBondar93/liba/commit/3c4b8ba05d722eb4d252e51154b8080c7aeb2285))
+
+
+### BREAKING CHANGES
+
+* change checkbox api
+
+
+
+
+
 ## [1.3.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/checkbox@1.3.1...@cheaaa/checkbox@1.3.2) (2022-07-12)
 
 

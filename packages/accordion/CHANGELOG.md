@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@1.2.0...@cheaaa/accordion@2.0.0) (2022-07-14)
+
+
+### Features
+
+* change checkbox api, checked -> value ([3c4b8ba](https://github.com/SergeyBondar93/liba/commit/3c4b8ba05d722eb4d252e51154b8080c7aeb2285))
+
+
+### BREAKING CHANGES
+
+* change checkbox api
+
+
+
+
+
 # [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@1.1.7...@cheaaa/accordion@1.2.0) (2022-07-13)
 
 
