@@ -18,20 +18,20 @@ Form принимает formName, и в redux работает с объекто
 
 В большинстве случаев для использования компонентов ввода необходимо использовать HOC
 
-Пропсы `component` и `name` обязательны, все остальные передаются к компоненту который передали
+Пропсы `component` и `field` обязательны, все остальные передаются к компоненту который передали
 
 Компонент должен первым аргументом в функцию `onChange` передавать новое значение
 
 ```jsx
 <FormField
   component={Input}
-  name={'firstname'}
+  field={'firstname'}
   placeholder="Ivan"
   label="Firstname"
 />
 ```
 
-{name} во всех actons и selectors - пусть в строковом представлении до поля через точку, 
+{field} во всех actons и selectors - пусть в строковом представлении до поля через точку, 
 
 ```js script
 prop.prop1.prop2[arrayIndex][arrayIndex2].prop3
@@ -46,7 +46,7 @@ prop.prop1.prop2[arrayIndex][arrayIndex2].prop3
 dispatch(
   formActions.setFieldTouched({
     formName: formName,
-    name: fieldName,
+    field: fieldName,
     isTouched: true,
   })
 )

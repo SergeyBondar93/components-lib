@@ -16,7 +16,20 @@ export type FormFieldProps<TComponentProps> = Omit<
   keyof IFormFieldComponentProps
 > & {
   component: React.ComponentType<TComponentProps & IFormFieldComponentProps>;
-  name: string;
+
+  /**
+   * Путь значения в values/errors, возможна нотация через точку и [idx] для элементов массивов
+   * например: prop.internalProp.items[0].email
+   * соответствует значению в форме
+   * {
+   *  prop: {
+   *   internalProp: {
+   *    items: [{ email: '' }]
+   *   }
+   *  }
+   * }
+   */
+  field: string;
 
   /**
    * Если true, ставит поле touched не только при onBlur но и при onChange
@@ -37,7 +50,7 @@ const Field = function <TProps>(
     component: Component,
     onChange,
     onBlur,
-    name,
+    field,
     isTouchAfterChange,
     actionMetaParams,
     ...props
@@ -47,9 +60,9 @@ const Field = function <TProps>(
   const formName = useFormName();
   const dispatch = useDispatch();
   const isShowAllErrors = useSelector(formIsShowAllErrorsSelector(formName));
-  const value = useSelector(formFieldValueSelector(formName, name));
-  const stateError = useSelector(formFieldErrorSelector(formName, name));
-  const isTouched = useSelector(formFieldIsTouchedSelector(formName, name));
+  const value = useSelector(formFieldValueSelector(formName, field));
+  const stateError = useSelector(formFieldErrorSelector(formName, field));
+  const isTouched = useSelector(formFieldIsTouchedSelector(formName, field));
 
   const showError = isShowAllErrors || isTouched;
 
@@ -61,7 +74,7 @@ const Field = function <TProps>(
     (...args) => {
       const value = args[0];
       dispatch(
-        formActions.setFieldValue({ formName, value, name }, actionMetaParams)
+        formActions.setFieldValue({ formName, value, field }, actionMetaParams)
       );
 
       if (isTouchAfterChange && !isTouched) {
@@ -71,30 +84,30 @@ const Field = function <TProps>(
          */
         setTimeout(() => {
           dispatch(
-            formActions.setFieldTouched({ formName, name, isTouched: true })
+            formActions.setFieldTouched({ formName, field, isTouched: true })
           );
         }, 0);
       }
 
       onChange?.(...args);
     },
-    [name, onChange, formName, isTouchAfterChange, isTouched, actionMetaParams]
+    [field, onChange, formName, isTouchAfterChange, isTouched, actionMetaParams]
   );
 
   const handleBlur = useCallback(
     (...args) => {
       dispatch(
-        formActions.setFieldTouched({ formName, isTouched: true, name })
+        formActions.setFieldTouched({ formName, isTouched: true, field })
       );
       onBlur?.(...args);
     },
-    [name, onBlur, formName]
+    [field, onBlur, formName]
   );
 
   return (
     <Component
       ref={ref}
-      name={name}
+      field={field}
       onChange={handleChange}
       onBlur={handleBlur}
       value={value}

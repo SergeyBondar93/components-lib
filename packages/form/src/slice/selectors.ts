@@ -41,12 +41,12 @@ export const formTochedSelector = <TModel = {}>(
 
 export const formFieldValueSelector = <TValue = unknown>(
   formName: string,
-  name: string,
+  field: string,
   defaultValue: unknown = ""
 ) =>
   createSelector(
     formSelector(formName),
-    (form): TValue => get(form.values, name, defaultValue)
+    (form): TValue => get(form.values, field, defaultValue)
   );
 
 export const formErrorsSelector = <TModel = {}>(formName: string) =>
@@ -54,12 +54,12 @@ export const formErrorsSelector = <TModel = {}>(formName: string) =>
     formSelector(formName),
     (form): FormState<TModel>["errors"] => form.errors || {}
   );
-export const formFieldErrorSelector = (formName: string, name: string) =>
+export const formFieldErrorSelector = (formName: string, field: string) =>
   createSelector(formSelector(formName), (form): string | string[] =>
-    get(form.errors, name, "")
+    get(form.errors, field, "")
   );
 
-export const formFieldIsTouchedSelector = (formName: string, name: string) =>
+export const formFieldIsTouchedSelector = (formName: string, field: string) =>
   createSelector(formSelector(formName), (form): boolean =>
-    get(form.toched, name, false)
+    get(form.toched, field, false)
   );

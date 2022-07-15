@@ -36,21 +36,21 @@ type RequeredPayloadParams = {
 export type InitFormPayload = RequeredPayloadParams & Partial<FormState>;
 
 export type RemoveFormFieldPayload = RequeredPayloadParams & {
-  name: string;
+  field: string;
 };
 export type SetFormFieldValuePayload = RequeredPayloadParams & {
-  name: string;
+  field: string;
   value: any;
 };
 export type SetFormFieldTouchedPayload = RequeredPayloadParams & {
-  name: string;
+  field: string;
   isTouched: boolean;
 };
 export type SetFormIsShowAllErrorsPayload = RequeredPayloadParams & {
   isShow: boolean;
 };
 export type SetFormFieldErrorPayload = RequeredPayloadParams & {
-  name: string;
+  field: string;
   error: string | string[];
 };
 export type SetFormErrorsPayload = RequeredPayloadParams & {

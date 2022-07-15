@@ -5,5 +5,11 @@ export const BASIC_FORM_FIELDS = {
   firstname: "firstname",
   lastname: "lastname",
   age: "age",
+  country: "country",
+  street: "street",
+  organization: "organization",
+  birthday: "birthday",
+  phone: "phone",
+  language: "language",
   emails: "emails",
 } as const;

@@ -56,7 +56,7 @@ const FormsSlice = createSlice({
     removeField: {
       reducer: (
         state,
-        { payload: { formName, name } }: RemoveFormFieldAction
+        { payload: { formName, field } }: RemoveFormFieldAction
       ) => {
         let newValues: object | Array<unknown> | null = null;
         let newToched: object | Array<unknown> | null = null;
@@ -67,9 +67,9 @@ const FormsSlice = createSlice({
         если путь заканчивается как элемент массива [number] 
         то получаем массив и удалем необходимый элемент
       */
-        if (isRemoveFromArray(name)) {
+        if (isRemoveFromArray(field)) {
           const { pathToArray, elementIndex } =
-            getPathToArrayAndElementIndex(name);
+            getPathToArrayAndElementIndex(field);
 
           valuesPath = `${formName}.values.${pathToArray}`;
           touchedPath = `${formName}.toched.${pathToArray}`;
@@ -83,7 +83,8 @@ const FormsSlice = createSlice({
           и удаляем из него свойство 
         */
         } else {
-          const { pathToObject, fieldName } = getPathToObjectAndFieldName(name);
+          const { pathToObject, fieldName } =
+            getPathToObjectAndFieldName(field);
 
           valuesPath = `${formName}.values${pathToObject}`;
           touchedPath = `${formName}.toched${pathToObject}`;
@@ -107,9 +108,9 @@ const FormsSlice = createSlice({
     setFieldValue: {
       reducer: (
         state,
-        { payload: { formName, name, value } }: SetFormFieldValueAction
+        { payload: { formName, field, value } }: SetFormFieldValueAction
       ) => {
-        set(state, `${formName}.values.${name}`, value);
+        set(state, `${formName}.values.${field}`, value);
       },
       prepare: (payload: SetFormFieldValueAction["payload"], meta?: any) => {
         return { payload, meta };
@@ -118,9 +119,9 @@ const FormsSlice = createSlice({
     setFieldTouched: {
       reducer: (
         state,
-        { payload: { formName, name, isTouched } }: SetFormFieldTouchedAction
+        { payload: { formName, field, isTouched } }: SetFormFieldTouchedAction
       ) => {
-        set(state, `${formName}.toched.${name}`, isTouched);
+        set(state, `${formName}.toched.${field}`, isTouched);
       },
       prepare: (payload: SetFormFieldTouchedAction["payload"], meta?: any) => {
         return { payload, meta };
@@ -143,9 +144,9 @@ const FormsSlice = createSlice({
     setFieldError: {
       reducer: (
         state,
-        { payload: { formName, name, error } }: SetFormFieldErrorAction
+        { payload: { formName, field, error } }: SetFormFieldErrorAction
       ) => {
-        set(state, `${formName}.errors.${name}`, error);
+        set(state, `${formName}.errors.${field}`, error);
       },
       prepare: (payload: SetFormFieldErrorAction["payload"], meta?: any) => {
         return { payload, meta };
