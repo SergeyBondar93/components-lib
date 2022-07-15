@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.0.0...@cheaaa/accordion@2.0.1) (2022-07-15)
+
+
+### Bug Fixes
+
+* fix default accordion overflow ([f624dcc](https://github.com/SergeyBondar93/liba/commit/f624dcc6bb56f34b24934bae3edcd622b69876a9))
+
+
+
+
+
 # [2.0.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@1.2.0...@cheaaa/accordion@2.0.0) (2022-07-14)
 
 
