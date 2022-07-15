@@ -53,7 +53,9 @@ export const Accordion = ({
   const [height, setHeight] = useState(0);
   const bodyRef = useRef<HTMLDivElement>(null);
   const childrenWrapperRef = useRef<HTMLDivElement>(null);
-  const [overflow, setOverflow] = useState<"hidden" | "initial">("initial");
+  const [overflow, setOverflow] = useState<"hidden" | "initial">(
+    isOpenProps ? "initial" : "hidden"
+  );
 
   const animationRef = useRef<any>(true);
 
