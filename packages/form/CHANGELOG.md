@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2022-07-15)
+
+
+### Features
+
+* change name fo tield in form ([35fcfaa](https://github.com/SergeyBondar93/liba/commit/35fcfaaa26dca581168478f78871632ec3427e8b))
+
+
+### BREAKING CHANGES
+
+* change form api
+
+
+
+
+
 ## 1.8.2 (2022-07-11)
 
 
