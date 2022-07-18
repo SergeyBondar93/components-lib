@@ -31,7 +31,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     },
     "&.place-top": {
       "&:after": {
-        transform: "translateX(-50%) rotate(-90deg)",
+        transform: "translateX(-15px) rotate(-90deg)",
         bottom: "-19px!important",
       },
     },
@@ -48,6 +48,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       },
     },
     "&.place-left": {
+      transform: "translateX(-10px)",
       "&:after": {
         transform: "translateY(-50%) rotate(180deg)",
         right: "-9px!important",
