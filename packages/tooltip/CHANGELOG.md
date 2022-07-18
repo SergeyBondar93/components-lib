@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tooltip@1.1.2...@cheaaa/tooltip@1.1.3) (2022-07-18)
+
+
+### Bug Fixes
+
+* fix tooltip styles ([f090c30](https://github.com/SergeyBondar93/liba/commit/f090c300245d8841a6026e01cbec193901a0e08e))
+
+
+
+
+
 ## [1.1.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tooltip@1.1.1...@cheaaa/tooltip@1.1.2) (2022-07-18)
 
 
