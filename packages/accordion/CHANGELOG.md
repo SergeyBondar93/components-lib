@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.0.1...@cheaaa/accordion@2.1.0) (2022-07-18)
+
+
+### Features
+
+* add title as a function to accordion ([edd17a4](https://github.com/SergeyBondar93/liba/commit/edd17a477414b053536d7adb1e54016e1bdfa4f4))
+
+
+
+
+
 ## [2.0.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.0.0...@cheaaa/accordion@2.0.1) (2022-07-15)
 
 
