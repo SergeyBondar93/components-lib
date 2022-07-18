@@ -16,12 +16,52 @@ export const Base = () => {
     <div
       style={{
         marginTop: "200px",
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
       <span data-tip data-for={"base"}>
-        Tooltip
+        Tooltip Default
       </span>
       <Tooltip id={"base"}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero modi illum
+        dolorem placeat consequatur voluptatum ipsum nihil consequuntur
+        expedita, consectetur eos possimus facilis eveniet iusto sint alias
+        voluptatem minima laborum!
+      </Tooltip>
+      <span data-tip data-for={"right"}>
+        Tooltip Right
+      </span>
+      <Tooltip place="right" id={"right"}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero modi illum
+        dolorem placeat consequatur voluptatum ipsum nihil consequuntur
+        expedita, consectetur eos possimus facilis eveniet iusto sint alias
+        voluptatem minima laborum!
+      </Tooltip>
+      <span data-tip data-for={"bottom"}>
+        Tooltip Bottom
+      </span>
+      <Tooltip place="bottom" id={"bottom"}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero modi illum
+        dolorem placeat consequatur voluptatum ipsum nihil consequuntur
+        expedita, consectetur eos possimus facilis eveniet iusto sint alias
+        voluptatem minima laborum!
+      </Tooltip>
+      <span data-tip data-for={"Left"}>
+        Tooltip Left
+      </span>
+      <Tooltip place="left" id={"Left"}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero modi illum
+        dolorem placeat consequatur voluptatum ipsum nihil consequuntur
+        expedita, consectetur eos possimus facilis eveniet iusto sint alias
+        voluptatem minima laborum!
+      </Tooltip>
+      <span data-tip data-for={"top"}>
+        Tooltip Top
+      </span>
+      <Tooltip place="top" id={"top"}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero modi illum
         dolorem placeat consequatur voluptatum ipsum nihil consequuntur
         expedita, consectetur eos possimus facilis eveniet iusto sint alias
