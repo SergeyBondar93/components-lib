@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tooltip@1.1.1...@cheaaa/tooltip@1.1.2) (2022-07-18)
+
+
+### Bug Fixes
+
+* fix commas in tooltip svg background ([604c890](https://github.com/SergeyBondar93/liba/commit/604c890ce5945386ca94b4eb74479dfa2367bc7a))
+* fix tooltip svg ([06deaf2](https://github.com/SergeyBondar93/liba/commit/06deaf2f49e2b6cde8d7d290e250354809225d3f))
+
+
+
+
+
 ## 1.1.1 (2022-07-18)
 
 
