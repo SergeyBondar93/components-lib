@@ -7,3 +7,5 @@ export const ACCORDION_COMPONENTS_NAMES = {
   body: "body",
   childrenWrapper: "childrenWrapper",
 } as const;
+
+export const DEFAULT_ACCORDION_TITLE_BUTTON_APPEARANCE = "accordion-title";

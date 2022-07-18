@@ -3,7 +3,7 @@ import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { useState, useRef, useEffect, ReactNode, useMemo } from "react";
 
 import { Icon } from "./Icon";
-import { useStyles } from "./styles";
+import { DEFAULT_ACCORDION_TITLE_BUTTON_APPEARANCE, useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
 
 export type GetHeightStylesFn = (args: {
@@ -13,9 +13,12 @@ export type GetHeightStylesFn = (args: {
 
 export interface IAccordionProps extends IThemedProps {
   /**
-   * Текст на Title Button
+   * Текст на Title Button.
    */
-  title: string | ReactNode;
+  title?:
+    | string
+    | ReactNode
+    | ((args: { isOpen: boolean }) => string | ReactNode);
   children: ReactNode;
   isOpen?: boolean;
 
@@ -42,7 +45,7 @@ export const Accordion = ({
   baseAppearance = "base",
   appearance = "base",
   isOpen: isOpenProps = false,
-  title,
+  title: titleProps,
   children,
   getHeightStyles,
   titleButtonProps = {},
@@ -146,13 +149,21 @@ export const Accordion = ({
     return isOpen ? height : 0;
   }, [getHeightStyles, isOpen, height]);
 
+  const title = useMemo(() => {
+    return typeof titleProps === "function"
+      ? titleProps({ isOpen })
+      : titleProps;
+  }, [titleProps, isOpen]);
+
   return (
     <div className={classNames.wrapperClassName}>
       <Button
         shouldFitContent
         onClick={() => setIsOpen(!isOpen)}
-        // TODO сделать строку дефолтного аппиранса константой и экспортировать
-        appearance={titleButtonProps.appearance || "accordion-title"}
+        appearance={
+          titleButtonProps.appearance ||
+          DEFAULT_ACCORDION_TITLE_BUTTON_APPEARANCE
+        }
         {...titleButtonProps}
       >
         <Icon

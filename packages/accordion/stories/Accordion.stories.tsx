@@ -169,13 +169,12 @@ export const CustomTitleComponent = () => {
         }}
       >
         <Accordion
-          title={"Дни недели"}
           isOpen={!!value.weekdays.length}
           titleButtonProps={{
             component: Checkbox,
             onChange: handleSetDefaultValue,
             label: "Custom component - checkbox",
-            checked: !!value.weekdays.length,
+            value: !!value.weekdays.length,
             appearance: "red",
           }}
         >
@@ -194,7 +193,7 @@ export const CustomTitleComponent = () => {
   );
 };
 
-export const WithIternalAccordion = () => {
+export const WithIternalAccordionAndTitleAsAFunction = () => {
   return (
     <ThemeProvider theme={theme}>
       <div
@@ -204,7 +203,11 @@ export const WithIternalAccordion = () => {
           borderRadius: "10px",
         }}
       >
-        <Accordion title={"Дни недели"}>
+        <Accordion
+          title={({ isOpen }) =>
+            `Дни недели (${isOpen ? "Закрыть" : "Открыть"}) `
+          }
+        >
           <Accordion title={"Дни недели"}>
             <Accordion title={"Дни недели"}>
               <Weekdays />
@@ -220,7 +223,20 @@ const options = new Array(30)
   .fill(0)
   .map((_, i) => ({ value: i, label: `Option № ${i}` }));
 
+const Title = ({ selectedOptions }) => {
+  return (
+    <>
+      Дни недели
+      {selectedOptions ? ` (Selected in Select: ${selectedOptions})` : null}
+    </>
+  );
+};
+
 export const WithSelectComponent = () => {
+  const [selectedOptions, setSelectedOptions] = useState<
+    Array<{ value: number; label: string }>
+  >([]);
+
   return (
     <ThemeProvider theme={theme}>
       <div
@@ -230,9 +246,17 @@ export const WithSelectComponent = () => {
           borderRadius: "10px",
         }}
       >
-        <Accordion isOpen title={"Дни недели"}>
+        <Accordion
+          isOpen
+          title={<Title selectedOptions={selectedOptions.length} />}
+        >
           <Weekdays />
-          <Select options={options} isMulti />
+          <Select
+            options={options}
+            isMulti
+            value={selectedOptions}
+            onChange={(newValue) => setSelectedOptions(newValue as any)}
+          />
         </Accordion>
       </div>
     </ThemeProvider>
