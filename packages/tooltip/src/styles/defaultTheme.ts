@@ -22,7 +22,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     minWidth: 38,
 
     "&:after": {
-      backgroundImage: `url(${ArrowIcon})`,
+      backgroundImage: `url("${ArrowIcon}")`,
       backgroundRepeat: "no-repeat",
       border: "none!important",
       width: "9px!important",
