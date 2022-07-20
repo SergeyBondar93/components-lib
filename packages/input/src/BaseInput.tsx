@@ -32,6 +32,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       onFocus,
       onBlur,
       labelProps = {},
+      wrapperProps = {},
       classes,
       ...rest
     },
@@ -60,7 +61,6 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       (event: React.FocusEvent<HTMLElement>) => {
         if (!disabled) {
           setIsFocused(false);
-
           onBlur?.(event);
         }
       },
@@ -154,6 +154,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         data-hasvalue={String(!!value)}
         className={classNames.wrapperClassName}
         onClick={handleClick}
+        {...wrapperProps}
       >
         {prefix && (
           <span ref={prefixRef} className={classNames.prefixWrapperClassName}>

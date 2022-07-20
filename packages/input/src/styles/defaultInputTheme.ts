@@ -35,6 +35,12 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     '&[data-invalid="true"]': {
       border: "1px solid #FF6666",
     },
+
+    /** Стили для инпута используемом в Select компоненте */
+    '&[data-select-open="true"]': {
+      alignItems: "flex-end",
+      border: "1px solid #636AFF",
+    },
   },
   [INPUT_COMPONENTS_NAMES.input]: {
     backgroundColor: "#FFF",
@@ -59,6 +65,24 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     },
     '&[data-hasvalue="true"]': {
       padding: "6px 14px",
+    },
+
+    /** Стили для инпута используемом в Select компоненте */
+    "&[data-select-open]": {
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+    },
+    "&[data-select-open]::placeholder": {
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+    },
+    '&[data-select-open="true"]': {
+      padding: "6px 14px",
+    },
+    '&[data-select-open="true"]::placeholder': {
+      opacity: "1",
     },
   },
   [INPUT_COMPONENTS_NAMES.prefixWrapper]: {
@@ -113,6 +137,12 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
       color: "#636AFF",
     },
     '&[data-hasvalue="true"]': {
+      fontSize: "10px",
+      top: "10px",
+    },
+
+    /** Стили для инпута используемом в Select компоненте */
+    '&[data-select-open="true"]': {
       fontSize: "10px",
       top: "10px",
       color: "#636AFF",

@@ -1,6 +1,11 @@
 import { IThemedProps } from "@cheaaa/theme";
 import { Classes } from "jss";
-import { KeyboardEvent, LabelHTMLAttributes, ReactNode } from "react";
+import {
+  HTMLAttributes,
+  KeyboardEvent,
+  LabelHTMLAttributes,
+  ReactNode,
+} from "react";
 
 type OverridedAttributes = "prefix" | "postfix" | "onChange" | "value";
 
@@ -32,6 +37,11 @@ export interface IBaseInputProps extends InputHTMLAttributes, IThemedProps {
    * Props для label при необходимости
    */
   labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
+
+  /**
+   * Props для wrapper при необходимости
+   */
+  wrapperProps?: HTMLAttributes<HTMLDivElement>;
 
   /**
    * В базовой версии виден только при фокусе на input.
