@@ -57,6 +57,13 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       background: "#E5ECF7",
     },
   },
+  [SELECT_COMPONENTS_NAMES.removeIconWrapper]: {
+    "& svg": {
+      "& path": {
+        fill: "#718299",
+      },
+    },
+  },
   [SELECT_COMPONENTS_NAMES.noOptionsMessage]: {
     color: "rgba(113, 130, 153, 0.55)",
     height: "32px",

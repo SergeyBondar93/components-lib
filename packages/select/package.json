@@ -25,6 +25,7 @@
 	"dependencies": {
 		"@cheaaa/utils": "^1.2.1",
 		"@cheaaa/input": "^1.16.1",
+		"@cheaaa/icons": "1.1.0",
 		"@cheaaa/theme": "^1.2.10"
 	},
 	"peerDependencies": {

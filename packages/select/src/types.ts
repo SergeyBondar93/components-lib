@@ -2,19 +2,19 @@ import { IInputProps } from "@cheaaa/input";
 import { IThemedProps } from "@cheaaa/theme";
 import { ReactNode } from "react";
 
-export type OptionValue = string;
+export type SelectOptionValue = string;
 
-export type Option = {
-  value: OptionValue;
+export type SelectOption = {
+  value: SelectOptionValue;
   label: ReactNode;
 };
 
 export type SelectFilterFunction<
-  O extends { label: any; value: any } = Option
+  O extends { label: any; value: any } = SelectOption
 > = (
   searchString: string,
   options: { selectedOptions: O[]; unselectedOptions: O[] }
-) => Option[];
+) => SelectOption[];
 
 type InputProps = Omit<IInputProps, "onChange" | "value"> & {
   onChange?: IInputProps["onChange"];
@@ -31,7 +31,7 @@ interface IBaseSelect extends IThemedProps {
   disabled?: boolean;
   isOpen?: boolean;
 
-  options: Option[];
+  options: SelectOption[];
   /**
    * Будет ли закрываться после выбора значения
    * @defaultValue true
@@ -76,8 +76,8 @@ interface IMultiValueSelectProps extends IBaseSelect {
    * @defaultValue true
    */
   isMulti?: true;
-  value: OptionValue[];
-  onChange: (newValue: OptionValue[]) => void;
+  value: SelectOptionValue[];
+  onChange: (newValue: SelectOptionValue[]) => void;
 }
 interface ISingleValueSelectProps extends IBaseSelect {
   /**
@@ -85,8 +85,8 @@ interface ISingleValueSelectProps extends IBaseSelect {
    * @defaultValue true
    */
   isMulti: false;
-  value: OptionValue;
-  onChange: (newValue: OptionValue) => void;
+  value: SelectOptionValue;
+  onChange: (newValue: SelectOptionValue) => void;
 }
 
 export type SelectProps = IMultiValueSelectProps | ISingleValueSelectProps;

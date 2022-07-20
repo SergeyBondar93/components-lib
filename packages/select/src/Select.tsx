@@ -11,46 +11,12 @@ import { getClassName } from "@cheaaa/theme";
 import { Input } from "@cheaaa/input";
 
 import { ComponentNames, useStyles } from "./styles";
-import { defaultFilterFunction, isActive, scrollIntoView } from "./utils";
-import { Option, OptionValue, SelectProps } from "./types";
+import { defaultFilterFunction, scrollIntoView } from "./utils";
+import { SelectOption, SelectOptionValue, SelectProps } from "./types";
+import { Option } from "./Option";
 
 /**
-isOpen = false
-defaultValue
-isMulti = false
-
-isCloseOnSelect
-isCloseOnRemove
-
-components = {
-    SelectedItem
-    UnselectedItem
-}
-
-withRemoveIcon
-
-options = []
-
-onChange
-
-value
-
-inputProps
-
-disabled
-
 isOptionDisabled = (option, selectedValue) => boolean
-
-
-isOptionSelected? = (option, selectedValue) => boolean подумать
-
-
-filterFunction = функция вызываемая для фильтра, для изменения условий поиска
-
-noOptionsMessage = ''
-selectedHeader = '',
-unselectedHeader = ''
-
 */
 
 export const Select = ({
@@ -89,7 +55,9 @@ export const Select = ({
   );
 
   const classes = useStyles();
-  const [activeValue, setActiveValue] = useState<OptionValue | null>(null);
+  const [activeValue, setActiveValue] = useState<SelectOptionValue | null>(
+    null
+  );
   const [searchString, setSearchString] = useState("");
   const [isOpen, setIsOpen] = useState(isOpenProps);
 
@@ -107,7 +75,10 @@ export const Select = ({
       let newValue: any = null;
 
       if (isMulti) {
-        newValue = toggleElementInArray(value as OptionValue[], optionValue);
+        newValue = toggleElementInArray(
+          value as SelectOptionValue[],
+          optionValue
+        );
       } else {
         newValue = optionValue === value ? "" : optionValue;
       }
@@ -124,12 +95,12 @@ export const Select = ({
   );
 
   const { selectedOptions, unselectedOptions } = useMemo(() => {
-    const selected: Option[] = [];
-    const unselected: Option[] = [];
+    const selected: SelectOption[] = [];
+    const unselected: SelectOption[] = [];
 
     options.forEach((option) => {
       if (isMulti) {
-        if ((value as OptionValue[]).includes(option.value)) {
+        if ((value as SelectOptionValue[]).includes(option.value)) {
           selected.push(option);
         } else {
           unselected.push(option);
@@ -182,8 +153,8 @@ export const Select = ({
 
   const formattedValue = useMemo(() => {
     return isMulti
-      ? (value as OptionValue[]).map((v) => optionsObject[v]).join(", ")
-      : optionsObject[value as OptionValue] || "";
+      ? (value as SelectOptionValue[]).map((v) => optionsObject[v]).join(", ")
+      : optionsObject[value as SelectOptionValue] || "";
   }, [value, isMulti, optionsObject]);
 
   const inputValue = useMemo(() => {
@@ -275,7 +246,7 @@ export const Select = ({
     setActiveValue(null);
   };
 
-  const handleMouseOver = (value: OptionValue) => {
+  const handleMouseOver = (value: SelectOptionValue) => {
     setActiveValue(value);
   };
 
@@ -353,7 +324,6 @@ export const Select = ({
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [
-    // вызов происходит дважды, попробовать убрать
     handleSelectOption,
     isOpen,
     activeValue,
@@ -387,46 +357,49 @@ export const Select = ({
                 {selectedHeader}
               </div>
               <div ref={selectedListRef} className={classNames.listClassName}>
-                {selectedOptions.map(({ value, label }, i) => {
-                  const ref = optionsRefs.current[i];
+                {selectedOptions.map(({ value, label }, index) => {
+                  const ref = optionsRefs.current[index];
 
                   return (
-                    <div
-                      className={classNames.listItemClassName}
+                    <Option
+                      isRemovable
+                      key={value}
+                      label={label}
+                      activeValue={activeValue}
+                      value={value}
+                      index={index}
                       onMouseDown={() => handleSelectOption(value, "remove")}
                       onMouseOver={() => handleMouseOver(value)}
                       onMouseLeave={handleMouseLeave}
-                      data-active={String(isActive(value, activeValue))}
                       ref={ref}
-                    >
-                      {label}
-                    </div>
+                    />
                   );
                 })}
               </div>
             </div>
           )}
-          {/* TODO опцию в отдельный компонент */}
           <div className={classNames.groupWrapperClassName}>
             <div className={classNames.groupHeaderClassName}>
               {unselectedHeader}
             </div>
             <div ref={unselectedListRef} className={classNames.listClassName}>
               {filteredOptions.length ? (
-                filteredOptions.map(({ value, label }, i) => {
-                  const ref = optionsRefs.current[selectedOptions.length + i];
+                filteredOptions.map(({ value, label }, index) => {
+                  const ref =
+                    optionsRefs.current[selectedOptions.length + index];
 
                   return (
-                    <div
-                      className={classNames.listItemClassName}
+                    <Option
+                      key={value}
+                      label={label}
+                      activeValue={activeValue}
+                      value={value}
+                      index={index}
                       onMouseDown={() => handleSelectOption(value, "select")}
                       onMouseOver={() => handleMouseOver(value)}
                       onMouseLeave={handleMouseLeave}
-                      data-active={String(isActive(value, activeValue))}
                       ref={ref}
-                    >
-                      <span>{label}</span>
-                    </div>
+                    />
                   );
                 })
               ) : (

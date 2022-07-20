@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ThemeProvider } from "react-jss";
 
 import { Select } from "../src";
-import { OptionValue } from "../src/types";
+import { SelectOptionValue } from "../src/types";
 
 import { customFilterFunction } from "./customFilterFunction";
 import { options } from "./options";
@@ -34,8 +34,8 @@ interface IStoryParams {
 }
 
 export const Base: Story<IStoryParams> = (args) => {
-  const [multiValue, setMultiValue] = useState<OptionValue[]>([]);
-  const [singleValue, setSingleValue] = useState<OptionValue>("");
+  const [multiValue, setMultiValue] = useState<SelectOptionValue[]>([]);
+  const [singleValue, setSingleValue] = useState<SelectOptionValue>("");
 
   const filterFunction = args.customFilterFunction
     ? customFilterFunction

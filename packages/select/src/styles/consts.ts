@@ -7,5 +7,6 @@ export const SELECT_COMPONENTS_NAMES = {
   groupHeader: "groupHeader",
   list: "list",
   listItem: "listItem",
+  removeIconWrapper: "removeIconWrapper",
   noOptionsMessage: "noOptionsMessage",
 } as const;
