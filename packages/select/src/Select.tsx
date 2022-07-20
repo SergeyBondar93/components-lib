@@ -72,7 +72,12 @@ export const Select = ({
   selectedHeader,
   unselectedHeader,
   noOptionsMessage = "Ничего не найдено",
-  inputProps = {},
+  inputProps: {
+    onFocus: onFocusInput,
+    onChange: onChangeInput,
+    onBlur: onBlurInput,
+    ...inputProps
+  } = {},
   filterFunction,
 }: SelectProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -94,6 +99,7 @@ export const Select = ({
 
   const handleChangeInput = (inputValue: string) => {
     setSearchString(inputValue);
+    onChangeInput?.(inputValue);
   };
 
   const handleSelectOption = useCallback(
@@ -149,11 +155,15 @@ export const Select = ({
       : unselectedOptions.filter(defaultFilterFunction(searchString));
   }, [unselectedOptions, searchString, filterFunction]);
 
-  const handleFocusInput = useCallback(() => {
-    setSearchString("");
-    setIsOpen(true);
-    setActiveValue(null);
-  }, []);
+  const handleFocusInput: React.FocusEventHandler<HTMLElement> = useCallback(
+    (...args) => {
+      setSearchString("");
+      setIsOpen(true);
+      setActiveValue(null);
+      onFocusInput?.(...args);
+    },
+    [onFocusInput]
+  );
 
   const handleClose = useCallback(() => {
     setSearchString("");
@@ -360,6 +370,7 @@ export const Select = ({
         label={label}
         onChange={handleChangeInput}
         onFocus={handleFocusInput}
+        onBlur={onBlurInput}
         {...inputProps}
         data-select-open={String(!!isOpen)}
         wrapperProps={inputWrapperProps}

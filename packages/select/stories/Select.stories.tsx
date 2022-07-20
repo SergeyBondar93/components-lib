@@ -24,6 +24,7 @@ interface IStoryParams {
   customFilterFunction: boolean;
   isCloseOnSelect: boolean;
   isCloseOnRemove: boolean;
+  smoothScrollToTop: boolean;
   disabled: boolean;
   label: string;
   placeholder: string;
@@ -40,6 +41,13 @@ export const Base: Story<IStoryParams> = (args) => {
     ? customFilterFunction
     : undefined;
 
+  const onFocus: React.FocusEventHandler<HTMLElement> = (e) => {
+    if (args.smoothScrollToTop) {
+      const top = window.scrollY + e.target.getBoundingClientRect().top - 10;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <h2>Multi Value</h2>
@@ -49,6 +57,9 @@ export const Base: Story<IStoryParams> = (args) => {
         options={options}
         filterFunction={filterFunction}
         isMulti
+        inputProps={{
+          onFocus,
+        }}
         {...args}
       />
       <h2>Single Value</h2>
@@ -58,6 +69,9 @@ export const Base: Story<IStoryParams> = (args) => {
         options={options}
         isMulti={false}
         filterFunction={filterFunction}
+        inputProps={{
+          onFocus,
+        }}
         {...args}
       />
       <p>
@@ -123,6 +137,7 @@ export const Base: Story<IStoryParams> = (args) => {
 
 Base.args = {
   isOpen: false,
+  smoothScrollToTop: false,
   customFilterFunction: false,
   isCloseOnSelect: true,
   isCloseOnRemove: true,

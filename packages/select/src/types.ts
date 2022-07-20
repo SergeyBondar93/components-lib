@@ -16,6 +16,11 @@ export type SelectFilterFunction<
   options: { selectedOptions: O[]; unselectedOptions: O[] }
 ) => Option[];
 
+type InputProps = Omit<IInputProps, "onChange" | "value"> & {
+  onChange?: IInputProps["onChange"];
+  onBlur?: IInputProps["onBlur"];
+};
+
 interface IBaseSelect extends IThemedProps {
   /**
    * Функция для кастомной фильтрации элементов.
@@ -62,7 +67,7 @@ interface IBaseSelect extends IThemedProps {
    * Сообщение о не найденных опциях
    */
   noOptionsMessage?: ReactNode;
-  inputProps?: Omit<IInputProps, "onChange" | "value" | "onBlur">;
+  inputProps?: InputProps;
 }
 
 interface IMultiValueSelectProps extends IBaseSelect {
