@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.17.0 (2022-07-20)
+
+
+### Features
+
+* WIP create select component ([95b11c4](https://github.com/SergeyBondar93/liba/commit/95b11c4399d0ffebf49c08a5b2877a0ddf1253ea))
+
+
+
+
+
 ## 1.16.1 (2022-07-11)
 
 
