@@ -3,3 +3,4 @@ export {
   SELECT_COMPONENTS_NAMES,
   SELECT_COMPONENT_NAMESPACE,
 } from "./styles/consts";
+export * from "./types";

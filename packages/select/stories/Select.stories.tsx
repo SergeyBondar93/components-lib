@@ -1,9 +1,12 @@
-import { Meta } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import { useState } from "react";
 import { ThemeProvider } from "react-jss";
 
 import { Select } from "../src";
+import { OptionValue } from "../src/types";
 
+import { customFilterFunction } from "./customFilterFunction";
+import { options } from "./options";
 import { theme } from "./theme";
 
 export default {
@@ -16,21 +19,36 @@ export default {
   },
 } as Meta;
 
-const options = new Array(50)
-  .fill(0)
-  .map((_, i) => ({ label: `Label Option # ${i}`, value: `option ${i}` }));
+interface IStoryParams {
+  isOpen: boolean;
+  customFilterFunction: boolean;
+  isCloseOnSelect: boolean;
+  isCloseOnRemove: boolean;
+  disabled: boolean;
+  label: string;
+  placeholder: string;
+  noOptionsMessage: string;
+  selectedHeader: string;
+  unselectedHeader: string;
+}
 
-export const Base = (args: any) => {
-  const [multiValue, setMultiValue] = useState([]);
-  const [singleValue, setSingleValue] = useState("");
+export const Base: Story<IStoryParams> = (args) => {
+  const [multiValue, setMultiValue] = useState<OptionValue[]>([]);
+  const [singleValue, setSingleValue] = useState<OptionValue>("");
+
+  const filterFunction = args.customFilterFunction
+    ? customFilterFunction
+    : undefined;
 
   return (
     <ThemeProvider theme={theme}>
-      <h2>Multivalue</h2>
+      <h2>Multi Value</h2>
       <Select
         value={multiValue}
         onChange={setMultiValue}
         options={options}
+        filterFunction={filterFunction}
+        isMulti
         {...args}
       />
       <h2>Single Value</h2>
@@ -39,6 +57,7 @@ export const Base = (args: any) => {
         onChange={setSingleValue}
         options={options}
         isMulti={false}
+        filterFunction={filterFunction}
         {...args}
       />
       <p>
@@ -104,16 +123,13 @@ export const Base = (args: any) => {
 
 Base.args = {
   isOpen: false,
-
+  customFilterFunction: false,
   isCloseOnSelect: true,
   isCloseOnRemove: true,
-
   disabled: false,
-
   label: "Выберите страну",
   placeholder: "Введите или выберите страну",
   noOptionsMessage: "Ничего не найдено",
-
   selectedHeader: "ВЫБРАННЫЕ",
   unselectedHeader: "ВСЕ СТРАНЫ",
 };

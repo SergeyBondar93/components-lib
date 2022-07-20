@@ -1,3 +1,5 @@
+import { Option } from "./types";
+
 export const isActive = (value, currentActive) => value === currentActive;
 
 /** copy from react-select start */
@@ -45,3 +47,8 @@ export function scrollIntoView(
 }
 
 /** copy from react-select end */
+
+export const defaultFilterFunction =
+  (searchString: string) => (option: Option) => {
+    return String(option.label).includes(searchString);
+  };

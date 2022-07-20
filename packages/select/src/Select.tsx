@@ -1,24 +1,19 @@
 import { toggleElementInArray, useClickOutsideComponent } from "@cheaaa/utils";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  createRef,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { getClassName } from "@cheaaa/theme";
 
 import { Input } from "../../input/src";
 
 import { ComponentNames, useStyles } from "./styles";
-import { isActive, scrollIntoView } from "./utils";
-
-/**
-    DEFAULT_SELECT_INPUT_APPEARANCE
-
-*/
-
-/**
-components = {
-    wrapper
-    inputWrapper
-}
-* 
- */
+import { defaultFilterFunction, isActive, scrollIntoView } from "./utils";
+import { Option, OptionValue, SelectProps } from "./types";
 
 /**
 isOpen = false
@@ -56,39 +51,41 @@ filterFunction = функция вызываемая для фильтра, дл
 noOptionsMessage = ''
 selectedHeader = '',
 unselectedHeader = ''
+
 */
 
 export const Select = ({
   baseAppearance = "base",
   appearance = "base",
+  disabled = false,
+  isMulti = true,
   isOpen: isOpenProps = false,
-  inputProps = {},
+
   options,
   value,
   onChange,
 
-  isMulti = true,
-
   isCloseOnSelect = true,
   isCloseOnRemove = false,
 
-  disabled = false,
-
   label,
   placeholder,
-
-  noOptionsMessage = "Ничего не найдено",
-
   selectedHeader,
   unselectedHeader,
-}: any) => {
-  const activeOptionRef = useRef<HTMLDivElement>(null);
+  noOptionsMessage = "Ничего не найдено",
+  inputProps = {},
+  filterFunction,
+}: SelectProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const selectedListRef = useRef<HTMLDivElement>(null);
   const unselectedListRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const optionsRefs = useRef(
+    new Array(options.length).fill(null).map(() => createRef<HTMLDivElement>())
+  );
 
   const classes = useStyles();
-  const [activeValue, setActiveValue] = useState(null);
-  const wrapperRef = useRef<any>(null);
+  const [activeValue, setActiveValue] = useState<OptionValue | null>(null);
   const [searchString, setSearchString] = useState("");
   const [isOpen, setIsOpen] = useState(isOpenProps);
 
@@ -101,11 +98,11 @@ export const Select = ({
   };
 
   const handleSelectOption = useCallback(
-    (optionValue, closeAfterChange) => {
+    (optionValue, type: "select" | "remove") => {
       let newValue: any = null;
 
       if (isMulti) {
-        newValue = toggleElementInArray(value, optionValue);
+        newValue = toggleElementInArray(value as OptionValue[], optionValue);
       } else {
         newValue = optionValue === value ? "" : optionValue;
       }
@@ -114,20 +111,20 @@ export const Select = ({
 
       setSearchString("");
 
-      if (closeAfterChange) {
-        setIsOpen(false);
-      }
+      const isClosed = type === "select" ? isCloseOnSelect : isCloseOnRemove;
+
+      setIsOpen(!isClosed);
     },
-    [value, isMulti]
+    [value, isMulti, isCloseOnSelect, isCloseOnRemove]
   );
 
   const { selectedOptions, unselectedOptions } = useMemo(() => {
-    const selected: any = [];
-    const unselected: any = [];
+    const selected: Option[] = [];
+    const unselected: Option[] = [];
 
     options.forEach((option) => {
       if (isMulti) {
-        if (value.includes(option.value)) {
+        if ((value as OptionValue[]).includes(option.value)) {
           selected.push(option);
         } else {
           unselected.push(option);
@@ -148,14 +145,15 @@ export const Select = ({
   }, [value, isMulti, options]);
 
   const filteredOptions = useMemo(() => {
-    return unselectedOptions.filter(({ label }) =>
-      label.includes(searchString)
-    );
-  }, [unselectedOptions, searchString]);
+    return filterFunction
+      ? filterFunction(searchString, { selectedOptions, unselectedOptions })
+      : unselectedOptions.filter(defaultFilterFunction(searchString));
+  }, [unselectedOptions, searchString, filterFunction]);
 
   const handleFocusInput = useCallback(() => {
     setSearchString("");
     setIsOpen(true);
+    setActiveValue(null);
   }, []);
 
   const handleClose = useCallback(() => {
@@ -166,9 +164,18 @@ export const Select = ({
 
   useClickOutsideComponent(wrapperRef, handleClose);
 
+  const optionsObject = useMemo(() => {
+    return options.reduce(
+      (acc, { value, label }) => ({ ...acc, [value]: label }),
+      {}
+    );
+  }, [options]);
+
   const formattedValue = useMemo(() => {
-    return isMulti ? value.join(", ") : value;
-  }, [value, isMulti]);
+    return isMulti
+      ? (value as OptionValue[]).map((v) => optionsObject[v]).join(", ")
+      : optionsObject[value as OptionValue] || "";
+  }, [value, isMulti, optionsObject]);
 
   const inputValue = useMemo(() => {
     if (isOpen) {
@@ -179,12 +186,12 @@ export const Select = ({
   }, [searchString, formattedValue, isOpen]);
 
   const inputPlaceholder = useMemo(() => {
-    if (isOpen && value.length) {
+    if (isOpen && value?.length) {
       return formattedValue;
     } else {
       return placeholder;
     }
-  }, [isOpen, formattedValue, placeholder]);
+  }, [isOpen, value, formattedValue, placeholder]);
 
   const inputLabelProps = useMemo(() => {
     return {
@@ -259,90 +266,76 @@ export const Select = ({
     setActiveValue(null);
   };
 
-  const handleMouseOver = (value: any) => {
+  const handleMouseOver = (value: OptionValue) => {
     setActiveValue(value);
   };
 
-  const visibleOptionsValues = useMemo(() => {
-    return [...selectedOptions, ...filteredOptions].map(
+  useEffect(() => {
+    const visibleOptionsValues = [...selectedOptions, ...filteredOptions].map(
       (option) => option.value
     );
-  }, [selectedOptions, filteredOptions]);
 
-  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      let activeValue = null;
-      setActiveValue((v) => {
-        activeValue = v;
-
-        return v;
-      });
+      if (!isOpen) return;
 
       const activeValueIndex = visibleOptionsValues.findIndex(
         (optionValue) => optionValue === activeValue
       );
       const isFirst = activeValueIndex === 0;
       const isLast = activeValueIndex === visibleOptionsValues.length - 1;
-
-      const firstValue = visibleOptionsValues[0];
-      const lastValue = visibleOptionsValues[visibleOptionsValues.length - 1];
-
       const isSelected = selectedOptions.some(
         (option) => option.value === activeValue
       );
+      const lastIndex = visibleOptionsValues.length - 1;
 
-      const listRef = isSelected ? selectedListRef : unselectedListRef;
+      let nextActiveIndex: number | null = null;
 
       switch (e.key) {
         case "Enter":
-          handleSelectOption(
-            activeValue,
-            isSelected ? isCloseOnRemove : isCloseOnSelect
-          );
+          handleSelectOption(activeValue, isSelected ? "remove" : "select");
+          inputRef.current?.blur();
           break;
         case "Escape":
+          inputRef.current?.blur();
           handleClose();
           break;
 
         case "ArrowUp": {
-          if (!activeValueIndex) {
-            setActiveValue(firstValue);
+          if (activeValueIndex === -1) {
+            nextActiveIndex = lastIndex;
+          } else {
+            nextActiveIndex = isFirst ? lastIndex : activeValueIndex - 1;
           }
 
-          const nextActiveValue = isFirst
-            ? lastValue
-            : visibleOptionsValues[activeValueIndex - 1];
-
-          setActiveValue(nextActiveValue);
-
-          setTimeout(() => {
-            scrollIntoView(listRef.current, activeOptionRef.current);
-          });
           break;
         }
         case "ArrowDown": {
-          if (!activeValueIndex) {
-            setActiveValue(firstValue);
+          if (activeValueIndex === -1) {
+            nextActiveIndex = 0;
+          } else {
+            nextActiveIndex = isLast ? 0 : activeValueIndex + 1;
           }
 
-          const nextActiveValue = isLast
-            ? firstValue
-            : visibleOptionsValues[activeValueIndex + 1];
-
-          setActiveValue(nextActiveValue);
-
-          setTimeout(() => {
-            scrollIntoView(listRef.current, activeOptionRef.current);
-          });
           break;
         }
-
-        default:
-          return;
       }
-      // setTimeout(() => {
-      //   console.log(activeOptionRef.current?.innerText);
-      // });
+
+      switch (e.key) {
+        case "ArrowUp":
+        case "ArrowDown":
+          const newActiveValue = visibleOptionsValues[nextActiveIndex!];
+          setActiveValue(newActiveValue);
+          const newActiveRef = optionsRefs.current[nextActiveIndex!];
+
+          const newIsSelected = selectedOptions.some(
+            (option) => option.value === newActiveValue
+          );
+
+          const listRef = newIsSelected ? selectedListRef : unselectedListRef;
+
+          scrollIntoView(listRef.current, newActiveRef.current);
+          break;
+      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -352,11 +345,11 @@ export const Select = ({
     };
   }, [
     // вызов происходит дважды, попробовать убрать
-    isOpen,
     handleSelectOption,
-    handleClose,
-    visibleOptionsValues,
+    isOpen,
+    activeValue,
     selectedOptions,
+    filteredOptions,
   ]);
 
   return (
@@ -372,6 +365,7 @@ export const Select = ({
         data-select-open={String(!!isOpen)}
         wrapperProps={inputWrapperProps}
         labelProps={inputLabelProps}
+        ref={inputRef}
         disabled={disabled}
       />
 
@@ -383,19 +377,17 @@ export const Select = ({
                 {selectedHeader}
               </div>
               <div ref={selectedListRef} className={classNames.listClassName}>
-                {selectedOptions.map(({ value, label }) => {
+                {selectedOptions.map(({ value, label }, i) => {
+                  const ref = optionsRefs.current[i];
+
                   return (
                     <div
                       className={classNames.listItemClassName}
-                      onMouseDown={() =>
-                        handleSelectOption(value, isCloseOnRemove)
-                      }
+                      onMouseDown={() => handleSelectOption(value, "remove")}
                       onMouseOver={() => handleMouseOver(value)}
                       onMouseLeave={handleMouseLeave}
                       data-active={String(isActive(value, activeValue))}
-                      ref={
-                        isActive(value, activeValue) ? activeOptionRef : null
-                      }
+                      ref={ref}
                     >
                       {label}
                     </div>
@@ -411,19 +403,17 @@ export const Select = ({
             </div>
             <div ref={unselectedListRef} className={classNames.listClassName}>
               {filteredOptions.length ? (
-                filteredOptions.map(({ value, label }) => {
+                filteredOptions.map(({ value, label }, i) => {
+                  const ref = optionsRefs.current[selectedOptions.length + i];
+
                   return (
                     <div
                       className={classNames.listItemClassName}
-                      onMouseDown={() =>
-                        handleSelectOption(value, isCloseOnSelect)
-                      }
+                      onMouseDown={() => handleSelectOption(value, "select")}
                       onMouseOver={() => handleMouseOver(value)}
                       onMouseLeave={handleMouseLeave}
                       data-active={String(isActive(value, activeValue))}
-                      ref={
-                        isActive(value, activeValue) ? activeOptionRef : null
-                      }
+                      ref={ref}
                     >
                       <span>{label}</span>
                     </div>
