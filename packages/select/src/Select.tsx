@@ -8,8 +8,7 @@ import {
   useState,
 } from "react";
 import { getClassName } from "@cheaaa/theme";
-
-import { Input } from "../../input/src";
+import { Input } from "@cheaaa/input";
 
 import { ComponentNames, useStyles } from "./styles";
 import { defaultFilterFunction, isActive, scrollIntoView } from "./utils";
