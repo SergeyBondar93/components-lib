@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.8](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.7...@cheaaa/button@1.7.8) (2022-07-21)
+
+
+### Bug Fixes
+
+* fix disabled, add stopPropogation after mouse down ([5bab439](https://github.com/SergeyBondar93/liba/commit/5bab4390df6017a303a0bac10f493452135ab55f))
+
+
+
+
+
 ## 1.7.7 (2022-07-20)
 
 **Note:** Version bump only for package @cheaaa/button
