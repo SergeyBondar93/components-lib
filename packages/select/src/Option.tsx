@@ -5,7 +5,7 @@ import { forwardRef, ReactNode, useMemo } from "react";
 import { useStyles, ComponentNames } from "./styles";
 import { SelectOptionValue } from "./types";
 
-interface IOptionProps extends IThemedProps {
+export interface IOptionProps extends IThemedProps {
   activeValue: SelectOptionValue | null;
   label: ReactNode;
   value: SelectOptionValue;

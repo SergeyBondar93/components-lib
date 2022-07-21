@@ -10,3 +10,5 @@ export const SELECT_COMPONENTS_NAMES = {
   removeIconWrapper: "removeIconWrapper",
   noOptionsMessage: "noOptionsMessage",
 } as const;
+
+export const DEFAULT_SELECT_INPUT_APPEARANCE = "select-input";

@@ -7,6 +7,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [SELECT_COMPONENTS_NAMES.wrapper]: {
     position: "relative",
     width: "300px",
+    height: "45px",
     '&[data-shouldfitcontent="true"]': {
       width: "100%",
     },

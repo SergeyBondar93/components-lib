@@ -10,7 +10,11 @@ import {
 import { getClassName } from "@cheaaa/theme";
 import { Input } from "@cheaaa/input";
 
-import { ComponentNames, useStyles } from "./styles";
+import {
+  ComponentNames,
+  DEFAULT_SELECT_INPUT_APPEARANCE,
+  useStyles,
+} from "./styles";
 import { defaultFilterFunction, scrollIntoView } from "./utils";
 import {
   HandleSelectFunction,
@@ -383,6 +387,7 @@ export const Select = ({
         onChange={handleChangeInput}
         onFocus={handleFocusInput}
         onBlur={onBlurInput}
+        appearance={DEFAULT_SELECT_INPUT_APPEARANCE}
         {...inputProps}
         data-select-open={String(!!isOpen)}
         wrapperProps={inputWrapperProps}

@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ThemeProvider } from "react-jss";
 import { Checkbox } from "@cheaaa/checkbox";
 
@@ -8,7 +8,7 @@ import { SelectOptionValue } from "../src/types";
 
 import { customFilterFunction, isSomeOptionsDisabled } from "./utils";
 import { options } from "./options";
-import { theme } from "./theme";
+import { getTheme } from "./theme";
 
 export default {
   title: "Select",
@@ -57,7 +57,7 @@ export const Base: Story<IStoryParams> = (args) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Checkbox
         value={isSomeDisabled}
         onChange={setIsSomeDisabled}
@@ -216,7 +216,7 @@ export const Base: Story<IStoryParams> = (args) => {
         necessitatibus nam voluptatem corrupti nesciunt mollitia commodi.
         Repellat facere nobis rerum.
       </p>
-    </ThemeProvider>
+    </>
   );
 };
 
@@ -234,3 +234,112 @@ Base.args = {
   selectedHeader: "ВЫБРАННЫЕ",
   unselectedHeader: "ВСЕ СТРАНЫ",
 };
+
+export const Themed = (args) => {
+  const [selectedCountries, setSelectedCountries] = useState<
+    SelectOptionValue[]
+  >([]);
+  const [isCustomPalette, setIsCustomPalette] = useState(false);
+  const [colors, setColors] = useState({
+    main: "#f7bdbd",
+    active: "#eb6010",
+    header: "#f0ec99",
+    text: "#064a52",
+  });
+
+  const handleChangeColors = (e) => {
+    setColors({ ...colors, [e.target.name]: e.target.value });
+  };
+
+  const theme = useMemo(() => {
+    const theme = getTheme(colors);
+
+    if (!isCustomPalette) {
+      delete theme.components["@che/input"].base;
+      delete theme.components["@che/select"].base;
+    }
+
+    return theme;
+  }, [colors, isCustomPalette]);
+
+  const [multiValue, setMultiValue] = useState<SelectOptionValue[]>([]);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <p>Choose your colors:</p>
+      <div>
+        <input
+          onChange={handleChangeColors}
+          type="color"
+          id="main"
+          name="main"
+          value={colors.main}
+        />
+        <label htmlFor="main">Main background</label>
+      </div>
+      <div>
+        <input
+          onChange={handleChangeColors}
+          type="color"
+          id="active"
+          name="active"
+          value={colors.active}
+        />
+        <label htmlFor="active">Active Option</label>
+      </div>
+      <div>
+        <input
+          onChange={handleChangeColors}
+          type="color"
+          id="header"
+          name="header"
+          value={colors.header}
+        />
+        <label htmlFor="header">Group header</label>
+      </div>
+      <div>
+        <input
+          onChange={handleChangeColors}
+          type="color"
+          id="text"
+          name="text"
+          value={colors.text}
+        />
+        <label htmlFor="text">Option text color</label>
+      </div>
+      <Checkbox
+        value={isCustomPalette}
+        onChange={setIsCustomPalette}
+        label="Custom palette"
+      />
+      <h2>Countries</h2>
+      <Select
+        shouldFitContent
+        appearance="countries"
+        inputProps={{
+          appearance: "countries",
+        }}
+        value={selectedCountries}
+        onChange={setSelectedCountries}
+        options={options}
+        filterFunction={customFilterFunction}
+        isMulti
+        placeholder="Введите или выберите страну"
+        label="Куда"
+        selectedHeader="ВЫБРАННЫЕ"
+        unselectedHeader="ВСЕ СТРАНЫ"
+      />
+      <h2>Base</h2>
+      <Select
+        value={multiValue}
+        onChange={setMultiValue}
+        options={options}
+        filterFunction={customFilterFunction}
+        isMulti
+        {...args}
+      />
+    </ThemeProvider>
+  );
+};
+
+Themed.args = Base.args;

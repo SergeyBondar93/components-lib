@@ -1,6 +1,4 @@
 export * from "./Select";
-export {
-  SELECT_COMPONENTS_NAMES,
-  SELECT_COMPONENT_NAMESPACE,
-} from "./styles/consts";
+export { IOptionProps } from "./Option";
+export * from "./styles/consts";
 export * from "./types";

@@ -37,6 +37,9 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     },
 
     /** Стили для инпута используемом в Select компоненте */
+    "&[data-select-open]": {
+      height: "100%",
+    },
     '&[data-select-open="true"]': {
       alignItems: "flex-end",
       border: "1px solid #636AFF",
