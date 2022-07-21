@@ -135,7 +135,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     fontSize: "13px",
     position: "absolute",
     transition: "all .1s ease",
-    color: "#718299",
+    color: "rgba(113, 130, 153, 0.8)",
 
     top: "50%",
     cursor: "text",
