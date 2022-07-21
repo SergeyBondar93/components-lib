@@ -52,8 +52,9 @@ export const Base: Story<IStoryParams> = (args) => {
     // if (args.smoothScrollToTop) {
     const top = window.scrollY + e.target.getBoundingClientRect().top - 10;
     // window.scrollTo({ top, behavior: "smooth" });
-
-    window.scroll({ top, behavior: "smooth" });
+    setTimeout(() => {
+      window.scroll({ top, behavior: "smooth" });
+    }, 100);
     // }
   };
 
