@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.5.4...@cheaaa/select@1.5.5) (2022-07-21)
+
+
+### Bug Fixes
+
+* fix inputPlaceholder in select ([19a79bf](https://github.com/SergeyBondar93/liba/commit/19a79bfd0f4d23690c04f104a8d2fc46d3f1e022))
+* fix select item styles ([48667f7](https://github.com/SergeyBondar93/liba/commit/48667f7e3a141f580fabb6c436e0c051346a99aa))
+
+
+
+
+
 ## [1.5.4](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.5.3...@cheaaa/select@1.5.4) (2022-07-21)
 
 
