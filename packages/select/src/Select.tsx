@@ -185,7 +185,10 @@ export const Select = ({
 
   const formattedValue = useMemo(() => {
     return isMulti
-      ? (value as SelectOptionValue[]).map((v) => optionsObject[v]).join(", ")
+      ? (value as SelectOptionValue[])
+          .map((v) => optionsObject[v])
+          .filter((v) => v !== undefined)
+          .join(", ")
       : optionsObject[value as SelectOptionValue] || "";
   }, [value, isMulti, optionsObject]);
 
