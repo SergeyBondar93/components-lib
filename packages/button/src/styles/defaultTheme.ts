@@ -27,7 +27,7 @@ export const defaultButtonTheme: Required<
       cursor: "not-allowed",
       opacity: 0.7,
     },
-    '&[shouldfitcontent="true"]': {
+    '&[data-shouldfitcontent="true"]': {
       width: "100%",
     },
   },
@@ -57,7 +57,7 @@ export const defaultIconButtonTheme: Required<
       cursor: "not-allowed",
       opacity: 0.7,
     },
-    '&[shouldfitcontent="true"]': {
+    '&[data-shouldfitcontent="true"]': {
       width: "100%",
     },
   },
@@ -95,7 +95,7 @@ export const defaultButtonGroupTheme: Required<
       cursor: "not-allowed",
       opacity: 0.7,
     },
-    '&[shouldfitcontent="true"]': {
+    '&[data-shouldfitcontent="true"]': {
       width: "100%",
       marginRight: "0px",
     },

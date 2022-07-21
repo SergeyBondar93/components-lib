@@ -27,6 +27,7 @@ interface IStoryParams {
   isCloseOnRemove: boolean;
   smoothScrollToTop: boolean;
   disabled: boolean;
+  shouldFitContent: boolean;
   label: string;
   placeholder: string;
   noOptionsMessage: string;
@@ -152,9 +153,10 @@ Base.args = {
   isOpen: false,
   smoothScrollToTop: false,
   customFilterFunction: false,
-  isCloseOnSelect: false,
+  isCloseOnSelect: true,
   isCloseOnRemove: false,
   disabled: false,
+  shouldFitContent: false,
   label: "Выберите страну",
   placeholder: "Введите или выберите страну",
   noOptionsMessage: "Ничего не найдено",

@@ -26,6 +26,13 @@ export type SelectIsOptionDisabledFunction<
   unselectedOptions: O[];
 }) => boolean;
 
+export type HandleSelectFunction = (arg: {
+  optionValue: SelectOptionValue;
+  disabled: boolean;
+  type: "remove" | "select";
+  event: React.MouseEvent<HTMLDivElement, MouseEvent> | KeyboardEvent;
+}) => void;
+
 type InputProps = Omit<IInputProps, "onChange" | "value"> & {
   onChange?: IInputProps["onChange"];
   onBlur?: IInputProps["onBlur"];
@@ -50,6 +57,10 @@ interface IBaseSelect extends IThemedProps {
    */
   disabled?: boolean;
   isOpen?: boolean;
+  /**
+   * Делает width: 100%
+   */
+  shouldFitContent?: boolean;
 
   options: SelectOption[];
   /**

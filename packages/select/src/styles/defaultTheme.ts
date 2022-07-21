@@ -7,6 +7,9 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [SELECT_COMPONENTS_NAMES.wrapper]: {
     position: "relative",
     width: "300px",
+    '&[data-shouldfitcontent="true"]': {
+      width: "100%",
+    },
   },
   [SELECT_COMPONENTS_NAMES.dropdown]: {
     zIndex: 1,

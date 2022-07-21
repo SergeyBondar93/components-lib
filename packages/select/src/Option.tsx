@@ -12,7 +12,7 @@ interface IOptionProps extends IThemedProps {
   disabled?: boolean;
   index: number;
   isRemovable?: boolean;
-  onMouseDown: () => void;
+  onMouseDown: React.MouseEventHandler<HTMLDivElement>;
   onMouseOver: () => void;
   onMouseLeave: () => void;
 }

@@ -95,7 +95,7 @@ export const BaseButton = function <TProps>({
       data-disabled={String(!!disabled)}
       data-selected={String(!!isSelected)}
       href={disabled ? undefined : href}
-      shouldfitcontent={String(!!shouldFitContent)}
+      data-shouldfitcontent={String(!!shouldFitContent)}
       {...(Component ? { appearance, baseAppearance } : {})}
       {...(props as any)}
     />

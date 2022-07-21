@@ -12,12 +12,18 @@ import { Input } from "@cheaaa/input";
 
 import { ComponentNames, useStyles } from "./styles";
 import { defaultFilterFunction, scrollIntoView } from "./utils";
-import { SelectOption, SelectOptionValue, SelectProps } from "./types";
+import {
+  HandleSelectFunction,
+  SelectOption,
+  SelectOptionValue,
+  SelectProps,
+} from "./types";
 import { Option } from "./Option";
 
 export const Select = ({
   baseAppearance = "base",
   appearance = "base",
+  shouldFitContent,
   disabled = false,
   isMulti = true,
   isOpen: isOpenProps = false,
@@ -66,8 +72,12 @@ export const Select = ({
     onChangeInput?.(inputValue);
   };
 
-  const handleSelectOption = useCallback(
-    (optionValue, type: "select" | "remove") => {
+  const handleSelectOption: HandleSelectFunction = useCallback(
+    ({ optionValue, disabled, type, event }) => {
+      event.stopPropagation();
+
+      if (disabled) return;
+
       let newValue: any = null;
 
       if (isMulti) {
@@ -86,6 +96,7 @@ export const Select = ({
       const isClosed = type === "select" ? isCloseOnSelect : isCloseOnRemove;
 
       setIsOpen(!isClosed);
+      setActiveValue(null);
     },
     [value, isMulti, isCloseOnSelect, isCloseOnRemove]
   );
@@ -288,7 +299,18 @@ export const Select = ({
 
       switch (e.key) {
         case "Enter":
-          handleSelectOption(activeValue, isSelected ? "remove" : "select");
+          if (!activeValue) return;
+
+          const disabled = filteredOptions.find(
+            (option) => option.value === activeValue
+          )?.disabled;
+
+          handleSelectOption({
+            optionValue: activeValue,
+            type: isSelected ? "remove" : "select",
+            event: e,
+            disabled: !!disabled,
+          });
           inputRef.current?.blur();
           break;
         case "Escape":
@@ -348,7 +370,11 @@ export const Select = ({
   ]);
 
   return (
-    <div ref={wrapperRef} className={classNames.wrapperClassName}>
+    <div
+      ref={wrapperRef}
+      className={classNames.wrapperClassName}
+      data-shouldfitcontent={String(!!shouldFitContent)}
+    >
       <Input
         shouldFitContent
         value={inputValue}
@@ -384,7 +410,14 @@ export const Select = ({
                       activeValue={activeValue}
                       value={value}
                       index={index}
-                      onMouseDown={() => handleSelectOption(value, "remove")}
+                      onMouseDown={(event) =>
+                        handleSelectOption({
+                          optionValue: value,
+                          disabled: false,
+                          type: "remove",
+                          event,
+                        })
+                      }
                       onMouseOver={() => handleMouseOver(value)}
                       onMouseLeave={handleMouseLeave}
                       ref={ref}
@@ -412,9 +445,14 @@ export const Select = ({
                       activeValue={activeValue}
                       value={value}
                       index={index}
-                      onMouseDown={() => {
-                        !disabled && handleSelectOption(value, "select");
-                      }}
+                      onMouseDown={(event) =>
+                        handleSelectOption({
+                          optionValue: value,
+                          disabled: !!disabled,
+                          type: "select",
+                          event,
+                        })
+                      }
                       onMouseOver={() => handleMouseOver(value)}
                       onMouseLeave={handleMouseLeave}
                       ref={ref}
