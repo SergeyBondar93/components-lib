@@ -7,6 +7,7 @@ export type SelectOptionValue = string;
 export type SelectOption = {
   value: SelectOptionValue;
   label: ReactNode;
+  disabled?: boolean;
 };
 
 export type SelectFilterFunction<
@@ -15,6 +16,15 @@ export type SelectFilterFunction<
   searchString: string,
   options: { selectedOptions: O[]; unselectedOptions: O[] }
 ) => SelectOption[];
+
+export type SelectIsOptionDisabledFunction<
+  O extends { label: any; value: any } = SelectOption
+> = (arg: {
+  searchString: string;
+  option: O;
+  selectedOptions: O[];
+  unselectedOptions: O[];
+}) => boolean;
 
 type InputProps = Omit<IInputProps, "onChange" | "value"> & {
   onChange?: IInputProps["onChange"];
@@ -28,6 +38,16 @@ interface IBaseSelect extends IThemedProps {
    * Должна вернуть опции для рендера в раздел не выбранных.
    */
   filterFunction?: SelectFilterFunction;
+
+  /**
+   * Функция делающая disabled опции, вызывается для каждой опции из списка не выбранных + отфильтрованных по searchString
+   * должна вернуть true / false
+   */
+  isOptionDisabledFunction?: SelectIsOptionDisabledFunction;
+
+  /**
+   * Disabled на input
+   */
   disabled?: boolean;
   isOpen?: boolean;
 

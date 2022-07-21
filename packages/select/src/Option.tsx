@@ -6,9 +6,10 @@ import { useStyles, ComponentNames } from "./styles";
 import { SelectOptionValue } from "./types";
 
 interface IOptionProps extends IThemedProps {
-  label: ReactNode;
   activeValue: SelectOptionValue | null;
+  label: ReactNode;
   value: SelectOptionValue;
+  disabled?: boolean;
   index: number;
   isRemovable?: boolean;
   onMouseDown: () => void;
@@ -21,9 +22,10 @@ export const Option = forwardRef<HTMLDivElement, IOptionProps>(
     {
       baseAppearance = "base",
       appearance = "base",
-      label,
       activeValue,
+      label,
       value,
+      disabled,
       isRemovable,
       onMouseDown,
       onMouseOver,
@@ -60,6 +62,7 @@ export const Option = forwardRef<HTMLDivElement, IOptionProps>(
         onMouseOver={onMouseOver}
         onMouseLeave={onMouseLeave}
         data-active={String(isActive)}
+        data-disabled={String(!!disabled)}
         ref={ref}
       >
         <span>{label}</span>

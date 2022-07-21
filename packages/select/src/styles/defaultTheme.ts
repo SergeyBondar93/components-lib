@@ -56,6 +56,10 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     '&[data-active="true"]': {
       background: "#E5ECF7",
     },
+    '&[data-disabled="true"]': {
+      opacity: "0.7",
+      cursor: "not-allowed",
+    },
   },
   [SELECT_COMPONENTS_NAMES.removeIconWrapper]: {
     "& svg": {

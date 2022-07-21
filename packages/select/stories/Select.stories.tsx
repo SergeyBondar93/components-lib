@@ -1,11 +1,12 @@
 import { Meta, Story } from "@storybook/react";
 import { useState } from "react";
 import { ThemeProvider } from "react-jss";
+import { Checkbox } from "@cheaaa/checkbox";
 
 import { Select } from "../src";
 import { SelectOptionValue } from "../src/types";
 
-import { customFilterFunction } from "./customFilterFunction";
+import { customFilterFunction, isSomeOptionsDisabled } from "./utils";
 import { options } from "./options";
 import { theme } from "./theme";
 
@@ -36,9 +37,14 @@ interface IStoryParams {
 export const Base: Story<IStoryParams> = (args) => {
   const [multiValue, setMultiValue] = useState<SelectOptionValue[]>([]);
   const [singleValue, setSingleValue] = useState<SelectOptionValue>("");
+  const [isSomeDisabled, setIsSomeDisabled] = useState(false);
 
   const filterFunction = args.customFilterFunction
     ? customFilterFunction
+    : undefined;
+
+  const isOptionDisabledFunction = isSomeDisabled
+    ? isSomeOptionsDisabled
     : undefined;
 
   const onFocus: React.FocusEventHandler<HTMLElement> = (e) => {
@@ -50,6 +56,11 @@ export const Base: Story<IStoryParams> = (args) => {
 
   return (
     <ThemeProvider theme={theme}>
+      <Checkbox
+        value={isSomeDisabled}
+        onChange={setIsSomeDisabled}
+        label="Disable options starts with А В Д З К"
+      />
       <h2>Multi Value</h2>
       <Select
         value={multiValue}
@@ -57,6 +68,7 @@ export const Base: Story<IStoryParams> = (args) => {
         options={options}
         filterFunction={filterFunction}
         isMulti
+        isOptionDisabledFunction={isOptionDisabledFunction}
         inputProps={{
           onFocus,
         }}
@@ -69,6 +81,7 @@ export const Base: Story<IStoryParams> = (args) => {
         options={options}
         isMulti={false}
         filterFunction={filterFunction}
+        isOptionDisabledFunction={isOptionDisabledFunction}
         inputProps={{
           onFocus,
         }}
@@ -139,8 +152,8 @@ Base.args = {
   isOpen: false,
   smoothScrollToTop: false,
   customFilterFunction: false,
-  isCloseOnSelect: true,
-  isCloseOnRemove: true,
+  isCloseOnSelect: false,
+  isCloseOnRemove: false,
   disabled: false,
   label: "Выберите страну",
   placeholder: "Введите или выберите страну",

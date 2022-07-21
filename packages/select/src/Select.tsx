@@ -15,10 +15,6 @@ import { defaultFilterFunction, scrollIntoView } from "./utils";
 import { SelectOption, SelectOptionValue, SelectProps } from "./types";
 import { Option } from "./Option";
 
-/**
-isOptionDisabled = (option, selectedValue) => boolean
-*/
-
 export const Select = ({
   baseAppearance = "base",
   appearance = "base",
@@ -29,7 +25,6 @@ export const Select = ({
   options,
   value,
   onChange,
-
   isCloseOnSelect = true,
   isCloseOnRemove = false,
 
@@ -44,6 +39,7 @@ export const Select = ({
     onBlur: onBlurInput,
     ...inputProps
   } = {},
+  isOptionDisabledFunction,
   filterFunction,
 }: SelectProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -121,10 +117,30 @@ export const Select = ({
   }, [value, isMulti, options]);
 
   const filteredOptions = useMemo(() => {
-    return filterFunction
+    const filteredOpts = filterFunction
       ? filterFunction(searchString, { selectedOptions, unselectedOptions })
       : unselectedOptions.filter(defaultFilterFunction(searchString));
-  }, [unselectedOptions, searchString, filterFunction]);
+
+    const withDisabled = isOptionDisabledFunction
+      ? filteredOpts.map((option) => ({
+          ...option,
+          disabled: isOptionDisabledFunction({
+            option,
+            searchString,
+            selectedOptions,
+            unselectedOptions,
+          }),
+        }))
+      : filteredOpts;
+
+    return withDisabled;
+  }, [
+    selectedOptions,
+    unselectedOptions,
+    searchString,
+    filterFunction,
+    isOptionDisabledFunction,
+  ]);
 
   const handleFocusInput: React.FocusEventHandler<HTMLElement> = useCallback(
     (...args) => {
@@ -384,18 +400,21 @@ export const Select = ({
             </div>
             <div ref={unselectedListRef} className={classNames.listClassName}>
               {filteredOptions.length ? (
-                filteredOptions.map(({ value, label }, index) => {
+                filteredOptions.map(({ value, label, disabled }, index) => {
                   const ref =
                     optionsRefs.current[selectedOptions.length + index];
 
                   return (
                     <Option
+                      disabled={disabled}
                       key={value}
                       label={label}
                       activeValue={activeValue}
                       value={value}
                       index={index}
-                      onMouseDown={() => handleSelectOption(value, "select")}
+                      onMouseDown={() => {
+                        !disabled && handleSelectOption(value, "select");
+                      }}
                       onMouseOver={() => handleMouseOver(value)}
                       onMouseLeave={handleMouseLeave}
                       ref={ref}

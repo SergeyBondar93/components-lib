@@ -1,4 +1,4 @@
-import { SelectFilterFunction } from "../src";
+import { SelectFilterFunction, SelectIsOptionDisabledFunction } from "../src";
 
 export const getEnglishLayout = (input: string) => {
   const replacer = {
@@ -62,4 +62,11 @@ export const customFilterFunction: SelectFilterFunction<{
   return unselectedOptions.filter((option) => {
     return option.label.toLowerCase().startsWith(formattedSearchString);
   });
+};
+
+export const isSomeOptionsDisabled: SelectIsOptionDisabledFunction<{
+  label: string;
+  value: string;
+}> = ({ option }) => {
+  return ["А", "В", "Д", "З", "К"].some((w) => option.label.startsWith(w));
 };
