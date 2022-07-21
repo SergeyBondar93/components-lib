@@ -100,6 +100,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
 
     /** Стили для инпута используемом в Select компоненте */
     "&[data-select-open]": {
+      cursor: "pointer",
       transition: "0.2s",
       height: "100%",
     },
