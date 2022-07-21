@@ -49,13 +49,11 @@ export const Base: Story<IStoryParams> = (args) => {
     : undefined;
 
   const onFocus: React.FocusEventHandler<HTMLElement> = (e) => {
-    // if (args.smoothScrollToTop) {
-    const top = window.scrollY + e.target.getBoundingClientRect().top - 10;
-    // window.scrollTo({ top, behavior: "smooth" });
-    setTimeout(() => {
+    if (args.smoothScrollToTop) {
+      const top = window.scrollY + e.target.getBoundingClientRect().top - 10;
+      // TODO не работает на IOS, починить
       window.scroll({ top, behavior: "smooth" });
-    }, 100);
-    // }
+    }
   };
 
   return (
