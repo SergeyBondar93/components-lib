@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.5.1...@cheaaa/select@1.5.2) (2022-07-21)
+
+
+### Bug Fixes
+
+* fix undefined selected option label ([d196aad](https://github.com/SergeyBondar93/liba/commit/d196aad4729f1b7c56f8b8e3206745ada939f36a))
+
+
+
+
+
 ## [1.5.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.5.0...@cheaaa/select@1.5.1) (2022-07-21)
 
 **Note:** Version bump only for package @cheaaa/select
