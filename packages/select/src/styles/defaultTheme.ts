@@ -50,8 +50,8 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     },
   },
   [SELECT_COMPONENTS_NAMES.listItem]: {
-    padding: "0px 15px",
-    height: "30px",
+    padding: "4px 15px",
+    minHeight: "30px",
     boxSizing: "border-box",
     userSelect: "none",
     display: "flex",
