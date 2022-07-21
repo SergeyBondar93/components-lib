@@ -49,10 +49,10 @@ export const Base: Story<IStoryParams> = (args) => {
     : undefined;
 
   const onFocus: React.FocusEventHandler<HTMLElement> = (e) => {
-    if (args.smoothScrollToTop) {
-      const top = window.scrollY + e.target.getBoundingClientRect().top - 10;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
+    // if (args.smoothScrollToTop) {
+    const top = window.scrollY + e.target.getBoundingClientRect().top - 10;
+    window.scrollTo({ top, behavior: "smooth" });
+    // }
   };
 
   return (
