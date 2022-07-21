@@ -39,12 +39,15 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     position: "relative",
     maxHeight: "164px",
     overflowY: "auto",
-    // TODO сделать видимый слегка заметный скроллбар
     "&::-webkit-scrollbar": {
-      display: "none",
+      width: "4px",
     },
-    "-ms-overflow-style": "none",
-    scrollbarWidth: "none",
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "transparent",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "#485B75",
+    },
   },
   [SELECT_COMPONENTS_NAMES.listItem]: {
     padding: "0px 15px",
