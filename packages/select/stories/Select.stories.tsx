@@ -51,7 +51,9 @@ export const Base: Story<IStoryParams> = (args) => {
   const onFocus: React.FocusEventHandler<HTMLElement> = (e) => {
     // if (args.smoothScrollToTop) {
     const top = window.scrollY + e.target.getBoundingClientRect().top - 10;
-    window.scrollTo({ top, behavior: "smooth" });
+    // window.scrollTo({ top, behavior: "smooth" });
+
+    window.scroll({ top, behavior: "smooth" });
     // }
   };
 
@@ -144,6 +146,76 @@ export const Base: Story<IStoryParams> = (args) => {
         ipsam cumque dolorum laborum tempora inventore, nihil voluptate
         perspiciatis eos perferendis rerum quibusdam minima cum. Voluptate odio
         molestiae deleniti dolore quibusdam exercitationem similique?
+      </p>
+      <h2>Multi Value</h2>
+      <Select
+        value={multiValue}
+        onChange={setMultiValue}
+        options={options}
+        filterFunction={filterFunction}
+        isMulti
+        isOptionDisabledFunction={isOptionDisabledFunction}
+        inputProps={{
+          onFocus,
+        }}
+        {...args}
+      />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus quis
+        doloribus, incidunt ab necessitatibus labore cumque molestias dolore
+        illum adipisci iste eos laboriosam laudantium fuga odit suscipit saepe.
+        Inventore magni sed iste pariatur? Voluptatibus dolorem alias quam
+        reprehenderit dolor quia neque, qui illo, possimus et mollitia corrupti
+        ut inventore distinctio non? Quod veniam saepe deleniti modi sunt vero
+        nihil reprehenderit dolorem? Ullam asperiores perspiciatis ut aliquid
+        unde. Sint dolore vero inventore quod repellendus recusandae error
+        praesentium quisquam et rerum nisi officia, tempore harum deleniti
+        repudiandae maiores sequi cum a hic laborum voluptatibus. Necessitatibus
+        iure aliquam explicabo, amet dicta alias doloremque culpa eveniet
+        similique iste, fugiat obcaecati debitis numquam perspiciatis beatae,
+        velit vel odit ullam. Provident dolore qui in dicta vitae? A corporis
+        eum ducimus ut consectetur laudantium, labore voluptatem officiis neque
+        tempora, expedita vero, assumenda at? Obcaecati beatae vel quis
+        aspernatur eaque, nam, unde neque vero corrupti mollitia aperiam omnis
+        tempore repellat voluptas similique aliquid magnam, esse quam
+        praesentium quae repudiandae. Nisi dignissimos voluptatem totam eligendi
+        odit repellendus laborum similique esse officia veritatis laudantium,
+        velit quo voluptate, amet impedit suscipit numquam temporibus. Nihil,
+        molestiae iste ipsam modi nesciunt distinctio officiis sapiente, magnam
+        velit at aliquid, aspernatur enim veritatis? Voluptatum pariatur tenetur
+        voluptates eligendi neque architecto itaque inventore consequatur quo
+        velit. Maxime quaerat temporibus modi inventore ipsum dignissimos cumque
+        illo obcaecati nemo dolore! Soluta perferendis voluptas labore id, esse
+        saepe eum. Dolorem doloribus, nesciunt eum ipsum adipisci tempora sed
+        sequi eos iste accusantium alias voluptate hic, veniam omnis laboriosam,
+        beatae expedita facere tenetur. Sit sed cumque, quod culpa, quasi
+        recusandae, optio doloremque sapiente dignissimos sunt itaque explicabo
+        minus. Eaque doloremque tempore quae id quidem nostrum suscipit, fugit
+        laboriosam. Optio illo distinctio harum repellendus, veritatis esse
+        commodi saepe molestiae amet odio assumenda quia tempore excepturi ipsum
+        quasi nisi consectetur debitis vel officia iure velit ab illum? Suscipit
+        repellat sed harum enim necessitatibus repellendus quis rerum porro
+        eaque! Facere possimus maxime unde inventore nobis? Eum quibusdam amet
+        ratione sapiente! Facilis, accusamus nisi. Odit autem dolore totam quos
+        vero aut, necessitatibus dicta magnam soluta exercitationem suscipit
+        voluptatem esse molestias fugiat placeat sapiente corrupti! Ad a,
+        praesentium illo autem quos mollitia accusantium tempore minima eligendi
+        ipsa eius aperiam unde ipsam ullam magnam corporis, tempora ducimus iure
+        doloremque! Suscipit expedita, soluta ratione autem temporibus vero
+        facilis quas pariatur sit quibusdam, veritatis laudantium! A possimus
+        odit architecto soluta doloribus, vitae saepe autem quidem recusandae
+        eum dolor ducimus illo assumenda quisquam magni nulla velit. Quis
+        tempora repudiandae obcaecati quo hic dolorum excepturi quam adipisci
+        qui ipsum aliquid quidem error nulla minus optio, ea ad accusamus a esse
+        fuga. Illo inventore ea delectus esse corporis minima dolorem tempora
+        nemo maxime repellat et perferendis debitis architecto aliquid
+        consequuntur ut explicabo optio placeat recusandae numquam, expedita
+        modi. Fugit odio hic impedit accusantium delectus ullam aspernatur sint
+        corporis. Soluta dolor natus unde reiciendis quidem! Aliquam excepturi
+        facilis reiciendis, quasi asperiores aliquid neque dignissimos fuga,
+        voluptatibus reprehenderit enim animi architecto voluptates blanditiis
+        necessitatibus nam voluptatem corrupti nesciunt mollitia commodi.
+        Repellat facere nobis rerum.
       </p>
     </ThemeProvider>
   );
