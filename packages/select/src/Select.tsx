@@ -201,12 +201,12 @@ export const Select = ({
   }, [searchString, formattedValue, isOpen]);
 
   const inputPlaceholder = useMemo(() => {
-    if (isOpen && value?.length) {
+    if (isOpen && formattedValue?.length) {
       return formattedValue;
     } else {
       return placeholder;
     }
-  }, [isOpen, value, formattedValue, placeholder]);
+  }, [isOpen, formattedValue, placeholder]);
 
   const inputLabelProps = useMemo(() => {
     return {
