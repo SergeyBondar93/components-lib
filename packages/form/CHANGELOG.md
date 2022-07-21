@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@2.0.1...@cheaaa/form@2.1.0) (2022-07-21)
+
+
+### Features
+
+* add triage icon to select ([cf84f4b](https://github.com/SergeyBondar93/liba/commit/cf84f4b521f1cd8641b3098ac046a02d83026029))
+
+
+
+
+
 ## 2.0.1 (2022-07-20)
 
 **Note:** Version bump only for package @cheaaa/form
