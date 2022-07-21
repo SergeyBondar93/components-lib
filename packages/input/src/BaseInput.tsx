@@ -33,6 +33,8 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       onBlur,
       labelProps = {},
       wrapperProps = {},
+      prefixProps = {},
+      postfixProps = {},
       classes,
       ...rest
     },
@@ -157,7 +159,11 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         {...wrapperProps}
       >
         {prefix && (
-          <span ref={prefixRef} className={classNames.prefixWrapperClassName}>
+          <span
+            ref={prefixRef}
+            className={classNames.prefixWrapperClassName}
+            {...prefixProps}
+          >
             {prefix}
           </span>
         )}
@@ -207,7 +213,12 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         )}
 
         {postfix && (
-          <span className={classNames.postfixWrapperClassName}>{postfix}</span>
+          <span
+            className={classNames.postfixWrapperClassName}
+            {...postfixProps}
+          >
+            {postfix}
+          </span>
         )}
       </div>
     );

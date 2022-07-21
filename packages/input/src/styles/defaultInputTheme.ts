@@ -97,6 +97,15 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     marginRight: "12px",
     display: "flex",
     alignItems: "center",
+
+    /** Стили для инпута используемом в Select компоненте */
+    "&[data-select-open]": {
+      transition: "0.2s",
+      height: "100%",
+    },
+    '&[data-select-open="true"]': {
+      transform: "rotate(180deg)",
+    },
   },
   [INPUT_COMPONENTS_NAMES.clearIcon]: {
     alignSelf: "center",

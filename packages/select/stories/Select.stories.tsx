@@ -51,7 +51,7 @@ export const Base: Story<IStoryParams> = (args) => {
   const onFocus: React.FocusEventHandler<HTMLElement> = (e) => {
     if (args.smoothScrollToTop) {
       const top = window.scrollY + e.target.getBoundingClientRect().top - 10;
-      // TODO не работает на IOS, починить
+      // TODO не работает на IOS, можно попробовать починить что бы при открытии селекта он был вверху экрана
       window.scroll({ top, behavior: "smooth" });
     }
   };

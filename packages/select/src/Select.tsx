@@ -9,6 +9,7 @@ import {
 } from "react";
 import { getClassName } from "@cheaaa/theme";
 import { Input } from "@cheaaa/input";
+import { TriangleIcon } from "@cheaaa/icons";
 
 import {
   ComponentNames,
@@ -218,6 +219,20 @@ export const Select = ({
     };
   }, [inputProps.wrapperProps, isOpen]);
 
+  const inputPrefixProps = useMemo(() => {
+    return {
+      "data-select-open": String(!!isOpen),
+      ...(inputProps.prefixProps || {}),
+    };
+  }, [inputProps.prefixProps, isOpen]);
+
+  const inputPosifixProps = useMemo(() => {
+    return {
+      "data-select-open": String(!!isOpen),
+      ...(inputProps.postfixProps || {}),
+    };
+  }, [inputProps.postfixProps, isOpen]);
+
   const classNames = useMemo(() => {
     const wrapperClassName = getClassName<ComponentNames>(
       classes,
@@ -388,10 +403,13 @@ export const Select = ({
         onFocus={handleFocusInput}
         onBlur={onBlurInput}
         appearance={DEFAULT_SELECT_INPUT_APPEARANCE}
+        postfix={<TriangleIcon />}
         {...inputProps}
         data-select-open={String(!!isOpen)}
         wrapperProps={inputWrapperProps}
         labelProps={inputLabelProps}
+        prefixProps={inputPrefixProps}
+        postfixProps={inputPosifixProps}
         ref={inputRef}
         disabled={disabled}
       />

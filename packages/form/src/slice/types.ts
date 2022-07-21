@@ -11,16 +11,6 @@ type ErrorsModel<TModel> = {
     ? TochedModel<TModel[Key]>
     : string | string[];
 };
-/*
-TODO Возможно понадобится тип который принимает модель и делает из неё тип ошибок, 
-где ошибка может быть на каждом уровне вложенности 
-например 
-Model = { a: { b: c: { string } } }
-Result = 
- { a: ErrorType } |
- { a: { b: ErrorType } } |
- { a: { b: { c: ErrorType} } } |
-*/
 
 export type FormState<TModel = {}> = {
   toched: TochedModel<TModel>;

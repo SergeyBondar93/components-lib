@@ -34,14 +34,24 @@ export interface IBaseInputProps extends InputHTMLAttributes, IThemedProps {
   label?: ReactNode;
 
   /**
+   * Props для wrapper при необходимости
+   */
+  wrapperProps?: HTMLAttributes<HTMLDivElement>;
+
+  /**
    * Props для label при необходимости
    */
   labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
 
   /**
-   * Props для wrapper при необходимости
+   * Props для prefix при необходимости
    */
-  wrapperProps?: HTMLAttributes<HTMLDivElement>;
+  prefixProps?: HTMLAttributes<HTMLSpanElement>;
+
+  /**
+   * Props для postfix при необходимости
+   */
+  postfixProps?: HTMLAttributes<HTMLSpanElement>;
 
   /**
    * В базовой версии виден только при фокусе на input.

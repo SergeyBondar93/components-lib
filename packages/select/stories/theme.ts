@@ -52,6 +52,9 @@ export const getTheme = ({ main, active, header, text }: Colors): any => ({
             color: "#636AFF",
           },
         },
+        [INPUT_COMPONENTS_NAMES.postfixWrapper]: {
+          marginRight: "20px",
+        },
       },
     },
     [SELECT_COMPONENT_NAMESPACE]: {
