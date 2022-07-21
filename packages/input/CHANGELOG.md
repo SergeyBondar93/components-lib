@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.18.0...@cheaaa/input@1.18.1) (2022-07-21)
+
+
+### Bug Fixes
+
+* fix input label styles ([f3152f4](https://github.com/SergeyBondar93/liba/commit/f3152f479700a8ca0a54571e3fbd4dc196e8f9a5))
+
+
+
+
+
 # [1.18.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.17.0...@cheaaa/input@1.18.0) (2022-07-21)
 
 
