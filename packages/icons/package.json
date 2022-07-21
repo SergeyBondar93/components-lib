@@ -9,11 +9,11 @@
 	"scripts": {
 		"test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
 		"test2": "jest",
-		"postinstall": "yarn createIndexFile && yarn createStoriesFile",
 		"createIndexFile": "node createIndexFile.js",
 		"createStoriesFile": "node createStoriesFile.js",
 		"compile": "tsdx build --format cjs,esm --verbose",
-		"build": "yarn clean && yarn compile",
+		"build": "yarn createIndexFile && yarn clean && yarn compile",
+		"build:storybook": "yarn createIndexFile && yarn createStoriesFile",
 		"clean": "rimraf dist lib .publish node_modules"
 	},
 	"files": [
