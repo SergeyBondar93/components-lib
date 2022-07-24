@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.1.2...@cheaaa/accordion@2.2.0) (2022-07-24)
+
+
+### Features
+
+* add dropdown ([000c730](https://github.com/SergeyBondar93/liba/commit/000c730742be67bb4cafd1a7e142054183fc8e7f))
+
+
+
+
+
 ## [2.1.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.1.1...@cheaaa/accordion@2.1.2) (2022-07-21)
 
 **Note:** Version bump only for package @cheaaa/accordion
