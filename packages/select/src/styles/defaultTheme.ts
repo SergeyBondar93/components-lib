@@ -39,6 +39,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     position: "relative",
     maxHeight: "164px",
     overflowY: "auto",
+
     "&::-webkit-scrollbar": {
       width: "4px",
     },

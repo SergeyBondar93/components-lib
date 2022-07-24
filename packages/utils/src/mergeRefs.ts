@@ -1,7 +1,7 @@
 import React, { MutableRefObject } from "react";
 
 export function useCombinedRefs<T>(
-  ...refs: MutableRefObject<T>[]
+  ...refs: (MutableRefObject<T> | undefined)[]
 ): MutableRefObject<T | null> {
   const targetRef = React.useRef<T>(null);
 

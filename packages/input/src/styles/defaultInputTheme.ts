@@ -53,6 +53,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     borderRadius: "9px",
     width: "100%",
     fontSize: "13px",
+    textAlign: "initial",
 
     "&:not(:focus)::placeholder": {
       opacity: 0,
