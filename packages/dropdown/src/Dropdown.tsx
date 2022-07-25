@@ -13,20 +13,24 @@ import { BaseAccordion, IBaseAccordionProps } from "../../accordion/src";
 
 import { DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE, useStyles } from "./styles";
 
+export interface IDropdownChildrenProps {
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export interface IDropdownProps
   extends Omit<
     IBaseAccordionProps,
     "classes" | "defaultTitleButtonAppearance"
-  > {}
-
-export interface IDropdownChildrenProps {
-  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  > {
+  children: ReactElement<IDropdownChildrenProps>;
+  isPassSetIsOpenToChildren?: boolean;
 }
 
 export const Dropdown = ({
   isOpen: isOpenProps,
   titleButtonProps: titleButtonPropsFromProps,
   children,
+  isPassSetIsOpenToChildren,
   ...props
 }: IDropdownProps) => {
   const classes = useStyles();
@@ -54,13 +58,15 @@ export const Dropdown = ({
 
   useClickOutsideComponent(accordionRef, handleClose);
 
-  const childrenWithSetIsOpen = useMemo(() => {
-    return React.Children.map(children as ReactElement, (child) => {
-      return React.cloneElement(child, {
-        setIsOpen,
-      });
-    });
-  }, [children, setIsOpen]);
+  const mappedChildren = useMemo(() => {
+    return isPassSetIsOpenToChildren
+      ? React.Children.map(children as ReactElement, (child) => {
+          return React.cloneElement(child, {
+            setIsOpen,
+          });
+        })
+      : children;
+  }, [children, isPassSetIsOpenToChildren, setIsOpen]);
 
   return (
     <BaseAccordion
@@ -72,7 +78,7 @@ export const Dropdown = ({
       defaultTitleButtonAppearance={DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE}
       animationDuration="0.0s"
     >
-      {childrenWithSetIsOpen}
+      {mappedChildren}
     </BaseAccordion>
   );
 };

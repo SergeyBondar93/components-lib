@@ -1,6 +1,7 @@
 import {
   BUTTON_COMPONENTS_NAMES,
   BUTTON_COMPONENT_NAMESPACE,
+  ICON_BUTTON_COMPONENT_NAMESPACE,
 } from "@cheaaa/button";
 import color from "color";
 
@@ -11,6 +12,13 @@ import {
 } from "./../src/styles/consts";
 export const theme = {
   components: {
+    [ICON_BUTTON_COMPONENT_NAMESPACE]: {
+      inButton: {
+        [BUTTON_COMPONENTS_NAMES.button]: {
+          padding: "13px 13px",
+        },
+      },
+    },
     [BUTTON_COMPONENT_NAMESPACE]: {
       secondary: {
         [BUTTON_COMPONENTS_NAMES.button]: {
@@ -22,12 +30,13 @@ export const theme = {
           },
         },
       },
-      withIcon: {
+      withIconButton: {
         [BUTTON_COMPONENTS_NAMES.button]: {
           display: "flex",
           justifyContent: "space-between",
-          padding: "10px 13px",
+          padding: "0px 0px 0px 13px",
           alignItems: "center",
+          minHeight: "36px",
         },
       },
       [DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE]: {
@@ -52,6 +61,11 @@ export const theme = {
           "&:hover": {
             color: "#636AFF",
             // brand.light
+            background: "#EDF4FE",
+          },
+
+          '&[data-selected="true"]': {
+            color: "#636AFF",
             background: "#EDF4FE",
           },
         },

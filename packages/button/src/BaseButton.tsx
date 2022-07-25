@@ -38,7 +38,7 @@ export type IBaseButtonProps<TProps> = TProps &
     value?: ValueType;
     /**
      * Добавляет data-selected={String(!!isSelected)}
-     * для стилизации выбранных кнопок (value) в ButtonsGroup
+     * для стилизации "включенных" кнопок
      */
     isSelected?: boolean;
 

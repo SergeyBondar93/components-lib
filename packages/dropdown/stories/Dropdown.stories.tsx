@@ -3,7 +3,7 @@ import { ThemeProvider } from "react-jss";
 import { CloseIcon } from "@cheaaa/icons";
 
 import { Input } from "../../input";
-import { Button } from "../../button";
+import { Button, IconButton } from "../../button";
 import { Dropdown, IDropdownChildrenProps } from "../src/Dropdown";
 
 import { options } from "./options";
@@ -23,7 +23,7 @@ export const Base = () => {
   return (
     <>
       <Dropdown title="Open text">
-        <div style={{ padding: "10px" }}>
+        <div style={{ padding: "10px", color: "#3926e6" }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, eum
           quasi quas quod ducimus, distinctio, laboriosam rem tempora vitae
           quidem perferendis odit deleniti sed ea incidunt? Voluptatem, vel
@@ -36,7 +36,7 @@ export const Base = () => {
           Voluptatibus eaque, aperiam odit molestias laboriosam nesciunt, qui
           deleniti natus sint perferendis autem voluptas. Dolore, ad?
           <Dropdown title="Iternal dropdown">
-            <div style={{ padding: "10px" }}>
+            <div style={{ padding: "10px", color: "#20df12" }}>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
               non velit a exercitationem expedita, ab placeat. Possimus nulla
               commodi incidunt sit eius expedita quasi eos modi harum facilis
@@ -50,11 +50,28 @@ export const Base = () => {
               temporibus cupiditate corrupti omnis aspernatur, expedita
               similique animi accusantium eum numquam odio. Atque, nulla
               voluptatum!
+              <Dropdown title="Super Iternal dropdown">
+                <div style={{ padding: "10px", color: "#d013d0cc" }}>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Fugiat non velit a exercitationem expedita, ab placeat.
+                  Possimus nulla commodi incidunt sit eius expedita quasi eos
+                  modi harum facilis unde odit, voluptates ea fugiat ut ducimus
+                  quae sed suscipit numquam inventore. Ullam quod, reprehenderit
+                  molestias tenetur nobis dicta consectetur eligendi aperiam
+                  asperiores deleniti quis porro ducimus nostrum consequuntur
+                  quos perspiciatis. Animi aut ducimus laboriosam tenetur
+                  deleniti ratione autem sint veniam quae molestiae, quisquam
+                  distinctio tempora itaque sed! Fugit, non nihil tempore
+                  consectetur quis porro incidunt praesentium, temporibus
+                  cupiditate corrupti omnis aspernatur, expedita similique animi
+                  accusantium eum numquam odio. Atque, nulla voluptatum!
+                </div>
+              </Dropdown>
             </div>
           </Dropdown>
         </div>
       </Dropdown>
-      <p style={{ color: "green" }}>
+      <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quam
         magnam vel tenetur! Repellat sit tempora, dolorum amet autem eaque natus
         libero mollitia voluptatibus expedita at laudantium facere nisi placeat
@@ -95,9 +112,10 @@ export const Base = () => {
 
 interface IAgesProps extends IDropdownChildrenProps {
   onClick: (age: number) => void;
+  selectedAge?: number;
 }
 
-const Ages = ({ onClick, setIsOpen }: IAgesProps) => {
+const Ages = ({ onClick, setIsOpen, selectedAge }: IAgesProps) => {
   const handleClick = (age: number) => {
     onClick(age);
     setIsOpen?.(false);
@@ -112,6 +130,7 @@ const Ages = ({ onClick, setIsOpen }: IAgesProps) => {
             shouldFitContent
             onClick={() => handleClick(value)}
             appearance={"age"}
+            isSelected={selectedAge === value}
           >
             {label}
           </Button>
@@ -124,11 +143,23 @@ const Ages = ({ onClick, setIsOpen }: IAgesProps) => {
 interface ITouristButtonTitleProps {
   age: number;
   isRemovable: boolean;
+  onRemove: (e: any) => void;
 }
-const TouristButtonTitle = ({ age, isRemovable }: ITouristButtonTitleProps) => {
+const TouristButtonTitle = ({
+  age,
+  isRemovable,
+  onRemove,
+}: ITouristButtonTitleProps) => {
   return (
     <>
-      Турист: {age} лет {isRemovable && <CloseIcon fill="#636AFF" />}
+      Турист: {age} лет{" "}
+      {isRemovable && (
+        <IconButton
+          appearance="inButton"
+          icon={<CloseIcon fill="#636AFF" />}
+          onClick={onRemove}
+        />
+      )}
     </>
   );
 };
@@ -142,6 +173,13 @@ const TouristsSelector = ({ tourisus, setTourisus }) => {
 
   const handleAddTourist = (age) => {
     setTourisus([...tourisus, age]);
+  };
+
+  const handleRemove = (index: number) => (e: any) => {
+    e.stopPropagation();
+    const newTourists = [...tourisus];
+    newTourists.splice(index, 1);
+    setTourisus(newTourists);
   };
 
   return (
@@ -159,22 +197,25 @@ const TouristsSelector = ({ tourisus, setTourisus }) => {
             <Dropdown
               appearance="tourists-age"
               key={index}
+              isPassSetIsOpenToChildren
               title={
                 <TouristButtonTitle
                   age={age}
                   isRemovable={tourisus.length > 1}
+                  onRemove={handleRemove(index)}
                 />
               }
               titleButtonProps={{
-                baseAppearance: "withIcon",
+                baseAppearance: "withIconButton",
                 appearance: "secondary",
               }}
             >
-              <Ages onClick={handleChangeTourist(index)} />
+              <Ages selectedAge={age} onClick={handleChangeTourist(index)} />
             </Dropdown>
           );
         })}
         <Dropdown
+          isPassSetIsOpenToChildren
           appearance="tourists-age"
           baseAppearance="new-tourist"
           title={`Добавить туриста`}
