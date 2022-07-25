@@ -66,7 +66,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       children,
       getHeightStyles,
       titleButtonProps = {},
-      animationDuration = "0.2s",
+      animationDuration: animationDurationProps = "0.2s",
       defaultTitleButtonAppearance,
       classes,
     },
@@ -79,6 +79,11 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
     const [isFullOpened, setIsFullOpened] = useState(isOpenProps);
 
     const animationRef = useRef<any>(true);
+
+    const animationDuration = useMemo(
+      () => parseFloat(animationDurationProps) * 100,
+      [animationDurationProps]
+    );
 
     useEffect(() => {
       let timeout: ReturnType<typeof setTimeout> | null = null;
@@ -109,7 +114,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       if (isOpen) {
         timeout = setTimeout(() => {
           setIsFullOpened(true);
-        }, 600);
+        }, animationDuration);
       } else {
         setIsFullOpened(false);
       }
@@ -117,7 +122,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       return () => {
         timeout && clearTimeout(timeout);
       };
-    }, [isOpen]);
+    }, [isOpen, animationDuration]);
 
     const classNames = useMemo(() => {
       const wrapperClassName = getClassName<ComponentNames>(
@@ -197,7 +202,9 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
           data-is-opened={String(!!isFullOpened)}
           style={{
             height: _height,
-            transition: animationRef.current ? animationDuration : undefined,
+            transition: animationRef.current
+              ? animationDurationProps
+              : undefined,
           }}
         >
           <div

@@ -70,6 +70,7 @@ export const Dropdown = ({
       titleButtonProps={titleButtonProps}
       ref={accordionRef}
       defaultTitleButtonAppearance={DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE}
+      animationDuration="0.0s"
     >
       {childrenWithSetIsOpen}
     </BaseAccordion>

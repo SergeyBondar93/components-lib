@@ -98,6 +98,11 @@ export interface IBaseInputProps extends InputHTMLAttributes, IThemedProps {
    */
   postfix?: ReactNode;
 
+  /**
+   * onClick на wrapper
+   */
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+
   classes: Classes<string>;
 }
 

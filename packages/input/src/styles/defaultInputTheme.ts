@@ -8,7 +8,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     borderRadius: "10px",
     border: "1px solid rgba(113, 130, 153, 0.25)",
     backgroundColor: "#FFF",
-    minWidth: "220px",
+    minWidth: "150px",
     display: "inline-flex",
     boxSizing: "border-box",
     height: "45px",

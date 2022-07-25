@@ -12,18 +12,25 @@ import {
 export const theme = {
   components: {
     [BUTTON_COMPONENT_NAMESPACE]: {
-      [DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE]: {
+      secondary: {
         [BUTTON_COMPONENTS_NAMES.button]: {
-          textAlign: "start",
+          background: "#EDF4FE",
           color: "#636AFF",
-          background: "#E6EAFC",
-          "&:hover": {
-            background: "#E6EAFC",
-            color: color("#636AFF").darken(0.3),
+          "&:hover:enabled": {
+            background: color("#EDF4FE").darken(0.1).toString(),
+            color: color("#636AFF").darken(0.1).toString(),
           },
         },
       },
-      "header-add-tourist": {
+      withIcon: {
+        [BUTTON_COMPONENTS_NAMES.button]: {
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "10px 13px",
+          alignItems: "center",
+        },
+      },
+      [DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE]: {
         [BUTTON_COMPONENTS_NAMES.button]: {
           display: "flex",
           justifyContent: "space-between",
@@ -31,6 +38,7 @@ export const theme = {
           flexDirection: "row-reverse",
           color: "#FFF",
           background: "#636AFF",
+          padding: "10px 16px 10px 13px",
           "&:hover": {
             background: "#636AFF",
           },
@@ -50,7 +58,30 @@ export const theme = {
       },
     },
     [DROPDOWN_COMPONENT_NAMESPACE]: {
-      "header-add-tourist": {
+      tourists: {
+        [DROPDOWN_COMPONENTS_NAMES.body]: {
+          width: "216px",
+        },
+        [DROPDOWN_COMPONENTS_NAMES.childrenWrapper]: {
+          display: "flex",
+          flexDirection: "column",
+          gap: "5px",
+          padding: "0px",
+        },
+      },
+      "tourists-age": {
+        [DROPDOWN_COMPONENTS_NAMES.body]: {
+          width: "86px",
+          borderRadius: "12px",
+          right: "0px",
+          maxHeight: "200px",
+          overflow: "auto",
+          '&[data-is-opened="true"]': {
+            overflow: "auto",
+          },
+        },
+      },
+      "new-tourist": {
         [DROPDOWN_COMPONENTS_NAMES.icon]: {
           display: "inline-block",
           fill: "#FFF",

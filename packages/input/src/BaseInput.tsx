@@ -36,6 +36,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       prefixProps = {},
       postfixProps = {},
       classes,
+      onClick: onClickProps,
       ...rest
     },
     ref: React.MutableRefObject<HTMLInputElement>
@@ -69,9 +70,15 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       [onBlur, disabled]
     );
 
-    const handleClick = useCallback(() => {
-      !disabled && mergedRef.current?.focus();
-    }, [disabled]);
+    const handleClick: React.MouseEventHandler<HTMLDivElement> = useCallback(
+      (e) => {
+        if (!disabled) {
+          mergedRef.current?.focus();
+          onClickProps?.(e);
+        }
+      },
+      [disabled, onClickProps]
+    );
 
     const handleChange: React.ChangeEventHandler<HTMLInputElement> =
       useCallback(

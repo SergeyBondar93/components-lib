@@ -21,10 +21,16 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     zIndex: 1,
     width: "100%",
     background: "#FFF",
-    maxHeight: "200px",
-    overflow: "auto",
+    maxHeight: "fit-content",
+    transform: "translateY(10px)",
     boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",
     borderRadius: "0px 0px 12px 12px",
+
+    overflow: "hidden",
+    '&[data-is-opened="true"]': {
+      overflow: "initial",
+    },
+
     "&::-webkit-scrollbar": {
       width: "4px",
     },
