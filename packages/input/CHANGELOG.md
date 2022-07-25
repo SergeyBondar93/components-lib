@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.18.2...@cheaaa/input@1.19.0) (2022-07-24)
+
+
+### Bug Fixes
+
+* fix select input postfix styles ([caf02cf](https://github.com/SergeyBondar93/liba/commit/caf02cf496f4659d7b4b0d1c281f270c76092340))
+
+
+### Features
+
+* add dropdown ([000c730](https://github.com/SergeyBondar93/liba/commit/000c730742be67bb4cafd1a7e142054183fc8e7f))
+
+
+
+
+
 ## [1.18.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.18.1...@cheaaa/input@1.18.2) (2022-07-21)
 
 

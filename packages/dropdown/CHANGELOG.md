@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2022-07-24)
+
+
+### Features
+
+* add dropdown ([000c730](https://github.com/SergeyBondar93/liba/commit/000c730742be67bb4cafd1a7e142054183fc8e7f))
+
+
+
+
+
 # [2.1.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@2.0.1...@cheaaa/form@2.1.0) (2022-07-21)
 
 
