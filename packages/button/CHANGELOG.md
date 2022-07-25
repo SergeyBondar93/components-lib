@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.9...@cheaaa/button@1.8.0) (2022-07-25)
+
+
+### Features
+
+* improve dropdown story ([5a8114e](https://github.com/SergeyBondar93/liba/commit/5a8114e9c3ea41f0a1ef21066590b146c8187356))
+
+
+
+
+
 ## [1.7.9](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.8...@cheaaa/button@1.7.9) (2022-07-24)
 
 **Note:** Version bump only for package @cheaaa/button

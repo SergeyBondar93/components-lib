@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/dropdown@1.2.0...@cheaaa/dropdown@1.3.0) (2022-07-25)
+
+
+### Bug Fixes
+
+* fix accorion animation, dropdown children paddings ([d65c355](https://github.com/SergeyBondar93/liba/commit/d65c35568018474fe08fc360ef77ce93f4c9e08a))
+
+
+### Features
+
+* add dropdown ([000c730](https://github.com/SergeyBondar93/liba/commit/000c730742be67bb4cafd1a7e142054183fc8e7f))
+* add themed and base dropdown ([e713055](https://github.com/SergeyBondar93/liba/commit/e713055e8ddf68efb29480397ef1dba0e8eb370d))
+* improve dropdown story ([5a8114e](https://github.com/SergeyBondar93/liba/commit/5a8114e9c3ea41f0a1ef21066590b146c8187356))
+
+
+
+
+
 # [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/dropdown@1.1.0...@cheaaa/dropdown@1.2.0) (2022-07-25)
 
 
