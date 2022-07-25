@@ -21,5 +21,9 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       overflow: "initial",
     },
   },
+  /**
+   * для отступа внутри children для правильного
+   * высчитывания размеров блока необходимо добавлять padding к children
+   */
   [ACCORDION_COMPONENTS_NAMES.childrenWrapper]: {},
 };

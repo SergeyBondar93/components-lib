@@ -41,7 +41,9 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       backgroundColor: "#485B75",
     },
   },
-  [DROPDOWN_COMPONENTS_NAMES.childrenWrapper]: {
-    padding: "3px",
-  },
+  /**
+   * для отступа внутри children для правильного
+   * высчитывания размеров блока необходимо добавлять padding к children
+   */
+  [DROPDOWN_COMPONENTS_NAMES.childrenWrapper]: {},
 };

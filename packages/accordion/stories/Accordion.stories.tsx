@@ -107,7 +107,11 @@ const AccordionTemplate = () => {
         <Accordion isOpen={isOpenAll} title={"Дни недели"}>
           <Weekdays />
         </Accordion>
-        <Accordion isOpen={isOpenAll} title={"Дни недели"}>
+        <Accordion
+          animationDuration="0.6s"
+          isOpen={isOpenAll}
+          title={"Дни недели + animationDiraion 0.6s"}
+        >
           <Weekdays />
         </Accordion>
         <Accordion isOpen={isOpenAll} title={"Дни недели"}>

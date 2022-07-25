@@ -23,7 +23,7 @@ export const Base = () => {
   return (
     <>
       <Dropdown title="Open text">
-        <div style={{ margin: "10px" }}>
+        <div style={{ padding: "10px" }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, eum
           quasi quas quod ducimus, distinctio, laboriosam rem tempora vitae
           quidem perferendis odit deleniti sed ea incidunt? Voluptatem, vel
@@ -36,7 +36,7 @@ export const Base = () => {
           Voluptatibus eaque, aperiam odit molestias laboriosam nesciunt, qui
           deleniti natus sint perferendis autem voluptas. Dolore, ad?
           <Dropdown title="Iternal dropdown">
-            <div style={{ margin: "10px" }}>
+            <div style={{ padding: "10px" }}>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
               non velit a exercitationem expedita, ab placeat. Possimus nulla
               commodi incidunt sit eius expedita quasi eos modi harum facilis
@@ -104,7 +104,7 @@ const Ages = ({ onClick, setIsOpen }: IAgesProps) => {
   };
 
   return (
-    <>
+    <div style={{ padding: "3px" }}>
       {options.map(({ value, label }, index) => {
         return (
           <Button
@@ -117,7 +117,7 @@ const Ages = ({ onClick, setIsOpen }: IAgesProps) => {
           </Button>
         );
       })}
-    </>
+    </div>
   );
 };
 

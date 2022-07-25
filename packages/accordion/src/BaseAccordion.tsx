@@ -81,7 +81,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
     const animationRef = useRef<any>(true);
 
     const animationDuration = useMemo(
-      () => parseFloat(animationDurationProps) * 100,
+      () => parseFloat(animationDurationProps) * 1000,
       [animationDurationProps]
     );
 
