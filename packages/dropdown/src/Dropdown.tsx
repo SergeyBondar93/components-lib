@@ -8,8 +8,7 @@ import {
 } from "react";
 import { useClickOutsideComponent } from "@cheaaa/utils";
 import React from "react";
-
-import { BaseAccordion, IBaseAccordionProps } from "../../accordion/src";
+import { BaseAccordion, IBaseAccordionProps } from "@cheaaa/accordion";
 
 import { DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE, useStyles } from "./styles";
 

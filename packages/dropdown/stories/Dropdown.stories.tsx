@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ThemeProvider } from "react-jss";
 import { CloseIcon } from "@cheaaa/icons";
+import { Input } from "@cheaaa/input";
+import { Button, IconButton } from "@cheaaa/button";
 
-import { Input } from "../../input";
-import { Button, IconButton } from "../../button";
-import { Dropdown, IDropdownChildrenProps } from "../src/Dropdown";
+import { Dropdown, IDropdownChildrenProps } from "../src";
 
 import { options } from "./options";
 import { theme } from "./theme";
