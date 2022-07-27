@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.21.0...@cheaaa/input@1.22.0) (2022-07-27)
+
+
+### Bug Fixes
+
+* fix calendar consts ([12cf422](https://github.com/SergeyBondar93/liba/commit/12cf42244b95eda555a6b2c47b93c13f78873063))
+
+
+### Features
+
+* add isActive prop to input to manage focus state from another components ([bc7bbac](https://github.com/SergeyBondar93/liba/commit/bc7bbac1be1c625a18cd346b15c2bc009ae63de7))
+* improve event handler in input ([c861ecb](https://github.com/SergeyBondar93/liba/commit/c861ecbbcafe83007f2272fe14534e8baa0e4b04))
+
+
+
+
+
 # [1.21.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.20.0...@cheaaa/input@1.21.0) (2022-07-27)
 
 
