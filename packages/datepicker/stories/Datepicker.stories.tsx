@@ -9,7 +9,7 @@ import { addYears, differenceInDays, formatDate, isAfter, today } from "../src";
 import { theme } from "./theme";
 
 export default {
-  title: "Calendar",
+  title: "Datepicker",
 } as Meta;
 
 const min = new Date();
