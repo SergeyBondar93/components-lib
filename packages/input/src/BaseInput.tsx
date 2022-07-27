@@ -38,6 +38,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       classes,
       onClick: onClickProps,
       type,
+      isActive,
       ...rest
     },
     ref: React.MutableRefObject<HTMLInputElement>
@@ -158,6 +159,16 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       setFloatingLeft(left);
     }, [prefix]);
 
+    const dataComponentActiveProp = useMemo(() => {
+      if ([true, false].includes(isActive as any)) {
+        return {
+          "data-component-active": String(!!isActive),
+        };
+      }
+
+      return {};
+    }, [isActive]);
+
     return (
       <div
         data-shouldfitcontent={String(!!shouldFitContent)}
@@ -169,12 +180,16 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         data-type-is-button={String(!!isButton)}
         className={classNames.wrapperClassName}
         onClick={handleClick}
+        onMouseDown={(e) => e.preventDefault()}
+        {...dataComponentActiveProp}
         {...wrapperProps}
       >
         {prefix && (
           <span
             ref={prefixRef}
             className={classNames.prefixWrapperClassName}
+            onMouseDown={(e) => e.preventDefault()}
+            {...dataComponentActiveProp}
             {...prefixProps}
           >
             {prefix}
@@ -188,6 +203,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
           data-invalid={String(!!invalid)}
           data-valid={String(!!valid)}
           data-type-is-button={String(!!isButton)}
+          {...dataComponentActiveProp}
           className={classNames.inputClassName}
           disabled={disabled}
           ref={mergedRef}
@@ -196,6 +212,8 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
           value={String(value)}
           onChange={handleChange}
           placeholder={placeholder}
+          // при type="button" не показывается placeholder
+          // по этому оставляю текстом, убираю каретку и функцию onChange
           type={isButton ? "text" : type}
           {...rest}
         />
@@ -210,6 +228,8 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
             data-hasvalue={String(!!value)}
             data-type-is-button={String(!!isButton)}
             className={classNames.labelClassName}
+            onMouseDown={(e) => e.preventDefault()}
+            {...dataComponentActiveProp}
             {...labelProps}
           >
             {label}
@@ -223,6 +243,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
             data-disabled={String(disabled)}
             data-focused={String(isFocused)}
             data-hasvalue={String(!!value)}
+            {...dataComponentActiveProp}
             className={classNames.clearIconClassName}
             onClick={handleClear}
           />
@@ -231,6 +252,8 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         {postfix && (
           <span
             className={classNames.postfixWrapperClassName}
+            onMouseDown={(e) => e.preventDefault()}
+            {...dataComponentActiveProp}
             {...postfixProps}
           >
             {postfix}

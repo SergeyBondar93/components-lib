@@ -65,7 +65,7 @@ export const DatepickerBase = () => {
   return <Datepicker value={value} onChange={setValue} />;
 };
 
-export const FromTo = () => {
+export const RangeDates = () => {
   const [start, setStart] = useState<Date>();
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
@@ -112,7 +112,69 @@ export const FromTo = () => {
           appearance="to"
         />
       </div>
+      <p>
+        {start ? formatDate(start) : "?"} - {end ? formatDate(end) : "?"}{" "}
+      </p>
+    </ThemeProvider>
+  );
+};
 
+export const RangeThemed = () => {
+  const [start, setStart] = useState<Date>();
+  const [end, setEnd] = useState<Date>();
+  const [isOpenEnd, setIsOpenEnd] = useState(false);
+
+  const handleChangeFrom = (newStart) => {
+    setStart(newStart);
+    setIsOpenEnd(true);
+
+    if (end && isAfter(newStart, end)) {
+      setEnd(newStart);
+    }
+  };
+
+  const handleChangeEnd = (newEnd) => {
+    setEnd(newEnd);
+    setIsOpenEnd(false);
+  };
+
+  const endLabel = useMemo(() => {
+    if (!start || !end) return "Обратно";
+
+    const diff = differenceInDays(start, end);
+
+    return `Выбрано ${diff + 1} дней`;
+  }, [start, end]);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <h3>Themed Inputs</h3>
+      <div style={{ display: "flex", gap: "2px" }}>
+        <Datepicker
+          minDate={new Date()}
+          label={"Туда"}
+          value={start}
+          onChange={handleChangeFrom}
+          baseAppearance="header-filters"
+          appearance="from"
+          inputProps={{
+            appearance: "header-filters",
+          }}
+        />
+        <Datepicker
+          minDate={start}
+          label={endLabel}
+          value={end}
+          onChange={handleChangeEnd}
+          isOpen={isOpenEnd}
+          openedDate={start}
+          baseAppearance="header-filters"
+          appearance="to"
+          inputProps={{
+            appearance: "header-filters",
+          }}
+        />
+      </div>
       <p>
         {start ? formatDate(start) : "?"} - {end ? formatDate(end) : "?"}{" "}
       </p>

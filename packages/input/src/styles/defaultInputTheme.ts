@@ -8,9 +8,10 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     borderRadius: "10px",
     border: "1px solid rgba(113, 130, 153, 0.25)",
     backgroundColor: "#FFF",
-    minWidth: "150px",
+    minWidth: "100px",
     display: "inline-flex",
     boxSizing: "border-box",
+    minHeight: "45px",
     height: "45px",
 
     position: "relative",
@@ -41,11 +42,14 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
       border: "1px solid #FF6666",
     },
 
-    /** Стили для инпута используемом в Select компоненте */
-    "&[data-select-open]": {
+    /**
+     * Стили для инпута используемом в других компонентах,
+     * для управления стилями когда компонент активен но инпут не в фокусе
+     * */
+    "&[data-component-active]": {
       height: "100%",
     },
-    '&[data-select-open="true"]': {
+    '&[data-component-active="true"]': {
       alignItems: "flex-end",
       border: "1px solid #636AFF",
     },
@@ -81,21 +85,26 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
       padding: "6px 14px",
     },
 
-    /** Стили для инпута используемом в Select компоненте */
-    "&[data-select-open]": {
+    /**
+     * Стили для инпута используемом в других компонентах,
+     * для управления стилями когда компонент активен но инпут не в фокусе
+     * */
+    "&[data-component-active]": {
       whiteSpace: "nowrap",
       overflow: "hidden",
       textOverflow: "ellipsis",
     },
-    "&[data-select-open]::placeholder": {
+    // TODO не работает почему то truncate плейсхолдера, починить
+    "&[data-component-active]::placeholder": {
       whiteSpace: "nowrap",
       overflow: "hidden",
       textOverflow: "ellipsis",
     },
-    '&[data-select-open="true"]': {
+    '&[data-component-active="true"]': {
       padding: "6px 14px",
     },
-    '&[data-select-open="true"]::placeholder': {
+    // TODO проверить кнопку в дропдауне и плейсхоледр, есть ли он
+    '&[data-component-active="true"]::placeholder': {
       opacity: "1",
     },
   },
@@ -109,13 +118,16 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     display: "flex",
     alignItems: "center",
 
-    /** Стили для инпута используемом в Select компоненте */
-    "&[data-select-open]": {
+    /**
+     * Стили для инпута используемом в других компонентах,
+     * для управления стилями когда компонент активен но инпут не в фокусе
+     * */
+    "&[data-component-active]": {
       cursor: "pointer",
       transition: "0.2s",
       height: "100%",
     },
-    '&[data-select-open="true"]': {
+    '&[data-component-active="true"]': {
       transform: "rotate(180deg)",
     },
   },
@@ -170,8 +182,11 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
       top: "10px",
     },
 
-    /** Стили для инпута используемом в Select компоненте */
-    '&[data-select-open="true"]': {
+    /**
+     * Стили для инпута используемом в других компонентах,
+     * для управления стилями когда компонент активен но инпут не в фокусе
+     * */
+    '&[data-component-active="true"]': {
       fontSize: "10px",
       top: "10px",
       color: "#636AFF",

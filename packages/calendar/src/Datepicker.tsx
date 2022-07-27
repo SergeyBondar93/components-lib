@@ -14,6 +14,7 @@ const DatepickerInput = ({
   disabled,
   onClick,
   innerRef,
+  isOpen,
   inputProps,
 }) => {
   const value = useMemo(() => {
@@ -30,6 +31,7 @@ const DatepickerInput = ({
       onClick={onClick}
       type={"button"}
       ref={innerRef}
+      isActive={!!isOpen}
       {...inputProps}
     />
   );
@@ -85,8 +87,9 @@ export const Datepicker = ({
       onClick: toggleOpen,
       inputProps,
       innerRef: mergedInputRef,
+      isOpen,
     };
-  }, [value, placeholder, label, disabled, inputProps]);
+  }, [value, placeholder, label, disabled, inputProps, isOpen]);
 
   useClickOutsideComponent(accordionRef, handleClose);
 

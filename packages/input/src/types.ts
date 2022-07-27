@@ -104,6 +104,13 @@ export interface IBaseInputProps extends InputHTMLAttributes, IThemedProps {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 
   classes: Classes<string>;
+
+  /**
+   * добавляет всем компонентам внутри data-component-active
+   * для управления стилями при активном внешнем компоненте
+   * например при открытом Datepicker / Select
+   */
+  isActive?: boolean;
 }
 
 export interface IInputProps extends Omit<IBaseInputProps, "classes"> {

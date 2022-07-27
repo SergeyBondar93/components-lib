@@ -57,8 +57,9 @@ export const Dropdown = ({
     return {
       ...titleButtonPropsFromProps,
       onClick: toggleOpen,
+      isOpen,
     };
-  }, [titleButtonPropsFromProps, toggleOpen]);
+  }, [titleButtonPropsFromProps, toggleOpen, isOpen]);
 
   useClickOutsideComponent(accordionRef, handleClose);
 

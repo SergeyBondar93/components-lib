@@ -32,7 +32,7 @@ export const getTheme = ({ main, active, header, text }: Colors): any => ({
           '&[data-hasvalue="true"]': {
             padding: "14px",
           },
-          '&[data-select-open="true"]': {
+          '&[data-component-active="true"]': {
             padding: "14px",
           },
         },
@@ -46,7 +46,7 @@ export const getTheme = ({ main, active, header, text }: Colors): any => ({
             fontSize: "12px",
             top: "15px",
           },
-          '&[data-select-open="true"]': {
+          '&[data-component-active="true"]': {
             fontSize: "12px",
             top: "15px",
             color: "#636AFF",

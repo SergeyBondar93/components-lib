@@ -206,34 +206,6 @@ export const Select = ({
     }
   }, [isOpen, formattedValue, placeholder]);
 
-  const inputLabelProps = useMemo(() => {
-    return {
-      "data-select-open": String(!!isOpen),
-      ...(inputProps.labelProps || {}),
-    };
-  }, [inputProps.labelProps, isOpen]);
-
-  const inputWrapperProps = useMemo(() => {
-    return {
-      "data-select-open": String(!!isOpen),
-      ...(inputProps.wrapperProps || {}),
-    };
-  }, [inputProps.wrapperProps, isOpen]);
-
-  const inputPrefixProps = useMemo(() => {
-    return {
-      "data-select-open": String(!!isOpen),
-      ...(inputProps.prefixProps || {}),
-    };
-  }, [inputProps.prefixProps, isOpen]);
-
-  const inputPosifixProps = useMemo(() => {
-    return {
-      "data-select-open": String(!!isOpen),
-      ...(inputProps.postfixProps || {}),
-    };
-  }, [inputProps.postfixProps, isOpen]);
-
   const classNames = useMemo(() => {
     const wrapperClassName = getClassName<ComponentNames>(
       classes,
@@ -404,12 +376,8 @@ export const Select = ({
         onBlur={onBlurInput}
         appearance={DEFAULT_SELECT_INPUT_APPEARANCE}
         postfix={<TriangleIcon />}
+        isActive={!!isOpen}
         {...inputProps}
-        data-select-open={String(!!isOpen)}
-        wrapperProps={inputWrapperProps}
-        labelProps={inputLabelProps}
-        prefixProps={inputPrefixProps}
-        postfixProps={inputPosifixProps}
         ref={inputRef}
         disabled={disabled}
       />

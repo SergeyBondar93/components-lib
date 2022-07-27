@@ -230,25 +230,29 @@ const TouristsSelector = ({ tourisus, setTourisus }) => {
 interface ITouristsSelectorInputProps {
   tourisus: number[];
   onClick: () => void;
+  isOpen: boolean;
 }
 
 const TouristsSelectorInput = ({
   tourisus,
   onClick,
+  isOpen,
 }: ITouristsSelectorInputProps) => {
   return (
     <Input
       onChange={() => {}}
+      isActive={isOpen}
       value={tourisus.join(", ")}
       type="button"
       onClick={onClick}
       label="Туристы"
+      placeholder="Выберите туристов"
     />
   );
 };
 
 export const Themed = () => {
-  const [tourisus, setTourisus] = useState<number[]>([30]);
+  const [tourisus, setTourisus] = useState<number[]>([]);
 
   return (
     <ThemeProvider theme={theme}>
