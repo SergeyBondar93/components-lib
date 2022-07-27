@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.21.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.20.0...@cheaaa/input@1.21.0) (2022-07-27)
+
+
+### Features
+
+* improve event handler in input ([c861ecb](https://github.com/SergeyBondar93/liba/commit/c861ecbbcafe83007f2272fe14534e8baa0e4b04))
+
+
+
+
+
 # [1.20.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.19.0...@cheaaa/input@1.20.0) (2022-07-25)
 
 

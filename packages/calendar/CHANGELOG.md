@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2022-07-27)
+
+
+### Features
+
+* add calendar ([c64585b](https://github.com/SergeyBondar93/liba/commit/c64585b9830f97068c3331613dcdf2be2d43cdf3))
+* improve event handler in input ([c861ecb](https://github.com/SergeyBondar93/liba/commit/c861ecbbcafe83007f2272fe14534e8baa0e4b04))
+
+
+
+
+
 # [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/dropdown@1.1.0...@cheaaa/dropdown@1.2.0) (2022-07-25)
 
 

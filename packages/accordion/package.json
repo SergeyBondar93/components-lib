@@ -1,6 +1,6 @@
 {
   "name": "@cheaaa/accordion",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "<>",
   "build:storybook": "src/index.ts",
   "main": "dist/index.js",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.6.1...@cheaaa/select@1.7.0) (2022-07-27)
+
+
+### Features
+
+* improve event handler in input ([c861ecb](https://github.com/SergeyBondar93/liba/commit/c861ecbbcafe83007f2272fe14534e8baa0e4b04))
+
+
+
+
+
 ## [1.6.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.6.0...@cheaaa/select@1.6.1) (2022-07-25)
 
 **Note:** Version bump only for package @cheaaa/select
