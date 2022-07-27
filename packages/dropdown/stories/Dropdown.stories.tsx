@@ -197,7 +197,7 @@ const TouristsSelector = ({ tourisus, setTourisus }) => {
             <Dropdown
               appearance="tourists-age"
               key={index}
-              isPassSetIsOpenToChildren
+              passSetIsOpenToChildren
               title={
                 <TouristButtonTitle
                   age={age}
@@ -215,7 +215,7 @@ const TouristsSelector = ({ tourisus, setTourisus }) => {
           );
         })}
         <Dropdown
-          isPassSetIsOpenToChildren
+          passSetIsOpenToChildren
           appearance="tourists-age"
           baseAppearance="new-tourist"
           title={`Добавить туриста`}

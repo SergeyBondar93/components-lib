@@ -78,9 +78,7 @@ export const Select = ({
   };
 
   const handleSelectOption: HandleSelectFunction = useCallback(
-    ({ optionValue, disabled, type, event }) => {
-      event.stopPropagation();
-
+    ({ optionValue, disabled, type }) => {
       if (disabled) return;
 
       let newValue: any = null;
@@ -330,7 +328,6 @@ export const Select = ({
           handleSelectOption({
             optionValue: activeValue,
             type: isSelected ? "remove" : "select",
-            event: e,
             disabled: !!disabled,
           });
           inputRef.current?.blur();
@@ -436,12 +433,11 @@ export const Select = ({
                       activeValue={activeValue}
                       value={value}
                       index={index}
-                      onMouseDown={(event) =>
+                      onClick={() =>
                         handleSelectOption({
                           optionValue: value,
                           disabled: false,
                           type: "remove",
-                          event,
                         })
                       }
                       onMouseOver={() => handleMouseOver(value)}
@@ -471,12 +467,11 @@ export const Select = ({
                       activeValue={activeValue}
                       value={value}
                       index={index}
-                      onMouseDown={(event) =>
+                      onClick={() =>
                         handleSelectOption({
                           optionValue: value,
                           disabled: !!disabled,
                           type: "select",
-                          event,
                         })
                       }
                       onMouseOver={() => handleMouseOver(value)}

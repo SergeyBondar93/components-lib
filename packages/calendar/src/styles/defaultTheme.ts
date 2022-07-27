@@ -1,10 +1,42 @@
+import { ACCORDION_COMPONENTS_NAMES } from "@cheaaa/accordion";
 import { ComponentTheme } from "@cheaaa/theme";
 
 import { CALENDAR_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
-  [CALENDAR_COMPONENTS_NAMES.wrapper]: {
+  /** Accordion Styles */
+  [ACCORDION_COMPONENTS_NAMES.wrapper]: {
+    position: "relative",
+    display: "inline-block",
+  },
+  [ACCORDION_COMPONENTS_NAMES.title]: {},
+  [ACCORDION_COMPONENTS_NAMES.icon]: {
+    display: "none",
+    transition: "0.2s",
+    fill: "#718299",
+    '&[data-is-open="true"]': {
+      transform: "rotate(90deg)",
+    },
+  },
+  [ACCORDION_COMPONENTS_NAMES.body]: {
+    position: "absolute",
+    zIndex: 1,
+    background: "#FFF",
+    maxHeight: "fit-content",
+    transform: "translateY(10px)",
+    boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",
+    borderRadius: "0px 0px 12px 12px",
+    overflow: "hidden",
+  },
+  /**
+   * для отступа внутри children для правильного
+   * высчитывания размеров блока необходимо добавлять padding к children
+   */
+  [ACCORDION_COMPONENTS_NAMES.childrenWrapper]: {},
+
+  /** Calendar Styles  */
+  [CALENDAR_COMPONENTS_NAMES.calendarWrapper]: {
     width: 244,
     backgroundColor: "#FFF",
     padding: "10px",

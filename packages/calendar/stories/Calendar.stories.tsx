@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { Calendar } from "../src";
+import { Datepicker } from "../src/Datepicker";
+import { differenceInDays, formatDate, isAfter } from "../src/utils";
 
 export default {
   title: "Calendar",
@@ -39,7 +41,7 @@ const octoberValue = new Date(2022, 9, 10);
 const aug10 = new Date(2022, 7, 10);
 const aug20 = new Date(2022, 7, 20);
 
-export const Base = () => {
+export const CalendarBase = () => {
   return (
     <>
       <Instance title={"Base"} />
@@ -49,6 +51,65 @@ export const Base = () => {
         minDate={aug10}
         maxDate={aug20}
       />
+    </>
+  );
+};
+
+export const DatepickerBase = () => {
+  const [value, setValue] = useState<Date>();
+
+  return <Datepicker value={value} onChange={setValue} />;
+};
+
+export const FromTo = () => {
+  const [start, setStart] = useState<Date>();
+  const [end, setEnd] = useState<Date>();
+  const [isOpenEnd, setIsOpenEnd] = useState(false);
+
+  const handleChangeFrom = (newStart) => {
+    setStart(newStart);
+    setIsOpenEnd(true);
+
+    if (end && isAfter(newStart, end)) {
+      setEnd(newStart);
+    }
+  };
+
+  const handleChangeEnd = (newEnd) => {
+    setEnd(newEnd);
+    setIsOpenEnd(false);
+  };
+
+  const endLabel = useMemo(() => {
+    if (!start || !end) return "Обратно";
+
+    const diff = differenceInDays(start, end);
+
+    return `Выбрано ${diff + 1} дней`;
+  }, [start, end]);
+
+  return (
+    <>
+      <div style={{ display: "flex", gap: "15px" }}>
+        <Datepicker
+          minDate={new Date()}
+          label={"Туда"}
+          value={start}
+          onChange={handleChangeFrom}
+        />
+        <Datepicker
+          minDate={start}
+          label={endLabel}
+          value={end}
+          onChange={handleChangeEnd}
+          isOpen={isOpenEnd}
+          openedDate={start}
+        />
+      </div>
+
+      <p>
+        {start ? formatDate(start) : "?"} - {end ? formatDate(end) : "?"}{" "}
+      </p>
     </>
   );
 };

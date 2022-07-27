@@ -3,6 +3,11 @@ export type Day = {
   timestamp: number;
 };
 
+const SECOND = 1000;
+const MIN = 60 * SECOND;
+const HOUR = MIN * 60;
+export const DAY = HOUR * 24;
+
 export const getDatesFromMonth = (month: number, year: number): Date[] => {
   const days = new Date(year, month + 1, 0).getDate();
   const dates: Date[] = [];
@@ -110,13 +115,24 @@ export function cloneDate(date: Date) {
   return new Date(date.valueOf());
 }
 
+export function adjustDate(
+  date: string | Date,
+  seconds?: number,
+  isDate?: false
+): string;
+export function adjustDate(
+  date: string | Date,
+  seconds?: number,
+  isDate?: true
+): Date;
+
 export function adjustDate(date: string | Date, seconds = 0, isDate = false) {
   if (!date) {
     return null;
   }
 
-  const parsedDate: any =
-    date instanceof Date ? cloneDate(date) : parseDate(date);
+  const parsedDate = date instanceof Date ? cloneDate(date) : parseDate(date);
+
   parsedDate.setSeconds(parsedDate.getSeconds() + Number(seconds));
 
   return isDate ? parsedDate : formatDate(parsedDate);
@@ -127,10 +143,6 @@ export function getLastDayOfMonth(date: Date): Date {
 }
 
 export function addDays(date: string | Date, days = 1) {
-  if (!date) {
-    return null;
-  }
-
   return adjustDate(date, 86400 * Number(days), true);
 }
 export function getStartDayOfMonth(date: Date): Date {
@@ -163,10 +175,17 @@ export const getDatesForCalendarMonth = (dates: Date[]): Day[] => {
     const daysToAddFromNextMonth =
       lastDayOfTheMonth !== 0 ? 7 - lastDayOfTheMonth : 0;
 
-    for (let days = 0; days < daysToAddFromNextMonth; days++) {
-      datesForCalendar.push(
-        addDays(getStartDayOfMonth(addMonth(dates[0], 1)), days)
+    for (
+      let dateOfMonth = 0;
+      dateOfMonth < daysToAddFromNextMonth;
+      dateOfMonth++
+    ) {
+      const date = addDays(
+        getStartDayOfMonth(addMonth(dates[0], 1)),
+        dateOfMonth
       );
+
+      datesForCalendar.push(date);
     }
   }
 
@@ -189,10 +208,6 @@ export function isAfter(date: Date, maxDate: Date): boolean {
 }
 
 export function addYears(date: string | Date, numberOfYears = 1) {
-  if (!date) {
-    return null;
-  }
-
   const parsedDate: any =
     date instanceof Date ? cloneDate(date) : parseDate(date);
   parsedDate.setFullYear(parsedDate.getFullYear() + Number(numberOfYears));
@@ -204,6 +219,16 @@ export function getToday() {
   return new Date();
 }
 export const today = getStartOfAday(getToday());
+
+export const differenceInDays = (date1: Date, date2: Date) => {
+  const timestamp1 = Number(date1);
+  const timestamp2 = Number(date2);
+
+  const diffInSeconds = Math.abs(timestamp1 - timestamp2);
+  const diffInDays = diffInSeconds / DAY;
+
+  return Math.ceil(diffInDays);
+};
 
 export const MAX_CALENDAR_YEAR = addYears(today, 2).getFullYear();
 export const MIN_CALENDAR_YEAR = addYears(today, -2).getFullYear();

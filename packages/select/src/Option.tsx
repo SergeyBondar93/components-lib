@@ -12,7 +12,7 @@ export interface IOptionProps extends IThemedProps {
   disabled?: boolean;
   index: number;
   isRemovable?: boolean;
-  onMouseDown: React.MouseEventHandler<HTMLDivElement>;
+  onClick: React.MouseEventHandler<HTMLDivElement>;
   onMouseOver: () => void;
   onMouseLeave: () => void;
 }
@@ -27,7 +27,7 @@ export const Option = forwardRef<HTMLDivElement, IOptionProps>(
       value,
       disabled,
       isRemovable,
-      onMouseDown,
+      onClick,
       onMouseOver,
       onMouseLeave,
     },
@@ -58,7 +58,7 @@ export const Option = forwardRef<HTMLDivElement, IOptionProps>(
     return (
       <div
         className={classNames.listItemClassName}
-        onMouseDown={onMouseDown}
+        onClick={onClick}
         onMouseOver={onMouseOver}
         onMouseLeave={onMouseLeave}
         data-active={String(isActive)}

@@ -22,14 +22,14 @@ export interface IDropdownProps
     "classes" | "defaultTitleButtonAppearance"
   > {
   children: ReactElement<IDropdownChildrenProps>;
-  isPassSetIsOpenToChildren?: boolean;
+  passSetIsOpenToChildren?: boolean;
 }
 
 export const Dropdown = ({
   isOpen: isOpenProps,
   titleButtonProps: titleButtonPropsFromProps,
   children,
-  isPassSetIsOpenToChildren,
+  passSetIsOpenToChildren,
   ...props
 }: IDropdownProps) => {
   const classes = useStyles();
@@ -48,6 +48,11 @@ export const Dropdown = ({
     setIsOpen(false);
   }, []);
 
+  /* 
+    компоненту который передан в titleButtonProps 
+    обязательно необходимо принять и обработать onClick 
+    это обработка открывания закрывания dropdown
+  */
   const titleButtonProps = useMemo(() => {
     return {
       ...titleButtonPropsFromProps,
@@ -58,14 +63,14 @@ export const Dropdown = ({
   useClickOutsideComponent(accordionRef, handleClose);
 
   const mappedChildren = useMemo(() => {
-    return isPassSetIsOpenToChildren
+    return passSetIsOpenToChildren
       ? React.Children.map(children as ReactElement, (child) => {
           return React.cloneElement(child, {
             setIsOpen,
           });
         })
       : children;
-  }, [children, isPassSetIsOpenToChildren, setIsOpen]);
+  }, [children, passSetIsOpenToChildren, setIsOpen]);
 
   return (
     <BaseAccordion

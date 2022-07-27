@@ -1,7 +1,11 @@
+import { ACCORDION_COMPONENTS_NAMES } from "@cheaaa/accordion";
+
 export const CALENDAR_COMPONENT_NAMESPACE = "@che/calendar";
 
 export const CALENDAR_COMPONENTS_NAMES = {
-  wrapper: "wrapper",
+  ...ACCORDION_COMPONENTS_NAMES,
+
+  calendarWrapper: "calendarWrapper",
 
   headerWrapper: "headerWrapper",
   changeMonthButtonWrapper: "changeMonthButtonWrapper",

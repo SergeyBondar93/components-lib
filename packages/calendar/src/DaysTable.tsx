@@ -42,6 +42,7 @@ export const DaysTable = ({
 
       return {
         disabled,
+        timestamp,
         date,
         isToday,
         isSelected,
@@ -69,20 +70,24 @@ export const DaysTable = ({
   return (
     <>
       <Weekdays baseAppearance={baseAppearance} appearance={appearance} />
-      {days.map(({ date, disabled, isToday, isSelected, inRange }) => {
-        return (
-          <button
-            className={className}
-            onClick={() => handleClick(disabled, date)}
-            disabled={disabled}
-            data-is-today={String(!!isToday)}
-            data-is-selected={String(!!isSelected)}
-            data-in-range={String(!!inRange)}
-          >
-            {date.getDate()}
-          </button>
-        );
-      })}
+      {days.map(
+        ({ date, timestamp, disabled, isToday, isSelected, inRange }) => {
+          return (
+            <button
+              key={timestamp}
+              onMouseDown={(e) => e.preventDefault()}
+              className={className}
+              onClick={() => handleClick(disabled, date)}
+              disabled={disabled}
+              data-is-today={String(!!isToday)}
+              data-is-selected={String(!!isSelected)}
+              data-in-range={String(!!inRange)}
+            >
+              {date.getDate()}
+            </button>
+          );
+        }
+      )}
     </>
   );
 };

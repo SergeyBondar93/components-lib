@@ -15,6 +15,11 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
 
     position: "relative",
 
+    '&[data-type-is-button="true"]': {
+      caretColor: "transparent",
+      cursor: "pointer",
+    },
+
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
       opacity: 0.7,
@@ -57,6 +62,11 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
 
     "&:not(:focus)::placeholder": {
       opacity: 0,
+    },
+
+    '&[data-type-is-button="true"]': {
+      caretColor: "transparent",
+      cursor: "pointer",
     },
 
     '&[data-disabled="true"]': {
@@ -142,6 +152,11 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     top: "50%",
     cursor: "text",
     transform: "translateY(-50%)",
+
+    '&[data-type-is-button="true"]': {
+      caretColor: "transparent",
+      cursor: "pointer",
+    },
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
     },

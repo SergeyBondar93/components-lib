@@ -30,7 +30,6 @@ export type HandleSelectFunction = (arg: {
   optionValue: SelectOptionValue;
   disabled: boolean;
   type: "remove" | "select";
-  event: React.MouseEvent<HTMLDivElement, MouseEvent> | KeyboardEvent;
 }) => void;
 
 type InputProps = Omit<IInputProps, "onChange" | "value"> & {

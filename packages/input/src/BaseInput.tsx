@@ -37,6 +37,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       postfixProps = {},
       classes,
       onClick: onClickProps,
+      type,
       ...rest
     },
     ref: React.MutableRefObject<HTMLInputElement>
@@ -45,6 +46,8 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
     const mergedRef = useCombinedRefs(ref, iternalInputRef);
     const prefixRef = useRef<HTMLSpanElement>(null);
     const [isFocused, setIsFocused] = useState(false);
+
+    const isButton = type === "button";
 
     const handleClear = useCallback(() => {
       !disabled && onChange?.("");
@@ -83,9 +86,11 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
     const handleChange: React.ChangeEventHandler<HTMLInputElement> =
       useCallback(
         (e) => {
-          !disabled && onChange?.(e.target.value, e);
+          if (!disabled && !isButton) {
+            onChange?.(e.target.value, e);
+          }
         },
-        [disabled, onChange]
+        [disabled, onChange, isButton]
       );
 
     const classNames = useMemo(() => {
@@ -161,6 +166,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         data-disabled={String(!!disabled)}
         data-focused={String(!!isFocused)}
         data-hasvalue={String(!!value)}
+        data-type-is-button={String(!!isButton)}
         className={classNames.wrapperClassName}
         onClick={handleClick}
         {...wrapperProps}
@@ -181,6 +187,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
           data-hasvalue={String(!!value)}
           data-invalid={String(!!invalid)}
           data-valid={String(!!valid)}
+          data-type-is-button={String(!!isButton)}
           className={classNames.inputClassName}
           disabled={disabled}
           ref={mergedRef}
@@ -189,6 +196,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
           value={String(value)}
           onChange={handleChange}
           placeholder={placeholder}
+          type={isButton ? "text" : type}
           {...rest}
         />
 
@@ -200,6 +208,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
             data-disabled={String(!!disabled)}
             data-focused={String(isFocused)}
             data-hasvalue={String(!!value)}
+            data-type-is-button={String(!!isButton)}
             className={classNames.labelClassName}
             {...labelProps}
           >

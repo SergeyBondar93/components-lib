@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { useStyles } from "./styles";
@@ -17,6 +17,8 @@ export interface CalendarComponent extends IThemedProps {
   minDate?: Date;
   value?: Date;
   onChange: (date: Date) => void;
+  setIsOpen?: any;
+  openedDate?: Date;
 }
 
 export const Calendar: React.FC<CalendarComponent> = ({
@@ -26,6 +28,7 @@ export const Calendar: React.FC<CalendarComponent> = ({
   minDate: minDateProps,
   value: valueProps,
   onChange,
+  openedDate,
 }) => {
   const classes = useStyles();
 
@@ -43,11 +46,20 @@ export const Calendar: React.FC<CalendarComponent> = ({
   );
 
   const [selectedYear, setYear] = useState<number>(
-    (value || today).getFullYear()
+    (openedDate || value || today).getFullYear()
   );
   const [selectedMonth, setMonth] = useState<number>(
-    (value || today).getMonth()
+    (openedDate || value || today).getMonth()
   );
+
+  useEffect(() => {
+    if (openedDate) {
+      const year = openedDate.getFullYear();
+      const month = openedDate.getMonth();
+      setYear(year);
+      setMonth(month);
+    }
+  }, [openedDate]);
 
   const handlePreviousYearButtonClick = (): void => {
     if (selectedYear <= MIN_CALENDAR_YEAR) {
@@ -91,11 +103,11 @@ export const Calendar: React.FC<CalendarComponent> = ({
   };
 
   const classNames = useMemo(() => {
-    const wrapperClassName = getClassName<ComponentNames>(
+    const calendarWrapperClassName = getClassName<ComponentNames>(
       classes,
       baseAppearance,
       appearance,
-      "wrapper"
+      "calendarWrapper"
     );
     const tableClassName = getClassName<ComponentNames>(
       classes,
@@ -105,13 +117,13 @@ export const Calendar: React.FC<CalendarComponent> = ({
     );
 
     return {
-      wrapperClassName,
+      calendarWrapperClassName,
       tableClassName,
     };
   }, [classes, baseAppearance, appearance]);
 
   return (
-    <div className={classNames.wrapperClassName}>
+    <div className={classNames.calendarWrapperClassName}>
       <Header
         baseAppearance={baseAppearance}
         appearance={appearance}

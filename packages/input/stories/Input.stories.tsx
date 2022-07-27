@@ -63,6 +63,18 @@ const InputTemplate = (args) => {
           label="Отчество"
         />
       </div>
+
+      <div style={wrapperStyles}>
+        <h4>As Button</h4>
+        <Input
+          {...args}
+          value={value}
+          onChange={setValue}
+          placeholder="Иванович"
+          label="Отчество"
+          type={"button"}
+        />
+      </div>
       <button onClick={handleFocus}>Focus on first input</button>
     </>
   );
