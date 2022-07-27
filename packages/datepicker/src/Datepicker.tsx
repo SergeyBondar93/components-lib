@@ -1,6 +1,7 @@
 import { BaseAccordion, IAccordionProps } from "@cheaaa/accordion";
-import {
+import React, {
   MutableRefObject,
+  ReactElement,
   useCallback,
   useEffect,
   useMemo,
@@ -15,7 +16,12 @@ import { Calendar } from "./Calendar";
 import { useStyles } from "./styles";
 import { DatepickerInput } from "./DatepickerInput";
 
-interface IDatepickerProps extends IThemedProps {
+export interface IExtraComponentProps {
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpen?: boolean;
+}
+
+export interface IDatepickerProps extends IThemedProps {
   accordionProps?: IAccordionProps;
   inputProps?: Omit<IInputProps, "onChange" | "value"> & {
     ref?: MutableRefObject<HTMLInputElement>;
@@ -31,6 +37,18 @@ interface IDatepickerProps extends IThemedProps {
   openedDate?: Date;
   value?: Date;
   onChange: (date: Date) => void;
+
+  /**
+   * В props компонента добавляется setIsOpen, isOpen,
+   * для управления состоянием дейтпикера
+   */
+  headerComponent?: ReactElement<IExtraComponentProps>;
+
+  /**
+   * В props компонента добавляется setIsOpen, isOpen,
+   * для управления состоянием дейтпикера
+   */
+  footerComponent?: ReactElement<IExtraComponentProps>;
 }
 
 export const Datepicker = ({
@@ -50,6 +68,9 @@ export const Datepicker = ({
   openedDate,
   value,
   onChange,
+
+  headerComponent,
+  footerComponent,
 }: IDatepickerProps) => {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(isOpenProps);
@@ -106,6 +127,26 @@ export const Datepicker = ({
     [onChange, closeAfterSelect]
   );
 
+  const mappedHeaderComponent = useMemo(() => {
+    return (
+      headerComponent &&
+      React.cloneElement(headerComponent, {
+        setIsOpen,
+        isOpen,
+      })
+    );
+  }, [isOpen, headerComponent]);
+
+  const mappedFooterComponent = useMemo(() => {
+    return (
+      footerComponent &&
+      React.cloneElement(footerComponent, {
+        setIsOpen,
+        isOpen,
+      })
+    );
+  }, [isOpen, footerComponent]);
+
   return (
     <BaseAccordion
       baseAppearance={baseAppearance}
@@ -126,6 +167,8 @@ export const Datepicker = ({
         openedDate={openedDate}
         baseAppearance={baseAppearance}
         appearance={appearance}
+        headerComponent={mappedHeaderComponent}
+        footerComponent={mappedFooterComponent}
       />
     </BaseAccordion>
   );

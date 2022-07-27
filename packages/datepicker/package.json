@@ -26,6 +26,9 @@
 		"@cheaaa/accordion": "^2.3.0",
 		"@cheaaa/input": "^1.22.0"
 	},
+	"devDependencies": {
+		"@cheaaa/button": "^1.8.0"
+	},
 	"peerDependencies": {
 		"@cheaaa/theme": "^1.2.9",
 		"react": ">=17.0.2"

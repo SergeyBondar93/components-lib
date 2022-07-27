@@ -130,10 +130,6 @@ export function adjustDate(
 ): Date;
 
 export function adjustDate(date: string | Date, seconds = 0, isDate = false) {
-  if (!date) {
-    return null;
-  }
-
   const parsedDate = date instanceof Date ? cloneDate(date) : parseDate(date);
 
   parsedDate.setSeconds(parsedDate.getSeconds() + Number(seconds));

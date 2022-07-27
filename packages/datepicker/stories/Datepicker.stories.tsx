@@ -1,9 +1,10 @@
 import { Meta, Story } from "@storybook/react";
 import { useMemo, useState } from "react";
 import { ThemeProvider } from "react-jss";
+import { Button } from "@cheaaa/button";
 
-import { Calendar } from "../src";
-import { Datepicker } from "../src/Datepicker";
+import { addDays, Calendar, IExtraComponentProps } from "../src";
+import { Datepicker } from "../src";
 import { addYears, differenceInDays, formatDate, isAfter, today } from "../src";
 
 import { theme } from "./theme";
@@ -51,9 +52,6 @@ const aug20 = new Date(2022, 7, 20);
 interface IBaseStoryParams {
   disabled: boolean;
   closeAfterSelect: boolean;
-}
-interface IRangeStoryParams {
-  disabled: boolean;
 }
 
 export const CalendarBase: Story<IBaseStoryParams> = (args) => {
@@ -104,7 +102,24 @@ export const DatepickerBase: Story<IBaseStoryParams> = (props) => {
 
 DatepickerBase.args = CalendarBase.args;
 
-export const Range: Story<IRangeStoryParams> = (props) => {
+interface ISelectYearButtonProps extends IExtraComponentProps {
+  onClick: () => void;
+}
+
+const SelectYearButton = ({ onClick, setIsOpen }: ISelectYearButtonProps) => {
+  const handleClick = () => {
+    onClick();
+    setIsOpen?.(false);
+  };
+
+  return (
+    <Button onClick={handleClick} appearance={"tertiary"} shouldFitContent>
+      Годовой полис
+    </Button>
+  );
+};
+
+export const Range = (props) => {
   const [start, setStart] = useState<Date>();
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
@@ -130,6 +145,12 @@ export const Range: Story<IRangeStoryParams> = (props) => {
 
     return `Выбрано ${diff + 1} дней`;
   }, [start, end]);
+
+  const handleSelectYear = () => {
+    const nextYearDate = addYears(start!, 1);
+    const newEnd = addDays(nextYearDate, -1);
+    setEnd(newEnd);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -149,9 +170,11 @@ export const Range: Story<IRangeStoryParams> = (props) => {
           value={end}
           onChange={handleChangeEnd}
           isOpen={isOpenEnd}
-          openedDate={start}
+          openedDate={end || start}
           appearance="to"
           maxDate={MAX_CALENDAR_YEAR}
+          disabled={!start}
+          footerComponent={<SelectYearButton onClick={handleSelectYear} />}
           {...props}
         />
       </div>
@@ -162,11 +185,7 @@ export const Range: Story<IRangeStoryParams> = (props) => {
   );
 };
 
-Range.args = {
-  disabled: false,
-};
-
-export const RangeThemed: Story<IRangeStoryParams> = (props) => {
+export const RangeThemed = (props) => {
   const [start, setStart] = useState<Date>();
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
@@ -192,6 +211,12 @@ export const RangeThemed: Story<IRangeStoryParams> = (props) => {
 
     return `Выбрано ${diff + 1} дней`;
   }, [start, end]);
+
+  const handleSelectYear = () => {
+    const nextYearDate = addYears(start!, 1);
+    const newEnd = addDays(nextYearDate, -1);
+    setEnd(newEnd);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -222,7 +247,9 @@ export const RangeThemed: Story<IRangeStoryParams> = (props) => {
           inputProps={{
             appearance: "header-filters",
           }}
+          disabled={!start}
           maxDate={MAX_CALENDAR_YEAR}
+          footerComponent={<SelectYearButton onClick={handleSelectYear} />}
           {...props}
         />
       </div>
@@ -232,5 +259,3 @@ export const RangeThemed: Story<IRangeStoryParams> = (props) => {
     </ThemeProvider>
   );
 };
-
-RangeThemed.args = Range.args;

@@ -35,6 +35,11 @@ export interface IDropdownProps
     "classes" | "defaultTitleButtonAppearance"
   > {
   children: ReactElement<IDropdownChildrenProps>;
+
+  /**
+   * Передать ли props setIsOpen и isOpen в компонент
+   * для управления состоянием dropdown
+   */
   passSetIsOpenToChildren?: boolean;
 }
 

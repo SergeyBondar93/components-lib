@@ -43,6 +43,8 @@ export interface IBaseAccordionProps extends IThemedProps {
 
   /**
    * Props для кастомизации Title Button,
+   * если передан component, все остальные props попадут к нему + onClick для управления isOpen (работает как toggle),
+   * + shouldFitContent
    */
   titleButtonProps?: IButtonProps<any>;
   // TODO Типизирование передаваемого кастомного компонента вместо кнокпи не удалось нормально сделать

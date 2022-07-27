@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { ReactNode, useEffect, useMemo, useState } from "react";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { useStyles } from "./styles";
@@ -18,6 +18,8 @@ export interface CalendarComponent extends IThemedProps {
   value?: Date;
   onChange: (date: Date) => void;
   openedDate?: Date;
+  headerComponent?: ReactNode;
+  footerComponent?: ReactNode;
 }
 
 export const Calendar: React.FC<CalendarComponent> = ({
@@ -28,6 +30,8 @@ export const Calendar: React.FC<CalendarComponent> = ({
   value: valueProps,
   onChange,
   openedDate,
+  headerComponent,
+  footerComponent,
 }) => {
   const classes = useStyles();
 
@@ -104,6 +108,7 @@ export const Calendar: React.FC<CalendarComponent> = ({
 
   return (
     <div className={classNames.calendarWrapperClassName}>
+      {headerComponent}
       <Header
         baseAppearance={baseAppearance}
         appearance={appearance}
@@ -125,6 +130,7 @@ export const Calendar: React.FC<CalendarComponent> = ({
           value={value}
         />
       </div>
+      {footerComponent}
     </div>
   );
 };
