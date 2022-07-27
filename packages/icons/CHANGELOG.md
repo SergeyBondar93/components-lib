@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/icons@1.1.1...@cheaaa/icons@1.2.0) (2022-07-27)
+
+
+### Features
+
+* add calendar ([c64585b](https://github.com/SergeyBondar93/liba/commit/c64585b9830f97068c3331613dcdf2be2d43cdf3))
+
+
+
+
+
 ## [1.1.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/icons@1.1.0...@cheaaa/icons@1.1.1) (2022-07-21)
 
 
