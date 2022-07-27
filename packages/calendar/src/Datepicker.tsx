@@ -1,41 +1,37 @@
-import { BaseAccordion } from "@cheaaa/accordion";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { BaseAccordion, IAccordionProps } from "@cheaaa/accordion";
+import {
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useClickOutsideComponent, useCombinedRefs } from "@cheaaa/utils";
-import { Input } from "@cheaaa/input";
+import { IThemedProps } from "@cheaaa/theme";
+import { IInputProps } from "@cheaaa/input";
 
 import { Calendar } from "./Calendar";
-import { formatDate } from "./utils";
 import { useStyles } from "./styles";
+import { DatepickerInput } from "./DatepickerInput";
 
-const DatepickerInput = ({
-  value: valueProps = "",
-  placeholder = "Дата",
-  label = "Выберите дату",
-  disabled,
-  onClick,
-  innerRef,
-  isOpen,
-  inputProps,
-}) => {
-  const value = useMemo(() => {
-    return valueProps ? formatDate(valueProps) : "";
-  }, [valueProps]);
+interface IDatepickerProps extends IThemedProps {
+  accordionProps?: IAccordionProps;
+  inputProps?: Omit<IInputProps, "onChange" | "value"> & {
+    ref?: MutableRefObject<HTMLInputElement>;
+  };
+  placeholder?: string;
+  label?: string;
+  disabled?: boolean;
+  closeAfterSelect?: boolean;
+  isOpen?: boolean;
 
-  return (
-    <Input
-      value={value}
-      placeholder={placeholder}
-      label={label}
-      disabled={disabled}
-      onChange={() => {}}
-      onClick={onClick}
-      type={"button"}
-      ref={innerRef}
-      isActive={!!isOpen}
-      {...inputProps}
-    />
-  );
-};
+  maxDate?: Date;
+  minDate?: Date;
+  openedDate?: Date;
+  value?: Date;
+  onChange: (date: Date) => void;
+}
 
 export const Datepicker = ({
   baseAppearance = "base",
@@ -43,8 +39,8 @@ export const Datepicker = ({
 
   accordionProps,
   inputProps = {},
-  placeholder,
-  label,
+  placeholder = "Дата",
+  label = "Выберите дату",
   disabled,
   closeAfterSelect = true,
   isOpen: isOpenProps,
@@ -54,12 +50,12 @@ export const Datepicker = ({
   openedDate,
   value,
   onChange,
-}: any) => {
+}: IDatepickerProps) => {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(isOpenProps);
   const accordionRef = useRef<HTMLDivElement>(null);
   const iternalInputRef = useRef<HTMLInputElement>(null);
-  const mergedInputRef = useCombinedRefs(inputProps.ref, iternalInputRef);
+  const mergedInputRef = useCombinedRefs(inputProps?.ref, iternalInputRef);
 
   useEffect(() => {
     setIsOpen(isOpenProps);
@@ -68,6 +64,12 @@ export const Datepicker = ({
       mergedInputRef.current?.focus();
     }
   }, [isOpenProps]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      mergedInputRef.current?.blur();
+    }
+  }, [isOpen]);
 
   const toggleOpen = useCallback(() => {
     setIsOpen((isOpen) => !isOpen);
@@ -94,10 +96,11 @@ export const Datepicker = ({
   useClickOutsideComponent(accordionRef, handleClose);
 
   const handleChange = useCallback(
-    (...args) => {
+    (date: Date) => {
+      onChange(date);
+
       if (closeAfterSelect) {
         setIsOpen(false);
-        onChange(...args);
       }
     },
     [onChange, closeAfterSelect]
@@ -112,6 +115,7 @@ export const Datepicker = ({
       titleButtonProps={titleButtonProps}
       ref={accordionRef}
       animationDuration="0.0s"
+      defaultTitleButtonAppearance=""
       {...accordionProps}
     >
       <Calendar

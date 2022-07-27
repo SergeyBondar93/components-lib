@@ -17,7 +17,6 @@ export interface CalendarComponent extends IThemedProps {
   minDate?: Date;
   value?: Date;
   onChange: (date: Date) => void;
-  setIsOpen?: any;
   openedDate?: Date;
 }
 

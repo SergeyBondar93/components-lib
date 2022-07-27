@@ -23,7 +23,8 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/accordion": "^2.3.0"
+		"@cheaaa/accordion": "^2.3.0",
+		"@cheaaa/input": "^1.21.0"
 	},
 	"peerDependencies": {
 		"@cheaaa/theme": "^1.2.9",

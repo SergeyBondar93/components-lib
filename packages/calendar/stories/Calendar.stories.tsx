@@ -1,3 +1,4 @@
+import { Meta, Story } from "@storybook/react";
 import { useMemo, useState } from "react";
 import { ThemeProvider } from "react-jss";
 
@@ -9,7 +10,7 @@ import { theme } from "./theme";
 
 export default {
   title: "Calendar",
-};
+} as Meta;
 
 const min = new Date();
 min.setDate(20);
@@ -47,31 +48,47 @@ const octoberValue = new Date(2022, 9, 10);
 const aug10 = new Date(2022, 7, 10);
 const aug20 = new Date(2022, 7, 20);
 
-export const CalendarBase = () => {
+interface IBaseStoryParams {
+  disabled: boolean;
+  closeAfterSelect: boolean;
+}
+interface IRangeStoryParams {
+  disabled: boolean;
+}
+
+export const CalendarBase: Story<IBaseStoryParams> = (args) => {
   return (
     <>
       <Instance
         title={"Base"}
         minDate={MIN_CALENDAR_YEAR}
         maxDate={MAX_CALENDAR_YEAR}
+        {...args}
       />
       <Instance
         title={"With value 10.10.2022"}
         value={octoberValue}
         minDate={MIN_CALENDAR_YEAR}
         maxDate={MAX_CALENDAR_YEAR}
+        {...args}
       />
       <Instance
         title={"Available only from 10.08.2022 to 20.08.2022 "}
         minDate={aug10}
         maxDate={aug20}
         openedDate={aug10}
+        {...args}
       />
     </>
   );
 };
 
-export const DatepickerBase = () => {
+CalendarBase.args = {
+  disabled: false,
+  closeAfterSelect: true,
+};
+
+export const DatepickerBase: Story<IBaseStoryParams> = (props) => {
   const [value, setValue] = useState<Date>();
 
   return (
@@ -80,11 +97,14 @@ export const DatepickerBase = () => {
       maxDate={MAX_CALENDAR_YEAR}
       value={value}
       onChange={setValue}
+      {...props}
     />
   );
 };
 
-export const RangeDates = () => {
+DatepickerBase.args = CalendarBase.args;
+
+export const Range: Story<IRangeStoryParams> = (props) => {
   const [start, setStart] = useState<Date>();
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
@@ -121,6 +141,7 @@ export const RangeDates = () => {
           onChange={handleChangeFrom}
           appearance="from"
           maxDate={MAX_CALENDAR_YEAR}
+          {...props}
         />
         <Datepicker
           minDate={start}
@@ -131,6 +152,7 @@ export const RangeDates = () => {
           openedDate={start}
           appearance="to"
           maxDate={MAX_CALENDAR_YEAR}
+          {...props}
         />
       </div>
       <p>
@@ -140,7 +162,11 @@ export const RangeDates = () => {
   );
 };
 
-export const RangeThemed = () => {
+Range.args = {
+  disabled: false,
+};
+
+export const RangeThemed: Story<IRangeStoryParams> = (props) => {
   const [start, setStart] = useState<Date>();
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
@@ -182,6 +208,7 @@ export const RangeThemed = () => {
             appearance: "header-filters",
           }}
           maxDate={MAX_CALENDAR_YEAR}
+          {...props}
         />
         <Datepicker
           minDate={start}
@@ -196,6 +223,7 @@ export const RangeThemed = () => {
             appearance: "header-filters",
           }}
           maxDate={MAX_CALENDAR_YEAR}
+          {...props}
         />
       </div>
       <p>
@@ -204,3 +232,5 @@ export const RangeThemed = () => {
     </ThemeProvider>
   );
 };
+
+RangeThemed.args = Range.args;
