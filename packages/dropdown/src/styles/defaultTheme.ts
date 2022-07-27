@@ -7,7 +7,6 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [DROPDOWN_COMPONENTS_NAMES.wrapper]: {
     position: "relative",
   },
-  [DROPDOWN_COMPONENTS_NAMES.title]: {},
   [DROPDOWN_COMPONENTS_NAMES.icon]: {
     display: "none",
     transition: "0.2s",

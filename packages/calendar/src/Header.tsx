@@ -20,15 +20,9 @@ export const Header = ({
   selectedYear,
   onNext,
   onPrev,
-}: IHeaderProps) => {
+}: any & IHeaderProps) => {
   const classes = useStyles();
   const classNames = useMemo(() => {
-    const wrapperClassName = getClassName<ComponentNames>(
-      classes,
-      baseAppearance,
-      appearance,
-      "wrapper"
-    );
     const headerWrapperClassName = getClassName<ComponentNames>(
       classes,
       baseAppearance,
@@ -55,7 +49,6 @@ export const Header = ({
     );
 
     return {
-      wrapperClassName,
       headerWrapperClassName,
       titleWrapperClassName,
       monthWrapperClassName,

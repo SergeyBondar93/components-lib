@@ -1171,28 +1171,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cheaaa/accordion@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@cheaaa/accordion/-/accordion-2.4.0.tgz#cba2ee34da67d541b94915f2ff79cf4c6a975252"
-  integrity sha512-w02r1Ro3/KbIqkCzoyjJ/jJsUewtKUkW51p3hSHUgm44rto6jrqfgRfkVg+pS3kufaBnlmeUGBku+QI80jvtkw==
-  dependencies:
-    "@cheaaa/button" "^1.8.0"
-    "@cheaaa/utils" "^1.4.0"
-
-"@cheaaa/button@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@cheaaa/button/-/button-1.8.0.tgz#0492ee67c056126a4d240d8b23fa4c7eb1bd2014"
-  integrity sha512-EDFLwcXM/n/hRv9HeLihlq4D8A9FyEDdM3fM5Egura7Uqi5DlSdlQVlJR81WTf48e5dg++oYJrXK7HMAvm0ajg==
-  dependencies:
-    "@cheaaa/utils" "^1.4.0"
-
-"@cheaaa/dropdown@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@cheaaa/dropdown/-/dropdown-1.3.0.tgz#7970f7c076c4bec40bbee9dc3db6995c29d015d9"
-  integrity sha512-sPFFFyxR7Ow3aMbJhsaMb4kpegt6keZgfaQADTOcccJ9cwVffTj1oimEzF4EUvhI0bvw988bt4UFdP5a15Yf7Q==
-  dependencies:
-    "@cheaaa/accordion" "^2.4.0"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -7098,11 +7076,6 @@ data-urls@^1.1.0:
     abab "^2.0.0"
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
-
-date-fns@^2.29.1:
-  version "2.29.1"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.29.1.tgz#9667c2615525e552b5135a3116b95b1961456e60"
-  integrity sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==
 
 dateformat@^3.0.0:
   version "3.0.3"

@@ -10,7 +10,7 @@ interface SwitchButton extends Required<IThemedProps> {
   onClick: any;
 }
 
-const SwitchButton: FC<SwitchButton> = ({
+const SwitchButton: FC<any & SwitchButton> = ({
   baseAppearance,
   appearance,
   isNext,

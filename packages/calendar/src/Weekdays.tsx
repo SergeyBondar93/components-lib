@@ -8,7 +8,7 @@ import { weekdays } from "./utils";
 interface IWeekdaysProps extends Required<IThemedProps> {}
 
 export const Weekdays = memo(
-  ({ baseAppearance, appearance }: IWeekdaysProps) => {
+  ({ baseAppearance, appearance }: any & IWeekdaysProps) => {
     const classes = useStyles();
 
     const className = getClassName<ComponentNames>(

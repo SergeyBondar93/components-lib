@@ -1,8 +1,11 @@
 import { useMemo, useState } from "react";
+import { ThemeProvider } from "react-jss";
 
 import { Calendar } from "../src";
 import { Datepicker } from "../src/Datepicker";
 import { differenceInDays, formatDate, isAfter } from "../src/utils";
+
+import { theme } from "./theme";
 
 export default {
   title: "Calendar",
@@ -50,6 +53,7 @@ export const CalendarBase = () => {
         title={"Available only from 10.08.2022 to 20.08.2022 "}
         minDate={aug10}
         maxDate={aug20}
+        openedDate={aug10}
       />
     </>
   );
@@ -89,13 +93,14 @@ export const FromTo = () => {
   }, [start, end]);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <div style={{ display: "flex", gap: "15px" }}>
         <Datepicker
           minDate={new Date()}
           label={"Туда"}
           value={start}
           onChange={handleChangeFrom}
+          appearance="from"
         />
         <Datepicker
           minDate={start}
@@ -104,12 +109,13 @@ export const FromTo = () => {
           onChange={handleChangeEnd}
           isOpen={isOpenEnd}
           openedDate={start}
+          appearance="to"
         />
       </div>
 
       <p>
         {start ? formatDate(start) : "?"} - {end ? formatDate(end) : "?"}{" "}
       </p>
-    </>
+    </ThemeProvider>
   );
 };

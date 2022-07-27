@@ -1,4 +1,4 @@
-import { CALENDAR_COMPONENTS_NAMES } from "./consts";
+import { DATEPICKER_COMPONENTS_NAMES } from "./consts";
 
 export type ComponentNames =
-  typeof CALENDAR_COMPONENTS_NAMES[keyof typeof CALENDAR_COMPONENTS_NAMES];
+  typeof DATEPICKER_COMPONENTS_NAMES[keyof typeof DATEPICKER_COMPONENTS_NAMES];

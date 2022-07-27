@@ -1,17 +1,15 @@
-import { ACCORDION_COMPONENTS_NAMES } from "@cheaaa/accordion";
 import { ComponentTheme } from "@cheaaa/theme";
 
-import { CALENDAR_COMPONENTS_NAMES } from "./consts";
+import { DATEPICKER_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   /** Accordion Styles */
-  [ACCORDION_COMPONENTS_NAMES.wrapper]: {
+  [DATEPICKER_COMPONENTS_NAMES.wrapper]: {
     position: "relative",
     display: "inline-block",
   },
-  [ACCORDION_COMPONENTS_NAMES.title]: {},
-  [ACCORDION_COMPONENTS_NAMES.icon]: {
+  [DATEPICKER_COMPONENTS_NAMES.icon]: {
     display: "none",
     transition: "0.2s",
     fill: "#718299",
@@ -19,7 +17,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       transform: "rotate(90deg)",
     },
   },
-  [ACCORDION_COMPONENTS_NAMES.body]: {
+  [DATEPICKER_COMPONENTS_NAMES.body]: {
     position: "absolute",
     zIndex: 1,
     background: "#FFF",
@@ -33,16 +31,16 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
    * для отступа внутри children для правильного
    * высчитывания размеров блока необходимо добавлять padding к children
    */
-  [ACCORDION_COMPONENTS_NAMES.childrenWrapper]: {},
+  [DATEPICKER_COMPONENTS_NAMES.childrenWrapper]: {},
 
   /** Calendar Styles  */
-  [CALENDAR_COMPONENTS_NAMES.calendarWrapper]: {
+  [DATEPICKER_COMPONENTS_NAMES.calendarWrapper]: {
     width: 244,
     backgroundColor: "#FFF",
     padding: "10px",
     boxSizing: "border-box",
   },
-  [CALENDAR_COMPONENTS_NAMES.headerWrapper]: {
+  [DATEPICKER_COMPONENTS_NAMES.headerWrapper]: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -50,9 +48,9 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     height: 34,
     fontWeight: 500,
   },
-  [CALENDAR_COMPONENTS_NAMES.titleWrapper]: {},
+  [DATEPICKER_COMPONENTS_NAMES.titleWrapper]: {},
 
-  [CALENDAR_COMPONENTS_NAMES.changeMonthButtonWrapper]: {
+  [DATEPICKER_COMPONENTS_NAMES.changeMonthButtonWrapper]: {
     padding: "0px",
     width: "28px",
     height: "100%",
@@ -69,21 +67,21 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     },
   },
 
-  [CALENDAR_COMPONENTS_NAMES.monthWrapper]: {
+  [DATEPICKER_COMPONENTS_NAMES.monthWrapper]: {
     marginRight: "5px",
     color: "#101820",
     fontSize: "15px",
   },
-  [CALENDAR_COMPONENTS_NAMES.yearWrapper]: {
+  [DATEPICKER_COMPONENTS_NAMES.yearWrapper]: {
     color: "#101820",
     fontSize: "15px",
   },
-  [CALENDAR_COMPONENTS_NAMES.table]: {
+  [DATEPICKER_COMPONENTS_NAMES.table]: {
     display: "flex",
     flexWrap: "wrap",
     marginTop: "7px",
   },
-  [CALENDAR_COMPONENTS_NAMES.weekday]: {
+  [DATEPICKER_COMPONENTS_NAMES.weekday]: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -93,7 +91,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     fontSize: "12px",
     letterSpacing: "-0.3px",
   },
-  [CALENDAR_COMPONENTS_NAMES.day]: {
+  [DATEPICKER_COMPONENTS_NAMES.day]: {
     width: "calc(100% / 7)",
     aspectRatio: "1/1",
     padding: "0px",

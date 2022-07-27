@@ -1,8 +1,7 @@
 import { BaseAccordion } from "@cheaaa/accordion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useClickOutsideComponent, useCombinedRefs } from "@cheaaa/utils";
-
-import { Input } from "../../input";
+import { Input } from "@cheaaa/input";
 
 import { Calendar } from "./Calendar";
 import { formatDate } from "./utils";
@@ -37,6 +36,9 @@ const DatepickerInput = ({
 };
 
 export const Datepicker = ({
+  baseAppearance = "base",
+  appearance = "base",
+
   accordionProps,
   inputProps = {},
   placeholder,
@@ -100,6 +102,8 @@ export const Datepicker = ({
 
   return (
     <BaseAccordion
+      baseAppearance={baseAppearance}
+      appearance={appearance}
       isOpen={isOpen}
       classes={classes}
       titleButtonProps={titleButtonProps}
@@ -113,6 +117,8 @@ export const Datepicker = ({
         maxDate={maxDate}
         minDate={minDate}
         openedDate={openedDate}
+        baseAppearance={baseAppearance}
+        appearance={appearance}
       />
     </BaseAccordion>
   );

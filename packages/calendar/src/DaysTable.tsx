@@ -13,12 +13,12 @@ import {
 import { Weekdays } from "./Weekdays";
 
 export const DaysTable = ({
+  baseAppearance,
+  appearance,
   selectedMonth,
   selectedYear,
   minDate,
   maxDate,
-  baseAppearance,
-  appearance,
   onChange,
   value,
 }: any) => {

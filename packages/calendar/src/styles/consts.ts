@@ -1,18 +1,43 @@
 import { ACCORDION_COMPONENTS_NAMES } from "@cheaaa/accordion";
 
-export const CALENDAR_COMPONENT_NAMESPACE = "@che/calendar";
+export const DATEPICKER_COMPONENT_NAMESPACE = "@che/calendar";
 
-export const CALENDAR_COMPONENTS_NAMES = {
+export const DATEPICKER_COMPONENTS_NAMES = {
   ...ACCORDION_COMPONENTS_NAMES,
 
+  /**
+   * Обёртка над компонентом календаря
+   */
   calendarWrapper: "calendarWrapper",
 
+  /**
+   * Компонент содержащий кнопки вперёд/назад, месяц и год
+   */
   headerWrapper: "headerWrapper",
+
+  /**
+   * Кнопки вперёд/назад
+   */
   changeMonthButtonWrapper: "changeMonthButtonWrapper",
+
+  /**
+   * Обёртка над месяцем / годом
+   */
   titleWrapper: "titleWrapper",
+
+  /**
+   * Обёртка над месяцем
+   */
   monthWrapper: "monthWrapper",
+
+  /**
+   * Обёртка над годом
+   */
   yearWrapper: "yearWrapper",
 
+  /**
+   * Обёртка над таблицей дней/месяцев/лет
+   */
   table: "table",
 
   weekday: "weekday",

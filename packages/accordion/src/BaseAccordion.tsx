@@ -131,12 +131,6 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
         appearance,
         "wrapper"
       );
-      const titleClassName = getClassName<ComponentNames>(
-        classes,
-        baseAppearance,
-        appearance,
-        "title"
-      );
       const iconClassName = getClassName<ComponentNames>(
         classes,
         baseAppearance,
@@ -158,7 +152,6 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
 
       return {
         wrapperClassName,
-        titleClassName,
         iconClassName,
         bodyClassName,
         childrenWrapperClassName,
