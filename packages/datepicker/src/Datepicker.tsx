@@ -38,6 +38,8 @@ export interface IDatepickerProps extends IThemedProps {
   value?: Date;
   onChange: (date: Date) => void;
 
+  onChangeIsOpen?: (newIsOpen: boolean) => void;
+
   /**
    * В props компонента добавляется setIsOpen, isOpen,
    * для управления состоянием дейтпикера
@@ -68,6 +70,7 @@ export const Datepicker = ({
   openedDate,
   value,
   onChange,
+  onChangeIsOpen,
 
   headerComponent,
   footerComponent,
@@ -87,6 +90,8 @@ export const Datepicker = ({
   }, [isOpenProps]);
 
   useEffect(() => {
+    onChangeIsOpen?.(!!isOpen);
+
     if (!isOpen) {
       mergedInputRef.current?.blur();
     }

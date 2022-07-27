@@ -124,7 +124,7 @@ export const Range = (props) => {
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
 
-  const handleChangeFrom = (newStart) => {
+  const handleChangeStart = (newStart) => {
     setStart(newStart);
     setIsOpenEnd(true);
 
@@ -159,7 +159,7 @@ export const Range = (props) => {
           minDate={new Date()}
           label={"Туда"}
           value={start}
-          onChange={handleChangeFrom}
+          onChange={handleChangeStart}
           appearance="from"
           maxDate={MAX_CALENDAR_YEAR}
           {...props}
@@ -190,7 +190,7 @@ export const RangeThemed = (props) => {
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
 
-  const handleChangeFrom = (newStart) => {
+  const handleChangeStart = (newStart) => {
     setStart(newStart);
     setIsOpenEnd(true);
 
@@ -218,6 +218,16 @@ export const RangeThemed = (props) => {
     setEnd(newEnd);
   };
 
+  /*
+    isOpen работает только на одно открытие и дальше компонент становится uncontrolled, 
+    что бы всегда открывать его заного необходимо менять это значение тут каждый раз 
+  */
+  const handleChangeIsOpenStart = (newIsOpen: boolean) => {
+    if (newIsOpen) {
+      setIsOpenEnd(false);
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <h3>Themed Inputs</h3>
@@ -226,9 +236,10 @@ export const RangeThemed = (props) => {
           minDate={new Date()}
           label={"Туда"}
           value={start}
-          onChange={handleChangeFrom}
+          onChange={handleChangeStart}
           baseAppearance="header-filters"
           appearance="from"
+          onChangeIsOpen={handleChangeIsOpenStart}
           inputProps={{
             appearance: "header-filters",
           }}
@@ -241,7 +252,7 @@ export const RangeThemed = (props) => {
           value={end}
           onChange={handleChangeEnd}
           isOpen={isOpenEnd}
-          openedDate={start}
+          openedDate={end || start}
           baseAppearance="header-filters"
           appearance="to"
           inputProps={{
