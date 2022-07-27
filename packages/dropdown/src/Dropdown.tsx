@@ -13,7 +13,20 @@ import { BaseAccordion, IBaseAccordionProps } from "@cheaaa/accordion";
 import { DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE, useStyles } from "./styles";
 
 export interface IDropdownChildrenProps {
+  /**
+   * передаётся из компонента Dropdown, опциональность указана что бы ТС не требовал передавать в приложении
+   */
   setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  /**
+   * передаётся из компонента Dropdown, опциональность указана что бы ТС не требовал передавать в приложении
+   */
+  isOpen?: boolean;
+}
+export interface IDropdownTitleProps {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpen: boolean;
+  // функция для toggle isOpen
+  onClick: () => void;
 }
 
 export interface IDropdownProps
@@ -50,14 +63,15 @@ export const Dropdown = ({
 
   /* 
     компоненту который передан в titleButtonProps 
-    обязательно необходимо принять и обработать onClick 
+    необходимо принять и обработать setIsOpen 
     это обработка открывания закрывания dropdown
   */
   const titleButtonProps = useMemo(() => {
     return {
       ...titleButtonPropsFromProps,
-      onClick: toggleOpen,
+      setIsOpen,
       isOpen,
+      onClick: toggleOpen,
     };
   }, [titleButtonPropsFromProps, toggleOpen, isOpen]);
 
@@ -68,10 +82,11 @@ export const Dropdown = ({
       ? React.Children.map(children as ReactElement, (child) => {
           return React.cloneElement(child, {
             setIsOpen,
+            isOpen,
           });
         })
       : children;
-  }, [children, passSetIsOpenToChildren, setIsOpen]);
+  }, [children, passSetIsOpenToChildren, setIsOpen, isOpen]);
 
   return (
     <BaseAccordion

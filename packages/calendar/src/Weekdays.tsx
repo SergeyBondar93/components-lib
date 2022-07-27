@@ -3,7 +3,7 @@ import { memo } from "react";
 
 import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
-import { weekdays } from "./utils";
+import { weekdaysRU } from "./utils";
 
 interface IWeekdaysProps extends Required<IThemedProps> {}
 
@@ -20,7 +20,7 @@ export const Weekdays = memo(
 
     return (
       <>
-        {weekdays.map((weekday) => {
+        {weekdaysRU.map((weekday) => {
           return (
             <div className={className} key={weekday}>
               {weekday}

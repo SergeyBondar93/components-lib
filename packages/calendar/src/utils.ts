@@ -8,6 +8,9 @@ const MIN = 60 * SECOND;
 const HOUR = MIN * 60;
 export const DAY = HOUR * 24;
 
+export const FIRST_MONTH_INDEX = 0;
+export const LAST_MONTH_INDEX = 11;
+
 export const getDatesFromMonth = (month: number, year: number): Date[] => {
   const days = new Date(year, month + 1, 0).getDate();
   const dates: Date[] = [];
@@ -230,12 +233,9 @@ export const differenceInDays = (date1: Date, date2: Date) => {
   return Math.ceil(diffInDays);
 };
 
-export const MAX_CALENDAR_YEAR = addYears(today, 2).getFullYear();
-export const MIN_CALENDAR_YEAR = addYears(today, -2).getFullYear();
+export const weekdaysRU = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"] as const;
 
-export const weekdays = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"] as const;
-
-export const months = [
+export const monthsRU = [
   "Январь",
   "Февраль",
   "Март",

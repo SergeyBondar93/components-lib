@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
 import SwitchButton from "./SwitchButton";
-import { months } from "./utils";
+import { monthsRU } from "./utils";
 
 interface IHeaderProps extends Required<IThemedProps> {
   selectedMonth: number;
@@ -67,7 +67,7 @@ export const Header = ({
 
       <span className={classNames.titleWrapperClassName}>
         <span className={classNames.monthWrapperClassName}>
-          {months[selectedMonth]}
+          {monthsRU[selectedMonth]}
         </span>
         <span className={classNames.yearWrapperClassName}>{selectedYear}</span>
       </span>

@@ -3,7 +3,7 @@ import { ThemeProvider } from "react-jss";
 
 import { Calendar } from "../src";
 import { Datepicker } from "../src/Datepicker";
-import { differenceInDays, formatDate, isAfter } from "../src/utils";
+import { addYears, differenceInDays, formatDate, isAfter, today } from "../src";
 
 import { theme } from "./theme";
 
@@ -16,6 +16,9 @@ min.setDate(20);
 
 const max = new Date();
 max.setDate(28);
+
+const MAX_CALENDAR_YEAR = addYears(today, 2);
+const MIN_CALENDAR_YEAR = addYears(today, -2);
 
 const Instance = ({ title, ...props }: any) => {
   const [value, setValue] = useState<Date>();
@@ -47,8 +50,17 @@ const aug20 = new Date(2022, 7, 20);
 export const CalendarBase = () => {
   return (
     <>
-      <Instance title={"Base"} />
-      <Instance title={"With value 10.10.2022"} value={octoberValue} />
+      <Instance
+        title={"Base"}
+        minDate={MIN_CALENDAR_YEAR}
+        maxDate={MAX_CALENDAR_YEAR}
+      />
+      <Instance
+        title={"With value 10.10.2022"}
+        value={octoberValue}
+        minDate={MIN_CALENDAR_YEAR}
+        maxDate={MAX_CALENDAR_YEAR}
+      />
       <Instance
         title={"Available only from 10.08.2022 to 20.08.2022 "}
         minDate={aug10}
@@ -62,7 +74,14 @@ export const CalendarBase = () => {
 export const DatepickerBase = () => {
   const [value, setValue] = useState<Date>();
 
-  return <Datepicker value={value} onChange={setValue} />;
+  return (
+    <Datepicker
+      minDate={MIN_CALENDAR_YEAR}
+      maxDate={MAX_CALENDAR_YEAR}
+      value={value}
+      onChange={setValue}
+    />
+  );
 };
 
 export const RangeDates = () => {
@@ -101,6 +120,7 @@ export const RangeDates = () => {
           value={start}
           onChange={handleChangeFrom}
           appearance="from"
+          maxDate={MAX_CALENDAR_YEAR}
         />
         <Datepicker
           minDate={start}
@@ -110,6 +130,7 @@ export const RangeDates = () => {
           isOpen={isOpenEnd}
           openedDate={start}
           appearance="to"
+          maxDate={MAX_CALENDAR_YEAR}
         />
       </div>
       <p>
@@ -160,6 +181,7 @@ export const RangeThemed = () => {
           inputProps={{
             appearance: "header-filters",
           }}
+          maxDate={MAX_CALENDAR_YEAR}
         />
         <Datepicker
           minDate={start}
@@ -173,6 +195,7 @@ export const RangeThemed = () => {
           inputProps={{
             appearance: "header-filters",
           }}
+          maxDate={MAX_CALENDAR_YEAR}
         />
       </div>
       <p>

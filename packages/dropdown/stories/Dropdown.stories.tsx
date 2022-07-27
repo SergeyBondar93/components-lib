@@ -4,7 +4,7 @@ import { CloseIcon } from "@cheaaa/icons";
 import { Input } from "@cheaaa/input";
 import { Button, IconButton } from "@cheaaa/button";
 
-import { Dropdown, IDropdownChildrenProps } from "../src";
+import { Dropdown, IDropdownChildrenProps, IDropdownTitleProps } from "../src";
 
 import { options } from "./options";
 import { theme } from "./theme";
@@ -227,15 +227,13 @@ const TouristsSelector = ({ tourisus, setTourisus }) => {
   );
 };
 
-interface ITouristsSelectorInputProps {
+interface ITouristsSelectorInputProps extends IDropdownTitleProps {
   tourisus: number[];
-  onClick: () => void;
-  isOpen: boolean;
 }
 
 const TouristsSelectorInput = ({
   tourisus,
-  onClick,
+  setIsOpen,
   isOpen,
 }: ITouristsSelectorInputProps) => {
   return (
@@ -244,7 +242,7 @@ const TouristsSelectorInput = ({
       isActive={isOpen}
       value={tourisus.join(", ")}
       type="button"
-      onClick={onClick}
+      onClick={() => setIsOpen?.((v) => !v)}
       label="Туристы"
       placeholder="Выберите туристов"
     />

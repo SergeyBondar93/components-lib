@@ -94,16 +94,10 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
       overflow: "hidden",
       textOverflow: "ellipsis",
     },
-    // TODO не работает почему то truncate плейсхолдера, починить
-    "&[data-component-active]::placeholder": {
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-    },
+
     '&[data-component-active="true"]': {
       padding: "6px 14px",
     },
-    // TODO проверить кнопку в дропдауне и плейсхоледр, есть ли он
     '&[data-component-active="true"]::placeholder': {
       opacity: "1",
     },

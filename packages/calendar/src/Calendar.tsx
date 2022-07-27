@@ -3,9 +3,9 @@ import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { useStyles } from "./styles";
 import {
+  FIRST_MONTH_INDEX,
   getStartOfAday,
-  MAX_CALENDAR_YEAR,
-  MIN_CALENDAR_YEAR,
+  LAST_MONTH_INDEX,
   today,
 } from "./utils";
 import { ComponentNames } from "./styles/types";
@@ -61,29 +61,10 @@ export const Calendar: React.FC<CalendarComponent> = ({
     }
   }, [openedDate]);
 
-  const handlePreviousYearButtonClick = (): void => {
-    if (selectedYear <= MIN_CALENDAR_YEAR) {
-      return;
-    }
-
-    setYear(selectedYear - 1);
-  };
-
-  const handleNextYearButtonClick = (): void => {
-    if (selectedYear >= MAX_CALENDAR_YEAR) {
-      return;
-    }
-
-    setYear(selectedYear + 1);
-  };
-
-  const firstMonthIndex = 0;
-  const lastMonthIndex = 11;
-
   const handlePreviousMonthButtonClick = (): void => {
-    if (selectedMonth === firstMonthIndex) {
-      setMonth(lastMonthIndex);
-      handlePreviousYearButtonClick();
+    if (selectedMonth === FIRST_MONTH_INDEX) {
+      setMonth(LAST_MONTH_INDEX);
+      setYear(selectedYear - 1);
 
       return;
     }
@@ -92,9 +73,9 @@ export const Calendar: React.FC<CalendarComponent> = ({
   };
 
   const handleNextMonthButtonClick = (): void => {
-    if (selectedMonth === lastMonthIndex) {
-      setMonth(firstMonthIndex);
-      handleNextYearButtonClick();
+    if (selectedMonth === LAST_MONTH_INDEX) {
+      setMonth(FIRST_MONTH_INDEX);
+      setYear(selectedYear + 1);
 
       return;
     }
