@@ -213,6 +213,12 @@ export const Select = ({
       appearance,
       "wrapper"
     );
+    const iconClassName = getClassName<ComponentNames>(
+      classes,
+      baseAppearance,
+      appearance,
+      "icon"
+    );
     const dropdownClassName = getClassName<ComponentNames>(
       classes,
       baseAppearance,
@@ -252,6 +258,7 @@ export const Select = ({
 
     return {
       wrapperClassName,
+      iconClassName,
       dropdownClassName,
       groupWrapperClassName,
       groupHeaderClassName,
@@ -375,7 +382,12 @@ export const Select = ({
         onFocus={handleFocusInput}
         onBlur={onBlurInput}
         appearance={DEFAULT_SELECT_INPUT_APPEARANCE}
-        postfix={<TriangleIcon />}
+        postfix={
+          <TriangleIcon
+            data-is-open={String(!!isOpen)}
+            className={classNames.iconClassName}
+          />
+        }
         isActive={!!isOpen}
         {...inputProps}
         ref={inputRef}

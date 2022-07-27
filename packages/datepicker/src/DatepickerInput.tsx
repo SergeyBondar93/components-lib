@@ -1,5 +1,6 @@
 import { MutableRefObject, useMemo } from "react";
 import { IInputProps, Input } from "@cheaaa/input";
+import { CalendarIcon } from "@cheaaa/icons";
 
 import { formatDate } from "./utils";
 
@@ -39,6 +40,7 @@ export const DatepickerInput = ({
       type={"button"}
       ref={innerRef}
       isActive={!!isOpen}
+      postfix={<CalendarIcon />}
       {...inputProps}
     />
   );

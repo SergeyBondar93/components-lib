@@ -12,6 +12,12 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       width: "100%",
     },
   },
+  [SELECT_COMPONENTS_NAMES.icon]: {
+    transition: "0.2s",
+    '&[data-is-open="true"]': {
+      transform: "rotate(180deg)",
+    },
+  },
   [SELECT_COMPONENTS_NAMES.dropdown]: {
     zIndex: 1,
     position: "absolute",

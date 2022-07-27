@@ -103,27 +103,37 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     },
   },
   [INPUT_COMPONENTS_NAMES.prefixWrapper]: {
-    marginLeft: "12px",
-    display: "flex",
-    alignItems: "center",
-  },
-  [INPUT_COMPONENTS_NAMES.postfixWrapper]: {
     marginRight: "12px",
+    alignSelf: "center",
+    transition: "0.2s",
     display: "flex",
+    justifyContent: "center",
     alignItems: "center",
-
     /**
      * Стили для инпута используемом в других компонентах,
      * для управления стилями когда компонент активен но инпут не в фокусе
      * */
     "&[data-component-active]": {
       cursor: "pointer",
-      transition: "0.2s",
-      height: "100%",
     },
-    '&[data-component-active="true"]': {
-      transform: "rotate(180deg)",
+  },
+  [INPUT_COMPONENTS_NAMES.postfixWrapper]: {
+    marginRight: "12px",
+    alignSelf: "center",
+    transition: "0.2s",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    /**
+     * Стили для инпута используемом в других компонентах,
+     * для управления стилями когда компонент активен но инпут не в фокусе
+     * */
+    "&[data-component-active]": {
+      cursor: "pointer",
     },
+    // '&[data-component-active="true"]': {
+    //   transform: "rotate(180deg)",
+    // },
   },
   [INPUT_COMPONENTS_NAMES.clearIcon]: {
     alignSelf: "center",

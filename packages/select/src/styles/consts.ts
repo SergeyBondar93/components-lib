@@ -2,6 +2,7 @@ export const SELECT_COMPONENT_NAMESPACE = `@che/select`;
 
 export const SELECT_COMPONENTS_NAMES = {
   wrapper: `wrapper`,
+  icon: `icon`,
   dropdown: `dropdown`,
   groupWrapper: "groupWrapper",
   groupHeader: "groupHeader",
