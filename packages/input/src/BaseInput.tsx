@@ -180,7 +180,6 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         data-type-is-button={String(!!isButton)}
         className={classNames.wrapperClassName}
         onClick={handleClick}
-        onMouseDown={(e) => e.preventDefault()}
         {...dataComponentActiveProp}
         {...wrapperProps}
       >
