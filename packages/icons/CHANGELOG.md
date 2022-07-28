@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.3.0 (2022-07-28)
+
+
+### Features
+
+* **calendar, input:** change types, add range selector ([93a9548](https://github.com/SergeyBondar93/liba/commit/93a9548368acbdc58f637f63fb513acacb8d9141))
+
+
+
+
+
 # [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/icons@1.1.1...@cheaaa/icons@1.2.0) (2022-07-27)
 
 

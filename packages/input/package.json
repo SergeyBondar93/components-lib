@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/input",
-	"version": "1.22.1",
+	"version": "1.23.0",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
