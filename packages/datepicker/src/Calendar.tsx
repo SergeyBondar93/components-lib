@@ -1,9 +1,17 @@
-import React, { ReactNode, useEffect, useMemo, useState } from "react";
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { useStyles } from "./styles";
 import {
+  Day,
   FIRST_MONTH_INDEX,
+  getRange,
   getStartOfAday,
   LAST_MONTH_INDEX,
   today,
@@ -13,13 +21,53 @@ import { Header } from "./Header";
 import { DaysTable } from "./DaysTable";
 
 export interface CalendarComponent extends IThemedProps {
-  maxDate?: Date;
-  minDate?: Date;
   value?: Date;
   onChange: (date: Date) => void;
+
+  /**
+   * Максимально доступная дата
+   */
+  maxDate?: Date;
+
+  /**
+   * Минимально доступная дата
+   */
+  minDate?: Date;
+
+  /**
+   * Месяц включащий дату на которую открыт календарь
+   */
   openedDate?: Date;
+
+  /**
+   * Кастомный компонент над Header
+   */
   headerComponent?: ReactNode;
+
+  /**
+   * Кастомный компонент под Table
+   */
   footerComponent?: ReactNode;
+
+  /**
+   * Включает подсветку диапазона, используется совместно с startDate + endDate
+   */
+  rangeSelector?: "start" | "end";
+
+  /**
+   * Дата начала диапазона
+   */
+  startDate?: Date;
+
+  /**
+   * Дата конца диапазона
+   */
+  endDate?: Date;
+
+  /**
+   * отключает выбор дней в календаре и открытие его
+   */
+  disabled?: boolean;
 }
 
 export const Calendar: React.FC<CalendarComponent> = ({
@@ -32,8 +80,44 @@ export const Calendar: React.FC<CalendarComponent> = ({
   openedDate,
   headerComponent,
   footerComponent,
+  rangeSelector,
+  startDate,
+  endDate,
+  disabled,
 }) => {
   const classes = useStyles();
+
+  const [hovered, setHovered] = useState<Date | null>();
+  const [rangeDates, setRangeDates] = useState<Day[]>([]);
+
+  useEffect(() => {
+    if (!rangeSelector) return;
+
+    let range: Day[] = getRange(startDate, endDate);
+
+    setRangeDates(range);
+  }, [rangeSelector, startDate, endDate]);
+
+  useEffect(() => {
+    switch (rangeSelector) {
+      case "start": {
+        if (hovered && endDate) {
+          let range: Day[] = getRange(hovered, endDate);
+          setRangeDates(range);
+        }
+
+        break;
+      }
+      case "end": {
+        if (hovered && startDate) {
+          let range: Day[] = getRange(startDate, hovered);
+          setRangeDates(range);
+        }
+
+        break;
+      }
+    }
+  }, [rangeSelector, hovered, startDate, endDate]);
 
   const value = useMemo(
     () => (valueProps ? getStartOfAday(valueProps) : undefined),
@@ -106,6 +190,22 @@ export const Calendar: React.FC<CalendarComponent> = ({
     };
   }, [classes, baseAppearance, appearance]);
 
+  const selectedTimestamps = useMemo(() => {
+    const timestamps: number[] = [startDate, endDate, value]
+      .filter(Boolean)
+      .map((date) => Number(date));
+
+    return timestamps;
+  }, [startDate, endDate, value]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (!rangeSelector) return;
+
+    let range: Day[] = getRange(startDate, endDate);
+    setHovered(null);
+    setRangeDates(range);
+  }, [startDate, endDate, rangeSelector]);
+
   return (
     <div className={classNames.calendarWrapperClassName}>
       {headerComponent}
@@ -118,7 +218,10 @@ export const Calendar: React.FC<CalendarComponent> = ({
         onPrev={handlePreviousMonthButtonClick}
       />
 
-      <div className={classNames.tableClassName}>
+      <div
+        className={classNames.tableClassName}
+        onMouseLeave={handleMouseLeave}
+      >
         <DaysTable
           selectedMonth={selectedMonth}
           selectedYear={selectedYear}
@@ -127,7 +230,10 @@ export const Calendar: React.FC<CalendarComponent> = ({
           baseAppearance={baseAppearance}
           appearance={appearance}
           onChange={onChange}
-          value={value}
+          selectedTimestamps={selectedTimestamps}
+          rangeDates={rangeDates}
+          setHovered={setHovered}
+          disabled={disabled}
         />
       </div>
       {footerComponent}

@@ -24,7 +24,8 @@
 	"private": false,
 	"dependencies": {
 		"@cheaaa/accordion": "^2.3.0",
-		"@cheaaa/input": "^1.22.0"
+		"@cheaaa/input": "^1.22.0",
+		"@cheaaa/icons": "^1.2.0"
 	},
 	"devDependencies": {
 		"@cheaaa/button": "^1.8.0"

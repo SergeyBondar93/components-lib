@@ -12,7 +12,7 @@ import { useClickOutsideComponent, useCombinedRefs } from "@cheaaa/utils";
 import { IThemedProps } from "@cheaaa/theme";
 import { IInputProps } from "@cheaaa/input";
 
-import { Calendar } from "./Calendar";
+import { Calendar, CalendarComponent } from "./Calendar";
 import { useStyles } from "./styles";
 import { DatepickerInput } from "./DatepickerInput";
 
@@ -21,34 +21,50 @@ export interface IExtraComponentProps {
   isOpen?: boolean;
 }
 
-export interface IDatepickerProps extends IThemedProps {
+export interface IDatepickerProps extends IThemedProps, CalendarComponent {
+  /**
+   * Для управления Datepicker используется преднастроенный accordion,
+   * но так же можно передать свои параметры
+   */
   accordionProps?: IAccordionProps;
+
+  /**
+   * Для отображения поля ввода используется инпут type="button",
+   * но так же можно передать в него свои параметры.
+   * label placeholder вынесены в параметры компонента
+   */
   inputProps?: Omit<IInputProps, "onChange" | "value"> & {
     ref?: MutableRefObject<HTMLInputElement>;
   };
   placeholder?: string;
   label?: string;
-  disabled?: boolean;
+
+  /**
+   * Закрыть ли календарь после выбора значения
+   */
   closeAfterSelect?: boolean;
+
+  /**
+   * При передаче открывает календарь и наводит фокус на инпут, дальше он опять становится uncontrolled
+   */
   isOpen?: boolean;
 
-  maxDate?: Date;
-  minDate?: Date;
-  openedDate?: Date;
-  value?: Date;
-  onChange: (date: Date) => void;
-
+  /**
+   * срабатывает при изменении isOpen
+   */
   onChangeIsOpen?: (newIsOpen: boolean) => void;
 
   /**
+   * Кастомный компонент над Header
    * В props компонента добавляется setIsOpen, isOpen,
-   * для управления состоянием дейтпикера
+   * для управления состоянием открытия дейтпикера
    */
   headerComponent?: ReactElement<IExtraComponentProps>;
 
   /**
+   * Кастомный компонент под Table
    * В props компонента добавляется setIsOpen, isOpen,
-   * для управления состоянием дейтпикера
+   * для управления состоянием открытия дейтпикера
    */
   footerComponent?: ReactElement<IExtraComponentProps>;
 }
@@ -71,6 +87,10 @@ export const Datepicker = ({
   value,
   onChange,
   onChangeIsOpen,
+
+  rangeSelector,
+  startDate,
+  endDate,
 
   headerComponent,
   footerComponent,
@@ -174,6 +194,9 @@ export const Datepicker = ({
         appearance={appearance}
         headerComponent={mappedHeaderComponent}
         footerComponent={mappedFooterComponent}
+        rangeSelector={rangeSelector}
+        startDate={startDate}
+        endDate={endDate}
       />
     </BaseAccordion>
   );

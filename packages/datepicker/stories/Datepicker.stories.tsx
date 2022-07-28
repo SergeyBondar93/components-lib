@@ -53,6 +53,9 @@ interface IBaseStoryParams {
   disabled: boolean;
   closeAfterSelect: boolean;
 }
+interface IRangeStoryParams {
+  rangeHighlight: boolean;
+}
 
 export const CalendarBase: Story<IBaseStoryParams> = (args) => {
   return (
@@ -83,7 +86,6 @@ export const CalendarBase: Story<IBaseStoryParams> = (args) => {
 
 CalendarBase.args = {
   disabled: false,
-  closeAfterSelect: true,
 };
 
 export const DatepickerBase: Story<IBaseStoryParams> = (props) => {
@@ -100,7 +102,10 @@ export const DatepickerBase: Story<IBaseStoryParams> = (props) => {
   );
 };
 
-DatepickerBase.args = CalendarBase.args;
+DatepickerBase.args = {
+  disabled: false,
+  closeAfterSelect: true,
+};
 
 interface ISelectYearButtonProps extends IExtraComponentProps {
   onClick: () => void;
@@ -119,7 +124,7 @@ const SelectYearButton = ({ onClick, setIsOpen }: ISelectYearButtonProps) => {
   );
 };
 
-export const Range = (props) => {
+export const Range: Story<IRangeStoryParams> = (props) => {
   const [start, setStart] = useState<Date>();
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
@@ -162,6 +167,9 @@ export const Range = (props) => {
           onChange={handleChangeStart}
           appearance="from"
           maxDate={MAX_CALENDAR_YEAR}
+          {...(props.rangeHighlight ? { rangeSelector: "start" } : {})}
+          startDate={start}
+          endDate={end}
           {...props}
         />
         <Datepicker
@@ -175,6 +183,9 @@ export const Range = (props) => {
           maxDate={MAX_CALENDAR_YEAR}
           disabled={!start}
           footerComponent={<SelectYearButton onClick={handleSelectYear} />}
+          {...(props.rangeHighlight ? { rangeSelector: "end" } : {})}
+          startDate={start}
+          endDate={end}
           {...props}
         />
       </div>
@@ -185,7 +196,11 @@ export const Range = (props) => {
   );
 };
 
-export const RangeThemed = (props) => {
+Range.args = {
+  rangeHighlight: true,
+};
+
+export const RangeThemed: Story<IRangeStoryParams> = (props) => {
   const [start, setStart] = useState<Date>();
   const [end, setEnd] = useState<Date>();
   const [isOpenEnd, setIsOpenEnd] = useState(false);
@@ -244,6 +259,9 @@ export const RangeThemed = (props) => {
             appearance: "header-filters",
           }}
           maxDate={MAX_CALENDAR_YEAR}
+          {...(props.rangeHighlight ? { rangeSelector: "start" } : {})}
+          startDate={start}
+          endDate={end}
           {...props}
         />
         <Datepicker
@@ -261,6 +279,9 @@ export const RangeThemed = (props) => {
           disabled={!start}
           maxDate={MAX_CALENDAR_YEAR}
           footerComponent={<SelectYearButton onClick={handleSelectYear} />}
+          {...(props.rangeHighlight ? { rangeSelector: "end" } : {})}
+          startDate={start}
+          endDate={end}
           {...props}
         />
       </div>
@@ -270,3 +291,5 @@ export const RangeThemed = (props) => {
     </ThemeProvider>
   );
 };
+
+RangeThemed.args = Range.args;

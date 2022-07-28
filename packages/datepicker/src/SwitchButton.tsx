@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ChevronIcon } from "@cheaaa/icons";
+import { ChevronIconCalendar } from "@cheaaa/icons";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { useStyles } from "./styles";
@@ -31,7 +31,7 @@ const SwitchButton: FC<any & SwitchButton> = ({
       data-is-next={String(!!isNext)}
       onClick={onClick}
     >
-      <ChevronIcon />
+      <ChevronIconCalendar />
     </button>
   );
 };

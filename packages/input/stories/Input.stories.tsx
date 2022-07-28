@@ -1,6 +1,7 @@
 import { Button } from "@cheaaa/button";
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
+import { DeleteIcon } from "@cheaaa/icons";
 
 import { CodeInput, Input } from "../src";
 
@@ -13,7 +14,6 @@ import {
   Visa,
 } from "./CardIcons";
 import { theme } from "./theme";
-import { DeleteEmailIcon } from "./DeleteEmailIcon";
 
 export default {
   title: "Input",
@@ -298,7 +298,7 @@ const Emails = () => {
             value={email}
             placeholder="ivanov@mail.com"
             label="Email"
-            postfix={<DeleteEmailIcon onClick={handleDelete(idx)} />}
+            postfix={<DeleteIcon onClick={handleDelete(idx)} />}
           />
         </div>
       ))}

@@ -17,7 +17,7 @@ export const theme = {
           color: "#636AFF",
 
           "&:hover": {
-            background: "rgba(113, 130, 153, 0.35)",
+            background: "#E6EAFC",
             color: color("#636AFF").darken(0.1).toString(),
           },
         },

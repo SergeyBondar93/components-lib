@@ -1,9 +1,10 @@
-import { getClassName } from "@cheaaa/theme";
+import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { useCallback, useMemo } from "react";
 
 import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
 import {
+  Day,
   getDatesForCalendarMonth,
   getDatesFromMonth,
   isAfter,
@@ -11,6 +12,18 @@ import {
   today,
 } from "./utils";
 import { Weekdays } from "./Weekdays";
+
+interface IDaysTableProps extends Required<IThemedProps> {
+  selectedMonth: number;
+  selectedYear: number;
+  minDate?: Date;
+  maxDate?: Date;
+  onChange: (date: Date) => void;
+  selectedTimestamps: number[];
+  rangeDates: Day[];
+  setHovered: React.Dispatch<React.SetStateAction<Date | null | undefined>>;
+  disabled?: boolean;
+}
 
 export const DaysTable = ({
   baseAppearance,
@@ -20,13 +33,16 @@ export const DaysTable = ({
   minDate,
   maxDate,
   onChange,
-  value,
-}: any) => {
+  selectedTimestamps,
+  rangeDates,
+  setHovered,
+  disabled: disabledCalendar,
+}: IDaysTableProps) => {
   const classes = useStyles();
+
   const days = useMemo(() => {
     const monthDates = getDatesFromMonth(selectedMonth, selectedYear);
     const monthDatesTimestamps = monthDates.map((date) => Number(date));
-    const valueTimestamp = value ? Number(value) : undefined;
 
     return getDatesForCalendarMonth(monthDates).map(({ date, timestamp }) => {
       const isBeforeMinDate = minDate ? isBefore(date, minDate) : false;
@@ -38,18 +54,30 @@ export const DaysTable = ({
 
       const isToday = Number(today) === timestamp;
 
-      const isSelected = valueTimestamp === timestamp;
-
       return {
         disabled,
         timestamp,
         date,
         isToday,
-        isSelected,
-        inRange: false,
       };
     });
-  }, [selectedMonth, selectedYear, minDate, maxDate, value]);
+  }, [selectedMonth, selectedYear, minDate, maxDate]);
+
+  const daysWithRange = useMemo(() => {
+    const rangeDatesTimestamps = rangeDates.map(({ timestamp }) => timestamp);
+    const startRange = rangeDatesTimestamps[0];
+    const endRange = rangeDatesTimestamps[rangeDatesTimestamps.length - 1];
+
+    return days.map(({ timestamp, ...day }) => {
+      const isSelected = selectedTimestamps.includes(timestamp);
+
+      const isRangeBoundary = [startRange, endRange].includes(timestamp);
+      const inRange =
+        !isRangeBoundary && rangeDatesTimestamps.includes(timestamp);
+
+      return { ...day, timestamp, inRange, isRangeBoundary, isSelected };
+    }, []);
+  }, [days, rangeDates, selectedTimestamps]);
 
   const className = getClassName<ComponentNames>(
     classes,
@@ -59,26 +87,34 @@ export const DaysTable = ({
   );
 
   const handleClick = useCallback(
-    (disabled, date) => {
-      if (!disabled) {
+    (disabledDay, date) => {
+      if (!disabledDay && !disabledCalendar) {
         onChange(date);
       }
     },
-    [onChange]
+    [onChange, disabledCalendar]
   );
 
   return (
     <>
       <Weekdays baseAppearance={baseAppearance} appearance={appearance} />
-      {days.map(
-        ({ date, timestamp, disabled, isToday, isSelected, inRange }) => {
+      {daysWithRange.map(
+        ({
+          date,
+          timestamp,
+          disabled: disabledDay,
+          isToday,
+          isSelected,
+          inRange,
+        }) => {
           return (
             <button
               key={timestamp}
+              onMouseEnter={() => setHovered(date)}
               onMouseDown={(e) => e.preventDefault()}
               className={className}
-              onClick={() => handleClick(disabled, date)}
-              disabled={disabled}
+              onClick={() => handleClick(disabledDay, date)}
+              disabled={disabledDay || disabledCalendar}
               data-is-today={String(!!isToday)}
               data-is-selected={String(!!isSelected)}
               data-in-range={String(!!inRange)}

@@ -229,6 +229,53 @@ export const differenceInDays = (date1: Date, date2: Date) => {
   return Math.ceil(diffInDays);
 };
 
+export const getDatesBetweenTwoDates = (start: Date, end: Date): Day[] => {
+  const dates: Date[] = [];
+
+  const _start = getStartOfAday(start);
+  const _end = getStartOfAday(end);
+
+  let current = addDays(_start, 1);
+  // let current = _start;
+
+  while (current < _end) {
+    dates.push(current);
+    current = addDays(current, 1);
+  }
+
+  return dates.map((date) => ({ timestamp: Number(date), date }));
+};
+
+/**
+ *
+ * @param selectedStart
+ * @param selectedEnd
+ * @returns возвращает массив Day включая переданые start и end даты
+ */
+export const getRange = (
+  selectedStart: Date | undefined,
+  selectedEnd: Date | undefined
+): Day[] => {
+  const startDate = selectedStart ? getStartOfAday(selectedStart) : undefined;
+  const endDate = selectedEnd ? getStartOfAday(selectedEnd) : undefined;
+
+  let range: Day[] = [];
+
+  if (startDate) {
+    range.push({ date: startDate, timestamp: Number(startDate) });
+  }
+
+  if (startDate && endDate && isBefore(startDate, endDate)) {
+    range.push(...getDatesBetweenTwoDates(startDate, endDate));
+  }
+
+  if (endDate) {
+    range.push({ date: endDate, timestamp: Number(endDate) });
+  }
+
+  return range;
+};
+
 export const weekdaysRU = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"] as const;
 
 export const monthsRU = [

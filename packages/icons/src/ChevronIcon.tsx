@@ -1,24 +1,28 @@
-import { FC, memo } from "react";
+import { FC } from "react";
 
 import { SvgIcon } from "./types";
 
-export const ChevronIcon: FC<SvgIcon> = memo(
-  ({ width = 27, height = 34, stroke = "#636AFF", ...props }) => (
+export const ChevronIcon: FC<SvgIcon> = ({
+  width = 11,
+  height = 20,
+  stroke = "#636AFF",
+  ...props
+}) => {
+  return (
     <svg
-      fill="none"
-      height={height}
-      viewBox="0 0 27 34"
       width={width}
+      height={height}
+      viewBox={`0 0 11 20`}
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
-        d="M15.5 24L10 17L15.5 10"
+        d="M9 2L1.70711 9.29289C1.31658 9.68342 1.31658 10.3166 1.70711 10.7071L9 18"
         stroke={stroke}
+        strokeWidth="2.8"
         strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
       />
     </svg>
-  )
-);
+  );
+};

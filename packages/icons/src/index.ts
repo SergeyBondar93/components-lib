@@ -6,7 +6,7 @@ export * from "./CalendarIcon";
 export * from "./CarIcon";
 export * from "./CheckIcon";
 export * from "./ChevronIcon";
-export * from "./ChevronIconFinal";
+export * from "./ChevronIconCalendar";
 export * from "./ChevronUpIcon";
 export * from "./CircleArrow";
 export * from "./CircleArrowArt";

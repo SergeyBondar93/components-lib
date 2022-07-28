@@ -9,8 +9,8 @@ import { monthsRU } from "./utils";
 interface IHeaderProps extends Required<IThemedProps> {
   selectedMonth: number;
   selectedYear: number;
-  onNext: any;
-  onPrev: any;
+  onNext: () => void;
+  onPrev: () => void;
 }
 
 export const Header = ({
@@ -20,7 +20,7 @@ export const Header = ({
   selectedYear,
   onNext,
   onPrev,
-}: any & IHeaderProps) => {
+}: IHeaderProps) => {
   const classes = useStyles();
   const classNames = useMemo(() => {
     const headerWrapperClassName = getClassName<ComponentNames>(

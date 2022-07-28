@@ -6,7 +6,7 @@ import { CalendarIcon } from "../src/CalendarIcon";
 import { CarIcon } from "../src/CarIcon";
 import { CheckIcon } from "../src/CheckIcon";
 import { ChevronIcon } from "../src/ChevronIcon";
-import { ChevronIconFinal } from "../src/ChevronIconFinal";
+import { ChevronIconCalendar } from "../src/ChevronIconCalendar";
 import { ChevronUpIcon } from "../src/ChevronUpIcon";
 import { CircleArrow } from "../src/CircleArrow";
 import { CircleArrowArt } from "../src/CircleArrowArt";
@@ -61,7 +61,7 @@ const marginStyles = { margin: "0px 10px" };
 const IconWrapper = ({ icon, iconName }: IIconWrapperProps) => {
   const [, copyToClipboard] = useCopyToClipboard();
 
-  const importString = `import { ${iconName} } from '@che/icons`;
+  const importString = `import { ${iconName} } from "@che/icons"`;
 
   return (
     <tr>
@@ -106,7 +106,7 @@ export const Icons = () => {
  <IconWrapper icon={<CarIcon />} iconName="CarIcon" />
  <IconWrapper icon={<CheckIcon />} iconName="CheckIcon" />
  <IconWrapper icon={<ChevronIcon />} iconName="ChevronIcon" />
- <IconWrapper icon={<ChevronIconFinal />} iconName="ChevronIconFinal" />
+ <IconWrapper icon={<ChevronIconCalendar />} iconName="ChevronIconCalendar" />
  <IconWrapper icon={<ChevronUpIcon />} iconName="ChevronUpIcon" />
  <IconWrapper icon={<CircleArrow />} iconName="CircleArrow" />
  <IconWrapper icon={<CircleArrowArt />} iconName="CircleArrowArt" />

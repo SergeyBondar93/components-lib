@@ -58,6 +58,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     background: "transparent",
     border: "none",
     cursor: "pointer",
+    transition: "0.2s",
     "&:focus": {
       outline: "none",
     },
@@ -120,6 +121,9 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       background: "#636AFF",
       color: "#FFF",
     },
-    '&[data-in-range="true"]': {},
+    '&[data-in-range="true"]': {
+      background: "#EDF4FE",
+      color: "#636AFF",
+    },
   },
 };
