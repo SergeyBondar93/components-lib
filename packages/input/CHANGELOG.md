@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.26.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.25.0...@cheaaa/input@1.26.0) (2022-07-28)
+
+
+### Bug Fixes
+
+* fix input select text after double click ([58c3aa1](https://github.com/SergeyBondar93/liba/commit/58c3aa15eba02f5dce0d91c982f845acc7db41ea))
+
+
+### Features
+
+* add disabled state to prefix and postfix ([db6f2b0](https://github.com/SergeyBondar93/liba/commit/db6f2b00591681987c9516bd46913929a395c1dd))
+* **calendar, input:** change types, add range selector ([93a9548](https://github.com/SergeyBondar93/liba/commit/93a9548368acbdc58f637f63fb513acacb8d9141))
+* improve default input styles ([68dd9c9](https://github.com/SergeyBondar93/liba/commit/68dd9c96b3544645582cc58b4d425b612db56aa7))
+
+
+
+
+
 # [1.25.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.24.0...@cheaaa/input@1.25.0) (2022-07-28)
 
 
