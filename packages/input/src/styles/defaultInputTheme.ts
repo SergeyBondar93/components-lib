@@ -76,7 +76,6 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
 
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
-      opacity: 0.7,
     },
 
     '&[data-focused="true"]': {
@@ -110,6 +109,10 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+
+    '&[data-disabled="true"]': {
+      cursor: "not-allowed",
+    },
     /**
      * Стили для инпута используемом в других компонентах,
      * для управления стилями когда компонент активен но инпут не в фокусе
@@ -125,6 +128,10 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+
+    '&[data-disabled="true"]': {
+      cursor: "not-allowed",
+    },
     /**
      * Стили для инпута используемом в других компонентах,
      * для управления стилями когда компонент активен но инпут не в фокусе

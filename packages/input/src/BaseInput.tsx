@@ -185,6 +185,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       >
         {prefix && (
           <span
+            data-disabled={String(disabled)}
             ref={prefixRef}
             className={classNames.prefixWrapperClassName}
             onMouseDown={(e) => e.preventDefault()}
@@ -250,6 +251,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
 
         {postfix && (
           <span
+            data-disabled={String(disabled)}
             className={classNames.postfixWrapperClassName}
             onMouseDown={(e) => e.preventDefault()}
             {...dataComponentActiveProp}
