@@ -16,13 +16,6 @@ const WithStore = ({ children }) => {
 
 export default {
   title: "Tabs",
-  decorators: [
-    (Story) => (
-      <WithStore>
-        <Story />
-      </WithStore>
-    ),
-  ],
   parameters: {
     backgrounds: {
       default: "lightblue",
@@ -33,11 +26,11 @@ export default {
 
 const TABS_NAME = "storybook-demo";
 
-interface IDefaultTemplateProps {
+interface IStoryProps {
   isDucksTabDisabled: boolean;
 }
 
-const DefaultTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
+export const Base = ({ isDucksTabDisabled }: IStoryProps) => {
   return (
     <Tabs.TabsContext activePanelName={TABS[0].panelName}>
       <Tabs.TabsList>
@@ -72,81 +65,81 @@ const DefaultTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
   );
 };
 
-export const Default = DefaultTemplate.bind({});
-
-Default.args = {
+Base.args = {
   isDucksTabDisabled: true,
 };
 
-const ThemedTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
+const ConnectedThemedTemplate = ({ isDucksTabDisabled }: IStoryProps) => {
   return (
-    <ThemeProvider theme={theme}>
-      <JssProvider
-        generateId={({ key }, styleSheet) => {
-          if (!styleSheet?.options.classNamePrefix) {
-            if (process.env.NODE_ENV === "development") {
-              console.error(
-                "classNamePrefix not passed in some createUseStyles function"
-              );
+    <WithStore>
+      <ThemeProvider theme={theme}>
+        <JssProvider
+          generateId={({ key }, styleSheet) => {
+            if (!styleSheet?.options.classNamePrefix) {
+              if (process.env.NODE_ENV === "development") {
+                console.error(
+                  "classNamePrefix not passed in some createUseStyles function"
+                );
+              }
             }
-          }
 
-          styleSheet?.options.classNamePrefix;
+            styleSheet?.options.classNamePrefix;
 
-          return styleSheet?.options.classNamePrefix + key;
-        }}
-      >
-        <ConnectedTabs.TabsContext
-          tabsName={TABS_NAME}
-          defaultActivePanelName={TABS[0].panelName}
+            return styleSheet?.options.classNamePrefix + key;
+          }}
         >
-          <div
-            style={{
-              display: "flex",
-            }}
+          <ConnectedTabs.TabsContext
+            tabsName={TABS_NAME}
+            defaultActivePanelName={TABS[0].panelName}
           >
             <div
               style={{
-                marginRight: "40px",
+                display: "flex",
               }}
             >
-              <ConnectedTabs.TabsList appearance="verticalTabsList">
-                {TABS.map(({ panelName, label }) => {
-                  return (
-                    <ConnectedTabs.Tab
-                      label={label}
-                      panelName={panelName}
-                      key={panelName}
-                      appearance="verticalTabsList"
-                      disabled={panelName === "Ducks" && isDucksTabDisabled}
-                    />
-                  );
-                })}
-              </ConnectedTabs.TabsList>
-            </div>
+              <div
+                style={{
+                  marginRight: "40px",
+                }}
+              >
+                <ConnectedTabs.TabsList appearance="verticalTabsList">
+                  {TABS.map(({ panelName, label }) => {
+                    return (
+                      <ConnectedTabs.Tab
+                        label={label}
+                        panelName={panelName}
+                        key={panelName}
+                        appearance="verticalTabsList"
+                        disabled={panelName === "Ducks" && isDucksTabDisabled}
+                      />
+                    );
+                  })}
+                </ConnectedTabs.TabsList>
+              </div>
 
-            {TABS.map(({ Component, panelName }) => (
-              <ConnectedTabs.TabPanel panelName={panelName} key={panelName}>
-                <div
-                  style={{
-                    width: "500px",
-                    borderRadius: "12px",
-                    overflow: "hidden",
-                    border: "1px solid black",
-                    marginTop: "30px",
-                  }}
-                >
-                  <Component />
-                </div>
-              </ConnectedTabs.TabPanel>
-            ))}
-          </div>
-        </ConnectedTabs.TabsContext>
-      </JssProvider>
-    </ThemeProvider>
+              {TABS.map(({ Component, panelName }) => (
+                <ConnectedTabs.TabPanel panelName={panelName} key={panelName}>
+                  <div
+                    style={{
+                      width: "500px",
+                      borderRadius: "12px",
+                      overflow: "hidden",
+                      border: "1px solid black",
+                      marginTop: "30px",
+                    }}
+                  >
+                    <Component />
+                  </div>
+                </ConnectedTabs.TabPanel>
+              ))}
+            </div>
+          </ConnectedTabs.TabsContext>
+        </JssProvider>
+      </ThemeProvider>
+    </WithStore>
   );
 };
 
-export const Themed = ThemedTemplate.bind({});
+export const ConnectedAndThemedTabs = ConnectedThemedTemplate.bind({});
 
-Themed.args = Default.args;
+ConnectedAndThemedTabs.args = Base.args;
