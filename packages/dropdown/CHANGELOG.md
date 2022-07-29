@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/dropdown@1.7.0...@cheaaa/dropdown@1.8.0) (2022-07-29)
+
+
+### Features
+
+* add setIsOpen and isOpen to accordion props ([7c83a4e](https://github.com/SergeyBondar93/liba/commit/7c83a4e4e2a0cc452a4235cc3eba6f5201e4e486))
+
+
+
+
+
 # [1.7.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/dropdown@1.6.0...@cheaaa/dropdown@1.7.0) (2022-07-29)
 
 
