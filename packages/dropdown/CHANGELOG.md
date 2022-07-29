@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/dropdown@1.6.0...@cheaaa/dropdown@1.7.0) (2022-07-29)
+
+
+### Features
+
+* add shouldFitContent to accordion , dropdown, datepicker ([f2ed260](https://github.com/SergeyBondar93/liba/commit/f2ed260cf8b4130519b899ccc579bdea2f95325a))
+
+
+
+
+
 # [1.6.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/dropdown@1.5.0...@cheaaa/dropdown@1.6.0) (2022-07-27)
 
 
