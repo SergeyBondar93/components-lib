@@ -42,6 +42,7 @@ export const Dropdown = ({
   titleButtonProps: titleButtonPropsFromProps,
   children,
   passSetIsOpenToChildren,
+  passSetIsOpenToTitle,
   ...props
 }: IDropdownProps) => {
   const classes = useStyles();
@@ -68,11 +69,10 @@ export const Dropdown = ({
   const titleButtonProps = useMemo(() => {
     return {
       ...titleButtonPropsFromProps,
-      setIsOpen,
-      isOpen,
       onClick: toggleOpen,
+      ...(passSetIsOpenToTitle ? { setIsOpen, isOpen } : {}),
     };
-  }, [titleButtonPropsFromProps, toggleOpen, isOpen]);
+  }, [titleButtonPropsFromProps, toggleOpen, isOpen, passSetIsOpenToTitle]);
 
   useClickOutsideComponent(accordionRef, handleClose);
 

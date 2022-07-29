@@ -8,6 +8,7 @@ import {
   useMemo,
   forwardRef,
   ReactElement,
+  useCallback,
 } from "react";
 import { Classes } from "jss";
 import React from "react";
@@ -47,6 +48,11 @@ export interface IBaseAccordionProps extends IThemedProps {
    * для управления состоянием isOpen
    */
   passSetIsOpenToChildren?: boolean;
+  /**
+   * Передать ли props setIsOpen и isOpen в title компонент из titleButtonProps
+   * для управления состоянием isOpen
+   */
+  passSetIsOpenToTitle?: boolean;
 
   /**
    * Длительность анимации разворачивания, не больше 0.5s
@@ -90,12 +96,13 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       title: titleProps,
       children,
       getHeightStyles,
-      titleButtonProps = {},
+      titleButtonProps: titleButtonPropsFromProps = {},
       animationDuration: animationDurationProps = "0.2s",
       defaultTitleButtonAppearance,
       classes,
       shouldFitContent,
       passSetIsOpenToChildren,
+      passSetIsOpenToTitle,
     },
     ref
   ) => {
@@ -193,11 +200,28 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       return isOpen ? height : 0;
     }, [getHeightStyles, isOpen, height]);
 
+    const toggleOpen = useCallback(() => {
+      setIsOpen((isOpen) => !isOpen);
+    }, []);
+
     const title = useMemo(() => {
       return typeof titleProps === "function"
         ? titleProps({ isOpen })
         : titleProps;
     }, [titleProps, isOpen]);
+
+    /* 
+    компоненту который передан в titleButtonProps 
+    необходимо принять и обработать setIsOpen 
+    это обработка открывания закрывания dropdown
+  */
+    const titleButtonProps = useMemo(() => {
+      return {
+        ...titleButtonPropsFromProps,
+        onClick: toggleOpen,
+        ...(passSetIsOpenToTitle ? { setIsOpen, isOpen } : {}),
+      };
+    }, [titleButtonPropsFromProps, toggleOpen, isOpen, passSetIsOpenToTitle]);
 
     const mappedChildren = useMemo(() => {
       return passSetIsOpenToChildren
@@ -218,10 +242,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       >
         <Button
           shouldFitContent
-          onClick={() => setIsOpen(!isOpen)}
-          appearance={
-            titleButtonProps.appearance || defaultTitleButtonAppearance
-          }
+          appearance={defaultTitleButtonAppearance}
           {...titleButtonProps}
         >
           <Icon

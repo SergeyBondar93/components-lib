@@ -175,6 +175,17 @@ const CustomHeightTemplate = () => {
 
 export const CustomHeight = CustomHeightTemplate.bind({});
 
+const Component = ({ isOpen, ...props }: any) => {
+  return (
+    <Checkbox
+      {...props}
+      label={`Custom component - checkbox ${
+        isOpen ? " (Открыто)" : "(Закрыто)"
+      }`}
+    />
+  );
+};
+
 export const CustomTitleComponent = () => {
   const [value, setValue] = useState<{ weekdays: string[] }>({ weekdays: [] });
 
@@ -193,8 +204,9 @@ export const CustomTitleComponent = () => {
       >
         <Accordion
           isOpen={!!value.weekdays.length}
+          passSetIsOpenToTitle
           titleButtonProps={{
-            component: Checkbox,
+            component: Component,
             onChange: handleSetDefaultValue,
             label: "Custom component - checkbox",
             value: !!value.weekdays.length,
