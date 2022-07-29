@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tabs@1.4.0...@cheaaa/tabs@1.5.0) (2022-07-29)
+
+
+### Bug Fixes
+
+* fix component name in tabs ([378e0a9](https://github.com/SergeyBondar93/liba/commit/378e0a938badc1ee4f8847997c0cb63919103075))
+
+
+### Features
+
+* add controlled tabs ([268e033](https://github.com/SergeyBondar93/liba/commit/268e0338a3d00b9f1c3fba539c0737a8cd3b996a))
+* separate tabs and connected tabs for working without redux ([27f1507](https://github.com/SergeyBondar93/liba/commit/27f15076f56bae92f7e71db270795fcf34a77c69))
+
+
+
+
+
 # [1.4.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tabs@1.3.0...@cheaaa/tabs@1.4.0) (2022-07-29)
 
 
