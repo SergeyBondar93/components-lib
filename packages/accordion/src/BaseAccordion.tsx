@@ -7,6 +7,7 @@ import {
   ReactNode,
   useMemo,
   forwardRef,
+  ReactElement,
 } from "react";
 import { Classes } from "jss";
 import React from "react";
@@ -19,6 +20,17 @@ export type GetHeightStylesFn = (args: {
   height: number;
 }) => number;
 
+export interface IAccordionChildrenProps {
+  /**
+   * передаётся из компонента Accordion, опциональность указана что бы ТС не требовал передавать в приложении
+   */
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  /**
+   * передаётся из компонента Accordion, опциональность указана что бы ТС не требовал передавать в приложении
+   */
+  isOpen?: boolean;
+}
+
 export interface IBaseAccordionProps extends IThemedProps {
   /**
    * Текст на Title Button.
@@ -29,6 +41,12 @@ export interface IBaseAccordionProps extends IThemedProps {
     | ((args: { isOpen: boolean }) => string | ReactNode);
   children: ReactNode;
   isOpen?: boolean;
+
+  /**
+   * Передать ли props setIsOpen и isOpen в компонент
+   * для управления состоянием isOpen
+   */
+  passSetIsOpenToChildren?: boolean;
 
   /**
    * Длительность анимации разворачивания, не больше 0.5s
@@ -77,6 +95,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       defaultTitleButtonAppearance,
       classes,
       shouldFitContent,
+      passSetIsOpenToChildren,
     },
     ref
   ) => {
@@ -180,6 +199,17 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
         : titleProps;
     }, [titleProps, isOpen]);
 
+    const mappedChildren = useMemo(() => {
+      return passSetIsOpenToChildren
+        ? React.Children.map(children as ReactElement, (child) => {
+            return React.cloneElement(child, {
+              setIsOpen,
+              isOpen,
+            });
+          })
+        : children;
+    }, [children, passSetIsOpenToChildren, setIsOpen, isOpen]);
+
     return (
       <div
         data-shouldfitcontent={String(!!shouldFitContent)}
@@ -216,7 +246,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
             ref={childrenWrapperRef}
             className={classNames.childrenWrapperClassName}
           >
-            {children}
+            {mappedChildren}
           </div>
         </div>
       </div>

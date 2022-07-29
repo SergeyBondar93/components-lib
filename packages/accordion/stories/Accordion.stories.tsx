@@ -4,7 +4,7 @@ import { Meta } from "@storybook/react";
 import { ThemeProvider } from "react-jss";
 import Select from "react-select";
 
-import { Accordion } from "../src";
+import { Accordion, IAccordionChildrenProps } from "../src";
 
 import { theme } from "./theme";
 
@@ -30,7 +30,7 @@ export default {
   },
 } as Meta;
 
-const Weekdays = () => {
+const Weekdays = ({ setIsOpen }: IAccordionChildrenProps) => {
   const [value, setValue] = useState<string[]>([]);
 
   const handleChange = (newValue: string[], clickedBy: string) => {
@@ -86,7 +86,10 @@ const Weekdays = () => {
   ].map((option) => ({ ...option, appearance: "filters" }));
 
   return (
-    <CheckboxGroup value={value} onChange={handleChange} options={options} />
+    <div>
+      <CheckboxGroup value={value} onChange={handleChange} options={options} />
+      <button onClick={() => setIsOpen?.(false)}>Закрыть</button>
+    </div>
   );
 };
 
@@ -103,7 +106,12 @@ const AccordionTemplate = (props) => {
           borderRadius: "10px",
         }}
       >
-        <Accordion {...props} isOpen={isOpenAll} title={"Дни недели"}>
+        <Accordion
+          {...props}
+          passSetIsOpenToChildren
+          isOpen={isOpenAll}
+          title={"Дни недели"}
+        >
           <Weekdays />
         </Accordion>
         <Accordion
@@ -114,10 +122,20 @@ const AccordionTemplate = (props) => {
         >
           <Weekdays />
         </Accordion>
-        <Accordion {...props} isOpen={isOpenAll} title={"Дни недели"}>
+        <Accordion
+          {...props}
+          passSetIsOpenToChildren
+          isOpen={isOpenAll}
+          title={"Дни недели"}
+        >
           <Weekdays />
         </Accordion>
-        <Accordion {...props} isOpen={isOpenAll} title={"Дни недели"}>
+        <Accordion
+          {...props}
+          passSetIsOpenToChildren
+          isOpen={isOpenAll}
+          title={"Дни недели"}
+        >
           <Weekdays />
         </Accordion>
       </div>
