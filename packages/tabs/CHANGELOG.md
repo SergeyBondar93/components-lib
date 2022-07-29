@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.3.0 (2022-07-29)
+
+
+### Features
+
+* separate tabs and connected tabs for working without redux ([27f1507](https://github.com/SergeyBondar93/liba/commit/27f15076f56bae92f7e71db270795fcf34a77c69))
+
+
+
+
+
 ## 1.2.1 (2022-07-11)
 
 
