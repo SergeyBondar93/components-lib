@@ -13,7 +13,6 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     boxSizing: "border-box",
     minHeight: "45px",
     height: "45px",
-    overflow: "hidden",
 
     position: "relative",
 
