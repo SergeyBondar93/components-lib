@@ -1,6 +1,7 @@
 import { ThemeProvider, JssProvider } from "react-jss";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import { useState } from "react";
 
 import { ConnectedTabs, Tabs, tabsReducer, TABS_STATE_NAMESPACE } from "../src";
 
@@ -67,6 +68,53 @@ export const Base = ({ isDucksTabDisabled }: IStoryProps) => {
 
 Base.args = {
   isDucksTabDisabled: true,
+};
+export const Controlled = ({ isDucksTabDisabled }: IStoryProps) => {
+  const [tabNumber, setTabNumber] = useState(0);
+
+  const handleChangeTabNumber = () => {
+    const newTabNumber = (tabNumber + 1) % TABS.length;
+    setTabNumber(newTabNumber);
+  };
+
+  return (
+    <>
+      <button onClick={handleChangeTabNumber}>Next</button>
+      <Tabs.TabsContext
+        isControlled
+        activePanelName={TABS[tabNumber].panelName}
+      >
+        <Tabs.TabsList>
+          {TABS.map(({ panelName, label }) => {
+            return (
+              <Tabs.Tab
+                label={label}
+                panelName={panelName}
+                key={panelName}
+                disabled={panelName === "Ducks" && isDucksTabDisabled}
+              />
+            );
+          })}
+        </Tabs.TabsList>
+
+        {TABS.map(({ Component, panelName }) => (
+          <Tabs.TabPanel panelName={panelName} key={panelName}>
+            <div
+              style={{
+                width: "500px",
+                borderRadius: "12px",
+                overflow: "hidden",
+                border: "1px solid black",
+                marginTop: "30px",
+              }}
+            >
+              <Component />
+            </div>
+          </Tabs.TabPanel>
+        ))}
+      </Tabs.TabsContext>
+    </>
+  );
 };
 
 const ConnectedThemedTemplate = ({ isDucksTabDisabled }: IStoryProps) => {

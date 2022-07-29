@@ -8,11 +8,18 @@ export interface ITabsContextProps {
    * Табы показываемые по умолчанию. принимает panelName
    */
   activePanelName: string;
+
+  /**
+   * Контроль activePanelName только только через props.
+   * @default false
+   */
+  isControlled?: boolean;
 }
 
 export const TabsContext: FC<ITabsContextProps> = ({
   children,
   activePanelName: activePanelNameProps,
+  isControlled = false,
 }) => {
   const [activePanelName, setActivePanelName] = useState(activePanelNameProps);
 
@@ -20,9 +27,12 @@ export const TabsContext: FC<ITabsContextProps> = ({
     setActivePanelName(activePanelNameProps);
   }, [activePanelNameProps]);
 
-  const handleSetActivePanelName = useCallback(({ panelName }) => {
-    setActivePanelName(panelName);
-  }, []);
+  const handleSetActivePanelName = useCallback(
+    ({ panelName }) => {
+      !isControlled && setActivePanelName(panelName);
+    },
+    [isControlled]
+  );
 
   return (
     <Context.Provider
