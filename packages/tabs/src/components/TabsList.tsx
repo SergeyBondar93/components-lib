@@ -68,7 +68,7 @@ export const TabsList: FC<ITabsList> = memo(
         classes,
         baseAppearance,
         appearance,
-        "TabsList"
+        "tabsList"
       );
       const highlighterClassName = getClassName<ComponentNames>(
         classes,

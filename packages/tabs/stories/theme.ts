@@ -7,7 +7,7 @@ export const theme = {
         [TABS_COMPONENTS_NAMES.highlighter]: {
           display: "none",
         },
-        [TABS_COMPONENTS_NAMES.TabsList]: {
+        [TABS_COMPONENTS_NAMES.tabsList]: {
           flexDirection: "column",
           borderRadius: "12px",
           background: "#FFF",

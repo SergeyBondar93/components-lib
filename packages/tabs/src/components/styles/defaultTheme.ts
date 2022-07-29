@@ -4,7 +4,7 @@ import { TABS_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
-  [TABS_COMPONENTS_NAMES.TabsList]: {
+  [TABS_COMPONENTS_NAMES.tabsList]: {
     position: "relative",
     maxWidth: "100%",
     display: "flex",
