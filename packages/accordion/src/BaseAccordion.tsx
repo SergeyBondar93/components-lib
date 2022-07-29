@@ -42,6 +42,11 @@ export interface IBaseAccordionProps extends IThemedProps {
   getHeightStyles?: GetHeightStylesFn;
 
   /**
+   * Делает width: 100%
+   */
+  shouldFitContent?: boolean;
+
+  /**
    * Props для кастомизации Title Button,
    * если передан component, все остальные props попадут к нему + onClick для управления isOpen (работает как toggle),
    * + shouldFitContent
@@ -71,6 +76,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       animationDuration: animationDurationProps = "0.2s",
       defaultTitleButtonAppearance,
       classes,
+      shouldFitContent,
     },
     ref
   ) => {
@@ -175,7 +181,11 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
     }, [titleProps, isOpen]);
 
     return (
-      <div className={classNames.wrapperClassName} ref={ref}>
+      <div
+        data-shouldfitcontent={String(!!shouldFitContent)}
+        className={classNames.wrapperClassName}
+        ref={ref}
+      >
         <Button
           shouldFitContent
           onClick={() => setIsOpen(!isOpen)}

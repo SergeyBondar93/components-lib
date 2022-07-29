@@ -6,6 +6,11 @@ import { ComponentNames } from "./types";
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [DROPDOWN_COMPONENTS_NAMES.wrapper]: {
     position: "relative",
+    minWidth: "140px",
+    display: "inline-block",
+    '&[data-shouldfitcontent="true"]': {
+      width: "100%",
+    },
   },
   [DROPDOWN_COMPONENTS_NAMES.icon]: {
     display: "none",
@@ -18,7 +23,6 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [DROPDOWN_COMPONENTS_NAMES.body]: {
     position: "absolute",
     zIndex: 1,
-    width: "100%",
     background: "#FFF",
     maxHeight: "fit-content",
     transform: "translateY(10px)",

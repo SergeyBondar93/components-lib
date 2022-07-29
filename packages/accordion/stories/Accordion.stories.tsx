@@ -14,7 +14,6 @@ const disabled = {
   },
 };
 export default {
-  component: Accordion,
   title: "Accordion",
   argTypes: {
     appearance: disabled,
@@ -91,7 +90,7 @@ const Weekdays = () => {
   );
 };
 
-const AccordionTemplate = () => {
+const AccordionTemplate = (props) => {
   const [isOpenAll, setIsOpenAll] = useState(false);
 
   return (
@@ -104,20 +103,21 @@ const AccordionTemplate = () => {
           borderRadius: "10px",
         }}
       >
-        <Accordion isOpen={isOpenAll} title={"Дни недели"}>
+        <Accordion {...props} isOpen={isOpenAll} title={"Дни недели"}>
           <Weekdays />
         </Accordion>
         <Accordion
+          {...props}
           animationDuration="0.6s"
           isOpen={isOpenAll}
           title={"Дни недели + animationDiraion 0.6s"}
         >
           <Weekdays />
         </Accordion>
-        <Accordion isOpen={isOpenAll} title={"Дни недели"}>
+        <Accordion {...props} isOpen={isOpenAll} title={"Дни недели"}>
           <Weekdays />
         </Accordion>
-        <Accordion isOpen={isOpenAll} title={"Дни недели"}>
+        <Accordion {...props} isOpen={isOpenAll} title={"Дни недели"}>
           <Weekdays />
         </Accordion>
       </div>
@@ -129,6 +129,7 @@ export const AccordionStory = AccordionTemplate.bind({});
 
 AccordionStory.args = {
   disabled: false,
+  shouldFitContent: false,
 };
 
 const CustomHeightTemplate = () => {

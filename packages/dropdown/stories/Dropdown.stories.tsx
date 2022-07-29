@@ -3,6 +3,7 @@ import { ThemeProvider } from "react-jss";
 import { CloseIcon } from "@cheaaa/icons";
 import { Input } from "@cheaaa/input";
 import { Button, IconButton } from "@cheaaa/button";
+import { Meta, Story } from "@storybook/react";
 
 import { Dropdown, IDropdownChildrenProps, IDropdownTitleProps } from "../src";
 
@@ -17,41 +18,37 @@ export default {
       values: [{ name: "lightblue", value: "#E5ECF7" }],
     },
   },
-};
+} as Meta;
 
-export const Base = () => {
+interface IStoryParams {
+  shouldFitContent: boolean;
+}
+
+export const Base: Story<IStoryParams> = (props) => {
   return (
     <>
-      <Dropdown title="Open text">
-        <div style={{ padding: "10px", color: "#3926e6" }}>
+      <Dropdown title="Open text" {...props}>
+        <div style={{ padding: "10px", color: "#3926e6", minWidth: "200px" }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, eum
           quasi quas quod ducimus, distinctio, laboriosam rem tempora vitae
-          quidem perferendis odit deleniti sed ea incidunt? Voluptatem, vel
-          mollitia reiciendis eligendi veniam cupiditate quae error inventore
-          alias sed eos corrupti qui impedit fuga repellendus quam officia rerum
-          dicta ab laboriosam esse vitae aperiam veritatis sit. Voluptatibus
-          ipsum obcaecati dolorem, doloremque non natus id molestiae dolore,
-          officiis deleniti, unde eligendi amet omnis consequuntur sint ab nam
-          explicabo in neque eaque fugit debitis autem porro placeat.
-          Voluptatibus eaque, aperiam odit molestias laboriosam nesciunt, qui
-          deleniti natus sint perferendis autem voluptas. Dolore, ad?
-          <Dropdown title="Iternal dropdown">
-            <div style={{ padding: "10px", color: "#20df12" }}>
+          quidem perferendis odit deleniti sed ea incidunt?
+          <Dropdown title="Iternal dropdown" {...props}>
+            <div
+              style={{ padding: "10px", color: "#20df12", minWidth: "200px" }}
+            >
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
               non velit a exercitationem expedita, ab placeat. Possimus nulla
               commodi incidunt sit eius expedita quasi eos modi harum facilis
               unde odit, voluptates ea fugiat ut ducimus quae sed suscipit
-              numquam inventore. Ullam quod, reprehenderit molestias tenetur
-              nobis dicta consectetur eligendi aperiam asperiores deleniti quis
-              porro ducimus nostrum consequuntur quos perspiciatis. Animi aut
-              ducimus laboriosam tenetur deleniti ratione autem sint veniam quae
-              molestiae, quisquam distinctio tempora itaque sed! Fugit, non
-              nihil tempore consectetur quis porro incidunt praesentium,
-              temporibus cupiditate corrupti omnis aspernatur, expedita
-              similique animi accusantium eum numquam odio. Atque, nulla
-              voluptatum!
-              <Dropdown title="Super Iternal dropdown">
-                <div style={{ padding: "10px", color: "#d013d0cc" }}>
+              numquam inventore. voluptatum!
+              <Dropdown title="Super Iternal dropdown" {...props}>
+                <div
+                  style={{
+                    padding: "10px",
+                    color: "#d013d0cc",
+                    minWidth: "200px",
+                  }}
+                >
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Fugiat non velit a exercitationem expedita, ab placeat.
                   Possimus nulla commodi incidunt sit eius expedita quasi eos
@@ -59,12 +56,7 @@ export const Base = () => {
                   quae sed suscipit numquam inventore. Ullam quod, reprehenderit
                   molestias tenetur nobis dicta consectetur eligendi aperiam
                   asperiores deleniti quis porro ducimus nostrum consequuntur
-                  quos perspiciatis. Animi aut ducimus laboriosam tenetur
-                  deleniti ratione autem sint veniam quae molestiae, quisquam
-                  distinctio tempora itaque sed! Fugit, non nihil tempore
-                  consectetur quis porro incidunt praesentium, temporibus
-                  cupiditate corrupti omnis aspernatur, expedita similique animi
-                  accusantium eum numquam odio. Atque, nulla voluptatum!
+                  quos perspiciatis.
                 </div>
               </Dropdown>
             </div>
@@ -109,7 +101,9 @@ export const Base = () => {
     </>
   );
 };
-
+Base.args = {
+  shouldFitContent: false,
+};
 interface IAgesProps extends IDropdownChildrenProps {
   onClick: (age: number) => void;
   selectedAge?: number;
@@ -245,30 +239,27 @@ const TouristsSelectorInput = ({
       onClick={() => setIsOpen?.((v) => !v)}
       label="Туристы"
       placeholder="Выберите туристов"
+      shouldFitContent
     />
   );
 };
 
-export const Themed = () => {
+export const Themed: Story<IStoryParams> = (props) => {
   const [tourisus, setTourisus] = useState<number[]>([]);
 
   return (
     <ThemeProvider theme={theme}>
-      <div
-        style={{
-          width: "175px",
+      <Dropdown
+        appearance="tourists"
+        titleButtonProps={{
+          component: TouristsSelectorInput,
+          tourisus,
         }}
+        {...props}
       >
-        <Dropdown
-          appearance="tourists"
-          titleButtonProps={{
-            component: TouristsSelectorInput,
-            tourisus,
-          }}
-        >
-          <TouristsSelector tourisus={tourisus} setTourisus={setTourisus} />
-        </Dropdown>
-      </div>
+        <TouristsSelector tourisus={tourisus} setTourisus={setTourisus} />
+      </Dropdown>
+      <br />
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste porro
       ipsam, vel tempore aspernatur rerum minus! Expedita corporis repellat
       magnam quae vitae tempora et, deserunt recusandae ex cupiditate blanditiis
@@ -304,3 +295,5 @@ export const Themed = () => {
     </ThemeProvider>
   );
 };
+
+Themed.args = Base.args;

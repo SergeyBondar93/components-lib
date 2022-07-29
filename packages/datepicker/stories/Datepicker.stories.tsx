@@ -51,10 +51,10 @@ const aug20 = new Date(2022, 7, 20);
 
 interface IBaseStoryParams {
   disabled: boolean;
-  closeAfterSelect: boolean;
 }
 interface IRangeStoryParams {
   rangeHighlight: boolean;
+  shouldFitContent: boolean;
 }
 
 export const CalendarBase: Story<IBaseStoryParams> = (args) => {
@@ -104,7 +104,6 @@ export const DatepickerBase: Story<IBaseStoryParams> = (props) => {
 
 DatepickerBase.args = {
   disabled: false,
-  closeAfterSelect: true,
 };
 
 interface ISelectYearButtonProps extends IExtraComponentProps {
@@ -198,6 +197,7 @@ export const Range: Story<IRangeStoryParams> = (props) => {
 
 Range.args = {
   rangeHighlight: true,
+  shouldFitContent: false,
 };
 
 export const RangeThemed: Story<IRangeStoryParams> = (props) => {

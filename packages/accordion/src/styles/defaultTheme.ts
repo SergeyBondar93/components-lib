@@ -4,7 +4,13 @@ import { ACCORDION_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
-  [ACCORDION_COMPONENTS_NAMES.wrapper]: {},
+  [ACCORDION_COMPONENTS_NAMES.wrapper]: {
+    display: "inline-block",
+
+    '&[data-shouldfitcontent="true"]': {
+      width: "100%",
+    },
+  },
   [ACCORDION_COMPONENTS_NAMES.icon]: {
     marginRight: "14px",
     transition: "0.2s",

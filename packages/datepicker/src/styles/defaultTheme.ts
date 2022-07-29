@@ -8,6 +8,9 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [DATEPICKER_COMPONENTS_NAMES.wrapper]: {
     position: "relative",
     display: "inline-block",
+    '&[data-shouldfitcontent="true"]': {
+      width: "100%",
+    },
   },
   [DATEPICKER_COMPONENTS_NAMES.icon]: {
     display: "none",

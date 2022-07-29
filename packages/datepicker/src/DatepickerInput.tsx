@@ -41,6 +41,7 @@ export const DatepickerInput = ({
       ref={innerRef}
       isActive={!!isOpen}
       postfix={<CalendarIcon />}
+      shouldFitContent
       {...inputProps}
     />
   );

@@ -55,6 +55,11 @@ export interface IDatepickerProps extends IThemedProps, CalendarComponent {
   onChangeIsOpen?: (newIsOpen: boolean) => void;
 
   /**
+   * Делает width: 100%
+   */
+  shouldFitContent?: boolean;
+
+  /**
    * Кастомный компонент над Header
    * В props компонента добавляется setIsOpen, isOpen,
    * для управления состоянием открытия дейтпикера
@@ -80,6 +85,7 @@ export const Datepicker = ({
   disabled,
   closeAfterSelect = true,
   isOpen: isOpenProps,
+  shouldFitContent,
 
   maxDate,
   minDate,
@@ -182,6 +188,7 @@ export const Datepicker = ({
       ref={accordionRef}
       animationDuration="0.0s"
       defaultTitleButtonAppearance=""
+      shouldFitContent={shouldFitContent}
       {...accordionProps}
     >
       <Calendar
