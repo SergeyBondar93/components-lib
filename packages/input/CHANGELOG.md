@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.26.0...@cheaaa/input@1.26.1) (2022-07-29)
+
+
+### Bug Fixes
+
+* fix bug in input ([63075c9](https://github.com/SergeyBondar93/liba/commit/63075c9d2c8b7e232b7d08fc9f9f7e3ccf320bdb))
+
+
+
+
+
 # [1.26.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.25.0...@cheaaa/input@1.26.0) (2022-07-28)
 
 
