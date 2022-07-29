@@ -15,7 +15,7 @@ import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
 import { onRenderFn } from "./types";
 
-interface ITabList extends IThemedProps {
+export interface ITabsList extends IThemedProps {
   children: ReactElement[];
   /**
    * Для подсветки текущего таба строится карта координат лейблов,
@@ -33,7 +33,7 @@ type TabsCoords = {
   };
 };
 
-export const TabList: FC<ITabList> = memo(
+export const TabsList: FC<ITabsList> = memo(
   ({
     baseAppearance = "base",
     appearance = "base",
@@ -64,11 +64,11 @@ export const TabList: FC<ITabList> = memo(
     }, [children, onRender]);
 
     const classNames = useMemo(() => {
-      const tabListClassName = getClassName<ComponentNames>(
+      const TabsListClassName = getClassName<ComponentNames>(
         classes,
         baseAppearance,
         appearance,
-        "tabList"
+        "TabsList"
       );
       const highlighterClassName = getClassName<ComponentNames>(
         classes,
@@ -77,11 +77,11 @@ export const TabList: FC<ITabList> = memo(
         "highlighter"
       );
 
-      return { tabListClassName, highlighterClassName };
+      return { TabsListClassName, highlighterClassName };
     }, []);
 
     return (
-      <div className={classNames.tabListClassName} ref={tabsRef}>
+      <div className={classNames.TabsListClassName} ref={tabsRef}>
         {tabs}
         <span
           className={classNames.highlighterClassName}

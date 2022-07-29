@@ -1,9 +1,6 @@
 import { MouseEvent } from "react";
 
-export type OnClickFn = (
-  event: MouseEvent<HTMLButtonElement>,
-  value: string
-) => void;
+export type OnClickFn = (event: MouseEvent<HTMLButtonElement>) => void;
 
 export type onRenderFn = (params: {
   left: number;

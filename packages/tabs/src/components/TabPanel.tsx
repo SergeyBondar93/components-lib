@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { Context } from "./context";
 
-interface ITabPanelProps {
+export interface ITabPanelProps {
   panelName: string;
   children: ReactNode;
 }

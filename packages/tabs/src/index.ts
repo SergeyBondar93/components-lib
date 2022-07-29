@@ -1,7 +1,6 @@
-export { Tab } from "./Tab";
-export { TabContext } from "./TabContext";
-export { TabList } from "./TabList";
-export { TabPanel } from "./TabPanel";
 export * from "./slice";
-export * from "./styles";
-export * from "./types";
+export * from "./components/styles/consts";
+export * from "./components/types";
+
+export * from "./BaseTabs";
+export * from "./ConnectedTabs";

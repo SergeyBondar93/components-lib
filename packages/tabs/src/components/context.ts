@@ -1,11 +1,13 @@
 import { createContext } from "react";
 
-interface ITabsContext {
+interface Context {
   activePanelName: string;
   tabsName: string;
+  setActivePanelName: any;
 }
 
-export const Context = createContext<ITabsContext>({
+export const Context = createContext<Context>({
   activePanelName: "",
   tabsName: "",
+  setActivePanelName: () => {},
 });

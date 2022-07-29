@@ -2,14 +2,7 @@ import { ThemeProvider, JssProvider } from "react-jss";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import {
-  Tab,
-  TabContext,
-  TabList,
-  TabPanel,
-  tabsReducer,
-  TABS_STATE_NAMESPACE,
-} from "../src";
+import { ConnectedTabs, Tabs, tabsReducer, TABS_STATE_NAMESPACE } from "../src";
 
 import { TABS } from "./tabs";
 import { theme } from "./theme";
@@ -45,22 +38,12 @@ interface IDefaultTemplateProps {
 }
 
 const DefaultTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
-  // const dispatch = useDispatch();
-  // const handleChange: OnClickFn = useCallback((_event, panelName) => {
-  //   dispatch(
-  //     tabsActions.setActiveTab({
-  //       tabsName: TABS_NAME,
-  //       activePanelName: panelName,
-  //     })
-  //   );
-  // }, []);
-
   return (
-    <TabContext tabsName={TABS_NAME} defaultActiveTabName={TABS[0].panelName}>
-      <TabList>
+    <Tabs.TabsContext activePanelName={TABS[0].panelName}>
+      <Tabs.TabsList>
         {TABS.map(({ panelName, label }) => {
           return (
-            <Tab
+            <Tabs.Tab
               label={label}
               panelName={panelName}
               key={panelName}
@@ -68,10 +51,10 @@ const DefaultTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
             />
           );
         })}
-      </TabList>
+      </Tabs.TabsList>
 
       {TABS.map(({ Component, panelName }) => (
-        <TabPanel panelName={panelName} key={panelName}>
+        <Tabs.TabPanel panelName={panelName} key={panelName}>
           <div
             style={{
               width: "500px",
@@ -83,9 +66,9 @@ const DefaultTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
           >
             <Component />
           </div>
-        </TabPanel>
+        </Tabs.TabPanel>
       ))}
-    </TabContext>
+    </Tabs.TabsContext>
   );
 };
 
@@ -96,16 +79,6 @@ Default.args = {
 };
 
 const ThemedTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
-  // const dispatch = useDispatch();
-  // const handleChange: OnClickFn = useCallback((_event, panelName) => {
-  //   dispatch(
-  //     tabsActions.setActiveTab({
-  //       tabsName: TABS_NAME,
-  //       activePanelName: panelName,
-  //     })
-  //   );
-  // }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <JssProvider
@@ -123,9 +96,9 @@ const ThemedTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
           return styleSheet?.options.classNamePrefix + key;
         }}
       >
-        <TabContext
+        <ConnectedTabs.TabsContext
           tabsName={TABS_NAME}
-          defaultActiveTabName={TABS[0].panelName}
+          defaultActivePanelName={TABS[0].panelName}
         >
           <div
             style={{
@@ -137,23 +110,23 @@ const ThemedTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
                 marginRight: "40px",
               }}
             >
-              <TabList appearance="verticalTabList">
+              <ConnectedTabs.TabsList appearance="verticalTabsList">
                 {TABS.map(({ panelName, label }) => {
                   return (
-                    <Tab
+                    <ConnectedTabs.Tab
                       label={label}
                       panelName={panelName}
                       key={panelName}
-                      appearance="verticalTabList"
+                      appearance="verticalTabsList"
                       disabled={panelName === "Ducks" && isDucksTabDisabled}
                     />
                   );
                 })}
-              </TabList>
+              </ConnectedTabs.TabsList>
             </div>
 
             {TABS.map(({ Component, panelName }) => (
-              <TabPanel panelName={panelName} key={panelName}>
+              <ConnectedTabs.TabPanel panelName={panelName} key={panelName}>
                 <div
                   style={{
                     width: "500px",
@@ -165,10 +138,10 @@ const ThemedTemplate = ({ isDucksTabDisabled }: IDefaultTemplateProps) => {
                 >
                   <Component />
                 </div>
-              </TabPanel>
+              </ConnectedTabs.TabPanel>
             ))}
           </div>
-        </TabContext>
+        </ConnectedTabs.TabsContext>
       </JssProvider>
     </ThemeProvider>
   );

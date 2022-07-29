@@ -3,20 +3,18 @@ import {
   memo,
   MouseEvent,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
 } from "react";
-import { useContext } from "react";
-import { useDispatch } from "react-redux";
 
 import { Context } from "./context";
-import { tabsActions } from "./slice";
 import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
 import { OnClickFn, onRenderFn } from "./types";
 
-interface ITab extends IThemedProps {
+export interface ITab extends IThemedProps {
   /**
    * Имя отображаемое пользователю
    */
@@ -49,24 +47,18 @@ export const Tab = memo(
     disabled,
     delayBeforeCreatingCoordsMap,
   }: ITab) => {
+    const { activePanelName, tabsName, setActivePanelName } =
+      useContext(Context);
     const classes = useStyles();
-    const { activePanelName, tabsName } = useContext(Context);
     const elemRef = useRef<HTMLButtonElement>(null);
-
-    const dispatch = useDispatch();
 
     const handleClick = useCallback(
       (e: MouseEvent<HTMLButtonElement>) => {
         elemRef.current?.scrollIntoView({ inline: "center" });
-        dispatch(
-          tabsActions.setActiveTab({
-            tabsName,
-            activePanelName: panelName,
-          })
-        );
-        onClick?.(e, panelName);
+        setActivePanelName({ tabsName, panelName });
+        onClick?.(e);
       },
-      [onClick, panelName]
+      [onClick, panelName, tabsName, panelName]
     );
 
     useEffect(() => {
@@ -89,10 +81,6 @@ export const Tab = memo(
       <button
         ref={elemRef}
         className={className}
-        // className={classNames(
-        //     classes.tabLabel,
-        //     panelName === activePanelName && classes.tabLabelSelected
-        // )}
         disabled={disabled}
         data-selected={String(panelName === activePanelName)}
         onClick={handleClick}

@@ -1,16 +1,13 @@
-import {
-  TABS_COMPONENTS_NAMES,
-  TABS_COMPONENT_NAMESPACE,
-} from "./../src/styles/consts";
+import { TABS_COMPONENTS_NAMES, TABS_COMPONENT_NAMESPACE } from "../src";
 
 export const theme = {
   components: {
     [TABS_COMPONENT_NAMESPACE]: {
-      verticalTabList: {
+      verticalTabsList: {
         [TABS_COMPONENTS_NAMES.highlighter]: {
           display: "none",
         },
-        [TABS_COMPONENTS_NAMES.tabList]: {
+        [TABS_COMPONENTS_NAMES.TabsList]: {
           flexDirection: "column",
           borderRadius: "12px",
           background: "#FFF",
