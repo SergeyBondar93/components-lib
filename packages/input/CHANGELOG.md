@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.26.1...@cheaaa/input@1.26.2) (2022-07-30)
+
+
+### Bug Fixes
+
+* fix dropdown story ([ba6a395](https://github.com/SergeyBondar93/liba/commit/ba6a395f1b8672578eda8b5454ccfc161c6906b9))
+
+
+
+
+
 ## [1.26.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.26.0...@cheaaa/input@1.26.1) (2022-07-29)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.9.1...@cheaaa/accordion@2.9.2) (2022-07-30)
+
+
+### Bug Fixes
+
+* fix accorion several extra pixels after open ([bcccd77](https://github.com/SergeyBondar93/liba/commit/bcccd772850d8e7018a7f3e4e25f7176b90bf372))
+* fix dropdown story ([ba6a395](https://github.com/SergeyBondar93/liba/commit/ba6a395f1b8672578eda8b5454ccfc161c6906b9))
+
+
+
+
+
 ## [2.9.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.9.0...@cheaaa/accordion@2.9.1) (2022-07-30)
 
 
