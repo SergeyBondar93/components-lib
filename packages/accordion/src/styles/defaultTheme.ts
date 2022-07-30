@@ -5,8 +5,7 @@ import { ComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [ACCORDION_COMPONENTS_NAMES.wrapper]: {
-    display: "inline-block",
-
+    width: "fit-content",
     '&[data-shouldfitcontent="true"]': {
       width: "100%",
     },

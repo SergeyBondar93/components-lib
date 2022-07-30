@@ -86,8 +86,11 @@ const Weekdays = ({ setIsOpen }: IAccordionChildrenProps) => {
   ].map((option) => ({ ...option, appearance: "filters" }));
 
   return (
+    <CheckboxGroup value={value} onChange={handleChange} options={options} />
+  );
+
+  return (
     <div>
-      <CheckboxGroup value={value} onChange={handleChange} options={options} />
       <button onClick={() => setIsOpen?.(false)}>Закрыть</button>
     </div>
   );
@@ -108,7 +111,7 @@ const AccordionTemplate = (props) => {
       >
         <Accordion
           {...props}
-          passSetIsOpenToChildren
+          // passSetIsOpenToChildren
           isOpen={isOpenAll}
           title={"Дни недели"}
         >
