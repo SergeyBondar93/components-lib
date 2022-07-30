@@ -227,8 +227,8 @@ interface ITouristsSelectorInputProps extends IDropdownTitleProps {
 
 const TouristsSelectorInput = ({
   tourisus,
-  setIsOpen,
   isOpen,
+  onClick,
 }: ITouristsSelectorInputProps) => {
   return (
     <Input
@@ -236,7 +236,7 @@ const TouristsSelectorInput = ({
       isActive={isOpen}
       value={tourisus.join(", ")}
       type="button"
-      onClick={() => setIsOpen?.((v) => !v)}
+      onClick={onClick}
       label="Туристы"
       placeholder="Выберите туристов"
       shouldFitContent
@@ -251,6 +251,7 @@ export const Themed: Story<IStoryParams> = (props) => {
     <ThemeProvider theme={theme}>
       <Dropdown
         appearance="tourists"
+        passSetIsOpenToTitle
         titleButtonProps={{
           component: TouristsSelectorInput,
           tourisus,

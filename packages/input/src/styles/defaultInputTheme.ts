@@ -59,7 +59,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     border: "none",
     outline: "none",
     padding: "14px 14px",
-    borderRadius: "0px",
+    borderRadius: "10px",
     width: "100%",
     fontSize: "13px",
     textAlign: "initial",

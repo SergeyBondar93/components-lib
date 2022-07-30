@@ -217,8 +217,8 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
   */
     const titleButtonProps = useMemo(() => {
       return {
-        ...titleButtonPropsFromProps,
         onClick: toggleOpen,
+        ...titleButtonPropsFromProps,
         ...(passSetIsOpenToTitle ? { setIsOpen, isOpen } : {}),
       };
     }, [titleButtonPropsFromProps, toggleOpen, isOpen, passSetIsOpenToTitle]);
