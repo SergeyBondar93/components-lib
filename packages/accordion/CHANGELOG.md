@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.9.0...@cheaaa/accordion@2.9.1) (2022-07-30)
+
+
+### Bug Fixes
+
+* fix accorion several extra pixels after open ([bcccd77](https://github.com/SergeyBondar93/liba/commit/bcccd772850d8e7018a7f3e4e25f7176b90bf372))
+
+
+
+
+
 # [2.9.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.8.0...@cheaaa/accordion@2.9.0) (2022-07-29)
 
 
