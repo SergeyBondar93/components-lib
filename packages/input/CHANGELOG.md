@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.26.3 (2022-08-01)
+
+
+### Bug Fixes
+
+* change input styles ([0fc56c2](https://github.com/SergeyBondar93/liba/commit/0fc56c2b2882d71a77be94fdff953991d4ad0efd))
+
+
+
+
+
 ## [1.26.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.26.1...@cheaaa/input@1.26.2) (2022-07-30)
 
 
