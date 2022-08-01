@@ -42,6 +42,12 @@ export type IBaseButtonProps<TProps> = TProps &
      */
     isSelected?: boolean;
 
+    /**
+     * Стоит ли передать appearances в переданный component
+     * @default true
+     */
+    passAppearancesToComponent?: boolean;
+
     classes?: Classes<string>;
   };
 
@@ -64,6 +70,7 @@ export const BaseButton = function <TProps>({
   onClick: onClickProps,
   shouldFitContent,
   classes,
+  passAppearancesToComponent = true,
   ...props
 }: IBaseButtonProps<TProps>): React.ReactElement<TProps> {
   const onClick = useCallback(
@@ -96,7 +103,9 @@ export const BaseButton = function <TProps>({
       data-selected={String(!!isSelected)}
       href={disabled ? undefined : href}
       data-shouldfitcontent={String(!!shouldFitContent)}
-      {...(Component ? { appearance, baseAppearance } : {})}
+      {...(Component && passAppearancesToComponent
+        ? { appearance, baseAppearance }
+        : {})}
       {...(props as any)}
     />
   );
