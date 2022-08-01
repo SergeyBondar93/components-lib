@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.8.1 (2022-08-01)
+
+
+### Bug Fixes
+
+* fix deps ([ded27a5](https://github.com/SergeyBondar93/liba/commit/ded27a556de0de4e6c559a9e732ed4553bcfb1af))
+
+
+
+
+
 # [1.8.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.7.9...@cheaaa/button@1.8.0) (2022-07-25)
 
 
