@@ -1,6 +1,6 @@
 {
   "name": "@cheaaa/accordion",
-  "version": "2.9.3",
+  "version": "2.9.4",
   "description": "<>",
   "build:storybook": "src/index.ts",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
   },
   "private": false,
   "dependencies": {
-    "@cheaaa/button": "^1.8.1",
+    "@cheaaa/button": "^1.9.0",
     "@cheaaa/utils": "^1.4.0"
   },
   "devDependencies": {

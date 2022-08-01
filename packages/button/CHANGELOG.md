@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.8.1...@cheaaa/button@1.9.0) (2022-08-01)
+
+
+### Features
+
+* add prop passAppearancesToComponent to button ([06d24c9](https://github.com/SergeyBondar93/liba/commit/06d24c9f68ab1cc20f91ff9fe5228b210382b824))
+
+
+
+
+
 ## 1.8.1 (2022-08-01)
 
 
