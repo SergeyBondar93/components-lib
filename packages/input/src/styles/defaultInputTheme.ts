@@ -23,7 +23,6 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
 
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
-      opacity: 0.7,
     },
     '&[data-shouldfitcontent="true"]': {
       width: "100%",
@@ -75,6 +74,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
 
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
+      opacity: 0.7,
     },
 
     '&[data-focused="true"]': {
@@ -111,6 +111,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
 
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
+      opacity: 0.7,
     },
     /**
      * Стили для инпута используемом в других компонентах,
@@ -130,6 +131,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
 
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
+      opacity: 0.7,
     },
     /**
      * Стили для инпута используемом в других компонентах,
@@ -153,8 +155,10 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     cursor: "pointer",
 
     fill: "rgba(113, 130, 153, 0.25)",
+
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
+      opacity: 0.7,
     },
     '&[data-focused="true"]': {
       fill: "#636AFF",
@@ -182,6 +186,7 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     },
     '&[data-disabled="true"]': {
       cursor: "not-allowed",
+      opacity: 0.7,
     },
     '&[data-focused="true"]': {
       fontSize: "10px",
