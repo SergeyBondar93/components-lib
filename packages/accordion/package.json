@@ -31,7 +31,7 @@
     "react-select": "^5.4.0"
   },
   "peerDependencies": {
-    "@cheaaa/theme": "^1.2.9",
+    "@cheaaa/theme": "^1.2.10",
     "react": ">=17.0.2"
   }
 }

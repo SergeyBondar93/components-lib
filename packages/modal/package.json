@@ -23,9 +23,10 @@
 	},
 	"private": false,
 	"dependencies": {
+		"@cheaaa/theme": "^1.2.10",
+		"@cheaaa/utils": "^1.4.0",
 		"@cheaaa/blanket": "^1.1.4",
-		"@cheaaa/portal": "^1.1.2",
-		"@cheaaa/utils": "^1.4.0"
+		"@cheaaa/portal": "^1.1.2"
 	},
 	"optionalDependencies": {
 		"@reduxjs/toolkit": "^1.6.1",

@@ -23,6 +23,8 @@
 	},
 	"private": false,
 	"dependencies": {
+		"@cheaaa/theme": "^1.2.10",
+		"@cheaaa/utils": "^1.4.0",
 		"@cheaaa/accordion": "^2.9.2"
 	},
 	"peerDependencies": {

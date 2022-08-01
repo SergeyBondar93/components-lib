@@ -25,6 +25,7 @@
 	"dependencies": {
 		"@cheaaa/portal": "^1.1.2",
 		"@cheaaa/theme": "^1.2.10",
+		"@cheaaa/utils": "^1.4.0",
 		"react-tooltip": "^4.2.21"
 	},
 	"peerDependencies": {
