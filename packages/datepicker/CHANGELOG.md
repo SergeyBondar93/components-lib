@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.4.8...@cheaaa/datepicker@1.5.0) (2022-08-02)
+
+
+### Features
+
+* add localisation to datepicker ([015b577](https://github.com/SergeyBondar93/liba/commit/015b5777dcc142a984adf718d6eab4e80db42790))
+
+
+
+
+
 ## [1.4.8](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.4.7...@cheaaa/datepicker@1.4.8) (2022-08-01)
 
 **Note:** Version bump only for package @cheaaa/datepicker
