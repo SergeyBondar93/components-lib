@@ -1,14 +1,17 @@
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
-import { weekdaysRU } from "./utils";
+import { Locale } from "./types";
+import { getWeekdayNamesByLocale } from "./utils";
 
-interface IWeekdaysProps extends Required<IThemedProps> {}
+interface IWeekdaysProps extends Required<IThemedProps> {
+  locale: Locale;
+}
 
 export const Weekdays = memo(
-  ({ baseAppearance, appearance }: any & IWeekdaysProps) => {
+  ({ baseAppearance, appearance, locale }: any & IWeekdaysProps) => {
     const classes = useStyles();
 
     const className = getClassName<ComponentNames>(
@@ -18,13 +21,21 @@ export const Weekdays = memo(
       "weekday"
     );
 
+    const englishWeekdays = useMemo(() => getWeekdayNamesByLocale("en"), []);
+
+    const weekdays = useMemo(() => getWeekdayNamesByLocale(locale), [locale]);
+
     return (
       <>
-        {weekdaysRU.map((weekday) => {
+        {weekdays.map((weekday, index) => {
           return (
-            <div className={className} key={weekday}>
+            <span
+              className={className}
+              key={weekday}
+              data-weekday={englishWeekdays[index].toLowerCase()}
+            >
               {weekday}
-            </div>
+            </span>
           );
         })}
       </>

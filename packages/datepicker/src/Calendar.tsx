@@ -8,17 +8,11 @@ import React, {
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { useStyles } from "./styles";
-import {
-  Day,
-  FIRST_MONTH_INDEX,
-  getRange,
-  getStartOfAday,
-  LAST_MONTH_INDEX,
-  today,
-} from "./utils";
+import { addMonth, Day, getRange, getStartOfAday, today } from "./utils";
 import { ComponentNames } from "./styles/types";
 import { Header } from "./Header";
 import { DaysTable } from "./DaysTable";
+import { Locale } from "./types";
 
 export interface CalendarComponent extends IThemedProps {
   value?: Date;
@@ -68,6 +62,12 @@ export interface CalendarComponent extends IThemedProps {
    * отключает выбор дней в календаре и открытие его
    */
   disabled?: boolean;
+
+  /**
+   * Язык месяцев
+   * @default ru
+   */
+  locale?: Locale;
 }
 
 export const Calendar: React.FC<CalendarComponent> = ({
@@ -77,13 +77,14 @@ export const Calendar: React.FC<CalendarComponent> = ({
   minDate: minDateProps,
   value: valueProps,
   onChange,
-  openedDate,
+  openedDate: openedDateProps,
   headerComponent,
   footerComponent,
   rangeSelector,
   startDate,
   endDate,
   disabled,
+  locale = "ru",
 }) => {
   const classes = useStyles();
 
@@ -132,42 +133,24 @@ export const Calendar: React.FC<CalendarComponent> = ({
     [minDateProps]
   );
 
-  const [selectedYear, setYear] = useState<number>(
-    (openedDate || value || today).getFullYear()
-  );
-  const [selectedMonth, setMonth] = useState<number>(
-    (openedDate || value || today).getMonth()
+  const [visibleDate, setVisibleDate] = useState<Date>(
+    openedDateProps || value || today
   );
 
   useEffect(() => {
-    if (openedDate) {
-      const year = openedDate.getFullYear();
-      const month = openedDate.getMonth();
-      setYear(year);
-      setMonth(month);
+    if (openedDateProps) {
+      setVisibleDate(openedDateProps);
     }
-  }, [openedDate]);
+  }, [openedDateProps]);
 
   const handlePreviousMonthButtonClick = (): void => {
-    if (selectedMonth === FIRST_MONTH_INDEX) {
-      setMonth(LAST_MONTH_INDEX);
-      setYear(selectedYear - 1);
-
-      return;
-    }
-
-    setMonth(selectedMonth - 1);
+    const newVisibleDate = addMonth(visibleDate, -1);
+    setVisibleDate(newVisibleDate);
   };
 
   const handleNextMonthButtonClick = (): void => {
-    if (selectedMonth === LAST_MONTH_INDEX) {
-      setMonth(FIRST_MONTH_INDEX);
-      setYear(selectedYear + 1);
-
-      return;
-    }
-
-    setMonth(selectedMonth + 1);
+    const newVisibleDate = addMonth(visibleDate, 1);
+    setVisibleDate(newVisibleDate);
   };
 
   const classNames = useMemo(() => {
@@ -210,10 +193,10 @@ export const Calendar: React.FC<CalendarComponent> = ({
     <div className={classNames.calendarWrapperClassName}>
       {headerComponent}
       <Header
+        locale={locale}
         baseAppearance={baseAppearance}
         appearance={appearance}
-        selectedMonth={selectedMonth}
-        selectedYear={selectedYear}
+        visibleDate={visibleDate}
         onNext={handleNextMonthButtonClick}
         onPrev={handlePreviousMonthButtonClick}
       />
@@ -223,8 +206,8 @@ export const Calendar: React.FC<CalendarComponent> = ({
         onMouseLeave={handleMouseLeave}
       >
         <DaysTable
-          selectedMonth={selectedMonth}
-          selectedYear={selectedYear}
+          locale={locale}
+          visibleDate={visibleDate}
           minDate={minDate}
           maxDate={maxDate}
           baseAppearance={baseAppearance}

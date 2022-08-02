@@ -75,6 +75,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     marginRight: "5px",
     color: "#101820",
     fontSize: "15px",
+    textTransform: "capitalize",
   },
   [DATEPICKER_COMPONENTS_NAMES.yearWrapper]: {
     color: "#101820",
@@ -94,6 +95,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     color: "rgba(113, 130, 153, 0.55)",
     fontSize: "12px",
     letterSpacing: "-0.3px",
+    textTransform: "uppercase",
   },
   [DATEPICKER_COMPONENTS_NAMES.day]: {
     width: "calc(100% / 7)",

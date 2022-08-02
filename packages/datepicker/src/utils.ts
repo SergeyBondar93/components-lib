@@ -8,8 +8,21 @@ const MIN = 60 * SECOND;
 const HOUR = MIN * 60;
 export const DAY = HOUR * 24;
 
-export const FIRST_MONTH_INDEX = 0;
-export const LAST_MONTH_INDEX = 11;
+export const getWeekdayNamesByLocale = (locale: "en" | "ru") => {
+  /* дата понедельника по дефолту */
+  const MONDAY_DATE = 1;
+  let current = new Date(2022, 7, MONDAY_DATE);
+
+  const weekdays: string[] = [];
+
+  for (let i = 1; i <= 7; i++) {
+    weekdays.push(current.toLocaleDateString(locale, { weekday: "short" }));
+
+    current.setDate(i + MONDAY_DATE);
+  }
+
+  return weekdays;
+};
 
 export const getDatesFromMonth = (month: number, year: number): Date[] => {
   const days = new Date(year, month + 1, 0).getDate();
@@ -275,20 +288,3 @@ export const getRange = (
 
   return range;
 };
-
-export const weekdaysRU = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"] as const;
-
-export const monthsRU = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь",
-] as const;

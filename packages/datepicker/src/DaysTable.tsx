@@ -3,6 +3,7 @@ import { useCallback, useMemo } from "react";
 
 import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
+import { Locale } from "./types";
 import {
   Day,
   getDatesForCalendarMonth,
@@ -14,8 +15,7 @@ import {
 import { Weekdays } from "./Weekdays";
 
 interface IDaysTableProps extends Required<IThemedProps> {
-  selectedMonth: number;
-  selectedYear: number;
+  visibleDate: Date;
   minDate?: Date;
   maxDate?: Date;
   onChange: (date: Date) => void;
@@ -23,25 +23,29 @@ interface IDaysTableProps extends Required<IThemedProps> {
   rangeDates: Day[];
   setHovered: React.Dispatch<React.SetStateAction<Date | null | undefined>>;
   disabled?: boolean;
+  locale: Locale;
 }
 
 export const DaysTable = ({
   baseAppearance,
   appearance,
-  selectedMonth,
-  selectedYear,
+  visibleDate,
   minDate,
   maxDate,
   onChange,
   selectedTimestamps,
   rangeDates,
   setHovered,
+  locale,
   disabled: disabledCalendar,
 }: IDaysTableProps) => {
   const classes = useStyles();
 
   const days = useMemo(() => {
-    const monthDates = getDatesFromMonth(selectedMonth, selectedYear);
+    const monthDates = getDatesFromMonth(
+      visibleDate.getMonth(),
+      visibleDate.getFullYear()
+    );
     const monthDatesTimestamps = monthDates.map((date) => Number(date));
 
     return getDatesForCalendarMonth(monthDates).map(({ date, timestamp }) => {
@@ -61,7 +65,7 @@ export const DaysTable = ({
         isToday,
       };
     });
-  }, [selectedMonth, selectedYear, minDate, maxDate]);
+  }, [visibleDate, minDate, maxDate]);
 
   const daysWithRange = useMemo(() => {
     const rangeDatesTimestamps = rangeDates.map(({ timestamp }) => timestamp);
@@ -97,7 +101,11 @@ export const DaysTable = ({
 
   return (
     <>
-      <Weekdays baseAppearance={baseAppearance} appearance={appearance} />
+      <Weekdays
+        baseAppearance={baseAppearance}
+        appearance={appearance}
+        locale={locale}
+      />
       {daysWithRange.map(
         ({
           date,

@@ -11,6 +11,12 @@ import { theme } from "./theme";
 
 export default {
   title: "Datepicker",
+  argTypes: {
+    locale: {
+      control: "select",
+      options: ["en", "ru"],
+    },
+  },
 } as Meta;
 
 const min = new Date();
@@ -51,6 +57,7 @@ const aug20 = new Date(2022, 7, 20);
 
 interface IBaseStoryParams {
   disabled: boolean;
+  locale: "en" | "ru";
 }
 interface IRangeStoryParams {
   rangeHighlight: boolean;
@@ -86,6 +93,7 @@ export const CalendarBase: Story<IBaseStoryParams> = (args) => {
 
 CalendarBase.args = {
   disabled: false,
+  // locale: { control: 'select', options: ['en', 'ru'] }
 };
 
 export const DatepickerBase: Story<IBaseStoryParams> = (props) => {

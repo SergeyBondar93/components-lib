@@ -4,22 +4,22 @@ import { useMemo } from "react";
 import { useStyles } from "./styles";
 import { ComponentNames } from "./styles/types";
 import SwitchButton from "./SwitchButton";
-import { monthsRU } from "./utils";
+import { Locale } from "./types";
 
 interface IHeaderProps extends Required<IThemedProps> {
-  selectedMonth: number;
-  selectedYear: number;
   onNext: () => void;
   onPrev: () => void;
+  visibleDate: Date;
+  locale: Locale;
 }
 
 export const Header = ({
   baseAppearance,
   appearance,
-  selectedMonth,
-  selectedYear,
   onNext,
   onPrev,
+  locale,
+  visibleDate,
 }: IHeaderProps) => {
   const classes = useStyles();
   const classNames = useMemo(() => {
@@ -67,9 +67,11 @@ export const Header = ({
 
       <span className={classNames.titleWrapperClassName}>
         <span className={classNames.monthWrapperClassName}>
-          {monthsRU[selectedMonth]}
+          {visibleDate.toLocaleDateString(locale, { month: "long" })}
         </span>
-        <span className={classNames.yearWrapperClassName}>{selectedYear}</span>
+        <span className={classNames.yearWrapperClassName}>
+          {visibleDate.getFullYear()}
+        </span>
       </span>
       <SwitchButton
         baseAppearance={baseAppearance}

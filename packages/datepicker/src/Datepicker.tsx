@@ -97,6 +97,7 @@ export const Datepicker = ({
   rangeSelector,
   startDate,
   endDate,
+  locale,
 
   headerComponent,
   footerComponent,
@@ -204,6 +205,7 @@ export const Datepicker = ({
         rangeSelector={rangeSelector}
         startDate={startDate}
         endDate={endDate}
+        locale={locale}
       />
     </BaseAccordion>
   );
