@@ -1,5 +1,9 @@
 export const options = [
   {
+    value: "aaa",
+    label: "Все страны на А",
+  },
+  {
     value: "abhazia",
     label: "Абхазия",
   },

@@ -4,7 +4,7 @@ import { ThemeProvider } from "react-jss";
 import { Checkbox } from "@cheaaa/checkbox";
 
 import { Select } from "../src";
-import { SelectOptionValue } from "../src/types";
+import { OnChangeParams, SelectOptionValue } from "../src/types";
 
 import { customFilterFunction, isSomeOptionsDisabled } from "./utils";
 import { options } from "./options";
@@ -56,6 +56,40 @@ export const Base: Story<IStoryParams> = (args) => {
     }
   };
 
+  const handleSetMulti = (
+    newOptions,
+    { type, optionValue }: OnChangeParams
+  ) => {
+    if (optionValue === "aaa") {
+      switch (type) {
+        case "select": {
+          const newValue = [
+            ...new Set([
+              ...newOptions,
+              ...options
+                .filter(({ label }) => label.startsWith("А"))
+                .map(({ value }) => value),
+            ]),
+          ];
+          setMultiValue(newValue);
+          break;
+        }
+        case "remove": {
+          const newValue = newOptions.filter((value) => {
+            const label = options.find((opt) => opt.value === value)?.label;
+
+            return !label?.startsWith("А");
+          });
+
+          setMultiValue(newValue);
+          break;
+        }
+      }
+    } else {
+      setMultiValue(newOptions);
+    }
+  };
+
   return (
     <>
       <Checkbox
@@ -66,7 +100,7 @@ export const Base: Story<IStoryParams> = (args) => {
       <h2>Multi Value</h2>
       <Select
         value={multiValue}
-        onChange={setMultiValue}
+        onChange={handleSetMulti}
         options={options}
         filterFunction={filterFunction}
         isMulti

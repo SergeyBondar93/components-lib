@@ -92,7 +92,7 @@ export const Select = ({
         newValue = optionValue === value ? "" : optionValue;
       }
 
-      onChange(newValue);
+      onChange(newValue, { type, optionValue });
 
       setSearchString("");
 

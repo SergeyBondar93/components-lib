@@ -100,6 +100,11 @@ interface IBaseSelect extends IThemedProps {
   inputProps?: InputProps;
 }
 
+export interface OnChangeParams {
+  type: "remove" | "select";
+  optionValue: SelectOptionValue;
+}
+
 interface IMultiValueSelectProps extends IBaseSelect {
   /**
    * Возможность выбора нескольких значений
@@ -107,7 +112,7 @@ interface IMultiValueSelectProps extends IBaseSelect {
    */
   isMulti?: true;
   value: SelectOptionValue[];
-  onChange: (newValue: SelectOptionValue[]) => void;
+  onChange: (newValue: SelectOptionValue[], params: OnChangeParams) => void;
 }
 interface ISingleValueSelectProps extends IBaseSelect {
   /**
@@ -116,7 +121,7 @@ interface ISingleValueSelectProps extends IBaseSelect {
    */
   isMulti: false;
   value: SelectOptionValue;
-  onChange: (newValue: SelectOptionValue) => void;
+  onChange: (newValue: SelectOptionValue, params: OnChangeParams) => void;
 }
 
 export type SelectProps = IMultiValueSelectProps | ISingleValueSelectProps;
