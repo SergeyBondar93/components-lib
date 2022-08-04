@@ -84,6 +84,12 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       [disabled, onClickProps]
     );
 
+    useEffect(() => {
+      if (isFocused && isButton) {
+        mergedRef.current?.blur();
+      }
+    }, [isFocused, isButton]);
+
     const handleChange: React.ChangeEventHandler<HTMLInputElement> =
       useCallback(
         (e) => {
@@ -209,7 +215,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
           ref={mergedRef}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          value={String(value)}
+          value={value ? String(value) : ""}
           onChange={handleChange}
           placeholder={placeholder}
           // при type="button" не показывается placeholder
@@ -251,7 +257,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
 
         {postfix && (
           <span
-            data-disabled={String(disabled)}
+            data-disabled={String(!!disabled)}
             className={classNames.postfixWrapperClassName}
             onMouseDown={(e) => e.preventDefault()}
             {...dataComponentActiveProp}
