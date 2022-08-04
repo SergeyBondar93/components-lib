@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.9.0 (2022-08-02)
+
+
+### Features
+
+* add extra params to select's onChange - type and optionValue ([8c5579c](https://github.com/SergeyBondar93/liba/commit/8c5579c6d822945847bcdb6c004561a8413badeb))
+
+
+
+
+
 ## 1.8.8 (2022-08-01)
 
 **Note:** Version bump only for package @cheaaa/select
