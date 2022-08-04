@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.27.0 (2022-08-04)
+
+
+### Features
+
+* add blur after click to input as button ([26db31a](https://github.com/SergeyBondar93/liba/commit/26db31ad672ec2d134ec6fa17b5fb5623225c43c))
+
+
+
+
+
 ## 1.26.3 (2022-08-01)
 
 
