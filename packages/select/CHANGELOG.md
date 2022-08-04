@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.9.1...@cheaaa/select@1.9.2) (2022-08-04)
+
+
+### Bug Fixes
+
+* add onChange fn to select deps ([bd23eaf](https://github.com/SergeyBondar93/liba/commit/bd23eafad32a45d0ac0d934a471dc34aa365cbb6))
+
+
+
+
+
 ## [1.9.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.9.0...@cheaaa/select@1.9.1) (2022-08-04)
 
 **Note:** Version bump only for package @cheaaa/select
