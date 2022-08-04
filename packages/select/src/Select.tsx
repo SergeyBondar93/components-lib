@@ -101,7 +101,7 @@ export const Select = ({
       setIsOpen(!isClosed);
       setActiveValue(null);
     },
-    [value, isMulti, isCloseOnSelect, isCloseOnRemove]
+    [value, isMulti, isCloseOnSelect, isCloseOnRemove, onChange]
   );
 
   const { selectedOptions, unselectedOptions } = useMemo(() => {
