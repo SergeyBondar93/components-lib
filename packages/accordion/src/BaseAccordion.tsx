@@ -18,7 +18,7 @@ import { ComponentNames } from "./styles/types";
 
 export type GetHeightStylesFn = (args: {
   isOpen: boolean;
-  height: number;
+  height: number | "auto";
 }) => number;
 
 export interface IAccordionChildrenProps {
@@ -107,7 +107,9 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
     ref
   ) => {
     const [isOpen, setIsOpen] = useState(isOpenProps);
-    const [height, setHeight] = useState(0);
+    const [height, setHeight] = useState<"auto" | number>(
+      isOpenProps ? "auto" : 0
+    );
     const bodyRef = useRef<HTMLDivElement>(null);
     const childrenWrapperRef = useRef<HTMLDivElement>(null);
     const [isFullOpened, setIsFullOpened] = useState(isOpenProps);
