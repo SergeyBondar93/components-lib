@@ -10,6 +10,7 @@ import { MODAL_COMPONENTS_NAMES, DEFAULT_ANIMATION_DURATION } from "./consts";
 import { ModalTheme } from "./types";
 
 export const defaultModalTheme: ModalTheme = {
+  /* TODO переделать как в Header Dropdown на аттрибуты */
   [ENTERING]: {
     [MODAL_COMPONENTS_NAMES.modalContent]: {
       transform: "scale(0.8) translate(-50%, -50%)",

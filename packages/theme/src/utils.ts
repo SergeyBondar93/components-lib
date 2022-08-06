@@ -10,10 +10,11 @@ import classNames from "classnames";
 import { Classes } from "jss";
 
 import {
-  AnimationComponentTheme,
+  ComponentThemeWithAnimations,
   ClassesWithStyles,
   ComponentTheme,
   ITheme,
+  Breakpoints,
 } from "./types";
 
 const ANIMATION_STATES: TransitionStatus[] = [
@@ -52,7 +53,7 @@ export const getClassName = <T extends string>(
 };
 
 const createStylesFromTheme = (
-  theme: AnimationComponentTheme,
+  theme: ComponentThemeWithAnimations,
   appearance?: string
 ) => {
   let res: ClassesWithStyles = {};
@@ -109,3 +110,50 @@ export const createClasses =
       getStylesFromApplicationTheme(globalTheme, componentNamespace)
     );
   };
+
+const MEDIA_SCREEN = "@media screen";
+
+const BREAKPOINTS_SIZES = {
+  xs: 320,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1160,
+  xxl: 1400,
+};
+
+const getBreakPoint = (value: number | Breakpoints): number => {
+  let breakpoint: number | null = null;
+
+  if (typeof value === "number") {
+    breakpoint = value;
+  } else {
+    breakpoint = BREAKPOINTS_SIZES[value];
+  }
+
+  return breakpoint;
+};
+
+export function mediaMinWidth(value: number | Breakpoints) {
+  return `${MEDIA_SCREEN} and (min-width: ${getBreakPoint(value)}px)`;
+}
+
+export function mediaMaxWidth(value: number | Breakpoints) {
+  return `${MEDIA_SCREEN} and (max-width: ${getBreakPoint(value) - 1}px)`;
+}
+
+export function mediaBetweenWidth(
+  minValue: number | Breakpoints,
+  maxValue: number | Breakpoints
+) {
+  return `${MEDIA_SCREEN} and (min-width: ${getBreakPoint(
+    minValue
+  )}px) and (max-width: ${getBreakPoint(maxValue) - 1}px)`;
+}
+
+export const BREAKPOINTS = {
+  ...BREAKPOINTS_SIZES,
+  up: mediaMinWidth,
+  down: mediaMaxWidth,
+  between: mediaBetweenWidth,
+};

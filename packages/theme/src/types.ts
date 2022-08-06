@@ -18,7 +18,7 @@ export type Styles =
 export type ComponentTheme<T extends string = string> = {
   [component in T]: Styles;
 };
-export type AnimationComponentTheme<T extends string = string> =
+export type ComponentThemeWithAnimations<T extends string = string> =
   | ComponentTheme<T>
   | (ComponentTheme<T> & {
       [propName in TransitionStatus]?: ComponentTheme<T>;
@@ -30,7 +30,7 @@ export type ITheme = {
   };
   components: {
     [componentName: string]: {
-      [appearance: string]: AnimationComponentTheme;
+      [appearance: string]: ComponentThemeWithAnimations;
     };
   };
 };
@@ -53,4 +53,20 @@ export interface IThemedProps {
    * Специфичный аппиранс, для изменения стилей описанных в baseAppearance / {base}
    */
   appearance?: string;
+}
+
+export type Breakpoints = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+
+export interface MediaQueryFn {
+  (value: Breakpoints | number): string;
+}
+
+export interface MediaQueryBetweenFn {
+  (minValue: Breakpoints | number, maxValue: Breakpoints | number): string;
+}
+
+export interface ThemeBreakpoints {
+  up: MediaQueryFn;
+  down: MediaQueryFn;
+  between: MediaQueryBetweenFn;
 }
