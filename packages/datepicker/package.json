@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/datepicker",
-	"version": "1.5.2",
+	"version": "1.5.3",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -23,7 +23,7 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/accordion": "^2.9.5",
+		"@cheaaa/accordion": "^2.9.6",
 		"@cheaaa/icons": "^1.4.0",
 		"@cheaaa/input": "^1.27.1",
 		"@cheaaa/theme": "^1.3.0",

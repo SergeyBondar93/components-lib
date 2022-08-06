@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.6](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.9.5...@cheaaa/accordion@2.9.6) (2022-08-06)
+
+
+### Bug Fixes
+
+* fix accordion isOpen default state ([7d9505f](https://github.com/SergeyBondar93/liba/commit/7d9505fc415e58b3d73dd98563bb24ecd2a0590d))
+
+
+
+
+
 ## 2.9.5 (2022-08-06)
 
 **Note:** Version bump only for package @cheaaa/accordion
