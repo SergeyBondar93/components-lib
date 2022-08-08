@@ -1,9 +1,16 @@
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import { memo, useMemo } from "react";
+import { memo, ReactNode, useMemo } from "react";
 
 import { useHeaderStyles, HeaderComponentNames } from "./styles";
 
-interface IMenuItemProps extends Required<IThemedProps> {}
+export interface IMenuItem {
+  title: string;
+  href?: string;
+  icon: ReactNode;
+  onClick?: () => void;
+}
+
+interface IMenuItemProps extends Required<IThemedProps>, IMenuItem {}
 
 export const MenuItem = memo(
   ({
@@ -13,7 +20,7 @@ export const MenuItem = memo(
     href,
     icon,
     onClick,
-  }: IMenuItemProps | any) => {
+  }: IMenuItemProps) => {
     const classes = useHeaderStyles();
 
     const classNames = useMemo(() => {

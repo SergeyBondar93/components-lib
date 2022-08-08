@@ -21,18 +21,7 @@ export type GetHeightStylesFn = (args: {
   height: number;
 }) => number;
 
-export interface IAccordionChildrenProps {
-  /**
-   * передаётся из компонента Accordion, опциональность указана что бы ТС не требовал передавать в приложении
-   */
-  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-  /**
-   * передаётся из компонента Accordion, опциональность указана что бы ТС не требовал передавать в приложении
-   */
-  isOpen?: boolean;
-}
-
-export interface IBaseAccordionProps extends IThemedProps {
+export interface IBaseAccordionProps extends Required<IThemedProps> {
   /**
    * Текст на Title Button.
    */
@@ -40,10 +29,10 @@ export interface IBaseAccordionProps extends IThemedProps {
   children: ReactNode;
 
   /**
-   * Длительность анимации разворачивания, не больше 0.5s
+   * Длительность анимации появления
    *
    */
-  animationDuration?: `0.${number}s`;
+  animationDuration?: `${number}.${number}s`;
 }
 
 export interface IAccordionChildrenProps {
@@ -52,8 +41,8 @@ export interface IAccordionChildrenProps {
 
 export const HeaderDropdown = memo(
   ({
-    baseAppearance = "base",
-    appearance = "base",
+    baseAppearance,
+    appearance,
     title,
     children,
     animationDuration: animationDurationProps = "0.3s",
@@ -106,6 +95,7 @@ export const HeaderDropdown = memo(
     );
 
     const mappedChildren = useMemo(() => {
+      // передаём в компонент children функцию закрытия, потом может пригодиться что бы закрывать дропдаун
       return React.Children.map(children as ReactElement, (child) => {
         return React.cloneElement(child, {
           handleClose,
@@ -142,16 +132,6 @@ export const HeaderDropdown = memo(
             ) : null;
           }}
         </Transition>
-
-        {/* {isOpen && (
-          <div
-            className={classNames.dropdownBodyClassName}
-            //  data-animation-state={animationState}
-            //  ref={transitionRef}
-          >
-            {children}
-          </div>
-        )} */}
       </div>
     );
   }

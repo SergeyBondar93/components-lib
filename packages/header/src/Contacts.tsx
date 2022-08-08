@@ -1,18 +1,44 @@
 import { CallIcon } from "@cheaaa/icons";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import { memo, useMemo } from "react";
+import { memo, ReactNode, useMemo } from "react";
 
 import { useHeaderStyles, HeaderComponentNames } from "./styles";
 
-interface IContactsProps extends Required<IThemedProps> {}
+type Phone = {
+  /**
+   * Телефон куда звоним
+   */
+  phone: string | number;
+  /**
+   * Текст телефона который видит пользователь для клика
+   */
+  title: string | number;
+  /**
+   * Страна / Город
+   */
+  label: string | number;
+};
+
+export interface IContacts {
+  availableTime: ReactNode;
+  phones: Phone[];
+  email: string;
+  callUsButton?: {
+    onClick: () => void;
+    title: string | ReactNode;
+  };
+}
+interface IContactsProps extends Required<IThemedProps> {
+  contacts: IContacts;
+  handleClose?: () => void;
+}
 
 export const Contacts = memo(
   ({
     baseAppearance,
     appearance,
-    availableTime,
-    contacts: { /*availableTime,*/ phones, email, callUsButton },
-  }: IContactsProps | any) => {
+    contacts: { availableTime, phones, email, callUsButton },
+  }: IContactsProps) => {
     const classes = useHeaderStyles();
 
     const classNames = useMemo(() => {
@@ -80,15 +106,17 @@ export const Contacts = memo(
           </a>
         </li>
 
-        <li className={classNames.contactsListItemClassName}>
-          <button
-            onClick={callUsButton.onClick}
-            className={classNames.contactsCallUsButtonClassName}
-          >
-            <CallIcon />
-            {callUsButton.title}
-          </button>
-        </li>
+        {callUsButton && (
+          <li className={classNames.contactsListItemClassName}>
+            <button
+              onClick={callUsButton.onClick}
+              className={classNames.contactsCallUsButtonClassName}
+            >
+              <CallIcon />
+              {callUsButton.title}
+            </button>
+          </li>
+        )}
       </ul>
     );
   }

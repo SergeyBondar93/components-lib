@@ -1,25 +1,24 @@
 import { Meta } from "@storybook/react";
 // @ts-ignore
 import { Container } from "@cheaaa/container";
-// import {
-//   MoonIcon,
-//   PhoneIcon,
-//   PlaneIcon,
-//   CarIcon,
-//   HomeIcon,
-//   DocumentIcon,
-//   WalletIcon,
-//   InfoIcon,
-//   CommandIcon,
-// } from "@cheaaa/icons";
-import { /*useMemo,*/ useMemo, useState } from "react";
+import {
+  MoonIcon,
+  PhoneIcon,
+  PlaneIcon,
+  CarIcon,
+  HomeIcon,
+  DocumentIcon,
+  WalletIcon,
+  InfoIcon,
+  CommandIcon,
+} from "@cheaaa/icons";
+import { useMemo, useState } from "react";
 
 import { Header } from "../src/Header";
 
 // @ts-ignore
 import bg from "./bg.jpg";
-// import { SunIcon } from "./sunIcon";
-// import { SunIcon } from "./sunIcon";
+import { SunIcon } from "./sunIcon";
 
 export default {
   title: "Header",
@@ -82,18 +81,13 @@ interface IBaseProps {
   withMenu: boolean;
 }
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  return <button onClick={() => setCount(count + 1)}>Increment {count}</button>;
-};
-
-export const Base = ({}: // withLinkToMain,
-// withWhyNew,
-// withAccount,
-// withContacts,
-// withMenu,
-IBaseProps) => {
+export const Base = ({
+  withLinkToMain,
+  withWhyNew,
+  withAccount,
+  withContacts,
+  withMenu,
+}: IBaseProps) => {
   const [theme, setTheme] = useState<ThemeType>("light");
 
   const menu = useMemo(() => {
@@ -101,56 +95,55 @@ IBaseProps) => {
       {
         title: "Туристическая страховка",
         href: "https://kirk.cherehapa.ru/",
-        // icon: <PlaneIcon fill="#636AFF" />,
+        icon: <PlaneIcon fill="#636AFF" />,
       },
       {
         title: "Полис Осаго",
         href: "https://kirk.cherehapa.ru/auto",
-        // icon: <CarIcon fill="#636AFF" />,
+        icon: <CarIcon fill="#636AFF" />,
       },
       {
         title: "Страхование ипотеки",
         href: "https://kirk.cherehapa.ru/ipoteka",
-        // icon: <HomeIcon fill="#636AFF" />,
+        icon: <HomeIcon fill="#636AFF" />,
       },
       {
         title: "Блог",
         href: "https://kirk.cherehapa.ru/blog",
-        // icon: <DocumentIcon fill="#636AFF" />,
+        icon: <DocumentIcon fill="#636AFF" />,
       },
       {
         title: "Партнерская программа",
         href: "https://partners.cherehapa.ru/",
-        // icon: <WalletIcon fill="#636AFF" />,
+        icon: <WalletIcon fill="#636AFF" />,
       },
       {
         title: "Полезная информация",
         href: "https://kirk.cherehapa.ru/info",
-        // icon: <InfoIcon fill="#636AFF" />,
+        icon: <InfoIcon fill="#636AFF" />,
       },
       {
         title: "Наша команда",
         href: "https://kirk.cherehapa.ru/",
-        // icon: <CommandIcon fill="#636AFF" />,
+        icon: <CommandIcon fill="#636AFF" />,
       },
       {
         title: "Контакты",
         href: "https://kirk.cherehapa.ru/contacts",
-        // icon: <PhoneIcon fill="#636AFF" />,
+        icon: <PhoneIcon fill="#636AFF" />,
       },
     ];
-    // const fn = () => {};
     const themeItem =
       theme === "light"
         ? {
             title: "Тёмная тема",
             onClick: () => setTheme("dark"),
-            // icon: <MoonIcon fill="#636AFF" />,
+            icon: <MoonIcon fill="#636AFF" />,
           }
         : {
             title: "Светлая тема",
             onClick: () => setTheme("light"),
-            // icon: <SunIcon />,
+            icon: <SunIcon />,
           };
 
     return [...staticItems, themeItem];
@@ -158,7 +151,7 @@ IBaseProps) => {
 
   const contacts = useMemo(() => {
     return {
-      // availableTime: <AvailableTime />,
+      availableTime: <AvailableTime />,
       phones: [
         {
           phone: "84952151198",
@@ -190,63 +183,23 @@ IBaseProps) => {
   return (
     <div
       style={{
-        height: `${500 || window.innerHeight}px`,
+        height: `${window.innerHeight}px`,
         background: `url("${bg}")`,
         backgroundSize: "cover",
         overflow: "hidden",
       }}
     >
       <Container>
-        {/* <Header
-          linkToMain={withLinkToMain ? "https://kirk.cherehapa.ru/" : undefined}
-          whyNew={
-            withWhyNew
-              ? {
-                  link: "https://kirk.cherehapa.ru/",
-                  title: "Почему всё новое?",
-                }
-              : undefined
-          }
-          accountLink={withAccount ? "https://google.com" : undefined}
-          contacts={
-            withContacts
-              ? {
-                  availableTime: <AvailableTime />,
-                  phones: [
-                    {
-                      phone: "84952151198",
-                      title: "8 (495) 215-11-98",
-                      label: "Москва",
-                    },
-                    {
-                      phone: "88005552198",
-                      title: "8 (800) 555-21-98",
-                      label: "Россия (бесплатно)",
-                    },
-                  ],
-                  email: "support@cherehapa.ru",
-
-                  callUsButton: {
-                    title: "Позвонить онлайн",
-                    onClick: () => {},
-                  },
-                }
-              : undefined
-          }
-          menu={withMenu ? menu : undefined}
-        /> */}
         <Header
-          linkToMain={"https://kirk.cherehapa.ru/"}
-          whyNew={whyNew}
-          accountLink={"https://google.com"}
-          contacts={contacts}
-          availableTime={<AvailableTime />}
-          menu={menu}
+          linkToMain={withLinkToMain ? "https://kirk.cherehapa.ru/" : undefined}
+          whyNew={withWhyNew ? whyNew : undefined}
+          accountLink={
+            withAccount ? "https://www.cherehapa.ru/account/login" : undefined
+          }
+          contacts={withContacts ? contacts : undefined}
+          menu={withMenu ? menu : undefined}
         />
-
         <MockFiltersBlock />
-
-        <Counter />
       </Container>
     </div>
   );

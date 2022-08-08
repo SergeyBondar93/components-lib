@@ -10,14 +10,15 @@ import { memo, useMemo } from "react";
 import { HeaderComponentNames, useHeaderStyles } from "./styles";
 import { Menu } from "./Menu";
 import { HeaderDropdown } from "./HeaderDropdown";
-import { Contacts } from "./Contacts";
+import { Contacts, IContacts } from "./Contacts";
+import { IMenuItem } from "./MenuItem";
 
 interface IHeaderProps extends IThemedProps {
-  linkToMain: any;
-  whyNew: any;
-  accountLink: any;
-  contacts: any;
-  menu: any;
+  linkToMain?: string;
+  whyNew?: any;
+  accountLink?: string;
+  contacts?: IContacts;
+  menu?: IMenuItem[];
 }
 
 export const Header = memo(
@@ -28,9 +29,8 @@ export const Header = memo(
     whyNew,
     accountLink,
     contacts,
-    availableTime,
     menu,
-  }: IHeaderProps & any) => {
+  }: IHeaderProps) => {
     const classes = useHeaderStyles();
 
     const classNames = useMemo(() => {
@@ -82,24 +82,48 @@ export const Header = memo(
           </a>
 
           <div className={classNames.menusTitleClassName}>
-            <button className={classNames.whyNewBodyClassName}>
-              {whyNew.title}
-            </button>
+            {whyNew && (
+              <button className={classNames.whyNewBodyClassName}>
+                {whyNew.title}
+              </button>
+            )}
 
-            <a href={accountLink} className={classNames.dropdownTitleClassName}>
-              <AccountIcon />
-            </a>
+            {accountLink && (
+              <a
+                href={accountLink}
+                className={classNames.dropdownTitleClassName}
+              >
+                <AccountIcon />
+              </a>
+            )}
 
-            <HeaderDropdown title={<PhoneIcon />}>
-              <Contacts
-                contacts={contacts || {}}
-                availableTime={availableTime || contacts.availableTime}
-              />
-            </HeaderDropdown>
+            {contacts && (
+              <HeaderDropdown
+                title={<PhoneIcon />}
+                baseAppearance={baseAppearance}
+                appearance={appearance}
+              >
+                <Contacts
+                  contacts={contacts}
+                  baseAppearance={baseAppearance}
+                  appearance={appearance}
+                />
+              </HeaderDropdown>
+            )}
 
-            <HeaderDropdown title={<MenuIcon />}>
-              <Menu menu={menu} />
-            </HeaderDropdown>
+            {!!menu?.length && (
+              <HeaderDropdown
+                title={<MenuIcon />}
+                baseAppearance={baseAppearance}
+                appearance={appearance}
+              >
+                <Menu
+                  menu={menu}
+                  baseAppearance={baseAppearance}
+                  appearance={appearance}
+                />
+              </HeaderDropdown>
+            )}
           </div>
         </div>
       </>
