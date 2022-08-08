@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.4](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.9.3...@cheaaa/select@1.9.4) (2022-08-08)
+
+**Note:** Version bump only for package @cheaaa/select
+
+
+
+
+
 ## [1.9.3](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.9.2...@cheaaa/select@1.9.3) (2022-08-06)
 
 **Note:** Version bump only for package @cheaaa/select
