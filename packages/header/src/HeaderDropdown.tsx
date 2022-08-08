@@ -112,8 +112,6 @@ export const HeaderDropdown = memo(
         });
       });
     }, [children, handleClose]);
-    // eslint-disable-next-line no-console
-    console.log((children as any).type.__docgenInfo);
 
     return (
       <div className={classNames.dropdownWrapperClassName} ref={wrapperRef}>

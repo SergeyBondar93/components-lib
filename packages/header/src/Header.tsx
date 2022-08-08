@@ -28,6 +28,7 @@ export const Header = memo(
     whyNew,
     accountLink,
     contacts,
+    availableTime,
     menu,
   }: IHeaderProps & any) => {
     const classes = useHeaderStyles();
@@ -90,7 +91,10 @@ export const Header = memo(
             </a>
 
             <HeaderDropdown title={<PhoneIcon />}>
-              <Contacts contacts={contacts} />
+              <Contacts
+                contacts={contacts || {}}
+                availableTime={availableTime || contacts.availableTime}
+              />
             </HeaderDropdown>
 
             <HeaderDropdown title={<MenuIcon />}>

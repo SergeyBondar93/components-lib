@@ -25,7 +25,7 @@ export const Menu = memo(
 
     return (
       <div className={classNames.menuListClassName}>
-        {menu.map((item) => {
+        {menu?.map((item) => {
           return <MenuItem {...item} key={item.title} />;
         })}
       </div>

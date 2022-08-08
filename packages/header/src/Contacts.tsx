@@ -10,8 +10,8 @@ export const Contacts = memo(
   ({
     baseAppearance,
     appearance,
-
-    contacts: { availableTime, phones, email, callUsButton },
+    availableTime,
+    contacts: { /*availableTime,*/ phones, email, callUsButton },
   }: IContactsProps | any) => {
     const classes = useHeaderStyles();
 

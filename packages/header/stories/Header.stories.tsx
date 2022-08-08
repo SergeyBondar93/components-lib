@@ -1,24 +1,24 @@
 import { Meta } from "@storybook/react";
 // @ts-ignore
 import { Container } from "@cheaaa/container";
-import {
-  MoonIcon,
-  PhoneIcon,
-  PlaneIcon,
-  CarIcon,
-  HomeIcon,
-  DocumentIcon,
-  WalletIcon,
-  InfoIcon,
-  CommandIcon,
-} from "@cheaaa/icons";
+// import {
+//   MoonIcon,
+//   PhoneIcon,
+//   PlaneIcon,
+//   CarIcon,
+//   HomeIcon,
+//   DocumentIcon,
+//   WalletIcon,
+//   InfoIcon,
+//   CommandIcon,
+// } from "@cheaaa/icons";
 import { /*useMemo,*/ useMemo, useState } from "react";
 
 import { Header } from "../src/Header";
 
 // @ts-ignore
 import bg from "./bg.jpg";
-import { SunIcon } from "./sunIcon";
+// import { SunIcon } from "./sunIcon";
 // import { SunIcon } from "./sunIcon";
 
 export default {
@@ -101,42 +101,42 @@ IBaseProps) => {
       {
         title: "Туристическая страховка",
         href: "https://kirk.cherehapa.ru/",
-        icon: <PlaneIcon fill="#636AFF" />,
+        // icon: <PlaneIcon fill="#636AFF" />,
       },
       {
         title: "Полис Осаго",
         href: "https://kirk.cherehapa.ru/auto",
-        icon: <CarIcon fill="#636AFF" />,
+        // icon: <CarIcon fill="#636AFF" />,
       },
       {
         title: "Страхование ипотеки",
         href: "https://kirk.cherehapa.ru/ipoteka",
-        icon: <HomeIcon fill="#636AFF" />,
+        // icon: <HomeIcon fill="#636AFF" />,
       },
       {
         title: "Блог",
         href: "https://kirk.cherehapa.ru/blog",
-        icon: <DocumentIcon fill="#636AFF" />,
+        // icon: <DocumentIcon fill="#636AFF" />,
       },
       {
         title: "Партнерская программа",
         href: "https://partners.cherehapa.ru/",
-        icon: <WalletIcon fill="#636AFF" />,
+        // icon: <WalletIcon fill="#636AFF" />,
       },
       {
         title: "Полезная информация",
         href: "https://kirk.cherehapa.ru/info",
-        icon: <InfoIcon fill="#636AFF" />,
+        // icon: <InfoIcon fill="#636AFF" />,
       },
       {
         title: "Наша команда",
         href: "https://kirk.cherehapa.ru/",
-        icon: <CommandIcon fill="#636AFF" />,
+        // icon: <CommandIcon fill="#636AFF" />,
       },
       {
         title: "Контакты",
         href: "https://kirk.cherehapa.ru/contacts",
-        icon: <PhoneIcon fill="#636AFF" />,
+        // icon: <PhoneIcon fill="#636AFF" />,
       },
     ];
     // const fn = () => {};
@@ -145,12 +145,12 @@ IBaseProps) => {
         ? {
             title: "Тёмная тема",
             onClick: () => setTheme("dark"),
-            icon: <MoonIcon fill="#636AFF" />,
+            // icon: <MoonIcon fill="#636AFF" />,
           }
         : {
             title: "Светлая тема",
             onClick: () => setTheme("light"),
-            icon: <SunIcon />,
+            // icon: <SunIcon />,
           };
 
     return [...staticItems, themeItem];
@@ -158,7 +158,7 @@ IBaseProps) => {
 
   const contacts = useMemo(() => {
     return {
-      availableTime: <AvailableTime />,
+      // availableTime: <AvailableTime />,
       phones: [
         {
           phone: "84952151198",
@@ -240,6 +240,7 @@ IBaseProps) => {
           whyNew={whyNew}
           accountLink={"https://google.com"}
           contacts={contacts}
+          availableTime={<AvailableTime />}
           menu={menu}
         />
 
