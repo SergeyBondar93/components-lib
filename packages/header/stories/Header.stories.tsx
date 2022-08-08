@@ -1,23 +1,24 @@
 import { Meta } from "@storybook/react";
 // @ts-ignore
 import { Container } from "@cheaaa/container";
-// import {
-//   // MoonIcon,
-//   PhoneIcon,
-//   PlaneIcon,
-//   CarIcon,
-//   HomeIcon,
-//   DocumentIcon,
-//   WalletIcon,
-//   InfoIcon,
-//   CommandIcon,
-// } from "@cheaaa/icons";
+import {
+  MoonIcon,
+  PhoneIcon,
+  PlaneIcon,
+  CarIcon,
+  HomeIcon,
+  DocumentIcon,
+  WalletIcon,
+  InfoIcon,
+  CommandIcon,
+} from "@cheaaa/icons";
 import { /*useMemo,*/ useMemo, useState } from "react";
 
 import { Header } from "../src/Header";
 
 // @ts-ignore
 import bg from "./bg.jpg";
+import { SunIcon } from "./sunIcon";
 // import { SunIcon } from "./sunIcon";
 
 export default {
@@ -71,7 +72,7 @@ const AvailableTime = () => {
   );
 };
 
-// type ThemeType = "light" | "dark";
+type ThemeType = "light" | "dark";
 
 interface IBaseProps {
   withLinkToMain: boolean;
@@ -81,132 +82,79 @@ interface IBaseProps {
   withMenu: boolean;
 }
 
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  return <button onClick={() => setCount(count + 1)}>Increment {count}</button>;
+};
+
 export const Base = ({}: // withLinkToMain,
 // withWhyNew,
 // withAccount,
 // withContacts,
 // withMenu,
 IBaseProps) => {
-  // const [theme, setTheme] = useState<ThemeType>("light");
+  const [theme, setTheme] = useState<ThemeType>("light");
 
-  const [c, setC] = useState(0);
+  const menu = useMemo(() => {
+    const staticItems = [
+      {
+        title: "Туристическая страховка",
+        href: "https://kirk.cherehapa.ru/",
+        icon: <PlaneIcon fill="#636AFF" />,
+      },
+      {
+        title: "Полис Осаго",
+        href: "https://kirk.cherehapa.ru/auto",
+        icon: <CarIcon fill="#636AFF" />,
+      },
+      {
+        title: "Страхование ипотеки",
+        href: "https://kirk.cherehapa.ru/ipoteka",
+        icon: <HomeIcon fill="#636AFF" />,
+      },
+      {
+        title: "Блог",
+        href: "https://kirk.cherehapa.ru/blog",
+        icon: <DocumentIcon fill="#636AFF" />,
+      },
+      {
+        title: "Партнерская программа",
+        href: "https://partners.cherehapa.ru/",
+        icon: <WalletIcon fill="#636AFF" />,
+      },
+      {
+        title: "Полезная информация",
+        href: "https://kirk.cherehapa.ru/info",
+        icon: <InfoIcon fill="#636AFF" />,
+      },
+      {
+        title: "Наша команда",
+        href: "https://kirk.cherehapa.ru/",
+        icon: <CommandIcon fill="#636AFF" />,
+      },
+      {
+        title: "Контакты",
+        href: "https://kirk.cherehapa.ru/contacts",
+        icon: <PhoneIcon fill="#636AFF" />,
+      },
+    ];
+    // const fn = () => {};
+    const themeItem =
+      theme === "light"
+        ? {
+            title: "Тёмная тема",
+            onClick: () => setTheme("dark"),
+            icon: <MoonIcon fill="#636AFF" />,
+          }
+        : {
+            title: "Светлая тема",
+            onClick: () => setTheme("light"),
+            icon: <SunIcon />,
+          };
 
-  // const menu = useMemo(() => {
-  //   const staticItems = [
-  //     {
-  //       title: "Туристическая страховка",
-  //       href: "https://kirk.cherehapa.ru/",
-  //       icon: <PlaneIcon fill="#636AFF" />,
-  //     },
-  //     {
-  //       title: "Полис Осаго",
-  //       href: "https://kirk.cherehapa.ru/auto",
-  //       icon: <CarIcon fill="#636AFF" />,
-  //     },
-  //     {
-  //       title: "Страхование ипотеки",
-  //       href: "https://kirk.cherehapa.ru/ipoteka",
-  //       icon: <HomeIcon fill="#636AFF" />,
-  //     },
-  //     {
-  //       title: "Блог",
-  //       href: "https://kirk.cherehapa.ru/blog",
-  //       icon: <DocumentIcon fill="#636AFF" />,
-  //     },
-  //     {
-  //       title: "Партнерская программа",
-  //       href: "https://partners.cherehapa.ru/",
-  //       icon: <WalletIcon fill="#636AFF" />,
-  //     },
-  //     {
-  //       title: "Полезная информация",
-  //       href: "https://kirk.cherehapa.ru/info",
-  //       icon: <InfoIcon fill="#636AFF" />,
-  //     },
-  //     {
-  //       title: "Наша команда",
-  //       href: "https://kirk.cherehapa.ru/",
-  //       icon: <CommandIcon fill="#636AFF" />,
-  //     },
-  //     {
-  //       title: "Контакты",
-  //       onClick: () => setC(c => c + 1),
-  //       // href: "https://kirk.cherehapa.ru/contacts",
-  //       icon: <PhoneIcon fill="#636AFF" />,
-  //     },
-  //   ];
-  //   // const fn = () => {};
-  //   // const themeItem =
-  //   //   theme === "light"
-  //   //     ? {
-  //   //         title: "Тёмная тема",
-  //   //         onClick: () => {
-  //   //             setTheme("dark");
-  //   //         }, //fn, //() => handleChangeTheme("dark"),
-  //   //         icon: <MoonIcon fill="#636AFF" />,
-  //   //       }
-  //   //     : {
-  //   //         title: "Светлая тема",
-  //   //         onClick: () => {
-  //   //             setTheme("light");
-  //   //         },
-  //   //         //fn, //() => handleChangeTheme("light"),
-  //   //         icon: <SunIcon />,
-  //   //       };
-
-  //   return [...staticItems/*, themeItem*/];
-  // }, [theme]);
-
-  // eslint-disable-next-line no-console
-  console.log("!", c);
-  // const is = [
-  //   {
-  //     title: "Туристическая страховка",
-  //     href: "https://kirk.cherehapa.ru/",
-  //     icon: <PlaneIcon fill="#636AFF" />,
-  //   },
-  //   {
-  //     title: "Полис Осаго",
-  //     href: "https://kirk.cherehapa.ru/auto",
-  //     icon: <CarIcon fill="#636AFF" />,
-  //   },
-  //   {
-  //     title: "Страхование ипотеки",
-  //     href: "https://kirk.cherehapa.ru/ipoteka",
-  //     icon: <HomeIcon fill="#636AFF" />,
-  //   },
-  //   {
-  //     title: "Блог",
-  //     href: "https://kirk.cherehapa.ru/blog",
-  //     icon: <DocumentIcon fill="#636AFF" />,
-  //   },
-  //   {
-  //     title: "Партнерская программа",
-  //     href: "https://partners.cherehapa.ru/",
-  //     icon: <WalletIcon fill="#636AFF" />,
-  //   },
-  //   {
-  //     title: "Полезная информация",
-  //     href: "https://kirk.cherehapa.ru/info",
-  //     icon: <InfoIcon fill="#636AFF" />,
-  //   },
-  //   {
-  //     title: "Наша команда",
-  //     href: "https://kirk.cherehapa.ru/",
-  //     icon: <CommandIcon fill="#636AFF" />,
-  //   },
-  //   {
-  //     title: "Контакты",
-  //     href: "https://kirk.cherehapa.ru/contacts",
-  //     icon: <PhoneIcon fill="#636AFF" />,
-  //   },
-  //   {
-  //     title: "Тёмная тема",
-  //     onClick: () => console.log('!!EE'),
-  //     // onClick: () => setTheme("dark"), //fn, //() => handleChangeTheme("dark"),
-  //     icon: <MoonIcon fill="#636AFF" />,
-  //   },
-  // ];
+    return [...staticItems, themeItem];
+  }, [theme]);
 
   const contacts = useMemo(() => {
     return {
@@ -292,20 +240,21 @@ IBaseProps) => {
           whyNew={whyNew}
           accountLink={"https://google.com"}
           contacts={contacts}
-          // menu={menu}
-          onClick={() => setC(c + 1)}
+          menu={menu}
         />
 
         <MockFiltersBlock />
+
+        <Counter />
       </Container>
     </div>
   );
 };
 
-// Base.args = {
-//   withLinkToMain: true,
-//   withWhyNew: true,
-//   withAccount: true,
-//   withContacts: true,
-//   withMenu: true,
-// };
+Base.args = {
+  withLinkToMain: true,
+  withWhyNew: true,
+  withAccount: true,
+  withContacts: true,
+  withMenu: true,
+};

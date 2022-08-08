@@ -3,16 +3,15 @@ import {
   useState,
   ReactNode,
   useMemo,
-  // ReactElement,
   useCallback,
   useRef,
-  // ReactElement,
   memo,
+  ReactElement,
 } from "react";
 import React from "react";
-// import { Transition } from "react-transition-group";
+import { Transition } from "react-transition-group";
 import { useClickOutsideComponent } from "@cheaaa/utils";
-// import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
+import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
 
 import { HeaderComponentNames } from "./styles/types";
 import { useHeaderStyles } from "./styles";
@@ -57,10 +56,10 @@ export const HeaderDropdown = memo(
     appearance = "base",
     title,
     children,
-  }: // animationDuration: animationDurationProps = "0.3s",
-  IBaseAccordionProps) => {
+    animationDuration: animationDurationProps = "0.3s",
+  }: IBaseAccordionProps) => {
     const classes = useHeaderStyles();
-    // const transitionRef = useRef<HTMLDivElement>(null);
+    const transitionRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -101,18 +100,18 @@ export const HeaderDropdown = memo(
 
     useClickOutsideComponent(wrapperRef, handleClose);
 
-    // const animationDuration = useMemo(
-    //   () => parseFloat(animationDurationProps) * 1000,
-    //   [animationDurationProps]
-    // );
+    const animationDuration = useMemo(
+      () => parseFloat(animationDurationProps) * 1000,
+      [animationDurationProps]
+    );
 
-    // const mappedChildren = useMemo(() => {
-    //   return React.Children.map(children as ReactElement, (child) => {
-    //     return React.cloneElement(child, {
-    //       handleClose,
-    //     });
-    //   });
-    // }, [children, handleClose]);
+    const mappedChildren = useMemo(() => {
+      return React.Children.map(children as ReactElement, (child) => {
+        return React.cloneElement(child, {
+          handleClose,
+        });
+      });
+    }, [children, handleClose]);
     // eslint-disable-next-line no-console
     console.log((children as any).type.__docgenInfo);
 
@@ -125,17 +124,16 @@ export const HeaderDropdown = memo(
           {title}
         </button>
 
-        {/* <Transition
-        timeout={{
-          enter: 0,
-          exit: animationDuration,
-        }}
-        in={isOpen}
-        nodeRef={transitionRef}
-      >
-        {(animationState) => {
-          console.log(animationState)
-          return [ENTERING, ENTERED, EXITING].includes(animationState) ? (
+        <Transition
+          timeout={{
+            enter: 0,
+            exit: animationDuration,
+          }}
+          in={isOpen}
+          nodeRef={transitionRef}
+        >
+          {(animationState) => {
+            return [ENTERING, ENTERED, EXITING].includes(animationState) ? (
               <div
                 className={classNames.dropdownBodyClassName}
                 data-animation-state={animationState}
@@ -143,11 +141,11 @@ export const HeaderDropdown = memo(
               >
                 {mappedChildren}
               </div>
-            ) : null
-        }}
-      </Transition> */}
+            ) : null;
+          }}
+        </Transition>
 
-        {isOpen && (
+        {/* {isOpen && (
           <div
             className={classNames.dropdownBodyClassName}
             //  data-animation-state={animationState}
@@ -155,7 +153,7 @@ export const HeaderDropdown = memo(
           >
             {children}
           </div>
-        )}
+        )} */}
       </div>
     );
   }

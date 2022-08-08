@@ -28,8 +28,7 @@ export const Header = memo(
     whyNew,
     accountLink,
     contacts,
-    // menu,
-    onClick,
+    menu,
   }: IHeaderProps & any) => {
     const classes = useHeaderStyles();
 
@@ -95,7 +94,7 @@ export const Header = memo(
             </HeaderDropdown>
 
             <HeaderDropdown title={<MenuIcon />}>
-              <Menu /*menu={menu}*/ onClick={onClick} />
+              <Menu menu={menu} />
             </HeaderDropdown>
           </div>
         </div>
