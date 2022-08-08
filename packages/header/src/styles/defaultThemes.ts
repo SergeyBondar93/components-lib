@@ -82,6 +82,9 @@ export const defaultHeaderDropdownTheme: Required<
       marginRight: "5px",
     },
 
+    "&:hover": {
+      background: "#EDF4FE",
+    },
     "&:active": {
       transform: "scale(0.95)",
     },
@@ -105,9 +108,13 @@ export const defaultHeaderDropdownTheme: Required<
     fontSize: "14px",
     letterSpacing: "-.45px",
     fontWeight: 400,
+    transition: "0.2s transform",
     "&:hover": {
       color: "#636AFF",
       background: "#EDF4FE",
+    },
+    "&:active": {
+      transform: "scale(0.95)",
     },
   },
   [HEADER_COMPONENTS_NAMES.menuListItemIcon]: {

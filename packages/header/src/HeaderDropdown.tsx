@@ -3,14 +3,16 @@ import {
   useState,
   ReactNode,
   useMemo,
-  ReactElement,
+  // ReactElement,
   useCallback,
   useRef,
+  // ReactElement,
+  memo,
 } from "react";
 import React from "react";
-import { Transition } from "react-transition-group";
+// import { Transition } from "react-transition-group";
 import { useClickOutsideComponent } from "@cheaaa/utils";
-import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
+// import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
 
 import { HeaderComponentNames } from "./styles/types";
 import { useHeaderStyles } from "./styles";
@@ -49,78 +51,81 @@ export interface IAccordionChildrenProps {
   setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const HeaderDropdown = ({
-  baseAppearance = "base",
-  appearance = "base",
-  title,
-  children,
-  animationDuration: animationDurationProps = "0.3s",
-}: IBaseAccordionProps) => {
-  const classes = useHeaderStyles();
-  const transitionRef = useRef<HTMLDivElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+export const HeaderDropdown = memo(
+  ({
+    baseAppearance = "base",
+    appearance = "base",
+    title,
+    children,
+  }: // animationDuration: animationDurationProps = "0.3s",
+  IBaseAccordionProps) => {
+    const classes = useHeaderStyles();
+    // const transitionRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  const classNames = useMemo(() => {
-    const dropdownWrapperClassName = getClassName<HeaderComponentNames>(
-      classes,
-      baseAppearance,
-      appearance,
-      "dropdownWrapper"
-    );
-    const dropdownBodyClassName = getClassName<HeaderComponentNames>(
-      classes,
-      baseAppearance,
-      appearance,
-      "dropdownBody"
-    );
-    const dropdownTitleClassName = getClassName<HeaderComponentNames>(
-      classes,
-      baseAppearance,
-      appearance,
-      "dropdownTitle"
-    );
+    const classNames = useMemo(() => {
+      const dropdownWrapperClassName = getClassName<HeaderComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "dropdownWrapper"
+      );
+      const dropdownBodyClassName = getClassName<HeaderComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "dropdownBody"
+      );
+      const dropdownTitleClassName = getClassName<HeaderComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "dropdownTitle"
+      );
 
-    return {
-      dropdownWrapperClassName,
-      dropdownBodyClassName,
-      dropdownTitleClassName,
-    };
-  }, [classes, baseAppearance, appearance]);
+      return {
+        dropdownWrapperClassName,
+        dropdownBodyClassName,
+        dropdownTitleClassName,
+      };
+    }, [classes, baseAppearance, appearance]);
 
-  const handleClose = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-  const toggleOpen = useCallback(() => {
-    setIsOpen((isOpen) => !isOpen);
-  }, []);
+    const handleClose = useCallback(() => {
+      setIsOpen(false);
+    }, []);
+    const toggleOpen = useCallback(() => {
+      setIsOpen((isOpen) => !isOpen);
+    }, []);
 
-  useClickOutsideComponent(wrapperRef, handleClose);
+    useClickOutsideComponent(wrapperRef, handleClose);
 
-  const animationDuration = useMemo(
-    () => parseFloat(animationDurationProps) * 1000,
-    [animationDurationProps]
-  );
+    // const animationDuration = useMemo(
+    //   () => parseFloat(animationDurationProps) * 1000,
+    //   [animationDurationProps]
+    // );
 
-  const mappedChildren = useMemo(() => {
-    return React.Children.map(children as ReactElement, (child) => {
-      return React.cloneElement(child, {
-        handleClose,
-      });
-    });
-  }, [children, handleClose]);
+    // const mappedChildren = useMemo(() => {
+    //   return React.Children.map(children as ReactElement, (child) => {
+    //     return React.cloneElement(child, {
+    //       handleClose,
+    //     });
+    //   });
+    // }, [children, handleClose]);
+    // eslint-disable-next-line no-console
+    console.log((children as any).type.__docgenInfo);
 
-  return (
-    <div className={classNames.dropdownWrapperClassName} ref={wrapperRef}>
-      <button
-        onClick={toggleOpen}
-        className={classNames.dropdownTitleClassName}
-      >
-        {title}
-      </button>
+    return (
+      <div className={classNames.dropdownWrapperClassName} ref={wrapperRef}>
+        <button
+          onClick={toggleOpen}
+          className={classNames.dropdownTitleClassName}
+        >
+          {title}
+        </button>
 
-      <Transition
+        {/* <Transition
         timeout={{
           enter: 0,
           exit: animationDuration,
@@ -129,8 +134,8 @@ export const HeaderDropdown = ({
         nodeRef={transitionRef}
       >
         {(animationState) => {
-          return (
-            [ENTERING, ENTERED, EXITING].includes(animationState) && (
+          console.log(animationState)
+          return [ENTERING, ENTERED, EXITING].includes(animationState) ? (
               <div
                 className={classNames.dropdownBodyClassName}
                 data-animation-state={animationState}
@@ -138,10 +143,20 @@ export const HeaderDropdown = ({
               >
                 {mappedChildren}
               </div>
-            )
-          );
+            ) : null
         }}
-      </Transition>
-    </div>
-  );
-};
+      </Transition> */}
+
+        {isOpen && (
+          <div
+            className={classNames.dropdownBodyClassName}
+            //  data-animation-state={animationState}
+            //  ref={transitionRef}
+          >
+            {children}
+          </div>
+        )}
+      </div>
+    );
+  }
+);

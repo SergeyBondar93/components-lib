@@ -74,6 +74,8 @@ ConnectedToStore.args = {
 export const Base: Story<IStoryParams> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [counter, setCounter] = useState(0);
+
   const handleToggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -88,7 +90,7 @@ export const Base: Story<IStoryParams> = (props) => {
         title={"Connected Modal"}
         {...props}
       >
-        <ModalContent />
+        <ModalContent count={counter} onClick={() => setCounter(counter + 1)} />
         <button onClick={handleToggleIsOpen}>Close</button>
       </Modal>
     </>

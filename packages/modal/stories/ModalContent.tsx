@@ -1,4 +1,9 @@
-export const ModalContent = () => {
+interface IModalContentProps {
+  onClick?: () => void;
+  count?: number;
+}
+
+export const ModalContent = ({ onClick, count }: IModalContentProps) => {
   return (
     <>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla
@@ -33,6 +38,12 @@ export const ModalContent = () => {
       obcaecati saepe pariatur? Libero consequatur rerum a iusto possimus
       exercitationem veritatis, accusantium necessitatibus laboriosam doloribus,
       vero incidunt tempore totam ducimus nihil.
+      {onClick && (
+        <>
+          <button onClick={onClick}>Increment</button>
+          {count}
+        </>
+      )}
     </>
   );
 };
