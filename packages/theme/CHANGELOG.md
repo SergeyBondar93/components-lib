@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.3.0...@cheaaa/theme@1.4.0) (2022-08-09)
+
+
+### Features
+
+* update theme package, remove dep react-transition-group, autogen classes with animations ([3977aad](https://github.com/SergeyBondar93/liba/commit/3977aad14d35ec1c48e1e81174359247bef3313c))
+
+
+
+
+
 # 1.3.0 (2022-08-06)
 
 

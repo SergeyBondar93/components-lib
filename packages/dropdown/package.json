@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/dropdown",
-	"version": "1.9.6",
+	"version": "1.9.7",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -23,8 +23,8 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/accordion": "^2.9.6",
-		"@cheaaa/theme": "^1.3.0",
+		"@cheaaa/accordion": "^2.9.7",
+		"@cheaaa/theme": "^1.4.0",
 		"@cheaaa/utils": "^1.4.0"
 	},
 	"peerDependencies": {

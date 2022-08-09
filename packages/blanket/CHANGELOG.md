@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/blanket@1.1.5...@cheaaa/blanket@2.0.0) (2022-08-09)
+
+
+### Features
+
+* improve modal animation styles ([209380f](https://github.com/SergeyBondar93/liba/commit/209380f925249b6c280dc46d08f72337d5856fbe))
+
+
+### BREAKING CHANGES
+
+* change modal animation api
+
+
+
+
+
 ## 1.1.5 (2022-08-06)
 
 **Note:** Version bump only for package @cheaaa/blanket
