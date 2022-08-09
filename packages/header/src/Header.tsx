@@ -52,7 +52,7 @@ export const Header = memo(
         appearance,
         "menus"
       );
-      const whyNewBodyClassName = getClassName<HeaderComponentNames>(
+      const whyNewClassName = getClassName<HeaderComponentNames>(
         classes,
         baseAppearance,
         appearance,
@@ -68,7 +68,7 @@ export const Header = memo(
       return {
         headerWrapperClassName,
         mainLogoWrapperClassName,
-        whyNewBodyClassName,
+        whyNewClassName,
         menusTitleClassName,
         dropdownTitleClassName,
       };
@@ -83,7 +83,7 @@ export const Header = memo(
 
           <div className={classNames.menusTitleClassName}>
             {whyNew && (
-              <button className={classNames.whyNewBodyClassName}>
+              <button className={classNames.whyNewClassName}>
                 {whyNew.title}
               </button>
             )}

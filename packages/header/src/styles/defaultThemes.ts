@@ -1,4 +1,4 @@
-import { ComponentTheme } from "@cheaaa/theme";
+import { BREAKPOINTS, ComponentTheme } from "@cheaaa/theme";
 import {
   ENTERED,
   ENTERING,
@@ -19,7 +19,9 @@ export const defaultHeaderDropdownTheme: Required<
     alignItems: "center",
   },
 
-  [HEADER_COMPONENTS_NAMES.mainLogo]: {},
+  [HEADER_COMPONENTS_NAMES.mainLogo]: {
+    height: "25px",
+  },
   [HEADER_COMPONENTS_NAMES.menus]: {
     display: "flex",
     gap: "9px",
@@ -41,6 +43,10 @@ export const defaultHeaderDropdownTheme: Required<
     },
     "&:active": {
       transform: "scale(0.96)",
+    },
+    display: "none",
+    [BREAKPOINTS.up("md")]: {
+      display: "initial",
     },
   },
   [HEADER_COMPONENTS_NAMES.contactsList]: {
@@ -134,13 +140,14 @@ export const defaultHeaderDropdownTheme: Required<
   [HEADER_COMPONENTS_NAMES.dropdownTitle]: {
     width: "32px",
     height: "32px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexShrink: 0,
     border: "1px solid rgba(255,255,255,0.55)",
     background: "transparent",
     textDecoration: "none",
     boxSizing: "border-box",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     borderRadius: "16px",
     transition: "0.2s",
     cursor: "pointer",
