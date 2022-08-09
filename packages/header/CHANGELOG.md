@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.5.0...@cheaaa/header@1.6.0) (2022-08-09)
+
+
+### Bug Fixes
+
+* test header ([4cefa83](https://github.com/SergeyBondar93/liba/commit/4cefa83144a73711abeaebcfcf65f9e6d55fc3f2))
+
+
+### Features
+
+* added header component, fixed storybook bug ([62e5c86](https://github.com/SergeyBondar93/liba/commit/62e5c8637ae3840d2d984b6e6aabd43a596a9a29))
+* **header:** add hide whyNew  in screen size < md ([fabcb03](https://github.com/SergeyBondar93/liba/commit/fabcb03b7cee48ba12a611b17b03e95951f6802b))
+* test header ([409240f](https://github.com/SergeyBondar93/liba/commit/409240fc53a9be037f96a71366a9686ac269b0ee))
+* WIP change header api ([9138e4e](https://github.com/SergeyBondar93/liba/commit/9138e4e8f76f92adb198fd3279675a882ec0d304))
+
+
+
+
+
 # [1.5.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.4.0...@cheaaa/header@1.5.0) (2022-08-08)
 
 
