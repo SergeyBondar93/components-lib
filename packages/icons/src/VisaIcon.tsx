@@ -11,7 +11,7 @@ export const VisaIcon: FC<SvgIcon> = ({ width = 39, height = 13 }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_940_4294)">
+      <g clipPath="url(#clip0_940_4294)">
         <path
           d="M16.9 12.3262H13.7407L15.7168 0.709839H18.8759L16.9 12.3262Z"
           fill="#00579F"

@@ -8,16 +8,27 @@ import {
   MirIcon,
 } from "@cheaaa/icons";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 
 import { ComponentNames, useStyles } from "./styles";
 
-interface IFooterProps extends IThemedProps {}
+interface IFooterProps extends IThemedProps {
+  companyName: ReactNode;
+  copyright: {
+    from: number;
+    to: number;
+    text: ReactNode;
+  };
+  companyInfo: ReactNode;
+}
 
 export const Footer = ({
   baseAppearance = "base",
   appearance = "base",
-}: IFooterProps | any) => {
+  companyName,
+  copyright: { from, to, text },
+  companyInfo,
+}: IFooterProps) => {
   const classes = useStyles();
 
   const classNames = useMemo(() => {
@@ -79,27 +90,16 @@ export const Footer = ({
     <div className={classNames.wrapperClassName}>
       <div className={classNames.cheLogoClassName}>
         <CheIconFooter />
-        <span className={classNames.cheNameClassName}>
-          ООО «Черехапа Страхование»
-        </span>
+        <span className={classNames.cheNameClassName}>{companyName}</span>
       </div>
 
       <div className={classNames.copyrightClassName}>
-        © 2011–2021 ООО «Черехапа Страхование»
+        {`© ${from}–${to} ${companyName}`}
         <br className={classNames.copyrightBrClassName} />
-        При использовании материалов гиперссылка на cherehapa.ru обязательна.
+        {text}
       </div>
 
-      <div className={classNames.companyInfoClassName}>
-        Группа компаний «Черехапа Страхование» — официальный представитель
-        страховых компаний: АО СК «Альянс», АО «Совкомбанк страхование», ООО
-        «Абсолют Страхование», АО «АльфаСтрахование», ООО СК «Арсеналъ», САО
-        «ВСК», ООО «Зетта Страхование», СПАО «Ингосстрах», АО «Группа Ренессанс
-        Страхование», СПАО «РЕСО-Гарантия», АО «Русский Стандарт Страхование»,
-        ООО СК «Сбербанк Страхование», ООО СК «Согласие», АО «Тинькофф
-        Страхование», ПАО САК «Энергогарант»,АО «СК «ПАРИ», АО «СК
-        «Астро-Волга», ПАО СК «Росгосстрах» и др.
-      </div>
+      <div className={classNames.companyInfoClassName}>{companyInfo}</div>
 
       <div className={classNames.paymentIconsClassName}>
         <PCIIcon />

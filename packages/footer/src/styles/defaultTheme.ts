@@ -28,6 +28,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [FOOTER_COMPONENTS_NAMES.paymentIcons]: {
     marginTop: "15px",
     display: "flex",
+    alignItems: "center",
     gap: "20px",
     justifyContent: "space-between",
     [BREAKPOINTS.up("md")]: {
