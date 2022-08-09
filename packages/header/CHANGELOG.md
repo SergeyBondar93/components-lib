@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.6.2...@cheaaa/header@1.7.0) (2022-08-09)
+
+
+### Bug Fixes
+
+* add imports from root in header package ([4226a0f](https://github.com/SergeyBondar93/liba/commit/4226a0f804d606a77badfdfb02d41bbdca1d3a72))
+
+
+### Features
+
+* change render  dropdown in header to portal ([e09ad18](https://github.com/SergeyBondar93/liba/commit/e09ad18047a436a1224948aefbd2b235bcc31452))
+
+
+
+
+
 ## [1.6.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.6.1...@cheaaa/header@1.6.2) (2022-08-09)
 
 
