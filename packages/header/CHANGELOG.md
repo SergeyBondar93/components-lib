@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.6.1...@cheaaa/header@1.6.2) (2022-08-09)
+
+
+### Bug Fixes
+
+* add imports from root in header package ([4226a0f](https://github.com/SergeyBondar93/liba/commit/4226a0f804d606a77badfdfb02d41bbdca1d3a72))
+
+
+
+
+
 ## [1.6.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.6.0...@cheaaa/header@1.6.1) (2022-08-09)
 
 **Note:** Version bump only for package @cheaaa/header
