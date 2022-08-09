@@ -1,5 +1,4 @@
 import { CSSProperties } from "react";
-import { TransitionStatus } from "react-transition-group";
 
 type Media = `@media ${string}`;
 
@@ -18,11 +17,6 @@ export type Styles =
 export type ComponentTheme<T extends string = string> = {
   [component in T]: Styles;
 };
-export type ComponentThemeWithAnimations<T extends string = string> =
-  | ComponentTheme<T>
-  | (ComponentTheme<T> & {
-      [propName in TransitionStatus]?: ComponentTheme<T>;
-    });
 
 export type ITheme = {
   transition: {
@@ -30,7 +24,7 @@ export type ITheme = {
   };
   components: {
     [componentName: string]: {
-      [appearance: string]: ComponentThemeWithAnimations;
+      [appearance: string]: ComponentTheme;
     };
   };
 };

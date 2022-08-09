@@ -1,29 +1,12 @@
-import {
-  ENTERED,
-  ENTERING,
-  EXITED,
-  EXITING,
-  TransitionStatus,
-  UNMOUNTED,
-} from "react-transition-group/Transition";
 import classNames from "classnames";
 import { Classes } from "jss";
 
 import {
-  ComponentThemeWithAnimations,
   ClassesWithStyles,
   ComponentTheme,
   ITheme,
   Breakpoints,
 } from "./types";
-
-const ANIMATION_STATES: TransitionStatus[] = [
-  UNMOUNTED,
-  EXITED,
-  ENTERING,
-  ENTERED,
-  EXITING,
-];
 
 const getAppearanceClass = (mods: (string | undefined)[]) => {
   return mods.filter(Boolean).join("-");
@@ -33,40 +16,23 @@ export const getClassName = <T extends string>(
   classes: Classes,
   baseAppearance: string,
   appearance: string,
-  componentName: T,
-  animationState?: string
+  componentName: T
 ) => {
   const uniqieClasses = [
     classes[componentName],
     classes[getAppearanceClass([componentName, "base"])],
     classes[getAppearanceClass([componentName, baseAppearance])],
     classes[getAppearanceClass([componentName, appearance])],
-    classes[getAppearanceClass([componentName, animationState])],
-    classes[getAppearanceClass([componentName, "base", animationState])],
-    classes[
-      getAppearanceClass([componentName, baseAppearance, animationState])
-    ],
-    classes[getAppearanceClass([componentName, appearance, animationState])],
   ];
 
   return classNames(...uniqieClasses);
 };
 
-const createStylesFromTheme = (
-  theme: ComponentThemeWithAnimations,
-  appearance?: string
-) => {
+const createStylesFromTheme = (theme: ComponentTheme, appearance?: string) => {
   let res: ClassesWithStyles = {};
 
-  for (const [propName, styles] of Object.entries(theme)) {
-    if (ANIMATION_STATES.includes(propName as TransitionStatus)) {
-      for (const [componentName, componentsStyles] of Object.entries(styles)) {
-        // prettier-ignore
-        res[getAppearanceClass([componentName, appearance, propName])] = componentsStyles;
-      }
-    } else {
-      res[getAppearanceClass([propName, appearance])] = styles;
-    }
+  for (const [componentName, styles] of Object.entries(theme)) {
+    res[getAppearanceClass([componentName, appearance])] = styles;
   }
 
   return res;
@@ -92,12 +58,16 @@ const getStylesFromApplicationTheme = (
 
     [componentName]: styles - дефолтные стили компонента, опеределены в самом компоненте
     [componentName-base]: styles - стили опеределённые в теме приложения в base, используются для всех аппирансов
+    [componentName-{baseAppearance}]: styles - стили из темы приложения, за основу стилизации берётся baseAppearance
     [componentName-{appearance}]: styles - стили из темы приложения, используются для исключительного аппиранса
-    [componentName-{animationState}]: styles - дефолтные стили компонента, опеределены в самом компоненте
-    [componentName-base-{animationState}]: styles - стили опеределённые в теме приложения в base, используются для всех аппирансов
-    [componentName-{appearance}-{animationState}]: styles - стили из темы приложения, используются для исключительного аппиранса
+    
+    такие же классы даются блокам внутри компонента.
 
-    такие же классы даются блокам внутри компонента
+    Приоритет: 
+      дефолтные из библиотеки
+      base из приложения
+      baseAppearance из приложения
+      appearance из приложения
 */
 
 export const createClasses =
