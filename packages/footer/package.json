@@ -1,0 +1,36 @@
+{
+	"name": "@cheaaa/footer",
+	"version": "1.0.0",
+	"description": "<>",
+	"build:storybook": "src/index.ts",
+	"main": "dist/index.js",
+	"module": "dist/input.esm.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
+		"test2": "jest",
+		"compile": "tsdx build --format cjs,esm --verbose",
+		"build": "yarn clean && yarn compile",
+		"clean": "rimraf dist lib .publish node_modules"
+	},
+	"files": [
+		"dist"
+	],
+	"author": "Cherehapa",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"private": false,
+	"dependencies": {
+		"@cheaaa/icons": "^1.5.0",
+		"@cheaaa/portal": "^1.1.2",
+		"@cheaaa/theme": "^1.4.0"
+	},
+	"devDependencies": {
+		"@cheaaa/container": "^1.1.1"
+	},
+	"peerDependencies": {
+		"react": ">=17.0.2"
+	}
+}

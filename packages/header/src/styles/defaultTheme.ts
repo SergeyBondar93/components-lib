@@ -9,9 +9,7 @@ import {
 import { HEADER_COMPONENTS_NAMES } from "./consts";
 import { HeaderComponentNames } from "./types";
 
-export const defaultHeaderDropdownTheme: Required<
-  ComponentTheme<HeaderComponentNames>
-> = {
+export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
   [HEADER_COMPONENTS_NAMES.headerWrapper]: {
     display: "flex",
     justifyContent: "space-between",

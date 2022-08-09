@@ -2,10 +2,10 @@ import { createClasses } from "@cheaaa/theme";
 import { createUseStyles } from "react-jss";
 
 import { HEADER_COMPONENT_NAMESPACE } from "./consts";
-import { defaultHeaderDropdownTheme } from "./defaultThemes";
+import { defaultTheme } from "./defaultTheme";
 
 export const useHeaderStyles = createUseStyles(
-  createClasses(defaultHeaderDropdownTheme, HEADER_COMPONENT_NAMESPACE),
+  createClasses(defaultTheme, HEADER_COMPONENT_NAMESPACE),
   {
     name: "header",
   }
