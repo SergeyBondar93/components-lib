@@ -76,22 +76,25 @@ export const Base: Story<IStoryParams> = (props) => {
 
   const [counter, setCounter] = useState(0);
 
-  const handleToggleIsOpen = () => {
-    setIsOpen(!isOpen);
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
   return (
     <>
-      <button onClick={handleToggleIsOpen}>Open</button>
+      <button onClick={handleOpen}>Open</button>
       <Modal
         isOpen={isOpen}
-        onClose={handleToggleIsOpen}
+        onClose={handleClose}
         name={"modal"}
         title={"Connected Modal"}
         {...props}
       >
         <ModalContent count={counter} onClick={() => setCounter(counter + 1)} />
-        <button onClick={handleToggleIsOpen}>Close</button>
+        <button onClick={handleClose}>Close</button>
       </Modal>
     </>
   );

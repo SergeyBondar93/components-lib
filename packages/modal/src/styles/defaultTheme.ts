@@ -1,46 +1,10 @@
-import {
-  ENTERED,
-  ENTERING,
-  EXITED,
-  EXITING,
-  UNMOUNTED,
-} from "react-transition-group/Transition";
+import { ComponentTheme } from "@cheaaa/theme";
+import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
 
 import { MODAL_COMPONENTS_NAMES, DEFAULT_ANIMATION_DURATION } from "./consts";
-import { ModalTheme } from "./types";
+import { ComponentNames } from "./types";
 
-export const defaultModalTheme: ModalTheme = {
-  /* TODO переделать как в Header Dropdown на аттрибуты */
-  [ENTERING]: {
-    [MODAL_COMPONENTS_NAMES.modalContent]: {
-      transform: "scale(0.8) translate(-50%, -50%)",
-      opacity: 0,
-    },
-  },
-  [ENTERED]: {
-    [MODAL_COMPONENTS_NAMES.modalContent]: {
-      transform: "scale(1) translate(-50%, -50%)",
-      opacity: 1,
-    },
-  },
-  [EXITING]: {
-    [MODAL_COMPONENTS_NAMES.modalContent]: {
-      transform: "scale(0.8) translate(-50%, -50%)",
-      opacity: 0,
-    },
-  },
-  [EXITED]: {
-    [MODAL_COMPONENTS_NAMES.modalContent]: {
-      transform: "scale(0.8) translate(-50%, -50%)",
-      opacity: 0,
-    },
-  },
-  [UNMOUNTED]: {
-    [MODAL_COMPONENTS_NAMES.modalContent]: {
-      transform: "scale(1) translate(-50%, -50%)",
-      opacity: 0,
-    },
-  },
+export const defaultModalTheme: Required<ComponentTheme<ComponentNames>> = {
   [MODAL_COMPONENTS_NAMES.modalContent]: {
     transformOrigin: "top left",
     maxHeight: "100vh",
@@ -57,6 +21,19 @@ export const defaultModalTheme: ModalTheme = {
     boxSizing: "border-box",
     zIndex: 3,
     transition: `${DEFAULT_ANIMATION_DURATION}ms`,
+
+    [`&[data-animation-state="${ENTERING}"]`]: {
+      transform: "scale(0.8) translate(-50%, -50%)",
+      opacity: 0,
+    },
+    [`&[data-animation-state="${ENTERED}"]`]: {
+      transform: "scale(1) translate(-50%, -50%)",
+      opacity: 1,
+    },
+    [`&[data-animation-state="${EXITING}"]`]: {
+      transform: "scale(0.8) translate(-50%, -50%)",
+      opacity: 0,
+    },
   },
   [MODAL_COMPONENTS_NAMES.childrenWrapper]: {
     overflow: "auto",

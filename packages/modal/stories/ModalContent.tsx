@@ -1,11 +1,52 @@
+import { useState } from "react";
+
+import { Modal } from "../src";
+
 interface IModalContentProps {
   onClick?: () => void;
   count?: number;
 }
 
+const InternalModal = ({ handleToggleIsOpen, isOpen }) => {
+  return (
+    <Modal
+      isOpen={isOpen}
+      onClose={handleToggleIsOpen}
+      name={"modal"}
+      title={"Connected Modal"}
+    >
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi magni hic
+      voluptates libero vel in quam porro vitae culpa laborum et reprehenderit,
+      placeat voluptatum fugiat modi quo deserunt earum accusamus ipsa
+      blanditiis. Quos aspernatur aut alias unde tempore molestias! Ratione
+      quasi asperiores qui hic cumque fugit dignissimos atque a vitae. Molestias
+      dignissimos harum dolore quibusdam at iusto laboriosam dicta corporis,
+      quaerat rem nobis modi doloremque corrupti omnis earum eos, error sapiente
+      dolor! Corrupti, optio cupiditate atque distinctio dolor soluta illo?
+      Harum inventore optio aut nostrum tempora labore mollitia, accusamus,
+      magnam quis suscipit maiores officiis error nemo vitae? Labore, illum ad?
+      <button onClick={handleToggleIsOpen}>Close</button>
+    </Modal>
+  );
+};
+
 export const ModalContent = ({ onClick, count }: IModalContentProps) => {
+  const [isOpenIternalModal, setIsOpenIternalModal] = useState(false);
+
+  const handleOpenIternalModal = () => {
+    setIsOpenIternalModal(true);
+  };
+  const handleCloseIternalModal = () => {
+    setIsOpenIternalModal(false);
+  };
+
   return (
     <>
+      <InternalModal
+        isOpen={isOpenIternalModal}
+        handleToggleIsOpen={handleCloseIternalModal}
+      />
+      <button onClick={handleOpenIternalModal}>Open Iternal Modal</button>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla
       voluptatibus sed repellendus debitis fugiat ipsam doloribus molestiae in
       aliquid. Eum doloribus dolore deleniti? Ullam, atque ipsum! Esse velit vel

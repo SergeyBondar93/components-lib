@@ -1,4 +1,12 @@
-import { FC, memo, ReactNode, useCallback, useEffect, useRef } from "react";
+import {
+  FC,
+  memo,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { Transition } from "react-transition-group";
 import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
 import { useTheme } from "react-jss";
@@ -11,16 +19,53 @@ import { useStyles } from "./styles";
 import { CloseIcon } from "./CloseIcon";
 import { ComponentNames } from "./styles/types";
 export interface IModalProps extends IThemedProps {
+  /**
+   * Открыта ли модалка сейчас
+   */
   isOpen: boolean;
+
+  /**
+   * Функция вызываемая после клика на крестик закрытия / overlay (если closeClickByBlanket = true)
+   */
   onClose: (name?: string) => void;
   appearance?: string;
+
+  /**
+   * Имя модалки, попадает в функцию закрытия. в основном для ConnectedModal
+   */
   name?: string;
+
+  /**
+   * Заголовок модалки.ВВозможен JSX элемент
+   */
   title?: JSX.Element | string | number;
+
+  /**
+   * Наличие overlay за модалкой
+   */
   withBlanket?: boolean;
+
+  /**
+   * Наличие кнопки закрытия
+   */
   withCloseButton?: boolean;
+
+  /**
+   * Закрыть ли модалку при клике на overlay за ней
+   */
   closeClickByBlanket?: boolean;
-  transformStyle?: string;
+
+  /**
+   * Необходимо ли сфокусировать обёртку над children.
+   * Необходимо для мобильных устройств для правильного скролла
+   */
   focusAfterRender?: boolean;
+
+  /**
+   * Длительность анимации
+   */
+  animationDuration?: `${number}.${number}s` | `${number}ms`;
+
   children: ReactNode;
 }
 
@@ -59,6 +104,47 @@ export const Modal: FC<IModalProps> = memo(
       }
     }, [isOpen, focusAfterRender]);
 
+    const classNames = useMemo(() => {
+      const modalContentClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "modalContent"
+      );
+      const headerWrapperClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "headerWrapper"
+      );
+      const titleWrapperClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "titleWrapper"
+      );
+      const closeButtonClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "closeButton"
+      );
+      const childrenWrapperClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "childrenWrapper"
+      );
+
+      return {
+        modalContentClassName,
+        headerWrapperClassName,
+        titleWrapperClassName,
+        closeButtonClassName,
+        childrenWrapperClassName,
+      };
+    }, [classes, baseAppearance, appearance]);
+
     return (
       <Portal>
         <Transition
@@ -70,75 +156,53 @@ export const Modal: FC<IModalProps> = memo(
           nodeRef={transitionRef}
         >
           {(animationState) => {
-            return (
-              [ENTERING, ENTERED, EXITING].includes(animationState) && (
-                <div ref={transitionRef}>
-                  {withBlanket && (
-                    <Blanket
-                      onClick={closeClickByBlanket ? handleClose : undefined}
-                      appearance={appearance}
-                      isVisible={isOpen}
-                    />
-                  )}
+            const blanketComponent = withBlanket && (
+              <Blanket
+                onClick={closeClickByBlanket ? handleClose : undefined}
+                appearance={appearance}
+                isVisible={isOpen}
+              />
+            );
+
+            const modalComponent = [ENTERING, ENTERED, EXITING].includes(
+              animationState
+            ) && (
+              <div ref={transitionRef}>
+                <div
+                  ref={modalContentRef}
+                  className={classNames.modalContentClassName}
+                  data-animation-state={animationState}
+                >
+                  <div className={classNames.headerWrapperClassName}>
+                    <div className={classNames.titleWrapperClassName}>
+                      {title}
+                    </div>
+                    {withCloseButton && (
+                      <button
+                        className={classNames.closeButtonClassName}
+                        onClick={handleClose}
+                      >
+                        <CloseIcon />
+                      </button>
+                    )}
+                  </div>
 
                   <div
-                    ref={modalContentRef}
-                    className={getClassName<ComponentNames>(
-                      classes,
-                      baseAppearance,
-                      appearance,
-                      "modalContent",
-                      animationState
-                    )}
+                    tabIndex={1}
+                    ref={childrenWrapperRef}
+                    className={classNames.childrenWrapperClassName}
                   >
-                    <div
-                      className={getClassName<ComponentNames>(
-                        classes,
-                        baseAppearance,
-                        appearance,
-                        "headerWrapper"
-                      )}
-                    >
-                      <div
-                        className={getClassName<ComponentNames>(
-                          classes,
-                          baseAppearance,
-                          appearance,
-                          "titleWrapper"
-                        )}
-                      >
-                        {title}
-                      </div>
-                      {withCloseButton && (
-                        <button
-                          className={getClassName<ComponentNames>(
-                            classes,
-                            baseAppearance,
-                            appearance,
-                            "closeButton"
-                          )}
-                          onClick={handleClose}
-                        >
-                          <CloseIcon />
-                        </button>
-                      )}
-                    </div>
-
-                    <div
-                      tabIndex={1}
-                      ref={childrenWrapperRef}
-                      className={getClassName<ComponentNames>(
-                        classes,
-                        baseAppearance,
-                        appearance,
-                        "childrenWrapper"
-                      )}
-                    >
-                      {children}
-                    </div>
+                    {children}
                   </div>
                 </div>
-              )
+              </div>
+            );
+
+            return (
+              <>
+                {blanketComponent}
+                {modalComponent}
+              </>
             );
           }}
         </Transition>

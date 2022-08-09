@@ -1,7 +1,10 @@
-import { BLANKET_COMPONENTS_NAMES } from "./consts";
-import { BlanketTheme } from "./types";
+import { ComponentTheme } from "@cheaaa/theme";
+import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
 
-export const defaultBlanketStyles: BlanketTheme = {
+import { BLANKET_COMPONENTS_NAMES, DEFAULT_ANIMATION_DURATION } from "./consts";
+import { ComponentNames } from "./types";
+
+export const defaultBlanketStyles: Required<ComponentTheme<ComponentNames>> = {
   [BLANKET_COMPONENTS_NAMES.overlay]: {
     top: "0px",
     left: "0px",
@@ -14,5 +17,16 @@ export const defaultBlanketStyles: BlanketTheme = {
     height: "100vh",
     zIndex: "3",
     transitionProperty: "background, opacity",
+    transition: `${DEFAULT_ANIMATION_DURATION}ms`,
+
+    [`&[data-animation-state="${ENTERING}"]`]: {
+      opacity: 0,
+    },
+    [`&[data-animation-state="${ENTERED}"]`]: {
+      opacity: 0.2,
+    },
+    [`&[data-animation-state="${EXITING}"]`]: {
+      opacity: 0,
+    },
   },
 };

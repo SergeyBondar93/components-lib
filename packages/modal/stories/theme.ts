@@ -1,10 +1,4 @@
-import {
-  ENTERING,
-  ENTERED,
-  EXITING,
-  EXITED,
-  UNMOUNTED,
-} from "react-transition-group/Transition";
+import { ENTERING, ENTERED, EXITING } from "react-transition-group/Transition";
 
 import { MODAL_COMPONENTS_NAMES } from "./../src/styles/consts";
 import { MODAL_COMPONENT_NAMESPACE } from "./../src";
@@ -13,33 +7,17 @@ export const theme = {
   components: {
     [MODAL_COMPONENT_NAMESPACE]: {
       changedAnimation: {
-        [ENTERING]: {
-          [MODAL_COMPONENTS_NAMES.modalContent]: {
-            transform: `scale(1.8) translate(-50%, -50%)`,
-          },
-        },
-        [ENTERED]: {
-          [MODAL_COMPONENTS_NAMES.modalContent]: {
-            transform: "scale(1) translate(-50%, -50%)",
-          },
-        },
-        [EXITING]: {
-          [MODAL_COMPONENTS_NAMES.modalContent]: {
-            transform: `scale(1.8) translate(-50%, -50%)`,
-          },
-        },
-        [EXITED]: {
-          [MODAL_COMPONENTS_NAMES.modalContent]: {
-            transform: `scale(1.8) translate(-50%, -50%)`,
-          },
-        },
-        [UNMOUNTED]: {
-          [MODAL_COMPONENTS_NAMES.modalContent]: {
-            transform: "scale(1) translate(-50%, -50%)",
-          },
-        },
         [MODAL_COMPONENTS_NAMES.modalContent]: {
           transitionProperty: "all",
+          [`&[data-animation-state="${ENTERING}"]`]: {
+            transform: `scale(1.8) translate(-50%, -50%)`,
+          },
+          [`&[data-animation-state="${ENTERED}"]`]: {
+            transform: "scale(1) translate(-50%, -50%)",
+          },
+          [`&[data-animation-state="${EXITING}"]`]: {
+            transform: `scale(1.8) translate(-50%, -50%)`,
+          },
         },
       },
       fullScreen: {
@@ -65,16 +43,6 @@ export const theme = {
             transform: `translateY(100%)`,
           },
         },
-        [EXITED]: {
-          [MODAL_COMPONENTS_NAMES.modalContent]: {
-            transform: `translateY(100%)`,
-          },
-        },
-        [UNMOUNTED]: {
-          [MODAL_COMPONENTS_NAMES.modalContent]: {
-            transform: "translateY(0%)",
-          },
-        },
         [MODAL_COMPONENTS_NAMES.modalContent]: {
           borderRadius: "20px 20px 0px 0px",
           left: "0px",
@@ -83,6 +51,15 @@ export const theme = {
           width: "100vw",
           height: "calc(100vh - 30px)",
           bottom: "0px",
+          [`&[data-animation-state="${ENTERING}"]`]: {
+            transform: `translateY(100%)`,
+          },
+          [`&[data-animation-state="${ENTERED}"]`]: {
+            transform: "translateY(0%)",
+          },
+          [`&[data-animation-state="${EXITING}"]`]: {
+            transform: `translateY(100%)`,
+          },
         },
       },
     },
