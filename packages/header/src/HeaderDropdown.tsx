@@ -12,6 +12,7 @@ import React from "react";
 import { Transition } from "react-transition-group";
 import { useClickOutsideComponent } from "@cheaaa/utils";
 import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
+import { Portal } from "@cheaaa/portal";
 
 import { HeaderComponentNames } from "./styles/types";
 import { useHeaderStyles } from "./styles";
@@ -50,6 +51,10 @@ export const HeaderDropdown = memo(
     const classes = useHeaderStyles();
     const transitionRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const [buttonCoords, setButtonCoords] = useState<{
+      bottom: number;
+      right: number;
+    }>({ bottom: 0, right: 0 });
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -84,6 +89,12 @@ export const HeaderDropdown = memo(
       setIsOpen(false);
     }, []);
     const toggleOpen = useCallback(() => {
+      const { bottom, right } = (
+        wrapperRef.current as HTMLDivElement
+      ).getBoundingClientRect()!;
+
+      setButtonCoords({ bottom, right });
+
       setIsOpen((isOpen) => !isOpen);
     }, []);
 
@@ -112,26 +123,32 @@ export const HeaderDropdown = memo(
           {title}
         </button>
 
-        <Transition
-          timeout={{
-            enter: 0,
-            exit: animationDuration,
-          }}
-          in={isOpen}
-          nodeRef={transitionRef}
-        >
-          {(animationState) => {
-            return [ENTERING, ENTERED, EXITING].includes(animationState) ? (
-              <div
-                className={classNames.dropdownBodyClassName}
-                data-animation-state={animationState}
-                ref={transitionRef}
-              >
-                {mappedChildren}
-              </div>
-            ) : null;
-          }}
-        </Transition>
+        <Portal>
+          <Transition
+            timeout={{
+              enter: 0,
+              exit: animationDuration,
+            }}
+            in={isOpen}
+            nodeRef={transitionRef}
+          >
+            {(animationState) => {
+              return [ENTERING, ENTERED, EXITING].includes(animationState) ? (
+                <div
+                  className={classNames.dropdownBodyClassName}
+                  data-animation-state={animationState}
+                  ref={transitionRef}
+                  style={{
+                    top: buttonCoords.bottom + "px",
+                    left: buttonCoords.right + "px",
+                  }}
+                >
+                  {mappedChildren}
+                </div>
+              ) : null;
+            }}
+          </Transition>
+        </Portal>
       </div>
     );
   }

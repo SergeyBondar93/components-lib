@@ -160,12 +160,13 @@ export const defaultHeaderDropdownTheme: Required<
   },
 
   [HEADER_COMPONENTS_NAMES.dropdownBody]: {
-    right: "0px",
-    position: "absolute",
+    // right: "0px",
+    position: "fixed",
+    transform: "translateX(-100%) translateY(10px)",
     zIndex: 1,
     background: "#FFF",
     maxHeight: "fit-content",
-    transform: "translateY(10px)",
+    // transform: "translateY(10px)",
     boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",
     borderRadius: "12px",
     width: "max-content",
