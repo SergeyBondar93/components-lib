@@ -1,6 +1,6 @@
 {
-	"name": "@cheaaa/header",
-	"version": "1.7.0",
+	"name": "@cheaaa/contacts",
+	"version": "1.0.0",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -23,13 +23,7 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/icons": "^1.5.0",
-		"@cheaaa/portal": "^1.1.2",
-		"@cheaaa/contacts": "^1.0.0",
 		"@cheaaa/theme": "^1.4.0"
-	},
-	"devDependencies": {
-		"@cheaaa/container": "^1.1.1"
 	},
 	"peerDependencies": {
 		"react": ">=17.0.2"

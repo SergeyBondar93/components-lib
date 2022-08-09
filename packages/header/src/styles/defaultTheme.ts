@@ -47,52 +47,6 @@ export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
       display: "initial",
     },
   },
-  [HEADER_COMPONENTS_NAMES.contactsList]: {
-    padding: "12px",
-    listStyle: "none",
-    margin: "0px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "9px",
-  },
-  [HEADER_COMPONENTS_NAMES.contactsListItem]: {
-    color: "#808FA4",
-    fontSize: "13px",
-    fontWeight: 400,
-    letterSpacing: "-.45px",
-  },
-
-  [HEADER_COMPONENTS_NAMES.contactsListItemLink]: {
-    textDecoration: "none",
-    marginRight: "3px",
-    fontSize: "13px",
-    fontWeight: 400,
-    letterSpacing: "-.45px",
-    color: "#636AFF",
-  },
-  [HEADER_COMPONENTS_NAMES.callUsButton]: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    minHeight: "25px",
-    background: "white",
-    border: "1px solid currentColor",
-    borderRadius: "8px",
-    padding: "0 6px",
-    color: "#636AFF",
-    cursor: "pointer",
-    transition: "0.2s",
-    "& svg": {
-      marginRight: "5px",
-    },
-
-    "&:hover": {
-      background: "#EDF4FE",
-    },
-    "&:active": {
-      transform: "scale(0.95)",
-    },
-  },
   [HEADER_COMPONENTS_NAMES.menuList]: {
     padding: "5px",
   },
@@ -158,13 +112,11 @@ export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
   },
 
   [HEADER_COMPONENTS_NAMES.dropdownBody]: {
-    // right: "0px",
     position: "fixed",
     transform: "translateX(-100%) translateY(10px)",
     zIndex: 1,
     background: "#FFF",
     maxHeight: "fit-content",
-    // transform: "translateY(10px)",
     boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",
     borderRadius: "12px",
     width: "max-content",

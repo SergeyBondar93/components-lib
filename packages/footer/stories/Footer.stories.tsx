@@ -1,6 +1,9 @@
 import { Meta, Story } from "@storybook/react";
 // @ts-ignore
 import { Container } from "@cheaaa/container";
+// @ts-ignore
+import { Contacts } from "@cheaaa/contacts";
+import { useMemo } from "react";
 
 import { Footer } from "../src/Footer";
 
@@ -19,6 +22,7 @@ export default {
 
 interface IBaseStoryParams {
   locale: "en" | "ru";
+  withContacts: boolean;
 }
 
 const rusProps = {
@@ -60,7 +64,44 @@ const props = {
   en: engProps,
 };
 
-export const Base: Story<IBaseStoryParams> = ({ locale = "ru" }) => {
+const AvailableTime = () => {
+  return (
+    <>
+      <span>Пн-Пт: 08:00-00:00</span>
+      <br />
+      <span>Сб-Вс: 09:00-21:00</span>
+    </>
+  );
+};
+
+export const Base: Story<IBaseStoryParams> = ({
+  locale = "ru",
+  withContacts,
+}) => {
+  const contacts = useMemo(() => {
+    return {
+      availableTime: <AvailableTime />,
+      phones: [
+        {
+          phone: "84952151198",
+          title: "8 (495) 215-11-98",
+          label: "Москва",
+        },
+        {
+          phone: "88005552198",
+          title: "8 (800) 555-21-98",
+          label: "Россия (бесплатно)",
+        },
+      ],
+      email: "support@cherehapa.ru",
+
+      callUsButton: {
+        title: "Позвонить онлайн",
+        onClick: () => {},
+      },
+    };
+  }, []);
+
   return (
     <div
       style={{
@@ -82,9 +123,21 @@ export const Base: Story<IBaseStoryParams> = ({ locale = "ru" }) => {
         }}
       >
         <Container>
-          <Footer {...props[locale]} />
+          <div
+            style={{
+              display: "flex",
+              gap: "30px",
+            }}
+          >
+            <Footer {...props[locale]} />
+            {withContacts && <Contacts contacts={contacts} />}
+          </div>
         </Container>
       </div>
     </div>
   );
+};
+
+Base.args = {
+  withContacts: true,
 };

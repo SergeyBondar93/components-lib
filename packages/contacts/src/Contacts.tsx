@@ -2,7 +2,7 @@ import { CallIcon } from "@cheaaa/icons";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { memo, ReactNode, useMemo } from "react";
 
-import { useHeaderStyles, HeaderComponentNames } from "./styles";
+import { useStyles, ComponentNames } from "./styles";
 
 type Phone = {
   /**
@@ -28,41 +28,41 @@ export interface IContacts {
     title: string | ReactNode;
   };
 }
-interface IContactsProps extends Required<IThemedProps> {
+interface IContactsProps extends IThemedProps {
   contacts: IContacts;
   handleClose?: () => void;
 }
 
 export const Contacts = memo(
   ({
-    baseAppearance,
-    appearance,
+    baseAppearance = "base",
+    appearance = "base",
     contacts: { availableTime, phones, email, callUsButton },
   }: IContactsProps) => {
-    const classes = useHeaderStyles();
+    const classes = useStyles();
 
     const classNames = useMemo(() => {
-      const contactsListClassName = getClassName<HeaderComponentNames>(
+      const contactsListClassName = getClassName<ComponentNames>(
         classes,
         baseAppearance,
         appearance,
         "contactsList"
       );
-      const contactsListItemClassName = getClassName<HeaderComponentNames>(
+      const contactsListItemClassName = getClassName<ComponentNames>(
         classes,
         baseAppearance,
         appearance,
         "contactsListItem"
       );
 
-      const contactsListItemLinkClassName = getClassName<HeaderComponentNames>(
+      const contactsListItemLinkClassName = getClassName<ComponentNames>(
         classes,
         baseAppearance,
         appearance,
         "contactsListItemLink"
       );
 
-      const contactsCallUsButtonClassName = getClassName<HeaderComponentNames>(
+      const contactsCallUsButtonClassName = getClassName<ComponentNames>(
         classes,
         baseAppearance,
         appearance,

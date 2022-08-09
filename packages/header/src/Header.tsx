@@ -5,20 +5,30 @@ import {
   CherehapaLogoIcon,
 } from "@cheaaa/icons";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
+// @ts-ignore
+import { Contacts, IContacts } from "@cheaaa/contacts";
 import { memo, useMemo } from "react";
 
 import { HeaderComponentNames, useHeaderStyles } from "./styles";
 import { Menu } from "./Menu";
 import { HeaderDropdown } from "./HeaderDropdown";
-import { Contacts, IContacts } from "./Contacts";
 import { IMenuItem } from "./MenuItem";
 
 interface IHeaderProps extends IThemedProps {
   linkToMain?: string;
   whyNew?: any;
   accountLink?: string;
-  contacts?: IContacts;
   menu?: IMenuItem[];
+
+  /**
+   * Пропсы блока контактов
+   */
+  contacts?: IContacts;
+  /**
+   * Аппирансы для блока контактов
+   */
+  contactsBaseAppearance?: string;
+  contactsAppearance?: string;
 }
 
 export const Header = memo(
@@ -29,6 +39,8 @@ export const Header = memo(
     whyNew,
     accountLink,
     contacts,
+    contactsBaseAppearance = baseAppearance,
+    contactsAppearance = appearance,
     menu,
   }: IHeaderProps) => {
     const classes = useHeaderStyles();
@@ -105,8 +117,8 @@ export const Header = memo(
               >
                 <Contacts
                   contacts={contacts}
-                  baseAppearance={baseAppearance}
-                  appearance={appearance}
+                  baseAppearance={contactsBaseAppearance}
+                  appearance={contactsAppearance}
                 />
               </HeaderDropdown>
             )}

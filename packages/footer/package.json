@@ -28,6 +28,7 @@
 		"@cheaaa/theme": "^1.4.0"
 	},
 	"devDependencies": {
+		"@cheaaa/contacts": "^1.0.0",
 		"@cheaaa/container": "^1.1.1"
 	},
 	"peerDependencies": {

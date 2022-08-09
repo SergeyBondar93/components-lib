@@ -23,26 +23,6 @@ export const HEADER_COMPONENTS_NAMES = {
   whyNew: "whyNew",
 
   /**
-   * Ul дропдауна контактов
-   */
-  contactsList: "contactsList",
-
-  /**
-   * Li дропдауна контактов
-   */
-  contactsListItem: "contactsListItem",
-
-  /**
-   * Ссылка в Item контакта (телефон, email)
-   */
-  contactsListItemLink: "contactsListItemLink",
-
-  /**
-   * Кнопка позвонить
-   */
-  callUsButton: "callUsButton",
-
-  /**
    * Обёртка над элементами меню в дропдауне
    */
   menuList: "menuList",
