@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.9](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.5.8...@cheaaa/datepicker@1.5.9) (2022-08-10)
+
+
+### Bug Fixes
+
+* fix memory leak in accordion ([eddf2b3](https://github.com/SergeyBondar93/liba/commit/eddf2b3c64afe38e5a3e5c769656750af8ffda9d))
+
+
+
+
+
 ## [1.5.8](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.5.7...@cheaaa/datepicker@1.5.8) (2022-08-10)
 
 **Note:** Version bump only for package @cheaaa/datepicker
