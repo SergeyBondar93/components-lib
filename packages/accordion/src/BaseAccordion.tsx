@@ -125,7 +125,14 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
       const observer = new ResizeObserver(([entry]) => {
         animationRef.current = false;
-        setHeight(entry.contentRect.height);
+
+        // убираем warn о memory leak, если мы показываем компонент
+        // и сразу его скрываем например из за не видимости на этом типе девайса,
+        // пытался установиться его размер хотя он был unmount
+        if (entry.target && entry.contentRect.height) {
+          setHeight(entry.contentRect.height);
+        }
+
         timeout = setTimeout(() => {
           animationRef.current = true;
         }, 600);

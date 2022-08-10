@@ -65,28 +65,35 @@ interface IRangeStoryParams {
 }
 
 export const CalendarBase: Story<IBaseStoryParams> = (args) => {
+  const [o, setO] = useState(false);
+
   return (
     <>
-      <Instance
-        title={"Base"}
-        minDate={MIN_CALENDAR_YEAR}
-        maxDate={MAX_CALENDAR_YEAR}
-        {...args}
-      />
-      <Instance
-        title={"With value 10.10.2022"}
-        value={octoberValue}
-        minDate={MIN_CALENDAR_YEAR}
-        maxDate={MAX_CALENDAR_YEAR}
-        {...args}
-      />
-      <Instance
-        title={"Available only from 10.08.2022 to 20.08.2022 "}
-        minDate={aug10}
-        maxDate={aug20}
-        openedDate={aug10}
-        {...args}
-      />
+      <button onClick={() => setO(!o)}>Click</button>
+      {o && (
+        <>
+          <Instance
+            title={"Base"}
+            minDate={MIN_CALENDAR_YEAR}
+            maxDate={MAX_CALENDAR_YEAR}
+            {...args}
+          />
+          <Instance
+            title={"With value 10.10.2022"}
+            value={octoberValue}
+            minDate={MIN_CALENDAR_YEAR}
+            maxDate={MAX_CALENDAR_YEAR}
+            {...args}
+          />
+          <Instance
+            title={"Available only from 10.08.2022 to 20.08.2022 "}
+            minDate={aug10}
+            maxDate={aug20}
+            openedDate={aug10}
+            {...args}
+          />
+        </>
+      )}
     </>
   );
 };
