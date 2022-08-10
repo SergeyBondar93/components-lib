@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2022-08-09)
+
+
+### Features
+
+* add footer component ([1b785c0](https://github.com/SergeyBondar93/liba/commit/1b785c0e37cbd7a14fa3a9e08f723bf506801c35))
+
+
+
+
+
 # [1.7.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.6.2...@cheaaa/header@1.7.0) (2022-08-09)
 
 
