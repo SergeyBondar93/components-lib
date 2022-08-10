@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.9.8 (2022-08-10)
+
+
+### Bug Fixes
+
+* fix leaks ([7dd6643](https://github.com/SergeyBondar93/liba/commit/7dd6643dc8faef04c704323b8b301729bb864a72))
+
+
+
+
+
 ## [2.9.7](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.9.6...@cheaaa/accordion@2.9.7) (2022-08-09)
 
 **Note:** Version bump only for package @cheaaa/accordion
