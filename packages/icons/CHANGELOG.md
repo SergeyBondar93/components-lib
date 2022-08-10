@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/icons@1.6.0...@cheaaa/icons@1.7.0) (2022-08-10)
+
+
+### Features
+
+* add footer component ([1b785c0](https://github.com/SergeyBondar93/liba/commit/1b785c0e37cbd7a14fa3a9e08f723bf506801c35))
+* add footer story and typing ([232cf94](https://github.com/SergeyBondar93/liba/commit/232cf94e647e086ac2871fdacb1255956bc2f2ac))
+* add icons, add social networks to contacts, fix bubbling in portal ([58fac8c](https://github.com/SergeyBondar93/liba/commit/58fac8cc505b497620751913d19fd8d89dcdc784))
+
+
+
+
+
 # 1.6.0 (2022-08-09)
 
 

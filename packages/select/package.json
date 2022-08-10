@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/select",
-	"version": "1.9.6",
+	"version": "1.9.7",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -23,7 +23,7 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/icons": "^1.6.0",
+		"@cheaaa/icons": "^1.7.0",
 		"@cheaaa/input": "^1.27.2",
 		"@cheaaa/theme": "^1.4.0",
 		"@cheaaa/utils": "^1.4.0"
