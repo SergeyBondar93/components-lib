@@ -122,7 +122,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
     );
 
     useEffect(() => {
-      let timeout: ReturnType<typeof setTimeout> | null = null;
+      let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
       const observer = new ResizeObserver(([entry]) => {
         animationRef.current = false;
         setHeight(entry.contentRect.height);
@@ -134,7 +134,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
         observer.observe(childrenWrapperRef.current);
 
       return () => {
-        timeout && clearTimeout(timeout);
+        clearTimeout(timeout);
         childrenWrapperRef.current &&
           observer.unobserve(childrenWrapperRef.current);
       };
@@ -145,7 +145,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
     }, [isOpenProps]);
 
     useEffect(() => {
-      let timeout: ReturnType<typeof setTimeout> | null = null;
+      let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
 
       if (isOpen) {
         timeout = setTimeout(() => {
@@ -156,7 +156,7 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
       }
 
       return () => {
-        timeout && clearTimeout(timeout);
+        clearTimeout(timeout);
       };
     }, [isOpen, animationDuration]);
 
