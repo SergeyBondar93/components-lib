@@ -1,3 +1,4 @@
+import { TelegramIcon, TwitterIcon, VKIcon, WhatsupIcon } from "@cheaaa/icons";
 import { Meta } from "@storybook/react";
 import { useMemo } from "react";
 
@@ -39,6 +40,24 @@ export const BaseTemplate = () => {
         title: "Позвонить онлайн",
         onClick: () => {},
       },
+      socialNetworks: [
+        {
+          icon: <VKIcon />,
+          link: "",
+        },
+        {
+          icon: <TwitterIcon />,
+          link: "",
+        },
+        {
+          icon: <TelegramIcon />,
+          link: "",
+        },
+        {
+          icon: <WhatsupIcon />,
+          link: "",
+        },
+      ],
     };
   }, []);
 

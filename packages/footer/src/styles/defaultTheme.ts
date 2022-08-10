@@ -16,13 +16,15 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   },
   [FOOTER_COMPONENTS_NAMES.copyright]: {
     marginTop: "15px",
-    fontSize: "13px",
+    fontSize: "11.5px",
+    lineHeight: "15.72px",
     color: "#718299",
   },
   [FOOTER_COMPONENTS_NAMES.copyrightBr]: {},
   [FOOTER_COMPONENTS_NAMES.companyInfo]: {
     marginTop: "10px",
-    fontSize: "13px",
+    fontSize: "11.5px",
+    lineHeight: "15.72px",
     color: "#718299",
   },
   [FOOTER_COMPONENTS_NAMES.paymentIcons]: {

@@ -17,6 +17,16 @@ export const CONTACTS_COMPONENTS_NAMES = {
   contactsListItemLink: "contactsListItemLink",
 
   /**
+   * Item ссылок на соц сети
+   */
+  contactsListItemSocialNetworks: "contactsListItemSocialNetworks",
+
+  /**
+   * Item ссылок на соц сети
+   */
+  contactsSocialNetworkLink: "contactsSocialNetworkLink",
+
+  /**
    * Кнопка позвонить
    */
   callUsButton: "callUsButton",

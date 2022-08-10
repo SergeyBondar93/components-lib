@@ -6,5 +6,8 @@ import { usePortal } from "./usePortal";
 export const Portal = ({ children }: PropsWithChildren<{}>) => {
   const elem = usePortal();
 
-  return createPortal(children, elem as HTMLDivElement);
+  return createPortal(
+    <div onClick={(e) => e.stopPropagation()}>{children}</div>,
+    elem as HTMLDivElement
+  );
 };

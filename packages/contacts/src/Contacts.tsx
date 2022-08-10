@@ -19,10 +19,16 @@ type Phone = {
   label: string | number;
 };
 
+type SocialNetwork = {
+  icon: ReactNode;
+  link: string;
+};
+
 export interface IContacts {
   availableTime: ReactNode;
   phones: Phone[];
   email: string;
+  socialNetworks?: SocialNetwork[];
   callUsButton?: {
     onClick: () => void;
     title: string | ReactNode;
@@ -37,7 +43,7 @@ export const Contacts = memo(
   ({
     baseAppearance = "base",
     appearance = "base",
-    contacts: { availableTime, phones, email, callUsButton },
+    contacts: { availableTime, phones, email, callUsButton, socialNetworks },
   }: IContactsProps) => {
     const classes = useStyles();
 
@@ -68,12 +74,27 @@ export const Contacts = memo(
         appearance,
         "callUsButton"
       );
+      const contactsListItemSocialNetworksClassName =
+        getClassName<ComponentNames>(
+          classes,
+          baseAppearance,
+          appearance,
+          "contactsListItemSocialNetworks"
+        );
+      const contactsSocialNetworkLinkClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "contactsSocialNetworkLink"
+      );
 
       return {
         contactsListClassName,
         contactsListItemClassName,
         contactsListItemLinkClassName,
         contactsCallUsButtonClassName,
+        contactsListItemSocialNetworksClassName,
+        contactsSocialNetworkLinkClassName,
       };
     }, [classes, baseAppearance, appearance]);
 
@@ -115,6 +136,24 @@ export const Contacts = memo(
               <CallIcon />
               {callUsButton.title}
             </button>
+          </li>
+        )}
+
+        {!!socialNetworks?.length && (
+          <li className={classNames.contactsListItemSocialNetworksClassName}>
+            {socialNetworks.map(({ icon, link }, i) => {
+              return (
+                <a
+                  key={i}
+                  href={link}
+                  target="_blank"
+                  referrerPolicy="no-referrer"
+                  className={classNames.contactsSocialNetworkLinkClassName}
+                >
+                  {icon}
+                </a>
+              );
+            })}
           </li>
         )}
       </ul>

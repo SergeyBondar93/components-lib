@@ -21,6 +21,12 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     letterSpacing: "-.45px",
   },
 
+  [CONTACTS_COMPONENTS_NAMES.contactsListItemSocialNetworks]: {
+    marginTop: "19px",
+    display: "flex",
+    gap: "20px",
+  },
+  [CONTACTS_COMPONENTS_NAMES.contactsSocialNetworkLink]: {},
   [CONTACTS_COMPONENTS_NAMES.contactsListItemLink]: {
     textDecoration: "none",
     marginRight: "3px",

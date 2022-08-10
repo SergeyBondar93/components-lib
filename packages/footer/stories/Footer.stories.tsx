@@ -4,6 +4,7 @@ import { Container } from "@cheaaa/container";
 // @ts-ignore
 import { Contacts } from "@cheaaa/contacts";
 import { useMemo } from "react";
+import { TelegramIcon, TwitterIcon, VKIcon, WhatsupIcon } from "@cheaaa/icons";
 
 import { Footer } from "../src/Footer";
 
@@ -99,6 +100,24 @@ export const Base: Story<IBaseStoryParams> = ({
         title: "Позвонить онлайн",
         onClick: () => {},
       },
+      socialNetworks: [
+        {
+          icon: <VKIcon />,
+          link: "",
+        },
+        {
+          icon: <TwitterIcon />,
+          link: "",
+        },
+        {
+          icon: <TelegramIcon />,
+          link: "",
+        },
+        {
+          icon: <WhatsupIcon />,
+          link: "",
+        },
+      ],
     };
   }, []);
 
@@ -126,11 +145,20 @@ export const Base: Story<IBaseStoryParams> = ({
           <div
             style={{
               display: "flex",
+              alignItems: "flex-end",
               gap: "30px",
             }}
           >
             <Footer {...props[locale]} />
-            {withContacts && <Contacts contacts={contacts} />}
+            {withContacts && (
+              <div style={{ marginLeft: "100px" }}>
+                {" "}
+                <h3 style={{ fontSize: "13px", margin: "0px 12px" }}>
+                  Контакты
+                </h3>{" "}
+                <Contacts contacts={contacts} />
+              </div>
+            )}
           </div>
         </Container>
       </div>
