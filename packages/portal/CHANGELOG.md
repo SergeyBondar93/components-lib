@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.2.0 (2022-08-10)
+
+
+### Features
+
+* add icons, add social networks to contacts, fix bubbling in portal ([58fac8c](https://github.com/SergeyBondar93/liba/commit/58fac8cc505b497620751913d19fd8d89dcdc784))
+
+
+
+
+
 ## [1.1.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/portal@1.1.1...@cheaaa/portal@1.1.2) (2022-07-11)
 
 
