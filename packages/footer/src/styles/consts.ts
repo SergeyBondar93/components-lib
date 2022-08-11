@@ -4,6 +4,12 @@ export const FOOTER_COMPONENTS_NAMES = {
   navigationWrapper: "navigationWrapper",
 
   /**
+   * Обёртка над навигационным списоком со всеми компонентами
+   * хедер - аккордион/список - при наличии большого количества опций ещё аккордион
+   */
+  navigationListsWrapper: "navigationListsWrapper",
+
+  /**
    * List ссылок навигации
    */
   navigationList: "navigationList",

@@ -16,6 +16,11 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       flexDirection: "row",
     },
   },
+  [FOOTER_COMPONENTS_NAMES.navigationListsWrapper]: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
   [FOOTER_COMPONENTS_NAMES.navigationList]: {
     fontSize: "13px",
     fontWeight: "400",
@@ -23,18 +28,18 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     display: "flex",
     flexDirection: "column",
     padding: "0px",
+    gap: "13px",
+    margin: "0px",
   },
-  [FOOTER_COMPONENTS_NAMES.navigationListItem]: {
-    marginBottom: "13px",
-  },
+  [FOOTER_COMPONENTS_NAMES.navigationListItem]: {},
   [FOOTER_COMPONENTS_NAMES.navigationListItemLink]: {
     textDecoration: "none",
     color: "#718299",
   },
   [FOOTER_COMPONENTS_NAMES.navigationListTitle]: {
+    margin: "0px",
     borderBottom: "none",
     pointerEvents: "none",
-    margin: "0px 0px 11px 0px",
     padding: "0px",
     color: "#101820",
     fontSize: "13px",

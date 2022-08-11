@@ -16,26 +16,41 @@ export const DesktopNavigationSections = ({
   openedTitle,
   closedTitle,
   isMobile,
+  contactsProps,
+  hiddenOptionsAccordionProps,
 }: any) => {
   const classes = useStyles();
 
-  const navigationListTitleClassName = useMemo(
-    () =>
-      getClassName<ComponentNames>(
-        classes,
-        baseAppearance,
-        appearance,
-        "navigationListTitle"
-      ),
-    [classes, baseAppearance, appearance]
-  );
+  const classNames = useMemo(() => {
+    const navigationListTitleClassName = getClassName<ComponentNames>(
+      classes,
+      baseAppearance,
+      appearance,
+      "navigationListTitle"
+    );
+
+    const navigationListsWrapperClassName = getClassName<ComponentNames>(
+      classes,
+      baseAppearance,
+      appearance,
+      "navigationListsWrapper"
+    );
+
+    return {
+      navigationListTitleClassName,
+      navigationListsWrapperClassName,
+    };
+  }, [classes, baseAppearance, appearance]);
 
   return (
     <>
       {navigationSections.map(({ title, links }) => {
         return (
-          <div key={title}>
-            <h4 className={navigationListTitleClassName}>{title}</h4>
+          <div
+            key={title}
+            className={classNames.navigationListsWrapperClassName}
+          >
+            <h4 className={classNames.navigationListTitleClassName}>{title}</h4>
             <NavigationLinks
               links={links}
               navigationSections={navigationSections}
@@ -46,14 +61,17 @@ export const DesktopNavigationSections = ({
               openedTitle={openedTitle}
               closedTitle={closedTitle}
               isMobile={isMobile}
+              hiddenOptionsAccordionProps={hiddenOptionsAccordionProps}
             />
           </div>
         );
       })}
 
-      <div>
-        <h4 className={navigationListTitleClassName}>{contactsTitle}</h4>
-        <Contacts contacts={contacts} />
+      <div className={classNames.navigationListsWrapperClassName}>
+        <h4 className={classNames.navigationListTitleClassName}>
+          {contactsTitle}
+        </h4>
+        <Contacts contacts={contacts} {...contactsProps} />
       </div>
     </>
   );

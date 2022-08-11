@@ -16,6 +16,9 @@ export const Navigation = ({
   openedTitle,
   closedTitle,
   variant,
+  contactsProps,
+  navigationAccordionsProps,
+  hiddenOptionsAccordionProps,
 }: any) => {
   const classes = useStyles();
   const { width } = useScreenSizes();
@@ -49,6 +52,9 @@ export const Navigation = ({
           closedTitle={closedTitle}
           isMobile
           variant={variant}
+          contactsProps={contactsProps}
+          navigationAccordionsProps={navigationAccordionsProps}
+          hiddenOptionsAccordionProps={hiddenOptionsAccordionProps}
         />
       ) : (
         <DesktopNavigationSections
@@ -63,6 +69,8 @@ export const Navigation = ({
           closedTitle={closedTitle}
           isMobile={false}
           variant={variant}
+          contactsProps={contactsProps}
+          hiddenOptionsAccordionProps={hiddenOptionsAccordionProps}
         />
       )}
     </div>

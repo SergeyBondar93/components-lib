@@ -57,6 +57,12 @@ export const Footer = ({
     openedTitle: "Скрыть",
     closedTitle: "Ещё",
   },
+
+  componentsProps: {
+    contacts: contactsProps,
+    navigationAccordions: navigationAccordionsProps,
+    hiddenOptionsAccordion: hiddenOptionsAccordionProps,
+  },
 }: IFooterProps | any) => {
   const classes = useStyles();
 
@@ -115,6 +121,12 @@ export const Footer = ({
       appearance,
       "navigationListTitle"
     );
+    const navigationListsWrapperClassName = getClassName<ComponentNames>(
+      classes,
+      baseAppearance,
+      appearance,
+      "navigationListsWrapper"
+    );
 
     return {
       bottomBlockClassName,
@@ -126,6 +138,7 @@ export const Footer = ({
       companyInfoClassName,
       paymentIconsClassName,
       navigationListTitleClassName,
+      navigationListsWrapperClassName,
     };
   }, [classes, baseAppearance, appearance]);
 
@@ -144,6 +157,9 @@ export const Footer = ({
           openedTitle={openedTitle}
           closedTitle={closedTitle}
           variant={variant}
+          contactsProps={contactsProps}
+          navigationAccordionsProps={navigationAccordionsProps}
+          hiddenOptionsAccordionProps={hiddenOptionsAccordionProps}
         />
       )}
 
@@ -174,12 +190,12 @@ export const Footer = ({
         </div>
 
         {!isFull(variant) && (
-          <div>
+          <div className={classNames.navigationListsWrapperClassName}>
             <h4 className={classNames.navigationListTitleClassName}>
               Контакты
             </h4>
             {/* TODO добавить проброс аппирансов */}
-            <Contacts contacts={contacts} />
+            <Contacts contacts={contacts} {...contactsProps} />
           </div>
         )}
       </div>

@@ -15,6 +15,7 @@ export const NavigationLinks = ({
   openedTitle,
   closedTitle,
   isMobile,
+  hiddenOptionsAccordionProps,
 }: any) => {
   const { visibleLinks, hiddenLinks } = useMemo(() => {
     return {
@@ -52,7 +53,7 @@ export const NavigationLinks = ({
     };
   }, [classes, baseAppearance, appearance]);
 
-  const accordionControlProps = useMemo(() => {
+  const accordionProps = useMemo(() => {
     if (isMobile) return {};
 
     /**
@@ -63,9 +64,15 @@ export const NavigationLinks = ({
       isOpen: hiddenLinksIsOpen,
       titleButtonProps: {
         onClick: () => setHiddenLinksIsOpen?.((isOpen) => !isOpen),
+        ...hiddenOptionsAccordionProps.titleButtonProps,
       },
     };
-  }, [isMobile, hiddenLinksIsOpen, setHiddenLinksIsOpen]);
+  }, [
+    isMobile,
+    hiddenLinksIsOpen,
+    setHiddenLinksIsOpen,
+    hiddenOptionsAccordionProps,
+  ]);
 
   return (
     <>
@@ -88,7 +95,8 @@ export const NavigationLinks = ({
         <Accordion
           title={({ isOpen }) => (isOpen ? openedTitle : closedTitle)}
           shouldFitContent
-          {...accordionControlProps}
+          {...hiddenOptionsAccordionProps}
+          {...accordionProps}
         >
           <ul className={classNames.navigationListClassName}>
             {hiddenLinks.map(({ href, title }, i) => {

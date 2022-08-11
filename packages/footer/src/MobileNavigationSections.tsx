@@ -12,12 +12,20 @@ export const MobileNavigationSections = ({
   openedTitle,
   closedTitle,
   isMobile,
+  contactsProps,
+  navigationAccordionsProps,
+  hiddenOptionsAccordionProps,
 }: any) => {
   return (
     <>
       {navigationSections.map(({ title, links }) => {
         return (
-          <Accordion key={title} title={title} shouldFitContent>
+          <Accordion
+            key={title}
+            title={title}
+            shouldFitContent
+            {...navigationAccordionsProps}
+          >
             <NavigationLinks
               links={links}
               navigationSections={navigationSections}
@@ -26,13 +34,18 @@ export const MobileNavigationSections = ({
               openedTitle={openedTitle}
               closedTitle={closedTitle}
               isMobile={isMobile}
+              hiddenOptionsAccordionProps={hiddenOptionsAccordionProps}
             />
           </Accordion>
         );
       })}
 
-      <Accordion title={contactsTitle} shouldFitContent>
-        <Contacts contacts={contacts} />
+      <Accordion
+        title={contactsTitle}
+        shouldFitContent
+        {...navigationAccordionsProps}
+      >
+        <Contacts contacts={contacts} {...contactsProps} />
       </Accordion>
     </>
   );

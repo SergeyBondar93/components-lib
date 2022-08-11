@@ -1,10 +1,12 @@
 import { Meta, Story } from "@storybook/react";
+import { ThemeProvider } from "react-jss";
 
 import { Footer } from "../src/Footer";
 
 // @ts-ignore
 import bg from "./bg.jpg";
 import { contacts, info, navigationSections } from "./footerConfig";
+import { theme } from "./theme";
 
 export default {
   title: "Footer",
@@ -22,31 +24,43 @@ interface IBaseStoryParams {
 
 export const Base: Story<IBaseStoryParams> = ({ variant }) => {
   return (
-    <div
-      style={{
-        height: `${window.innerHeight}px`,
-        background: `url("${bg}")`,
-        backgroundSize: "cover",
-      }}
-    >
+    <ThemeProvider theme={theme}>
       <div
         style={{
-          width: "100%",
-          position: "fixed",
-          bottom: "0px",
-          backgroundColor: "#FFF",
-          display: "flex",
-          justifyContent: "center",
+          height: `${window.innerHeight}px`,
+          background: `url("${bg}")`,
+          backgroundSize: "cover",
         }}
       >
-        <Footer
-          info={info}
-          contacts={contacts}
-          variant={variant}
-          navigationSections={navigationSections}
-        />
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "#FFF",
+          }}
+        >
+          <Footer
+            info={info}
+            contacts={contacts}
+            variant={variant}
+            navigationSections={navigationSections}
+            componentsProps={{
+              navigationAccordions: {
+                appearance: "navigation",
+                titleButtonProps: {
+                  baseAppearance: "navigation",
+                },
+              },
+              hiddenOptionsAccordion: {
+                appearance: "navigationHiddenOptions",
+                titleButtonProps: {
+                  baseAppearance: "navigationHiddenOptions",
+                },
+              },
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 
