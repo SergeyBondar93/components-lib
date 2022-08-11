@@ -1,8 +1,4 @@
 import { Meta, Story } from "@storybook/react";
-// @ts-ignore
-import { Container } from "@cheaaa/container";
-// @ts-ignore
-import { Contacts } from "@cheaaa/contacts";
 import { useMemo } from "react";
 import { TelegramIcon, TwitterIcon, VKIcon, WhatsupIcon } from "@cheaaa/icons";
 
@@ -75,9 +71,272 @@ const AvailableTime = () => {
   );
 };
 
+const navigationSections = [
+  {
+    title: "Популярные страны",
+    links: [
+      {
+        title: "Армения",
+        href: "https://kirk.cherehapa.ru/country/armenia",
+      },
+      {
+        title: "Болгария",
+        href: "https://kirk.cherehapa.ru/country/bulgaria",
+      },
+      {
+        title: "Венгрия",
+        href: "https://kirk.cherehapa.ru/country/hungary",
+      },
+      {
+        title: "Вьетнам",
+        href: "https://kirk.cherehapa.ru/country/vietnam",
+      },
+      {
+        title: "Греция",
+        href: "https://kirk.cherehapa.ru/country/greece",
+      },
+      {
+        title: "Израиль",
+        href: "https://kirk.cherehapa.ru/country/israel",
+      },
+      {
+        title: "Испания",
+        href: "https://kirk.cherehapa.ru/country/spain",
+      },
+      {
+        title: "Италия",
+        href: "https://kirk.cherehapa.ru/country/italy",
+      },
+      {
+        title: "Кипр",
+        href: "https://kirk.cherehapa.ru/country/cyprus",
+      },
+      {
+        title: "Таиланд",
+        href: "https://kirk.cherehapa.ru/country/thailand",
+      },
+      {
+        title: "Турция",
+        href: "https://kirk.cherehapa.ru/country/turkey",
+      },
+      {
+        title: "Хорватия",
+        href: "https://kirk.cherehapa.ru/country/croatia",
+      },
+      {
+        title: "Черногория",
+        href: "https://kirk.cherehapa.ru/country/montenegro",
+      },
+      {
+        title: "Чехия",
+        href: "https://kirk.cherehapa.ru/country/czech",
+      },
+      {
+        title: "Шри-Ланка",
+        href: "https://kirk.cherehapa.ru/country/srilanka",
+      },
+    ],
+  },
+  {
+    title: "Популярные страны",
+    links: [
+      {
+        title: "Армения",
+        href: "https://kirk.cherehapa.ru/country/armenia",
+      },
+      {
+        title: "Болгария",
+        href: "https://kirk.cherehapa.ru/country/bulgaria",
+      },
+      {
+        title: "Венгрия",
+        href: "https://kirk.cherehapa.ru/country/hungary",
+      },
+      {
+        title: "Вьетнам",
+        href: "https://kirk.cherehapa.ru/country/vietnam",
+      },
+      {
+        title: "Греция",
+        href: "https://kirk.cherehapa.ru/country/greece",
+      },
+      {
+        title: "Израиль",
+        href: "https://kirk.cherehapa.ru/country/israel",
+      },
+      {
+        title: "Испания",
+        href: "https://kirk.cherehapa.ru/country/spain",
+      },
+      {
+        title: "Италия",
+        href: "https://kirk.cherehapa.ru/country/italy",
+      },
+      {
+        title: "Кипр",
+        href: "https://kirk.cherehapa.ru/country/cyprus",
+      },
+      {
+        title: "Таиланд",
+        href: "https://kirk.cherehapa.ru/country/thailand",
+      },
+      {
+        title: "Турция",
+        href: "https://kirk.cherehapa.ru/country/turkey",
+      },
+      {
+        title: "Хорватия",
+        href: "https://kirk.cherehapa.ru/country/croatia",
+      },
+      {
+        title: "Черногория",
+        href: "https://kirk.cherehapa.ru/country/montenegro",
+      },
+      {
+        title: "Чехия",
+        href: "https://kirk.cherehapa.ru/country/czech",
+      },
+      {
+        title: "Шри-Ланка",
+        href: "https://kirk.cherehapa.ru/country/srilanka",
+      },
+    ],
+  },
+  {
+    title: "Популярные страны",
+    links: [
+      {
+        title: "Армения",
+        href: "https://kirk.cherehapa.ru/country/armenia",
+      },
+      {
+        title: "Болгария",
+        href: "https://kirk.cherehapa.ru/country/bulgaria",
+      },
+      {
+        title: "Венгрия",
+        href: "https://kirk.cherehapa.ru/country/hungary",
+      },
+      {
+        title: "Вьетнам",
+        href: "https://kirk.cherehapa.ru/country/vietnam",
+      },
+      {
+        title: "Греция",
+        href: "https://kirk.cherehapa.ru/country/greece",
+      },
+      {
+        title: "Израиль",
+        href: "https://kirk.cherehapa.ru/country/israel",
+      },
+      {
+        title: "Испания",
+        href: "https://kirk.cherehapa.ru/country/spain",
+      },
+      {
+        title: "Италия",
+        href: "https://kirk.cherehapa.ru/country/italy",
+      },
+      {
+        title: "Кипр",
+        href: "https://kirk.cherehapa.ru/country/cyprus",
+      },
+      {
+        title: "Таиланд",
+        href: "https://kirk.cherehapa.ru/country/thailand",
+      },
+      {
+        title: "Турция",
+        href: "https://kirk.cherehapa.ru/country/turkey",
+      },
+      {
+        title: "Хорватия",
+        href: "https://kirk.cherehapa.ru/country/croatia",
+      },
+      {
+        title: "Черногория",
+        href: "https://kirk.cherehapa.ru/country/montenegro",
+      },
+      {
+        title: "Чехия",
+        href: "https://kirk.cherehapa.ru/country/czech",
+      },
+      {
+        title: "Шри-Ланка",
+        href: "https://kirk.cherehapa.ru/country/srilanka",
+      },
+    ],
+  },
+  {
+    title: "Популярные страны",
+    links: [
+      {
+        title: "Армения",
+        href: "https://kirk.cherehapa.ru/country/armenia",
+      },
+      {
+        title: "Болгария",
+        href: "https://kirk.cherehapa.ru/country/bulgaria",
+      },
+      {
+        title: "Венгрия",
+        href: "https://kirk.cherehapa.ru/country/hungary",
+      },
+      {
+        title: "Вьетнам",
+        href: "https://kirk.cherehapa.ru/country/vietnam",
+      },
+      {
+        title: "Греция",
+        href: "https://kirk.cherehapa.ru/country/greece",
+      },
+      {
+        title: "Израиль",
+        href: "https://kirk.cherehapa.ru/country/israel",
+      },
+      {
+        title: "Испания",
+        href: "https://kirk.cherehapa.ru/country/spain",
+      },
+      {
+        title: "Италия",
+        href: "https://kirk.cherehapa.ru/country/italy",
+      },
+      {
+        title: "Кипр",
+        href: "https://kirk.cherehapa.ru/country/cyprus",
+      },
+      {
+        title: "Таиланд",
+        href: "https://kirk.cherehapa.ru/country/thailand",
+      },
+      {
+        title: "Турция",
+        href: "https://kirk.cherehapa.ru/country/turkey",
+      },
+      {
+        title: "Хорватия",
+        href: "https://kirk.cherehapa.ru/country/croatia",
+      },
+      {
+        title: "Черногория",
+        href: "https://kirk.cherehapa.ru/country/montenegro",
+      },
+      {
+        title: "Чехия",
+        href: "https://kirk.cherehapa.ru/country/czech",
+      },
+      {
+        title: "Шри-Ланка",
+        href: "https://kirk.cherehapa.ru/country/srilanka",
+      },
+    ],
+  },
+];
+
 export const Base: Story<IBaseStoryParams> = ({
   locale = "ru",
-  withContacts,
+  // withContacts,
 }) => {
   const contacts = useMemo(() => {
     return {
@@ -141,26 +400,12 @@ export const Base: Story<IBaseStoryParams> = ({
           justifyContent: "center",
         }}
       >
-        <Container>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              gap: "30px",
-            }}
-          >
-            <Footer {...props[locale]} />
-            {withContacts && (
-              <div style={{ marginLeft: "100px" }}>
-                {" "}
-                <h3 style={{ fontSize: "13px", margin: "0px 12px" }}>
-                  Контакты
-                </h3>{" "}
-                <Contacts contacts={contacts} />
-              </div>
-            )}
-          </div>
-        </Container>
+        <Footer
+          {...props[locale]}
+          contacts={contacts}
+          variant="lite"
+          navigationSections={navigationSections}
+        />
       </div>
     </div>
   );

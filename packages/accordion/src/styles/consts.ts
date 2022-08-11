@@ -22,3 +22,6 @@ export const ACCORDION_COMPONENTS_NAMES = {
 } as const;
 
 export const DEFAULT_ACCORDION_TITLE_BUTTON_APPEARANCE = "accordion-title";
+
+export const DEFAULT_FOOTER_ACCORDION_TITLE_BUTTON_APPEARANCE =
+  "footer-accordion-title";

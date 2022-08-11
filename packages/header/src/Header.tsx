@@ -5,7 +5,6 @@ import {
   CherehapaLogoIcon,
 } from "@cheaaa/icons";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-// @ts-ignore
 import { Contacts, IContacts } from "@cheaaa/contacts";
 import { memo, useMemo } from "react";
 

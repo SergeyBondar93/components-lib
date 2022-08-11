@@ -1,38 +1,57 @@
 export const FOOTER_COMPONENT_NAMESPACE = "@che/footer";
 
 export const FOOTER_COMPONENTS_NAMES = {
+  /** NAVIGATIONS ACCORDIONS */
+  /**
+   * Обёртка каждого аккордиона навигации
+   */
+  navigationAccordionWrapper: "wrapper",
+  /**
+   * Иконка аккордиона свёрнут/развёрнут
+   */
+  navigationAccordionIcon: "icon",
+  /**
+   * Body аккордиона
+   */
+  navigationAccordionBody: "body",
+  /**
+   * Обёртка над children аккордиона
+   */
+  navigationAccordionChildrenWrapper: "childrenWrapper",
+
+  /** INFO FOOTER BLOCK */
   /**
    * Обёртка над компонентом
    */
-  wrapper: "wrapper",
+  infoWrapper: "infoWrapper",
 
   /**
    * Обёртка логотипом компании
    */
-  cheLogo: "cheLogo",
+  infoCheLogo: "infoCheLogo",
 
   /**
    * Обёртка названием компании
    */
-  cheName: "cheName",
+  infoCheName: "infoCheName",
 
   /**
    * Copyright block
    */
-  copyright: "copyright",
+  infoCopyright: "infoCopyright",
 
   /**
    * Перенос строки в Copyright block
    */
-  copyrightBr: "copyrightBr",
+  infoCopyrightBr: "infoCopyrightBr",
 
   /**
    * Информация о компании
    */
-  companyInfo: "companyInfo",
+  infoCompanyInfo: "infoCompanyInfo",
 
   /**
    * Иконки платёжной информации
    */
-  paymentIcons: "paymentIcons",
+  infoPaymentIcons: "infoPaymentIcons",
 } as const;

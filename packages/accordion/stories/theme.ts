@@ -6,10 +6,12 @@ import {
   CHECKBOX_COMPONENT_NAMESPACE,
   CHECKBOX_COMPONENTS_NAMES,
 } from "@cheaaa/checkbox";
+
+import { DEFAULT_ACCORDION_TITLE_BUTTON_APPEARANCE } from "../src";
 export const theme = {
   components: {
     [BUTTON_COMPONENT_NAMESPACE]: {
-      "accordion-title": {
+      [DEFAULT_ACCORDION_TITLE_BUTTON_APPEARANCE]: {
         [BUTTON_COMPONENTS_NAMES.button]: {
           background: "transparent",
           paddingLeft: "20px",

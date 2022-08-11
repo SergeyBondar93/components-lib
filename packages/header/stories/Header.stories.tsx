@@ -1,5 +1,4 @@
 import { Meta } from "@storybook/react";
-// @ts-ignore
 import { Container } from "@cheaaa/container";
 import {
   MoonIcon,
