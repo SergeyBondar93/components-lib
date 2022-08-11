@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.9.9...@cheaaa/accordion@2.10.0) (2022-08-11)
+
+
+### Bug Fixes
+
+* fix leaks ([7dd6643](https://github.com/SergeyBondar93/liba/commit/7dd6643dc8faef04c704323b8b301729bb864a72))
+* fix memory leak in accordion ([eddf2b3](https://github.com/SergeyBondar93/liba/commit/eddf2b3c64afe38e5a3e5c769656750af8ffda9d))
+
+
+### Features
+
+* add contacts to footer ([620ebef](https://github.com/SergeyBondar93/liba/commit/620ebeff1baa83f16a5b2dc981b50179065ae52a))
+
+
+
+
+
 ## [2.9.9](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.9.8...@cheaaa/accordion@2.9.9) (2022-08-10)
 
 

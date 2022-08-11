@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.9.0...@cheaaa/header@1.10.0) (2022-08-11)
+
+
+### Features
+
+* add contacts to footer ([620ebef](https://github.com/SergeyBondar93/liba/commit/620ebeff1baa83f16a5b2dc981b50179065ae52a))
+* add full and lite header variants, add accordions ([4942986](https://github.com/SergeyBondar93/liba/commit/4942986eed2c29b58c7b9f90c7613f3d82a0ce3a))
+
+
+
+
+
 # [1.9.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.8.0...@cheaaa/header@1.9.0) (2022-08-10)
 
 

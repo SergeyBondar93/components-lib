@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/portal@1.2.0...@cheaaa/portal@1.3.0) (2022-08-11)
+
+
+### Features
+
+* add contacts to footer ([620ebef](https://github.com/SergeyBondar93/liba/commit/620ebeff1baa83f16a5b2dc981b50179065ae52a))
+
+
+
+
+
 # 1.2.0 (2022-08-10)
 
 

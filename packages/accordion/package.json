@@ -1,6 +1,6 @@
 {
   "name": "@cheaaa/accordion",
-  "version": "2.9.9",
+  "version": "2.10.0",
   "description": "<>",
   "build:storybook": "src/index.ts",
   "main": "dist/index.js",
@@ -23,11 +23,11 @@
   },
   "private": false,
   "dependencies": {
-    "@cheaaa/button": "^1.9.2",
-    "@cheaaa/utils": "^1.4.0"
+    "@cheaaa/button": "^1.9.3",
+    "@cheaaa/utils": "^1.5.0"
   },
   "devDependencies": {
-    "@cheaaa/checkbox": "^2.0.5",
+    "@cheaaa/checkbox": "^2.0.6",
     "react-select": "^5.4.0"
   },
   "peerDependencies": {

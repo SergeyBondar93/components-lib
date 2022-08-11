@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.5.0 (2022-08-11)
+
+
+### Bug Fixes
+
+* fix typing ([d855d59](https://github.com/SergeyBondar93/liba/commit/d855d59fc948efb1bc0a48a6a35c5aaab565312f))
+* move useScreenSize hook to theme package ([946b51b](https://github.com/SergeyBondar93/liba/commit/946b51b46197dbacbb3750906298f1c4c5911d8f))
+
+
+### Features
+
+* add full and lite header variants, add accordions ([4942986](https://github.com/SergeyBondar93/liba/commit/4942986eed2c29b58c7b9f90c7613f3d82a0ce3a))
+
+
+
+
+
 # [1.4.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.3.0...@cheaaa/theme@1.4.0) (2022-08-09)
 
 
