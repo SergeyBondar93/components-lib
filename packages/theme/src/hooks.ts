@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { BREAKPOINTS } from "./../../theme/src/breakpoints";
+import { BREAKPOINTS } from "./utils";
 
 export const useScreenSizes = () => {
   const [windowSize, setWindowSize] = useState({

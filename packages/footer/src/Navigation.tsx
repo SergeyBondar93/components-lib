@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
-import { useScreenSizes } from "@cheaaa/utils";
-import { getClassName } from "@cheaaa/theme";
+import { getClassName, useScreenSizes } from "@cheaaa/theme";
 
 import { ComponentNames, useStyles } from "./styles";
 import { MobileNavigationSections } from "./MobileNavigationSections";
