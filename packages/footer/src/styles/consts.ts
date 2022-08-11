@@ -1,27 +1,37 @@
 export const FOOTER_COMPONENT_NAMESPACE = "@che/footer";
 
 export const FOOTER_COMPONENTS_NAMES = {
-  /** NAVIGATIONS ACCORDIONS */
+  navigationWrapper: "navigationWrapper",
+
   /**
-   * Обёртка каждого аккордиона навигации
+   * List ссылок навигации
    */
-  navigationAccordionWrapper: "wrapper",
+  navigationList: "navigationList",
+
   /**
-   * Иконка аккордиона свёрнут/развёрнут
+   * Title списка ссылок навигации
    */
-  navigationAccordionIcon: "icon",
+  navigationListTitle: "navigationListTitle",
+
   /**
-   * Body аккордиона
+   * Li ссылки навигации
    */
-  navigationAccordionBody: "body",
+  navigationListItem: "navigationListItem",
+
   /**
-   * Обёртка над children аккордиона
+   * A ссылки навигации
    */
-  navigationAccordionChildrenWrapper: "childrenWrapper",
+  navigationListItemLink: "navigationListItemLink",
 
   /** INFO FOOTER BLOCK */
+
   /**
-   * Обёртка над компонентом
+   * Нижний блок с инфо и контактами при cariant=lite
+   */
+  bottomBlock: "bottomBlock",
+
+  /**
+   * Блок info
    */
   infoWrapper: "infoWrapper",
 

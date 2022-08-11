@@ -75,6 +75,12 @@ export const Header = memo(
         appearance,
         "dropdownTitle"
       );
+      const contactsWrapperClassName = getClassName<HeaderComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "contactsWrapper"
+      );
 
       return {
         headerWrapperClassName,
@@ -82,6 +88,7 @@ export const Header = memo(
         whyNewClassName,
         menusTitleClassName,
         dropdownTitleClassName,
+        contactsWrapperClassName,
       };
     }, [classes, baseAppearance, appearance]);
 
@@ -114,11 +121,13 @@ export const Header = memo(
                 baseAppearance={baseAppearance}
                 appearance={appearance}
               >
-                <Contacts
-                  contacts={contacts}
-                  baseAppearance={contactsBaseAppearance}
-                  appearance={contactsAppearance}
-                />
+                <div className={classNames.contactsWrapperClassName}>
+                  <Contacts
+                    contacts={contacts}
+                    baseAppearance={contactsBaseAppearance}
+                    appearance={contactsAppearance}
+                  />
+                </div>
               </HeaderDropdown>
             )}
 

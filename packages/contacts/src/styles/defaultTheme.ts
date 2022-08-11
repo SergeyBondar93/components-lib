@@ -5,7 +5,7 @@ import { ComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   [CONTACTS_COMPONENTS_NAMES.contactsList]: {
-    padding: "12px",
+    padding: "0px",
     listStyle: "none",
     margin: "0px",
     display: "flex",

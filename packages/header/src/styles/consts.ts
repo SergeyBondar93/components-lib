@@ -23,6 +23,11 @@ export const HEADER_COMPONENTS_NAMES = {
   whyNew: "whyNew",
 
   /**
+   * Обёртка над блоком контактов в дропдауне
+   */
+  contactsWrapper: "contactsWrapper",
+
+  /**
    * Обёртка над элементами меню в дропдауне
    */
   menuList: "menuList",

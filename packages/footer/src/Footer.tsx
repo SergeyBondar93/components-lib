@@ -7,14 +7,17 @@ import {
   VisaIcon,
   MirIcon,
 } from "@cheaaa/icons";
-import { getClassName, IThemedProps } from "@cheaaa/theme";
+import { BREAKPOINTS, getClassName, IThemedProps } from "@cheaaa/theme";
 import { ReactNode, useMemo } from "react";
 import { Container } from "@cheaaa/container";
 import { Contacts } from "@cheaaa/contacts";
-import { BaseAccordion } from "@cheaaa/accordion";
 
 import { ComponentNames, useStyles } from "./styles";
-interface IFooterProps extends IThemedProps {
+import { Navigation } from "./Navigation";
+import { Variant } from "./types";
+import { isFull } from "./utils";
+
+interface InfoBlock {
   companyName: ReactNode;
   copyright: {
     from: number;
@@ -22,43 +25,49 @@ interface IFooterProps extends IThemedProps {
     text: ReactNode;
   };
   companyInfo: ReactNode;
+}
+
+interface IFooterProps extends IThemedProps {
+  info: InfoBlock;
   /** взять из компонента контактов */
   contacts: any;
   /** описать массив в 4 элемента со ссылками */
   navigationSections: any;
-  variant?: "lite" | "full";
-}
 
-const NavigationAccordionBody = ({ links }) => {
-  return (
-    <>
-      <ul>
-        {links.map(({ href, title }) => {
-          return (
-            <li style={{ margin: "15px 0px" }}>
-              <a href={href}>{title}</a>
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
-};
+  /**
+   * Вариант отображения футера.
+   */
+  variant?: Variant;
+}
 
 export const Footer = ({
   baseAppearance = "base",
   appearance = "base",
-  companyName,
-  copyright: { from, to, text },
-  companyInfo,
+  info: {
+    companyName,
+    copyright: { from, to, text },
+    companyInfo,
+  },
   contacts,
   variant,
   navigationSections,
-}: IFooterProps) => {
+  navigationSectionsDesktopWidth = BREAKPOINTS.xl,
+  contactsTitle = "Контакты",
+  hiddenLinksAccordionTitles: { openedTitle, closedTitle } = {
+    openedTitle: "Скрыть",
+    closedTitle: "Ещё",
+  },
+}: IFooterProps | any) => {
   const classes = useStyles();
 
   const classNames = useMemo(() => {
-    const wrapperClassName = getClassName<ComponentNames>(
+    const bottomBlockClassName = getClassName<ComponentNames>(
+      classes,
+      baseAppearance,
+      appearance,
+      "bottomBlock"
+    );
+    const infoWrapperClassName = getClassName<ComponentNames>(
       classes,
       baseAppearance,
       appearance,
@@ -100,44 +109,47 @@ export const Footer = ({
       appearance,
       "infoPaymentIcons"
     );
+    const navigationListTitleClassName = getClassName<ComponentNames>(
+      classes,
+      baseAppearance,
+      appearance,
+      "navigationListTitle"
+    );
 
     return {
-      wrapperClassName,
+      bottomBlockClassName,
+      infoWrapperClassName,
       cheLogoClassName,
       cheNameClassName,
       copyrightClassName,
       copyrightBrClassName,
       companyInfoClassName,
       paymentIconsClassName,
+      navigationListTitleClassName,
     };
   }, [classes, baseAppearance, appearance]);
 
   return (
     <Container>
       {/* Navigation */}
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        {navigationSections.map(({ title, links }) => {
-          return (
-            <BaseAccordion
-              title={title}
-              defaultTitleButtonAppearance=""
-              classes={classes}
-            >
-              <NavigationAccordionBody links={links} />
-            </BaseAccordion>
-          );
-        })}
-      </div>
 
-      {/* Info block */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "flex-end",
-          gap: "30px",
-        }}
-      >
-        <div className={classNames.wrapperClassName}>
+      {isFull(variant) && (
+        <Navigation
+          navigationSectionsDesktopWidth={navigationSectionsDesktopWidth}
+          navigationSections={navigationSections}
+          baseAppearance={baseAppearance}
+          appearance={appearance}
+          contacts={contacts}
+          contactsTitle={contactsTitle}
+          openedTitle={openedTitle}
+          closedTitle={closedTitle}
+          variant={variant}
+        />
+      )}
+
+      {/* Bottom Info block */}
+      <div className={classNames.bottomBlockClassName}>
+        <div className={classNames.infoWrapperClassName}>
           <div className={classNames.cheLogoClassName}>
             <CheIconFooter />
             <span className={classNames.cheNameClassName}>{companyName}</span>
@@ -161,12 +173,11 @@ export const Footer = ({
           </div>
         </div>
 
-        {variant === "lite" && (
-          <div style={{ marginLeft: "100px" }}>
-            {" "}
-            <h3 style={{ fontSize: "13px", margin: "0px 12px" }}>
+        {!isFull(variant) && (
+          <div>
+            <h4 className={classNames.navigationListTitleClassName}>
               Контакты
-            </h3>{" "}
+            </h4>
             {/* TODO добавить проброс аппирансов */}
             <Contacts contacts={contacts} />
           </div>

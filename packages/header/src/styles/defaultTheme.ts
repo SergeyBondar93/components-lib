@@ -47,6 +47,9 @@ export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
       display: "initial",
     },
   },
+  [HEADER_COMPONENTS_NAMES.contactsWrapper]: {
+    padding: "12px",
+  },
   [HEADER_COMPONENTS_NAMES.menuList]: {
     padding: "5px",
   },

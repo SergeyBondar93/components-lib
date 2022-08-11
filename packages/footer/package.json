@@ -24,6 +24,7 @@
 	"private": false,
 	"dependencies": {
 		"@cheaaa/icons": "^1.7.0",
+		"@cheaaa/utils": "^1.4.0",
 		"@cheaaa/contacts": "^1.1.0",
 		"@cheaaa/portal": "^1.2.0",
 		"@cheaaa/theme": "^1.4.0"
