@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.9](https://github.com/SergeyBondar93/liba/compare/@cheaaa/dropdown@1.9.8...@cheaaa/dropdown@1.9.9) (2022-08-10)
+
+**Note:** Version bump only for package @cheaaa/dropdown
+
+
+
+
+
 ## 1.9.8 (2022-08-10)
 
 **Note:** Version bump only for package @cheaaa/dropdown
