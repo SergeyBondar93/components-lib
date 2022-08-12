@@ -1,7 +1,7 @@
-import { Meta, Story } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { ThemeProvider } from "react-jss";
 
-import { Footer } from "../src/Footer";
+import { FooterFull, FooterLite } from "../src";
 
 // @ts-ignore
 import bg from "./bg.jpg";
@@ -18,11 +18,7 @@ export default {
   },
 } as Meta;
 
-interface IBaseStoryParams {
-  variant: "full" | "lite";
-}
-
-export const Base: Story<IBaseStoryParams> = ({ variant }) => {
+export const Lite = () => {
   return (
     <ThemeProvider theme={theme}>
       <div
@@ -44,10 +40,38 @@ export const Base: Story<IBaseStoryParams> = ({ variant }) => {
             backgroundColor: "#FFF",
           }}
         >
-          <Footer
+          <FooterLite info={info} contacts={contacts} />
+        </div>
+      </div>
+    </ThemeProvider>
+  );
+};
+
+export const Full = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          height: `${window.innerHeight}px`,
+          background: `url("${bg}")`,
+          backgroundSize: "cover",
+        }}
+      >
+        <div
+          style={{
+            width: "300px",
+            height: "100vh",
+          }}
+        ></div>
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "#FFF",
+          }}
+        >
+          <FooterFull
             info={info}
             contacts={contacts}
-            variant={variant}
             navigationSections={navigationSections}
             componentsProps={{
               navigationAccordions: {
@@ -66,13 +90,11 @@ export const Base: Story<IBaseStoryParams> = ({ variant }) => {
                 appearance: "text",
               },
             }}
+            becomePartnerLink="https://www.cherehapa.ru/account/login"
+            signInAccountLink="https://www.cherehapa.ru/account/login"
           />
         </div>
       </div>
     </ThemeProvider>
   );
-};
-
-Base.args = {
-  variant: "full",
 };

@@ -34,9 +34,8 @@ export interface IContacts {
     title: string | ReactNode;
   };
 }
-interface IContactsProps extends IThemedProps {
+export interface IContactsProps extends IThemedProps {
   contacts: IContacts;
-  handleClose?: () => void;
 }
 
 export const Contacts = memo(

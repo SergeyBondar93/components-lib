@@ -17,7 +17,9 @@ export const PartnersBlock = ({
   const classes = useStyles();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const [partnersCount, setPartnersCount] = useState(0);
+  const [partnersCount, setPartnersCount] = useState(
+    parseFloat(partnersCountAnimationTime) ? 0 : partnersCountProps
+  );
 
   const rafsRef = useRef<any>([]);
 
@@ -54,7 +56,7 @@ export const PartnersBlock = ({
       rafsRef.current.forEach((raf) => {
         cancelAnimationFrame(raf);
       });
-      observer.unobserve(wrapperRef.current!);
+      wrapperRef.current && observer.unobserve(wrapperRef.current);
       observer.disconnect();
     };
   }, [partnersCountProps, partnersCountAnimationTime]);

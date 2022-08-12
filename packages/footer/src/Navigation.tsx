@@ -7,14 +7,13 @@ import { DesktopNavigationSections } from "./DesktopNavigationSections";
 
 export const Navigation = ({
   navigationSections,
-  navigationSectionsDesktopWidth,
+  navigationSectionsDesktopBreakpoint,
   baseAppearance,
   appearance,
   contacts,
   contactsTitle,
   openedTitle,
   closedTitle,
-  variant,
   contactsProps,
   navigationAccordionsProps,
   hiddenOptionsAccordionProps,
@@ -25,8 +24,8 @@ export const Navigation = ({
   const [hiddenLinksIsOpen, setHiddenLinksIsOpen] = useState(false);
 
   const isMobile = useMemo(
-    () => width < navigationSectionsDesktopWidth,
-    [width, navigationSectionsDesktopWidth]
+    () => width < navigationSectionsDesktopBreakpoint,
+    [width, navigationSectionsDesktopBreakpoint]
   );
 
   const navigationWrapperClassName = useMemo(() => {
@@ -50,7 +49,6 @@ export const Navigation = ({
           openedTitle={openedTitle}
           closedTitle={closedTitle}
           isMobile
-          variant={variant}
           contactsProps={contactsProps}
           navigationAccordionsProps={navigationAccordionsProps}
           hiddenOptionsAccordionProps={hiddenOptionsAccordionProps}
@@ -67,7 +65,6 @@ export const Navigation = ({
           openedTitle={openedTitle}
           closedTitle={closedTitle}
           isMobile={false}
-          variant={variant}
           contactsProps={contactsProps}
           hiddenOptionsAccordionProps={hiddenOptionsAccordionProps}
         />

@@ -1,5 +1,7 @@
 import { TelegramIcon, TwitterIcon, VKIcon, WhatsupIcon } from "@cheaaa/icons";
 
+import { NavigationSections } from "../src";
+
 export const info = {
   companyName: "ООО «Черехапа Страхование»",
   copyright: {
@@ -27,7 +29,7 @@ const AvailableTime = () => {
   );
 };
 
-export const navigationSections = [
+export const navigationSections: NavigationSections = [
   {
     title: "Популярные страны",
     links: [

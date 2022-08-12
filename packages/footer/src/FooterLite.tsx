@@ -7,41 +7,39 @@ import {
   VisaIcon,
   MirIcon,
 } from "@cheaaa/icons";
-import { BREAKPOINTS, getClassName, IThemedProps } from "@cheaaa/theme";
-import { ReactNode, useMemo } from "react";
+import { getClassName, IThemedProps } from "@cheaaa/theme";
+import { useMemo } from "react";
 import { Container } from "@cheaaa/container";
-import { Contacts } from "@cheaaa/contacts";
+import { Contacts, IContacts, IContactsProps } from "@cheaaa/contacts";
 
 import { ComponentNames, useStyles } from "./styles";
-import { Navigation } from "./Navigation";
-import { Variant } from "./types";
-import { isFull } from "./utils";
-import { PartnersBlock } from "./PartnersBlock";
-
-interface InfoBlock {
-  companyName: ReactNode;
-  copyright: {
-    from: number;
-    to: number;
-    text: ReactNode;
-  };
-  companyInfo: ReactNode;
-}
+import { InfoBlock } from "./types";
 
 interface IFooterProps extends IThemedProps {
+  /**
+   * Блок инфо о компании, "мы сотрудничаем с..."
+   */
   info: InfoBlock;
-  /** взять из компонента контактов */
-  contacts: any;
-  /** описать массив в 4 элемента со ссылками */
-  navigationSections: any;
 
   /**
-   * Вариант отображения футера.
+   * Блок контактов, принимает пропсы контактов
    */
-  variant?: Variant;
+  contacts: IContacts;
+
+  /**
+   * Заголовок блока/аккордиона контактов
+   */
+  contactsTitle?: string;
+
+  /**
+   * Пропсы внутренних компонентов при необходимости
+   */
+  componentsProps?: {
+    contacts?: Partial<IContactsProps>;
+  };
 }
 
-export const Footer = ({
+export const FooterLite = ({
   baseAppearance = "base",
   appearance = "base",
   info: {
@@ -50,26 +48,9 @@ export const Footer = ({
     companyInfo,
   },
   contacts,
-  variant,
-  navigationSections,
-  navigationSectionsDesktopWidth = BREAKPOINTS.xl,
   contactsTitle = "Контакты",
-  hiddenLinksAccordionTitles: { openedTitle, closedTitle } = {
-    openedTitle: "Скрыть",
-    closedTitle: "Ещё",
-  },
-  componentsProps: {
-    contacts: contactsProps,
-    navigationAccordions: navigationAccordionsProps,
-    hiddenOptionsAccordion: hiddenOptionsAccordionProps,
-    becomePartnerButton: becomePartnerButtonProps,
-    signInAccountButton: signInAccountButtonProps,
-  },
-  partnersCount = 6079,
-  partnersCountAnimationTime = "2s",
-  becomePartnerLink,
-  signInAccountLink,
-}: IFooterProps | any) => {
+  componentsProps: { contacts: contactsProps } = {},
+}: IFooterProps) => {
   const classes = useStyles();
 
   const classNames = useMemo(() => {
@@ -150,37 +131,6 @@ export const Footer = ({
 
   return (
     <Container>
-      <PartnersBlock
-        baseAppearance={baseAppearance}
-        appearance={appearance}
-        becomePartnerButtonProps={becomePartnerButtonProps}
-        signInAccountButtonProps={signInAccountButtonProps}
-        becomePartnerLink={becomePartnerLink}
-        signInAccountLink={signInAccountLink}
-        partnersCount={partnersCount}
-        partnersCountAnimationTime={partnersCountAnimationTime}
-      />
-
-      {/* Navigation */}
-
-      {isFull(variant) && (
-        <Navigation
-          navigationSectionsDesktopWidth={navigationSectionsDesktopWidth}
-          navigationSections={navigationSections}
-          baseAppearance={baseAppearance}
-          appearance={appearance}
-          contacts={contacts}
-          contactsTitle={contactsTitle}
-          openedTitle={openedTitle}
-          closedTitle={closedTitle}
-          variant={variant}
-          contactsProps={contactsProps}
-          navigationAccordionsProps={navigationAccordionsProps}
-          hiddenOptionsAccordionProps={hiddenOptionsAccordionProps}
-        />
-      )}
-
-      {/* Bottom Info block */}
       <div className={classNames.bottomBlockClassName}>
         <div className={classNames.infoWrapperClassName}>
           <div className={classNames.cheLogoClassName}>
@@ -205,15 +155,12 @@ export const Footer = ({
             <MirIcon />
           </div>
         </div>
-
-        {!isFull(variant) && (
-          <div className={classNames.navigationListsWrapperClassName}>
-            <h4 className={classNames.navigationListTitleClassName}>
-              Контакты
-            </h4>
-            <Contacts contacts={contacts} {...contactsProps} />
-          </div>
-        )}
+        <div className={classNames.navigationListsWrapperClassName}>
+          <h4 className={classNames.navigationListTitleClassName}>
+            {contactsTitle}
+          </h4>
+          <Contacts contacts={contacts} {...contactsProps} />
+        </div>
       </div>
     </Container>
   );
