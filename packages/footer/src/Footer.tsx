@@ -16,6 +16,7 @@ import { ComponentNames, useStyles } from "./styles";
 import { Navigation } from "./Navigation";
 import { Variant } from "./types";
 import { isFull } from "./utils";
+import { PartnersBlock } from "./PartnersBlock";
 
 interface InfoBlock {
   companyName: ReactNode;
@@ -57,12 +58,17 @@ export const Footer = ({
     openedTitle: "Скрыть",
     closedTitle: "Ещё",
   },
-
   componentsProps: {
     contacts: contactsProps,
     navigationAccordions: navigationAccordionsProps,
     hiddenOptionsAccordion: hiddenOptionsAccordionProps,
+    becomePartnerButton: becomePartnerButtonProps,
+    signInAccountButton: signInAccountButtonProps,
   },
+  partnersCount = 6079,
+  partnersCountAnimationTime = "2s",
+  becomePartnerLink,
+  signInAccountLink,
 }: IFooterProps | any) => {
   const classes = useStyles();
 
@@ -144,6 +150,17 @@ export const Footer = ({
 
   return (
     <Container>
+      <PartnersBlock
+        baseAppearance={baseAppearance}
+        appearance={appearance}
+        becomePartnerButtonProps={becomePartnerButtonProps}
+        signInAccountButtonProps={signInAccountButtonProps}
+        becomePartnerLink={becomePartnerLink}
+        signInAccountLink={signInAccountLink}
+        partnersCount={partnersCount}
+        partnersCountAnimationTime={partnersCountAnimationTime}
+      />
+
       {/* Navigation */}
 
       {isFull(variant) && (
@@ -194,7 +211,6 @@ export const Footer = ({
             <h4 className={classNames.navigationListTitleClassName}>
               Контакты
             </h4>
-            {/* TODO добавить проброс аппирансов */}
             <Contacts contacts={contacts} {...contactsProps} />
           </div>
         )}

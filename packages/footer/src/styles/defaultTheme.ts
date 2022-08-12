@@ -4,6 +4,63 @@ import { FOOTER_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
+  [FOOTER_COMPONENTS_NAMES.partnerBlockWrapper]: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "25px 0px 15px 0px",
+    fontSize: "13px",
+
+    flexDirection: "column",
+    gap: "15px",
+
+    [BREAKPOINTS.up("md")]: {
+      alignItems: "flex-end",
+      flexDirection: "row",
+      gap: "0px",
+      padding: "25px 0px 15px 0px",
+    },
+  },
+  [FOOTER_COMPONENTS_NAMES.partnersCountWrapper]: {
+    flexShrink: 0,
+    textAlign: "center",
+    [BREAKPOINTS.up("md")]: {
+      paddingBottom: "10px",
+      textAlign: "start",
+    },
+  },
+  [FOOTER_COMPONENTS_NAMES.partnersCount]: {
+    fontSize: "34px",
+    fontWeight: "700",
+  },
+  [FOOTER_COMPONENTS_NAMES.partnersCountText]: {},
+  [FOOTER_COMPONENTS_NAMES.partnersInfoWrapper]: {
+    maxWidth: "600px",
+    padding: "0px 20px",
+    display: "inline-block",
+    textAlign: "center",
+
+    [BREAKPOINTS.up("md")]: {
+      paddingBottom: "10px",
+      textAlign: "start",
+    },
+  },
+  [FOOTER_COMPONENTS_NAMES.partnersInfoIconWrapper]: {
+    marginRight: "5px",
+  },
+  [FOOTER_COMPONENTS_NAMES.partnersInfoText]: {},
+  [FOOTER_COMPONENTS_NAMES.partnersButtonsWrapper]: {
+    flexShrink: 0,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+
+    alignSelf: "stretch",
+    [BREAKPOINTS.up("md")]: {
+      alignItems: "center",
+    },
+  },
+
   [FOOTER_COMPONENTS_NAMES.navigationWrapper]: {
     display: "flex",
     justifyContent: "space-between",

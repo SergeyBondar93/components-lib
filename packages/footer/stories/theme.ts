@@ -11,6 +11,37 @@ import {
 export const theme = {
   components: {
     [BUTTON_COMPONENT_NAMESPACE]: {
+      base: {
+        [BUTTON_COMPONENTS_NAMES.button]: {
+          letterSpacing: "-0.45px",
+          fontWeight: 400,
+          fontSize: "13px",
+          background: "#636AFF",
+          color: "#FFF",
+          borderRadius: "10px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          transition: "0.2s transform",
+          "&[disabled]": {
+            opacity: 0.7,
+          },
+          "&:hover": {
+            background: "#636AFF",
+          },
+        },
+      },
+      text: {
+        [BUTTON_COMPONENTS_NAMES.button]: {
+          background: "#FFF",
+          color: "#636AFF",
+          padding: "10px 15px",
+          "&:hover": {
+            background: "#FFF",
+            color: "#636AFF",
+          },
+        },
+      },
       [DEFAULT_ACCORDION_TITLE_BUTTON_APPEARANCE]: {
         [BUTTON_COMPONENTS_NAMES.button]: {
           transformOrigin: "20%",
@@ -40,7 +71,7 @@ export const theme = {
       },
       navigationHiddenOptions: {
         [BUTTON_COMPONENTS_NAMES.button]: {
-          padding: "0px 0px 10px 0px",
+          padding: "0px 0px 0px 0px",
           color: "#636AFF",
           fontSize: "13px",
           "&:active:enabled": {
@@ -51,10 +82,21 @@ export const theme = {
     },
     [ACCORDION_COMPONENT_NAMESPACE]: {
       navigation: {
+        [ACCORDION_COMPONENTS_NAMES.wrapper]: {
+          borderTop: "1px solid rgba(113, 130, 153, 0.25)",
+          "&:last-child": {
+            borderBottom: "1px solid rgba(113, 130, 153, 0.25)",
+          },
+        },
         [ACCORDION_COMPONENTS_NAMES.childrenWrapper]: {
           display: "flex",
           flexDirection: "column",
           gap: "10px",
+        },
+        [ACCORDION_COMPONENTS_NAMES.body]: {
+          '&[data-is-opened="true"]': {
+            marginBottom: "10px",
+          },
         },
       },
       navigationHiddenOptions: {

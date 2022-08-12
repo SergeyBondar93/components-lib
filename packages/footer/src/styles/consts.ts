@@ -1,6 +1,49 @@
 export const FOOTER_COMPONENT_NAMESPACE = "@che/footer";
 
 export const FOOTER_COMPONENTS_NAMES = {
+  /**
+   * Обёртка над блоком партнёров
+   */
+  partnerBlockWrapper: "partnerBlockWrapper",
+
+  /**
+   * Обёртка над блоком счётчика партнёров
+   */
+  partnersCountWrapper: "partnersCountWrapper",
+
+  /**
+   * Цифра количество партнёров
+   */
+  partnersCount: "partnersCount",
+
+  /**
+   * Фраза "подключилось партнёров"
+   */
+  partnersCountText: "partnersCountText",
+
+  /**
+   * Обёртка над информационным текстом про сайт блог и форум
+   */
+  partnersInfoWrapper: "partnersInfoWrapper",
+
+  /**
+   * Обёртка над иконкой восклицательного знака перед текстом
+   */
+  partnersInfoIconWrapper: "partnersInfoIconWrapper",
+
+  /**
+   * Информационный текст про сайт блог и форум
+   */
+  partnersInfoText: "partnersInfoText",
+
+  /**
+   * Обёртка над кнопками войти и стать партнёром
+   */
+  partnersButtonsWrapper: "partnersButtonsWrapper",
+
+  /**
+   * Обёртка над блоком навигации
+   */
   navigationWrapper: "navigationWrapper",
 
   /**

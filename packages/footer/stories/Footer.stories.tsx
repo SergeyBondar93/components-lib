@@ -34,6 +34,12 @@ export const Base: Story<IBaseStoryParams> = ({ variant }) => {
       >
         <div
           style={{
+            width: "300px",
+            height: "100vh",
+          }}
+        ></div>
+        <div
+          style={{
             width: "100%",
             backgroundColor: "#FFF",
           }}
@@ -55,6 +61,9 @@ export const Base: Story<IBaseStoryParams> = ({ variant }) => {
                 titleButtonProps: {
                   baseAppearance: "navigationHiddenOptions",
                 },
+              },
+              signInAccountButton: {
+                appearance: "text",
               },
             }}
           />

@@ -64,6 +64,7 @@ module.exports = {
       'react/jsx-indent': ['error', 4, { indentLogicalExpressions: true }],
       'no-underscore-dangle': 0,
       'no-unexpected-multiline': 'error',
+      "no-nested-ternary": "error",
       '@typescript-eslint/no-use-before-define': ['warn'],
       '@typescript-eslint/unbound-method': ['warn'],
       '@typescript-eslint/prefer-regexp-exec': 'warn',
