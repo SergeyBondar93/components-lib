@@ -8,7 +8,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useClickOutsideComponent, useCombinedRefs } from "@cheaaa/utils";
+import { useClickOutsideComponents, useCombinedRefs } from "@cheaaa/utils";
 import { IThemedProps } from "@cheaaa/theme";
 import { IInputProps } from "@cheaaa/input";
 
@@ -146,7 +146,7 @@ export const Datepicker = ({
     };
   }, [value, placeholder, label, disabled, inputProps, isOpen]);
 
-  useClickOutsideComponent(accordionRef, handleClose);
+  useClickOutsideComponents([accordionRef], handleClose);
 
   const handleChange = useCallback(
     (date: Date) => {

@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useClickOutsideComponent } from "@cheaaa/utils";
+import { useClickOutsideComponents } from "@cheaaa/utils";
 import React from "react";
 import { BaseAccordion, IBaseAccordionProps } from "@cheaaa/accordion";
 
@@ -74,7 +74,7 @@ export const Dropdown = ({
     };
   }, [titleButtonPropsFromProps, toggleOpen, isOpen, passSetIsOpenToTitle]);
 
-  useClickOutsideComponent(accordionRef, handleClose);
+  useClickOutsideComponents([accordionRef], handleClose);
 
   const mappedChildren = useMemo(() => {
     return passSetIsOpenToChildren

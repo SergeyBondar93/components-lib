@@ -1,16 +1,8 @@
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import {
-  useState,
-  ReactNode,
-  useMemo,
-  useCallback,
-  useRef,
-  memo,
-  ReactElement,
-} from "react";
+import { useState, ReactNode, useMemo, useCallback, useRef, memo } from "react";
 import React from "react";
 import { Transition } from "react-transition-group";
-import { useClickOutsideComponent } from "@cheaaa/utils";
+import { useClickOutsideComponents } from "@cheaaa/utils";
 import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
 import { Portal } from "@cheaaa/portal";
 
@@ -51,6 +43,7 @@ export const HeaderDropdown = memo(
     const classes = useHeaderStyles();
     const transitionRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const toggleButtonRef = useRef<HTMLButtonElement>(null);
     const [buttonCoords, setButtonCoords] = useState<{
       bottom: number;
       right: number;
@@ -98,7 +91,7 @@ export const HeaderDropdown = memo(
       setIsOpen((isOpen) => !isOpen);
     }, []);
 
-    useClickOutsideComponent(wrapperRef, handleClose);
+    useClickOutsideComponents([transitionRef, toggleButtonRef], handleClose);
 
     const animationDuration = useMemo(
       () => parseFloat(animationDurationProps) * 1000,
@@ -106,12 +99,13 @@ export const HeaderDropdown = memo(
     );
 
     const mappedChildren = useMemo(() => {
-      // передаём в компонент children функцию закрытия, потом может пригодиться что бы закрывать дропдаун
-      return React.Children.map(children as ReactElement, (child) => {
-        return React.cloneElement(child, {
-          handleClose,
-        });
-      });
+      return children;
+      // можно передать в компонент children функцию закрытия что бы закрывать дропдаун
+      // return React.Children.map(children as ReactElement, (child) => {
+      //   return React.cloneElement(child, {
+      //     handleClose,
+      //   });
+      // });
     }, [children, handleClose]);
 
     return (
@@ -119,6 +113,7 @@ export const HeaderDropdown = memo(
         <button
           onClick={toggleOpen}
           className={classNames.dropdownTitleClassName}
+          ref={toggleButtonRef}
         >
           {title}
         </button>

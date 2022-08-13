@@ -15,6 +15,7 @@ export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
     justifyContent: "space-between",
     height: "52px",
     alignItems: "center",
+    flexShrink: 0,
   },
 
   [HEADER_COMPONENTS_NAMES.mainLogo]: {
@@ -115,7 +116,7 @@ export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
   },
 
   [HEADER_COMPONENTS_NAMES.dropdownBody]: {
-    position: "fixed",
+    position: "absolute",
     transform: "translateX(-100%) translateY(10px)",
     zIndex: 1,
     background: "#FFF",

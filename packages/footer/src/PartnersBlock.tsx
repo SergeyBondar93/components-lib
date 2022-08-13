@@ -127,7 +127,7 @@ export const PartnersBlock = ({
     <div className={classNames.partnerBlockWrapperClassName} ref={wrapperRef}>
       <div className={classNames.partnersCountWrapperClassName}>
         <span className={classNames.partnersCountClassName}>
-          {Intl.NumberFormat().format(partnersCount)}
+          {Intl.NumberFormat("ru").format(partnersCount)}
         </span>
         <br />
         <span className={classNames.partnersCountTextClassName}>

@@ -1,4 +1,4 @@
-import { toggleElementInArray, useClickOutsideComponent } from "@cheaaa/utils";
+import { toggleElementInArray, useClickOutsideComponents } from "@cheaaa/utils";
 import {
   createRef,
   useCallback,
@@ -172,7 +172,7 @@ export const Select = ({
     setActiveValue(null);
   }, []);
 
-  useClickOutsideComponent(wrapperRef, handleClose);
+  useClickOutsideComponents([wrapperRef], handleClose);
 
   const optionsObject = useMemo(() => {
     return options.reduce(

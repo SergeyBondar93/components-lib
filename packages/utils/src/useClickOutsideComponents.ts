@@ -1,15 +1,17 @@
 import { MutableRefObject, useEffect } from "react";
 
-export const useClickOutsideComponent = (
-  ref: MutableRefObject<any>,
-  handleClick: () => void
+export const useClickOutsideComponents = (
+  refs: MutableRefObject<any>[],
+  handleClick: (e: MouseEvent | TouchEvent) => void
 ): void => {
   useEffect(() => {
     const handleClickOutsideComponent = (
       event: MouseEvent | TouchEvent
     ): void => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        handleClick();
+      if (
+        refs.every((ref) => ref.current && !ref.current.contains(event.target))
+      ) {
+        handleClick(event);
       }
     };
 
