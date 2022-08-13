@@ -1,5 +1,13 @@
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import { useState, ReactNode, useMemo, useCallback, useRef, memo } from "react";
+import {
+  useState,
+  ReactNode,
+  useMemo,
+  useCallback,
+  useRef,
+  memo,
+  useEffect,
+} from "react";
 import React from "react";
 import { Transition } from "react-transition-group";
 import { useClickOutsideComponents } from "@cheaaa/utils";
@@ -107,6 +115,23 @@ export const HeaderDropdown = memo(
       //   });
       // });
     }, [children, handleClose]);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([{ isIntersecting }]) => {
+          if (!isIntersecting) {
+            setIsOpen(false);
+          }
+        },
+        { root: null, threshold: 0 }
+      );
+      observer.observe(wrapperRef.current!);
+
+      return () => {
+        wrapperRef.current && observer.unobserve(wrapperRef.current);
+        observer.disconnect();
+      };
+    }, []);
 
     return (
       <div className={classNames.dropdownWrapperClassName} ref={wrapperRef}>
