@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.5.10...@cheaaa/datepicker@1.6.0) (2022-08-13)
+
+
+### Features
+
+* change header default styles, add array to useClickOutsideComponents refs param ([659f798](https://github.com/SergeyBondar93/liba/commit/659f7981107c59b17bfda8442ce209f99099cb6d))
+
+
+
+
+
 ## [1.5.10](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.5.9...@cheaaa/datepicker@1.5.10) (2022-08-11)
 
 **Note:** Version bump only for package @cheaaa/datepicker

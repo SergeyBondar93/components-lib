@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/SergeyBondar93/liba/compare/@cheaaa/modal@2.0.2...@cheaaa/modal@2.0.3) (2022-08-13)
+
+**Note:** Version bump only for package @cheaaa/modal
+
+
+
+
+
 ## [2.0.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/modal@2.0.1...@cheaaa/modal@2.0.2) (2022-08-11)
 
 **Note:** Version bump only for package @cheaaa/modal

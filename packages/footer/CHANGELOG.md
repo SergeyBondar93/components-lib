@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/footer@1.4.0...@cheaaa/footer@1.5.0) (2022-08-13)
+
+
+### Features
+
+* add eslint rule, add partner block to footer ([7192e18](https://github.com/SergeyBondar93/liba/commit/7192e18efc416b2144d35350bd6e64f0a053caa0))
+* change header default styles, add array to useClickOutsideComponents refs param ([659f798](https://github.com/SergeyBondar93/liba/commit/659f7981107c59b17bfda8442ce209f99099cb6d))
+
+
+
+
+
 # [1.4.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/footer@1.3.0...@cheaaa/footer@1.4.0) (2022-08-12)
 
 
