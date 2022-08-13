@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/input",
-	"version": "1.27.3",
+	"version": "1.27.4",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -24,7 +24,7 @@
 	"private": false,
 	"dependencies": {
 		"@cheaaa/theme": "^1.5.0",
-		"@cheaaa/utils": "^1.5.0"
+		"@cheaaa/utils": "^1.6.0"
 	},
 	"peerDependencies": {
 		"react": ">=17.0.2"

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.10](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tooltip@1.1.9...@cheaaa/tooltip@1.1.10) (2022-08-13)
+
+**Note:** Version bump only for package @cheaaa/tooltip
+
+
+
+
+
 ## [1.1.9](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tooltip@1.1.8...@cheaaa/tooltip@1.1.9) (2022-08-11)
 
 **Note:** Version bump only for package @cheaaa/tooltip

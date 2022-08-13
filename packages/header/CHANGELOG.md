@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.10.1...@cheaaa/header@1.11.0) (2022-08-13)
+
+
+### Features
+
+* change header default styles, add array to useClickOutsideComponents refs param ([659f798](https://github.com/SergeyBondar93/liba/commit/659f7981107c59b17bfda8442ce209f99099cb6d))
+
+
+
+
+
 ## [1.10.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.10.0...@cheaaa/header@1.10.1) (2022-08-12)
 
 **Note:** Version bump only for package @cheaaa/header
