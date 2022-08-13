@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.12.0...@cheaaa/header@1.13.0) (2022-08-13)
+
+
+### Bug Fixes
+
+* fix header dropdown ([2c783c4](https://github.com/SergeyBondar93/liba/commit/2c783c4976c44bf7858699fb5c0c5bc742f95a6c))
+
+
+### Features
+
+* change header default styles, add array to useClickOutsideComponents refs param ([659f798](https://github.com/SergeyBondar93/liba/commit/659f7981107c59b17bfda8442ce209f99099cb6d))
+* close headerDropdown if not isIntersecting ([a92b1a6](https://github.com/SergeyBondar93/liba/commit/a92b1a69f0df2810a361dad7ecf9b4e22a754d1e))
+
+
+
+
+
 # [1.12.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.11.0...@cheaaa/header@1.12.0) (2022-08-13)
 
 
