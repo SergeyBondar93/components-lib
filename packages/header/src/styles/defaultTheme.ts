@@ -116,7 +116,7 @@ export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
   },
 
   [HEADER_COMPONENTS_NAMES.dropdownBody]: {
-    position: "absolute",
+    position: "fixed",
     transform: "translateX(-100%) translateY(10px)",
     zIndex: 1,
     background: "#FFF",
