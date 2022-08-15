@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/header",
-	"version": "1.13.0",
+	"version": "1.13.1",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -29,7 +29,7 @@
 		"@cheaaa/theme": "^1.5.0"
 	},
 	"devDependencies": {
-		"@cheaaa/container": "^1.1.2"
+		"@cheaaa/container": "^1.2.0"
 	},
 	"peerDependencies": {
 		"react": ">=17.0.2"
