@@ -24,6 +24,7 @@ import {
   SelectProps,
 } from "./types";
 import { Option } from "./Option";
+import { keyboardIndependSearchFunction } from "./keyboardIndependSearchFunction";
 
 export const Select = ({
   baseAppearance = "base",
@@ -51,7 +52,7 @@ export const Select = ({
     ...inputProps
   } = {},
   isOptionDisabledFunction,
-  filterFunction,
+  filterFunction = keyboardIndependSearchFunction,
 }: SelectProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const selectedListRef = useRef<HTMLDivElement>(null);
