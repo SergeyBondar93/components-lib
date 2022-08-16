@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/tooltip",
-	"version": "1.1.10",
+	"version": "1.1.11",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -24,8 +24,8 @@
 	"private": false,
 	"dependencies": {
 		"@cheaaa/portal": "^1.3.0",
-		"@cheaaa/theme": "^1.5.0",
-		"@cheaaa/utils": "^1.6.0",
+		"@cheaaa/theme": "^1.5.1",
+		"@cheaaa/utils": "^1.6.1",
 		"react-tooltip": "^4.2.21"
 	},
 	"peerDependencies": {

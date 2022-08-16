@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.5.0...@cheaaa/theme@1.5.1) (2022-08-16)
+
+
+### Bug Fixes
+
+* remove dublicates in classNames ([d10730a](https://github.com/SergeyBondar93/liba/commit/d10730aded01fc96553a26bed4b0440dd6ecbdba))
+
+
+
+
+
 # 1.5.0 (2022-08-11)
 
 
