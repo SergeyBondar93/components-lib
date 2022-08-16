@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/container@1.1.2...@cheaaa/container@1.2.0) (2022-08-15)
+
+
+### Features
+
+* change container paddings ([76acad9](https://github.com/SergeyBondar93/liba/commit/76acad90c737733ae343da53679142a9126798b4))
+
+
+
+
+
 ## 1.1.2 (2022-08-11)
 
 **Note:** Version bump only for package @cheaaa/container
