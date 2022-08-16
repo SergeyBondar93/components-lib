@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.7.1 (2022-08-16)
+
+
+### Bug Fixes
+
+* fix icon sizes ([63a2b1d](https://github.com/SergeyBondar93/liba/commit/63a2b1d25dc56caad0a87e9b5d9d2708e3948758))
+
+
+
+
+
 # [1.7.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/icons@1.6.0...@cheaaa/icons@1.7.0) (2022-08-10)
 
 
