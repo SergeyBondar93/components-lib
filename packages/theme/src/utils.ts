@@ -12,6 +12,10 @@ const getAppearanceClass = (mods: (string | undefined)[]) => {
   return mods.filter(Boolean).join("-");
 };
 
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
 export const getClassName = <T extends string>(
   classes: Classes,
   baseAppearance: string,
@@ -23,7 +27,7 @@ export const getClassName = <T extends string>(
     classes[getAppearanceClass([componentName, "base"])],
     classes[getAppearanceClass([componentName, baseAppearance])],
     classes[getAppearanceClass([componentName, appearance])],
-  ];
+  ].filter(onlyUnique);
 
   return classNames(...uniqieClasses);
 };
