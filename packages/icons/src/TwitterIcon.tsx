@@ -3,8 +3,8 @@ import { FC } from "react";
 import { SvgIcon } from "./types";
 
 export const TwitterIcon: FC<SvgIcon> = ({
-  width = 20,
-  height = 12,
+  width = 18,
+  height = 16,
   fill = "#636AFF",
 }) => {
   return (
