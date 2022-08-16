@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.10.0...@cheaaa/select@1.11.0) (2022-08-16)
+
+
+### Features
+
+* set keyboardIndependSearchFunction as default in search ([3483010](https://github.com/SergeyBondar93/liba/commit/34830101262706ad451507e80e2eb15068ebec90))
+
+
+
+
+
 # [1.10.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.9.8...@cheaaa/select@1.10.0) (2022-08-13)
 
 
