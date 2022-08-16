@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/footer",
-	"version": "1.5.1",
+	"version": "1.5.2",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -27,7 +27,7 @@
 		"@cheaaa/button": "^1.9.4",
 		"@cheaaa/contacts": "^1.2.1",
 		"@cheaaa/container": "^1.2.0",
-		"@cheaaa/icons": "^1.7.0",
+		"@cheaaa/icons": "^1.7.1",
 		"@cheaaa/theme": "^1.5.0"
 	},
 	"peerDependencies": {
