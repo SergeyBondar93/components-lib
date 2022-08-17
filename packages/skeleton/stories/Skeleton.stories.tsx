@@ -21,7 +21,7 @@ export const BaseTemplate = () => {
       <Skeleton height="30px" animated shouldFitContent />
       <Title>Not Animated Fix width</Title>
       <Skeleton height="30px" width="250px" animated={false} />
-      <Title>Animated Should fit content</Title>
+      <Title>Not Animated Should fit content</Title>
       <Skeleton height="30px" animated={false} shouldFitContent />
     </div>
   );
