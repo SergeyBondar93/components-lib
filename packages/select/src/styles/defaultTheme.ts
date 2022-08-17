@@ -67,8 +67,14 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     borderTop: "1px solid rgba(113, 130, 153, 0.15)",
     fontSize: "14px",
     cursor: "pointer",
+    "& span": {
+      transition: "0.2s",
+    },
+    '&:active[data-disabled="false"] span': {
+      transform: "scale(0.93)",
+    },
     '&[data-active="true"]': {
-      background: "#E5ECF7",
+      background: "#F6F9FF",
     },
     '&[data-disabled="true"]': {
       opacity: "0.7",

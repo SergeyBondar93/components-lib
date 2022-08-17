@@ -21,8 +21,15 @@ export const defaultCheckboxTheme: Required<
       cursor: "not-allowed",
       opacity: 0.7,
     },
-    '&:active[data-disabled="false"]': {
-      transform: "scale(0.97)",
+    // '&:active[data-disabled="false"]': {
+    //   transform: "scale(0.97)",
+    // },
+    "& > *": {
+      transition: "0.2s",
+    },
+    // TODO спросить у Стёпы, возможно вернуть прошлую версию
+    '&:active[data-disabled="false"] > *': {
+      transform: "scale(0.93)",
     },
   },
   [CHECKBOX_COMPONENTS_NAMES.input]: {

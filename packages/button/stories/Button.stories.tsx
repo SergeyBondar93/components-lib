@@ -91,11 +91,17 @@ const CustomComponentTemplate: Story<ICustomComponentTemplateProps> = (
         component={LinkComponent}
         {...args}
         onClick={onClick}
+        passAppearancesToComponent={false}
       >
         I am link!
       </Button>
       <h4>Added href attribute for make link</h4>
-      <Button href="https://google.com" {...args} onClick={onClick}>
+      <Button
+        href="https://google.com"
+        {...args}
+        onClick={onClick}
+        passAppearancesToComponent={false}
+      >
         I am link!
       </Button>
       <h4>React Router Link</h4>
@@ -106,6 +112,7 @@ const CustomComponentTemplate: Story<ICustomComponentTemplateProps> = (
           component={Link}
           to={"/"}
           onClick={onClick}
+          passAppearancesToComponent={false}
         >
           I am link!
         </Button>
@@ -116,6 +123,7 @@ const CustomComponentTemplate: Story<ICustomComponentTemplateProps> = (
         component={MyCustomComponent}
         color="green"
         onClick={onClick}
+        passAppearancesToComponent={false}
       >
         Custom div component
       </Button>
@@ -244,6 +252,7 @@ const IconButtonTemplate: Story<IIconButtonTemplateProps> = ({
           {...args}
           onClick={onClick}
           icon={<DeleteIcon width={width} height={height} />}
+          passAppearancesToComponent={false}
         />
       </div>
       <div style={wrapperStyles}>
@@ -254,6 +263,7 @@ const IconButtonTemplate: Story<IIconButtonTemplateProps> = ({
           href="https://google.com"
           onClick={onClick}
           icon={<NavArrowIcon width={width} height={height} />}
+          passAppearancesToComponent={false}
         />
       </div>
       <div style={wrapperStyles}>
@@ -261,6 +271,7 @@ const IconButtonTemplate: Story<IIconButtonTemplateProps> = ({
           {...args}
           onClick={onClick}
           icon={<SendIcon width={width} height={height} />}
+          passAppearancesToComponent={false}
         />
       </div>
       <div style={wrapperStyles}>
@@ -268,6 +279,7 @@ const IconButtonTemplate: Story<IIconButtonTemplateProps> = ({
           {...args}
           onClick={onClick}
           icon={<BasketIcon width={width} height={height} />}
+          passAppearancesToComponent={false}
         />
       </div>
     </>

@@ -1,6 +1,6 @@
 import { ComponentTheme } from "@cheaaa/theme";
 
-import { INPUT_COMPONENTS_NAMES } from "./consts";
+import { INPUT_AUTOCOMPLETE_SELECTOR, INPUT_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
 export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
@@ -62,6 +62,11 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     width: "100%",
     fontSize: "13px",
     textAlign: "initial",
+
+    background: "red",
+    [INPUT_AUTOCOMPLETE_SELECTOR]: {
+      transition: "background-color 600000s 0s, color 600000s 0s",
+    },
 
     "&:not(:focus)::placeholder": {
       opacity: 0,

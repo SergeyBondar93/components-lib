@@ -8,3 +8,8 @@ export const INPUT_COMPONENTS_NAMES = {
   clearIcon: "clearIcon",
   label: "label",
 } as const;
+
+export const INPUT_AUTOCOMPLETE_SELECTOR = `&:-webkit-autofill,
+&:-webkit-autofill:hover, 
+&:-webkit-autofill:focus, 
+&:-webkit-autofill:active`;

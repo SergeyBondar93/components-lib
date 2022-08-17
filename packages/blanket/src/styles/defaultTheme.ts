@@ -17,13 +17,13 @@ export const defaultBlanketStyles: Required<ComponentTheme<ComponentNames>> = {
     height: "100vh",
     zIndex: "3",
     transitionProperty: "background, opacity",
-    transition: `${DEFAULT_ANIMATION_DURATION}ms`,
+    transitionDuration: `${DEFAULT_ANIMATION_DURATION}ms`,
 
     [`&[data-animation-state="${ENTERING}"]`]: {
       opacity: 0,
     },
     [`&[data-animation-state="${ENTERED}"]`]: {
-      opacity: 0.2,
+      opacity: 0.55,
     },
     [`&[data-animation-state="${EXITING}"]`]: {
       opacity: 0,
