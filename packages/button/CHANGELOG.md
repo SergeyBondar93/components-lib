@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.9.5...@cheaaa/button@1.10.0) (2022-08-17)
+
+
+### Features
+
+* improve components bydesign. add skeleton component ([6f10743](https://github.com/SergeyBondar93/liba/commit/6f10743b8223923cbc1f055dd1127a86ad5e65d3))
+
+
+
+
+
 ## [1.9.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/button@1.9.4...@cheaaa/button@1.9.5) (2022-08-16)
 
 **Note:** Version bump only for package @cheaaa/button
