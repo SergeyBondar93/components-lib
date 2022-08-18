@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/checkbox@2.1.0...@cheaaa/checkbox@2.2.0) (2022-08-17)
+
+
+### Bug Fixes
+
+* change checkbox active styles ([ba4aac7](https://github.com/SergeyBondar93/liba/commit/ba4aac70610272b764d179c2fe5c570f15deee99))
+
+
+### Features
+
+* improve components bydesign. add skeleton component ([6f10743](https://github.com/SergeyBondar93/liba/commit/6f10743b8223923cbc1f055dd1127a86ad5e65d3))
+
+
+
+
+
 # [2.1.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/checkbox@2.0.8...@cheaaa/checkbox@2.1.0) (2022-08-17)
 
 
