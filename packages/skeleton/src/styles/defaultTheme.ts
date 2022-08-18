@@ -9,11 +9,11 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     display: "block",
     backgroundRepeat: "no-repeat",
 
-    animation: "$skeletonLoading 1.5s infinite",
+    animation: "$skeletonLoading 1.5s infinite linear",
 
     '&[data-animated="true"]': {
       background:
-        "linear-gradient(90.23deg, rgba(113, 130, 153, 0.12) 40.63%, rgba(113, 130, 153, 0) 51.56%, rgba(113, 130, 153, 0.12) 62.5%), #FFFFFF",
+        "linear-gradient(0.25turn, transparent, #FFF, transparent), linear-gradient(rgba(113, 130, 153, 0.12), rgba(113, 130, 153, 0.12))",
     },
 
     '&[data-animated="false"]': {
