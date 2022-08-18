@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/skeleton@1.1.0...@cheaaa/skeleton@1.2.0) (2022-08-18)
+
+
+### Features
+
+* add CheJssProvider, improve skeleton component ([df5a125](https://github.com/SergeyBondar93/liba/commit/df5a125c48daaeed4df1dcc2a14c0ef83c5e0a09))
+
+
+
+
+
 # 1.1.0 (2022-08-17)
 
 

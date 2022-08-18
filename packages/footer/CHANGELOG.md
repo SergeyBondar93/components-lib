@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.6](https://github.com/SergeyBondar93/liba/compare/@cheaaa/footer@1.5.5...@cheaaa/footer@1.5.6) (2022-08-18)
+
+**Note:** Version bump only for package @cheaaa/footer
+
+
+
+
+
 ## [1.5.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/footer@1.5.4...@cheaaa/footer@1.5.5) (2022-08-17)
 
 **Note:** Version bump only for package @cheaaa/footer
