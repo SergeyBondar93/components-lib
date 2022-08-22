@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/icons",
-	"version": "1.8.0",
+	"version": "1.9.0",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -24,8 +24,6 @@
 		"access": "public"
 	},
 	"private": false,
-	"dependencies": {
-	},
 	"devDependencies": {
 		"react-use": "^17.4.0"
 	},

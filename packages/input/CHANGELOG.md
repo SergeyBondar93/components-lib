@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.29.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.28.1...@cheaaa/input@1.29.0) (2022-08-22)
+
+
+### Features
+
+* change icons package publish directory ([e7cef0f](https://github.com/SergeyBondar93/liba/commit/e7cef0f1a8ad52c222d2a725f0ab7f43e538e4a5))
+
+
+
+
+
 ## [1.28.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.28.0...@cheaaa/input@1.28.1) (2022-08-18)
 
 **Note:** Version bump only for package @cheaaa/input

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/icons@1.8.0...@cheaaa/icons@1.9.0) (2022-08-22)
+
+
+### Bug Fixes
+
+* fix build:storybook and prepublish scripts in icon package ([957e8f8](https://github.com/SergeyBondar93/liba/commit/957e8f829760747ddea0923f84c31ebd7a7ba294))
+* fix tsconfig in icons ([b7cc3ba](https://github.com/SergeyBondar93/liba/commit/b7cc3babc7d0bf2b7b93ba46f06b46f763178a6a))
+* remove icons scripts, add npmignore ([f657e3b](https://github.com/SergeyBondar93/liba/commit/f657e3b42004757263e737f51827b1ffb78cc54f))
+
+
+### Features
+
+* change icons build system ([aa8e572](https://github.com/SergeyBondar93/liba/commit/aa8e572b8c1cc010d49fb4824e188713d25e57f6))
+* change icons package publish directory ([e7cef0f](https://github.com/SergeyBondar93/liba/commit/e7cef0f1a8ad52c222d2a725f0ab7f43e538e4a5))
+
+
+
+
+
 # 1.8.0 (2022-08-22)
 
 
