@@ -7,7 +7,7 @@ fs.rmdir(storiesDir, { recursive: true }, (err) => {
         throw err;
     }
 
-    console.log(`${dir} is deleted!`);
+    console.log(`${storiesDir} is deleted!`);
 });
 
 const scriptsDir = 'scripts';
@@ -17,5 +17,5 @@ fs.rmdir(scriptsDir, { recursive: true }, (err) => {
         throw err;
     }
 
-    console.log(`${dir} is deleted!`);
+    console.log(`${scriptsDir} is deleted!`);
 });
