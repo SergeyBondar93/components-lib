@@ -9,14 +9,15 @@
 	"scripts": {
 		"test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
 		"test2": "jest",
-		"createIndexFile": "node createIndexFile.js",
-		"createStoriesFile": "node createStoriesFile.js",
+		"createIndexFile": "node ./scripts/createIndexFile.js",
+		"createStoriesFile": "node ./scripts/createStoriesFile.js",
 		"compileNew": "node build",
 		"compileNew1": "npx tsc",
 		"compileOld": "tsdx build --format cjs,esm --verbose",
 		"compile": "yarn compileNew1",
 		"build": "yarn createIndexFile && yarn clean && yarn compile",
 		"build:storybook": "yarn createIndexFile && yarn createStoriesFile",
+		"prepublish": "node ./scripts/prepublish.js",
 		"clean": "rimraf dist lib .publish node_modules"
 	},
 	"files": [
@@ -29,6 +30,8 @@
 	},
 	"private": false,
 	"dependencies": {
+	},
+	"devDependencies": {
 		"react-use": "^17.4.0"
 	},
 	"peerDependencies": {

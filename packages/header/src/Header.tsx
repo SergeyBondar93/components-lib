@@ -1,9 +1,7 @@
-import {
-  AccountIcon,
-  PhoneIcon,
-  MenuIcon,
-  CherehapaLogoIcon,
-} from "@cheaaa/icons";
+import { AccountIcon } from "@cheaaa/icons/AccountIcon";
+import { PhoneIcon } from "@cheaaa/icons/PhoneIcon";
+import { MenuIcon } from "@cheaaa/icons/MenuIcon";
+import { CherehapaLogoIcon } from "@cheaaa/icons/CherehapaLogoIcon";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { Contacts, IContacts } from "@cheaaa/contacts";
 import { memo, useMemo } from "react";

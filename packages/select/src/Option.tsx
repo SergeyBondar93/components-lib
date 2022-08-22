@@ -1,5 +1,5 @@
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import { CrossIcon } from "@cheaaa/icons";
+import { CrossIcon } from "@cheaaa/icons/CrossIcon";
 import { forwardRef, ReactNode, useMemo } from "react";
 
 import { useStyles, ComponentNames } from "./styles";

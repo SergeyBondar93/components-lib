@@ -1,12 +1,10 @@
-import {
-  CheIconFooter,
-  PCIIcon,
-  RSTIcon,
-  JCBIcon,
-  MastercardIcon,
-  VisaIcon,
-  MirIcon,
-} from "@cheaaa/icons";
+import { CheIconFooter } from "@cheaaa/icons/CheIconFooter";
+import { PCIIcon } from "@cheaaa/icons/PCIIcon";
+import { RSTIcon } from "@cheaaa/icons/RSTIcon";
+import { JCBIcon } from "@cheaaa/icons/JCBIcon";
+import { MastercardIcon } from "@cheaaa/icons/MastercardIcon";
+import { VisaIcon } from "@cheaaa/icons/VisaIcon";
+import { MirIcon } from "@cheaaa/icons/MirIcon";
 import { BREAKPOINTS, getClassName, IThemedProps } from "@cheaaa/theme";
 import { ReactNode, useMemo } from "react";
 import { Container } from "@cheaaa/container";

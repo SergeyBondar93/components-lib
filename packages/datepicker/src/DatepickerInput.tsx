@@ -1,6 +1,6 @@
 import { MutableRefObject, useMemo } from "react";
 import { IInputProps, Input } from "@cheaaa/input";
-import { CalendarIcon } from "@cheaaa/icons";
+import { CalendarIcon } from "@cheaaa/icons/CalendarIcon";
 
 import { formatDate } from "./utils";
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ThemeProvider } from "react-jss";
-import { CloseIcon } from "@cheaaa/icons";
+import { CloseIcon } from "@cheaaa/icons/CloseIcon";
 import { Input } from "@cheaaa/input";
 import { Button, IconButton } from "@cheaaa/button";
 import { Meta, Story } from "@storybook/react";

@@ -1,16 +1,14 @@
 import { Meta } from "@storybook/react";
 import { Container } from "@cheaaa/container";
-import {
-  MoonIcon,
-  PhoneIcon,
-  PlaneIcon,
-  CarIcon,
-  HomeIcon,
-  DocumentIcon,
-  WalletIcon,
-  InfoIcon,
-  CommandIcon,
-} from "@cheaaa/icons";
+import { MoonIcon } from "@cheaaa/icons/MoonIcon";
+import { PhoneIcon } from "@cheaaa/icons/PhoneIcon";
+import { PlaneIcon } from "@cheaaa/icons/PlaneIcon";
+import { CarIcon } from "@cheaaa/icons/CarIcon";
+import { HomeIcon } from "@cheaaa/icons/HomeIcon";
+import { DocumentIcon } from "@cheaaa/icons/DocumentIcon";
+import { WalletIcon } from "@cheaaa/icons/WalletIcon";
+import { InfoIcon } from "@cheaaa/icons/InfoIcon";
+import { CommandIcon } from "@cheaaa/icons/CommandIcon";
 import { useMemo, useState } from "react";
 
 import { Header } from "../src/Header";

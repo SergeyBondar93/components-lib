@@ -9,7 +9,7 @@ import {
 } from "react";
 import { getClassName } from "@cheaaa/theme";
 import { Input } from "@cheaaa/input";
-import { TriangleIcon } from "@cheaaa/icons";
+import { TriangleIcon } from "@cheaaa/icons/TriangleIcon";
 
 import {
   ComponentNames,

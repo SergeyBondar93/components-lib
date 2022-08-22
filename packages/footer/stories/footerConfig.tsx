@@ -1,4 +1,7 @@
-import { TelegramIcon, TwitterIcon, VKIcon, WhatsupIcon } from "@cheaaa/icons";
+import { TelegramIcon } from "@cheaaa/icons/TelegramIcon";
+import { TwitterIcon } from "@cheaaa/icons/TwitterIcon";
+import { VKIcon } from "@cheaaa/icons/VKIcon";
+import { WhatsupIcon } from "@cheaaa/icons/WhatsupIcon";
 
 import { NavigationSections } from "../src";
 

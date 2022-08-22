@@ -49,3 +49,8 @@ package-lock.json
 .vscode/
 
 storybook-static
+
+
+packages/icons/*.d.ts
+packages/icons/*.js
+packages/icons/*.js.map

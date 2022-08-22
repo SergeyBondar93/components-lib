@@ -27,10 +27,11 @@
       "emitDecoratorMetadata": true,
       "skipLibCheck": true,
       "esModuleInterop": true,
-      "outDir": "dist"
+      "outDir": "./"
     },
     "include": [
-      "src/**/*"
+      "src/**/*",
+      "./**"
     ],
     "exclude": [
       "node_modules",
