@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.8.0 (2022-08-22)
+
+
+### Features
+
+* change icons build system ([aa8e572](https://github.com/SergeyBondar93/liba/commit/aa8e572b8c1cc010d49fb4824e188713d25e57f6))
+
+
+
+
+
 ## 1.7.1 (2022-08-16)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/contacts@1.2.3...@cheaaa/contacts@1.3.0) (2022-08-22)
+
+
+### Features
+
+* change icons build system ([aa8e572](https://github.com/SergeyBondar93/liba/commit/aa8e572b8c1cc010d49fb4824e188713d25e57f6))
+
+
+
+
+
 ## [1.2.3](https://github.com/SergeyBondar93/liba/compare/@cheaaa/contacts@1.2.2...@cheaaa/contacts@1.2.3) (2022-08-18)
 
 **Note:** Version bump only for package @cheaaa/contacts
