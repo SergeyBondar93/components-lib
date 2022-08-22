@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.13.5...@cheaaa/header@1.14.0) (2022-08-22)
+
+
+### Features
+
+* change icons package publish directory ([e7cef0f](https://github.com/SergeyBondar93/liba/commit/e7cef0f1a8ad52c222d2a725f0ab7f43e538e4a5))
+
+
+
+
+
 ## [1.13.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/header@1.13.4...@cheaaa/header@1.13.5) (2022-08-22)
 
 **Note:** Version bump only for package @cheaaa/header
