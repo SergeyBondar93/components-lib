@@ -16,7 +16,6 @@
 		"compile": "yarn compileNew1",
 		"build": "yarn clean && yarn compile",
 		"build:storybook": "yarn createStoriesFile && yarn build",
-		"prepublish": "node ./scripts/prepublish.js",
 		"clean": "rimraf dist lib .publish node_modules"
 	},
 	"author": "Cherehapa",
