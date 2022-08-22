@@ -11,7 +11,10 @@
 		"test2": "jest",
 		"createIndexFile": "node createIndexFile.js",
 		"createStoriesFile": "node createStoriesFile.js",
-		"compile": "tsdx build --format cjs,esm --verbose",
+		"compileNew": "node build",
+		"compileNew1": "npx tsc",
+		"compileOld": "tsdx build --format cjs,esm --verbose",
+		"compile": "yarn compileNew1",
 		"build": "yarn createIndexFile && yarn clean && yarn compile",
 		"build:storybook": "yarn createIndexFile && yarn createStoriesFile",
 		"clean": "rimraf dist lib .publish node_modules"
