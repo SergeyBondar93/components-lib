@@ -2,7 +2,7 @@ export const ACCORDION_COMPONENT_NAMESPACE = "@che/accordion";
 
 export const ACCORDION_COMPONENTS_NAMES = {
   /**
-   * Обёртка над аккордионом
+   * Обёртка над всем (titleButton + body)
    */
   wrapper: "wrapper",
   /**
