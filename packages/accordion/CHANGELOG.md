@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.10.6 (2022-08-23)
+
+**Note:** Version bump only for package @cheaaa/accordion
+
+
+
+
+
 ## [2.10.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.10.4...@cheaaa/accordion@2.10.5) (2022-08-18)
 
 **Note:** Version bump only for package @cheaaa/accordion

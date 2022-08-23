@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.6.1 (2022-08-23)
+
+**Note:** Version bump only for package @cheaaa/theme
+
+
+
+
+
 # [1.6.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/theme@1.5.1...@cheaaa/theme@1.6.0) (2022-08-18)
 
 
