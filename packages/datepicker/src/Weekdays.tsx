@@ -32,6 +32,9 @@ export const Weekdays = memo(
             <span
               className={className}
               key={weekday}
+              /**
+               * Названия дней на английском языке.
+               */
               data-weekday={englishWeekdays[index].toLowerCase()}
             >
               {weekday}

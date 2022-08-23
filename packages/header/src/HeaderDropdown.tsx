@@ -156,6 +156,11 @@ export const HeaderDropdown = memo(
               return [ENTERING, ENTERED, EXITING].includes(animationState) ? (
                 <div
                   className={classNames.dropdownBodyClassName}
+                  /**
+                   * Текущее состояние анимации.
+                   * Для стилизации необходимо использовать константы из react-transition-group/Transition
+                   * аналогично описанному в defaultTheme.ts
+                   */
                   data-animation-state={animationState}
                   ref={transitionRef}
                   style={{

@@ -1,59 +1,25 @@
 ## Button Component
 
-Стилизация через ThemeProvider от "react-jss"
+Компоненты
+- BaseButton = Компонент кнопки без стилей, обязательно принимает объект classes с описанными компонентами. Используется для создания новых компонентов кнопки в других компонентах. ```Не для приложений.```
 
-Namespaces: BUTTON_COMPONENT_NAMESPACE
+- Button = Кнопка, в зависимости от пропсов может становиться ссылкой или чем то другим.
 
-Содержит компоненты для стилизации через тему
+- ButtonGroup = Обёртка над группой кнопок, является компонентом ввода, обязательно принимает onChange + value, в children обязательна передача кнопок с аттрибутами value
 
-wrapper
+- IconButton = Кнопка с видом иконки
 
-Пример стилизации: 
+Jss theme namespaces: 
+- `BUTTON_COMPONENT_NAMESPACE`
+- `ICON_BUTTON_COMPONENT_NAMESPACE`
+- `BUTTON_GROUP_COMPONENT_NAMESPACE`
 
-```js script
-const theme = {
-  components: {
-    [BUTTON_COMPONENT_NAMESPACE]: {
-      base: {
-        [BUTTON_COMPONENTS_NAMES.wrapper]: {}
-      },
-      small: {
-        [BUTTON_COMPONENTS_NAMES.wrapper]: {
-          padding: "5px",
-          fontWeight: 600,
-          fontSize: "10px",
-        },
-      },
-      
-      primary: {
-        [BUTTON_COMPONENTS_NAMES.wrapper]: {
-          background: "#636AFF",
-          color: "#FFF",
-          "&:hover": {
-            background: color("#636AFF").darken(0.1).toString(),
-          },
-        },
-      },
-      secondary: {
-        [BUTTON_COMPONENTS_NAMES.wrapper]: {
-          background: "#EDF4FE",
-          color: "#636AFF",
-          "&:hover": {
-            background: color("#EDF4FE").darken(0.1).toString(),
-            color: color("#636AFF").darken(0.1).toString(),
-          },
-        },
-      },
-    },
-  },
-}
+При передаче href становится тегом `<a>{children}</a>`;
+
+Возможна передача кастомного компонента через props
+
+```jsx
+<Button component={CustomComponent}>text</Button>
 ```
 
-### Использование: 
-```JSX
-<Button
-  onClick={handleClick}
-  baseAppearance="appearanceName"
-  appearance="appearanceName"
-/>
-```
+Если не надо передавать appearance в кастомный компонент, следует передать passAppearancesToComponent={false};

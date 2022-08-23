@@ -1,21 +1,19 @@
 ## Input Component
 
-Содержит 2 компонента - Input | CodeInpit (для ввода числовых кодов)
+Компоненты 
+- Input 
+- CodeInpit (для ввода числовых кодов)
 
-Стилизация через ThemeProvider от "react-jss"
+Пропс `onChange` принимает callback, который первым параметром принимает новый value, вторым сам `event`
 
-Namespaces: INPUT_COMPONENT_NAMESPACE, CODE_INPUT_COMPONENT_NAMESPACE
+Для эмулирования состояния focused из приложения, можно передать `isActive` свойство. 
+Сама передача его вне зависимости от значения меняет стили компонента.
 
-Содержит компоненты для стилизации через тему
 
-wrapper
-input
-prefixWrapper
-postfixWrapper
-clearIcon
-label
+Jss theme namespaces: 
+- `INPUT_COMPONENT_NAMESPACE`
+- `CODE_INPUT_COMPONENT_NAMESPACE`
 
-Пример стилизации: 
 
 ```js script
 const theme = {

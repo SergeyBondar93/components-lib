@@ -178,19 +178,46 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
     return (
       <div
         data-shouldfitcontent={String(!!shouldFitContent)}
+        /**
+         * Стилизация invalid состояния инпута
+         */
         data-invalid={String(!!invalid)}
+        /**
+         * Стилизация valid состояния инпута
+         */
         data-valid={String(!!valid)}
+        /**
+         * Стилизация disabled состояния инпута
+         */
         data-disabled={String(!!disabled)}
+        /**
+         * Стилизация focused состояния инпута
+         */
         data-focused={String(!!isFocused)}
+        /**
+         * Стилизация инпута имеющего value
+         */
         data-hasvalue={String(!!value)}
+        /**
+         * Стилизация инпута с type="button"
+         */
         data-type-is-button={String(!!isButton)}
         className={classNames.wrapperClassName}
         onClick={handleClick}
+        /**
+         * При передаче свойства isActive добавляется свойство data-component-active
+         * для управления стилями при активном внешнем компоненте
+         * например при открытом Datepicker / Select.
+         * Обычно стилизуется как data-focused
+         */
         {...dataComponentActiveProp}
         {...wrapperProps}
       >
         {prefix && (
           <span
+            /**
+             * Стилизация disabled состояния инпута
+             */
             data-disabled={String(disabled)}
             ref={prefixRef}
             className={classNames.prefixWrapperClassName}
@@ -203,11 +230,29 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         )}
 
         <input
+          /**
+           * Стилизация disabled состояния инпута
+           */
           data-disabled={String(!!disabled)}
+          /**
+           * Стилизация focused состояния инпута
+           */
           data-focused={String(!!isFocused)}
+          /**
+           * Стилизация инпута имеющего value
+           */
           data-hasvalue={String(!!value)}
+          /**
+           * Стилизация invalid состояния инпута
+           */
           data-invalid={String(!!invalid)}
+          /**
+           * Стилизация valid состояния инпута
+           */
           data-valid={String(!!valid)}
+          /**
+           * Стилизация инпута с type="button"
+           */
           data-type-is-button={String(!!isButton)}
           {...dataComponentActiveProp}
           className={classNames.inputClassName}

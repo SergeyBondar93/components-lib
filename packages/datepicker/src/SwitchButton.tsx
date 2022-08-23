@@ -28,6 +28,9 @@ const SwitchButton: FC<any & SwitchButton> = ({
   return (
     <button
       className={className}
+      /**
+       * Является ли кнопка переключателем месяца на следующий
+       */
       data-is-next={String(!!isNext)}
       onClick={onClick}
     >

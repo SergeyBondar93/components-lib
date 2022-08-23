@@ -171,6 +171,11 @@ export const Modal: FC<IModalProps> = memo(
                 <div
                   ref={modalContentRef}
                   className={classNames.modalContentClassName}
+                  /**
+                   * Текущее состояние анимации.
+                   * Для стилизации необходимо использовать константы из react-transition-group/Transition
+                   * аналогично описанному в defaultTheme.ts
+                   */
                   data-animation-state={animationState}
                 >
                   <div className={classNames.headerWrapperClassName}>

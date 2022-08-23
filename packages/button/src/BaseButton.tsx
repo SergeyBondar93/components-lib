@@ -99,10 +99,10 @@ export const BaseButton = function <TProps>({
       className={className}
       onClick={onClick}
       disabled={disabled}
+      data-shouldfitcontent={String(!!shouldFitContent)}
       data-disabled={String(!!disabled)}
       data-selected={String(!!isSelected)}
       href={disabled ? undefined : href}
-      data-shouldfitcontent={String(!!shouldFitContent)}
       {...(Component && passAppearancesToComponent
         ? { appearance, baseAppearance }
         : {})}

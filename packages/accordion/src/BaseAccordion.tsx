@@ -245,9 +245,9 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
 
     return (
       <div
-        data-shouldfitcontent={String(!!shouldFitContent)}
         className={classNames.wrapperClassName}
         ref={ref}
+        data-shouldfitcontent={String(!!shouldFitContent)}
       >
         <Button
           shouldFitContent
@@ -256,6 +256,9 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
         >
           <Icon
             className={classNames.iconClassName}
+            /**
+             * Началось ли открытие аккордиона
+             */
             data-is-open={String(!!isOpen)}
           />
 
@@ -264,13 +267,16 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
         <div
           ref={bodyRef}
           className={classNames.bodyClassName}
-          data-is-opened={String(!!isFullOpened)}
           style={{
             height: _height,
             transition: animationRef.current
               ? animationDurationProps
               : undefined,
           }}
+          /**
+           * Открыт ли аккордион полностью
+           */
+          data-is-opened={String(!!isFullOpened)}
         >
           <div
             ref={childrenWrapperRef}

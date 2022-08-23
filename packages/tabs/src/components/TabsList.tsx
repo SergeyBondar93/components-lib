@@ -64,7 +64,7 @@ export const TabsList: FC<ITabsList> = memo(
     }, [children, onRender]);
 
     const classNames = useMemo(() => {
-      const TabsListClassName = getClassName<ComponentNames>(
+      const tabsListClassName = getClassName<ComponentNames>(
         classes,
         baseAppearance,
         appearance,
@@ -77,11 +77,11 @@ export const TabsList: FC<ITabsList> = memo(
         "highlighter"
       );
 
-      return { TabsListClassName, highlighterClassName };
+      return { tabsListClassName, highlighterClassName };
     }, []);
 
     return (
-      <div className={classNames.TabsListClassName} ref={tabsRef}>
+      <div className={classNames.tabsListClassName} ref={tabsRef}>
         {tabs}
         <span
           className={classNames.highlighterClassName}

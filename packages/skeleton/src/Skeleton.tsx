@@ -49,6 +49,9 @@ export const Skeleton = memo(
       <span
         className={classNames.wrapperClassName}
         data-shouldfitcontent={String(!!shouldFitContent)}
+        /**
+         * Следует ли давать анимацию
+         */
         data-animated={String(!!animated)}
         style={{
           width,

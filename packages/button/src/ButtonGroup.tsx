@@ -19,6 +19,9 @@ interface IButtonGroupPropsMultiValue {
    * внутри [BUTTON_GROUP_COMPONENT_NAMESPACE][appearance][BUTTON_GROUP_COMPONENTS_NAMES.button]
    */
   value: ValueType[];
+  /**
+   * Возможность выбрать несколько значений
+   */
   isMultiValue: true;
   children: ReactNode;
 }
@@ -32,6 +35,9 @@ interface IButtonGroupPropsSingleValue {
    * внутри [BUTTON_GROUP_COMPONENT_NAMESPACE][appearance][BUTTON_GROUP_COMPONENTS_NAMES.button]
    */
   value: ValueType | null;
+  /**
+   * Возможность выбрать несколько значений
+   */
   isMultiValue?: false;
   children: any;
 }

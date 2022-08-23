@@ -51,7 +51,6 @@ export const defaultCheckboxTheme: Required<
 export const defaultSwitchTheme: Required<
   ComponentTheme<SwitcherComponentNames>
 > = {
-  [SWITCHER_COMPONENTS_NAMES.groupWrapper]: defaultCheckboxTheme.groupWrapper,
   [SWITCHER_COMPONENTS_NAMES.wrapper]: defaultCheckboxTheme.wrapper,
   [SWITCHER_COMPONENTS_NAMES.input]: defaultCheckboxTheme.wrapper,
   [SWITCHER_COMPONENTS_NAMES.iconWrapper]: {

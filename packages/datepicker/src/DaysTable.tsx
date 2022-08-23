@@ -125,6 +125,10 @@ export const DaysTable = ({
               disabled={disabledDay || disabledCalendar}
               data-is-today={String(!!isToday)}
               data-is-selected={String(!!isSelected)}
+              /**
+               * Находится ли день в range между dateStart и dateEnd
+               * включается при передаче rangeSelector
+               */
               data-in-range={String(!!inRange)}
             >
               {date.getDate()}

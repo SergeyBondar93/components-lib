@@ -82,6 +82,9 @@ export const Tab = memo(
         ref={elemRef}
         className={className}
         disabled={disabled}
+        /**
+         * Активен ли таб
+         */
         data-selected={String(panelName === activePanelName)}
         onClick={handleClick}
       >

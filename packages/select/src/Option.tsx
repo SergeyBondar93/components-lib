@@ -61,6 +61,9 @@ export const Option = forwardRef<HTMLDivElement, IOptionProps>(
         onClick={onClick}
         onMouseOver={onMouseOver}
         onMouseLeave={onMouseLeave}
+        /**
+         * Активная опция, достигается либо через hover либо с помощью клавиатуры
+         */
         data-active={String(isActive)}
         data-disabled={String(!!disabled)}
         ref={ref}

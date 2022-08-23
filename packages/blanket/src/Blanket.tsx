@@ -50,8 +50,13 @@ export const Blanket = ({
             <div
               ref={blanketRef}
               className={className}
-              data-animation-state={animationState}
               onClick={onClick}
+              /**
+               * Текущее состояние анимации.
+               * Для стилизации необходимо использовать константы из react-transition-group/Transition
+               * аналогично описанному в defaultTheme.ts
+               */
+              data-animation-state={animationState}
             />
           )
         );

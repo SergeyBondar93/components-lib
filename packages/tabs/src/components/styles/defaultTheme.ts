@@ -24,7 +24,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     height: "3px",
     borderRadius: "2px",
     background: "#636AFF",
-    transition: "0.5s",
+    transition: "0.3s",
   },
   [TABS_COMPONENTS_NAMES.tabLabel]: {
     border: "0px",

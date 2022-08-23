@@ -3,6 +3,7 @@ import { ACCORDION_COMPONENTS_NAMES } from "@cheaaa/accordion";
 export const DATEPICKER_COMPONENT_NAMESPACE = "@che/calendar";
 
 export const DATEPICKER_COMPONENTS_NAMES = {
+  // TODO убрать, сделать по другому что бы тут нейминги были другие
   ...ACCORDION_COMPONENTS_NAMES,
 
   /**
@@ -43,5 +44,3 @@ export const DATEPICKER_COMPONENTS_NAMES = {
   weekday: "weekday",
   day: "day",
 } as const;
-
-// export const DEFAULT_CALENDAR_CHANGE_MONTH_BUTTON_APPEARANCE
