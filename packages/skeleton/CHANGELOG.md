@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.1 (2022-08-23)
+
+**Note:** Version bump only for package @cheaaa/skeleton
+
+
+
+
+
 # [1.2.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/skeleton@1.1.0...@cheaaa/skeleton@1.2.0) (2022-08-18)
 
 

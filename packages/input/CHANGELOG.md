@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.29.1 (2022-08-23)
+
+**Note:** Version bump only for package @cheaaa/input
+
+
+
+
+
 # [1.29.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.28.1...@cheaaa/input@1.29.0) (2022-08-22)
 
 

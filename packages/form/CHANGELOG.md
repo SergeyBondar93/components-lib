@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.6 (2022-08-23)
+
+**Note:** Version bump only for package @cheaaa/form
+
+
+
+
+
 ## [2.1.5](https://github.com/SergeyBondar93/liba/compare/@cheaaa/form@2.1.4...@cheaaa/form@2.1.5) (2022-08-18)
 
 **Note:** Version bump only for package @cheaaa/form

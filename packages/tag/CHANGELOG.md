@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.7 (2022-08-23)
+
+**Note:** Version bump only for package @cheaaa/tag
+
+
+
+
+
 ## [1.1.6](https://github.com/SergeyBondar93/liba/compare/@cheaaa/tag@1.1.5...@cheaaa/tag@1.1.6) (2022-08-18)
 
 **Note:** Version bump only for package @cheaaa/tag
