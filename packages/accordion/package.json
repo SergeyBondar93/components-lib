@@ -24,6 +24,7 @@
   "private": false,
   "dependencies": {
     "@cheaaa/button": "^1.10.3",
+    "@cheaaa/theme": "^1.6.1",
     "@cheaaa/utils": "^1.6.3"
   },
   "devDependencies": {
@@ -31,7 +32,6 @@
     "react-select": "^5.4.0"
   },
   "peerDependencies": {
-    "@cheaaa/theme": "^1.2.10",
     "react": ">=17.0.2"
   }
 }
