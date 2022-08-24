@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.9](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.10.8...@cheaaa/accordion@2.10.9) (2022-08-24)
+
+
+### Bug Fixes
+
+* add deps to package.json ([d16cc5b](https://github.com/SergeyBondar93/liba/commit/d16cc5bd3a33b18d6320e8ec8bd3db2eba62f814))
+
+
+
+
+
 ## [2.10.8](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.10.7...@cheaaa/accordion@2.10.8) (2022-08-24)
 
 
