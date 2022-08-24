@@ -164,9 +164,7 @@ const CustomHeightTemplate = () => {
         }}
       >
         <Accordion
-          getHeightStyles={({ isOpen }) =>
-            isOpen ? window.innerHeight - 80 : 0
-          }
+          getHeightStyles={({ isOpen }) => (isOpen ? window.innerHeight : 0)}
           title={"Дни недели"}
         >
           <Weekdays />

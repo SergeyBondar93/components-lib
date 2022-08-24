@@ -15,6 +15,7 @@ export const IconButton = function <TProps>({
 }: IIconButtonProps<TProps>) {
   const classes = useIconButtonStyles();
 
+  // Прокидывание стилей в пропсах возможно только из ButtonGroups компонента, не из приложения
   return (
     <BaseButton classes={props.classes || classes} {...(props as any)}>
       {icon}
