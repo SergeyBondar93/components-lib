@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.8](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.10.7...@cheaaa/accordion@2.10.8) (2022-08-24)
+
+
+### Bug Fixes
+
+* remove todo, rename accordion wrapper description ([67e919c](https://github.com/SergeyBondar93/liba/commit/67e919cc61d65cc10afca3fc547d79c8ba7562f5))
+
+
+
+
+
 ## [2.10.7](https://github.com/SergeyBondar93/liba/compare/@cheaaa/accordion@2.10.6...@cheaaa/accordion@2.10.7) (2022-08-23)
 
 

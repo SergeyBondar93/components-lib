@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/footer",
-	"version": "1.6.3",
+	"version": "1.6.4",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -23,8 +23,8 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/accordion": "^2.10.7",
-		"@cheaaa/button": "^1.10.2",
+		"@cheaaa/accordion": "^2.10.8",
+		"@cheaaa/button": "^1.10.3",
 		"@cheaaa/contacts": "^1.4.2",
 		"@cheaaa/container": "^1.2.3",
 		"@cheaaa/icons": "^1.10.1",
