@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.3](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.7.2...@cheaaa/datepicker@1.7.3) (2022-08-23)
+
+
+### Bug Fixes
+
+* remove todo, rename accordion wrapper description ([67e919c](https://github.com/SergeyBondar93/liba/commit/67e919cc61d65cc10afca3fc547d79c8ba7562f5))
+
+
+
+
+
 ## [1.7.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.7.1...@cheaaa/datepicker@1.7.2) (2022-08-23)
 
 **Note:** Version bump only for package @cheaaa/datepicker
