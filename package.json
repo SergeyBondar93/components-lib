@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "pre-commit": "yarn lint --quiet",
+    "pre-commit": "echo \"EEE!\" && yarn lint --quiet",
     "lint": "tsc --noEmit && eslint \"packages/**/{src,stories,test}/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "yarn lint --fix --quiet",
     "compile": "yarn lerna run compile",

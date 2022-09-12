@@ -1,5 +1,3 @@
-http://che-uikit.s3-website.eu-central-1.amazonaws.com/
-
 
 ### Начинать чтение Readme отдельных пакетов следует с пакета theme
 
@@ -7,20 +5,18 @@ http://che-uikit.s3-website.eu-central-1.amazonaws.com/
 
 # README #
 
-## Cherehapa Components Liburary
 
 Библиотека компонентов
 
 Локально доступен по адресу [http://localhost:9009/](http://localhost:9009/)
-Глобально доступен по адресу [http://che-uikit.s3-website.eu-central-1.amazonaws.com/](http://che-uikit.s3-website.eu-central-1.amazonaws.com/)
 
 ## Технологический стек
 
+- React [React](https://www.reactjs.org/)
 - Используется [монорепозиторий](https://monorepo.tools/). Для обработки команд и работы с монорепозиторием используется [lerna](https://github.com/lerna/lerna)
 - Пакетный менеджер [Yarn](https://yarnpkg.com/)
 - Языком разработки является [Typescript](https://www.typescriptlang.org/)
 - Сборщики- TSDX / TSC [TSDX](https://github.com/jaredpalmer/tsdx) / [TSC](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
-- Шаблоны React [React](https://www.reactjs.org/)
 - Стейт [Redux](https://redux.js.org/)
 - Контроль стиля кода [Eslint](https://eslint.org/)
 - Описание коммитов [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
