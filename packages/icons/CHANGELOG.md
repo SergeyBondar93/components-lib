@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.11.0 (2022-09-12)
+
+
+### Features
+
+* test change icons build ([7d59885](https://github.com/SergeyBondar93/liba/commit/7d5988507bceb0971d06e131335a5e1840ec148a))
+
+
+
+
+
 ## [1.10.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/icons@1.10.0...@cheaaa/icons@1.10.1) (2022-08-23)
 
 **Note:** Version bump only for package @cheaaa/icons
