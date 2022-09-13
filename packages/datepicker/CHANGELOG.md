@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.7.6...@cheaaa/datepicker@1.8.0) (2022-09-13)
+
+
+### Features
+
+* add onClear to datepicker ([dc27e65](https://github.com/SergeyBondar93/liba/commit/dc27e658de4e5515d1962347793ebcb22e6eeea6))
+
+
+
+
+
 ## [1.7.6](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.7.5...@cheaaa/datepicker@1.7.6) (2022-09-12)
 
 **Note:** Version bump only for package @cheaaa/datepicker
