@@ -11,6 +11,7 @@ import React, {
 import { useClickOutsideComponents, useCombinedRefs } from "@cheaaa/utils";
 import { IThemedProps } from "@cheaaa/theme";
 import { IInputProps } from "@cheaaa/input";
+import { SvgIcon } from "@cheaaa/icons/types";
 
 import { Calendar, CalendarComponent } from "./Calendar";
 import { useStyles } from "./styles";
@@ -55,6 +56,18 @@ export interface IDatepickerProps extends IThemedProps, CalendarComponent {
   onChangeIsOpen?: (newIsOpen: boolean) => void;
 
   /**
+   * При наличии value меняет иконку календаря на CrossIcon(крестик)
+   * Обработка очистки необходима из приложения.
+   * При нажатии на кнопку очистки просто вызывается этот callback
+   */
+  onClear?: React.DOMAttributes<SVGSVGElement>["onClick"];
+
+  /**
+   * Props для иконки крестика при наличии onClear
+   */
+  clearIconProps?: SvgIcon;
+
+  /**
    * Делает width: 100%
    */
   shouldFitContent?: boolean;
@@ -93,6 +106,8 @@ export const Datepicker = ({
   value,
   onChange,
   onChangeIsOpen,
+  onClear,
+  clearIconProps,
 
   rangeSelector,
   startDate,
@@ -143,8 +158,19 @@ export const Datepicker = ({
       inputProps,
       innerRef: mergedInputRef,
       isOpen,
+      onClear,
+      clearIconProps,
     };
-  }, [value, placeholder, label, disabled, inputProps, isOpen]);
+  }, [
+    value,
+    placeholder,
+    label,
+    disabled,
+    inputProps,
+    isOpen,
+    onClear,
+    clearIconProps,
+  ]);
 
   useClickOutsideComponents([accordionRef], handleClose);
 

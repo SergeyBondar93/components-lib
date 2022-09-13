@@ -1,6 +1,8 @@
 import { MutableRefObject, useMemo } from "react";
 import { IInputProps, Input } from "@cheaaa/input";
 import { CalendarIcon } from "@cheaaa/icons/CalendarIcon";
+import { CrossIcon } from "@cheaaa/icons/CrossIcon";
+import { SvgIcon } from "@cheaaa/icons/types";
 
 import { formatDate } from "./utils";
 
@@ -13,6 +15,8 @@ interface IDatepickerInputProps {
   label: string;
   disabled?: boolean;
   inputProps?: IInputProps;
+  onClear?: React.DOMAttributes<SVGSVGElement>["onClick"];
+  clearIconProps?: SvgIcon;
 }
 
 export const DatepickerInput = ({
@@ -24,10 +28,33 @@ export const DatepickerInput = ({
   innerRef,
   isOpen,
   inputProps,
+  onClear,
+  clearIconProps,
 }: IDatepickerInputProps) => {
   const value = useMemo(() => {
     return valueProps ? formatDate(valueProps) : "";
   }, [valueProps]);
+
+  const isClearIcon = onClear && value;
+
+  const postfix = useMemo(() => {
+    if (isClearIcon) {
+      return <CrossIcon onClick={onClear} {...clearIconProps} />;
+    }
+
+    return <CalendarIcon />;
+  }, [onClear, isClearIcon, clearIconProps]);
+
+  const postfixProps = useMemo(() => {
+    if (isClearIcon) {
+      return {
+        "data-disabled": false,
+        ...inputProps?.postfixProps,
+      };
+    }
+
+    return inputProps?.postfixProps;
+  }, [inputProps?.postfixProps, isClearIcon]);
 
   return (
     <Input
@@ -40,9 +67,10 @@ export const DatepickerInput = ({
       type={"button"}
       ref={innerRef}
       isActive={!!isOpen}
-      postfix={<CalendarIcon />}
+      postfix={postfix}
       shouldFitContent
       {...inputProps}
+      postfixProps={postfixProps}
     />
   );
 };

@@ -98,15 +98,33 @@ CalendarBase.args = {
 
 export const DatepickerBase: Story<IBaseStoryParams> = (props) => {
   const [value, setValue] = useState<Date>();
+  const [valueClearable, setValueClearable] = useState<Date | undefined>();
+
+  const onClear = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    e.stopPropagation();
+    setValueClearable(undefined);
+  };
 
   return (
-    <Datepicker
-      minDate={MIN_CALENDAR_YEAR}
-      maxDate={MAX_CALENDAR_YEAR}
-      value={value}
-      onChange={setValue}
-      {...props}
-    />
+    <>
+      <Datepicker
+        minDate={MIN_CALENDAR_YEAR}
+        maxDate={MAX_CALENDAR_YEAR}
+        value={value}
+        onChange={setValue}
+        {...props}
+      />
+
+      <h3>Clearable</h3>
+      <Datepicker
+        minDate={MIN_CALENDAR_YEAR}
+        maxDate={MAX_CALENDAR_YEAR}
+        value={valueClearable}
+        onChange={setValueClearable}
+        onClear={onClear}
+        {...props}
+      />
+    </>
   );
 };
 
