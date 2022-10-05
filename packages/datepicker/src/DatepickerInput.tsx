@@ -1,4 +1,5 @@
-import { MutableRefObject, useMemo } from "react";
+import { MutableRefObject, useCallback, useMemo } from "react";
+
 import { IInputProps, Input } from "@cheaaa/input";
 import { CalendarIcon } from "@cheaaa/icons/CalendarIcon";
 import { CrossIcon } from "@cheaaa/icons/CrossIcon";
@@ -56,6 +57,13 @@ export const DatepickerInput = ({
     return inputProps?.postfixProps;
   }, [inputProps?.postfixProps, isClearIcon]);
 
+  const onMouseDown = useCallback(
+    (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+      e.preventDefault();
+    },
+    []
+  );
+
   return (
     <Input
       value={value}
@@ -68,6 +76,7 @@ export const DatepickerInput = ({
       ref={innerRef}
       isActive={!!isOpen}
       postfix={postfix}
+      onMouseDown={onMouseDown}
       shouldFitContent
       {...inputProps}
       postfixProps={postfixProps}

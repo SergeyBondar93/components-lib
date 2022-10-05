@@ -1,6 +1,7 @@
+import { ReactNode } from "react";
+
 import { IInputProps } from "@cheaaa/input";
 import { IThemedProps } from "@cheaaa/theme";
-import { ReactNode } from "react";
 
 export type SelectOptionValue = string;
 

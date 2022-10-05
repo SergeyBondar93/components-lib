@@ -1,4 +1,3 @@
-import { getClassName, IThemedProps } from "@cheaaa/theme";
 import {
   useState,
   ReactNode,
@@ -10,8 +9,10 @@ import {
 } from "react";
 import React from "react";
 import { Transition } from "react-transition-group";
-import { useClickOutsideComponents } from "@cheaaa/utils";
 import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
+
+import { useClickOutsideComponents } from "@cheaaa/utils";
+import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { Portal } from "@cheaaa/portal";
 
 import { HeaderComponentNames } from "./styles/types";

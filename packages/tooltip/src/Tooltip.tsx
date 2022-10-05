@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import ReactTooltip, { TooltipProps } from "react-tooltip";
+
 import { Portal } from "@cheaaa/portal";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 
@@ -40,4 +41,4 @@ export const Tooltip: FC<ITooltipProps> = memo(
   }
 );
 
-export { TooltipProps };
+export type { TooltipProps };

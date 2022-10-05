@@ -1,9 +1,10 @@
+import { Meta } from "@storybook/react";
+import { useMemo } from "react";
+
 import { TelegramIcon } from "@cheaaa/icons/TelegramIcon";
 import { TwitterIcon } from "@cheaaa/icons/TwitterIcon";
 import { VKIcon } from "@cheaaa/icons/VKIcon";
 import { WhatsupIcon } from "@cheaaa/icons/WhatsupIcon";
-import { Meta } from "@storybook/react";
-import { useMemo } from "react";
 
 import { Contacts } from "../src";
 

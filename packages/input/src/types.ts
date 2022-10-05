@@ -1,4 +1,3 @@
-import { IThemedProps } from "@cheaaa/theme";
 import { Classes } from "jss";
 import {
   HTMLAttributes,
@@ -6,6 +5,8 @@ import {
   LabelHTMLAttributes,
   ReactNode,
 } from "react";
+
+import { IThemedProps } from "@cheaaa/theme";
 
 type OverridedAttributes = "prefix" | "postfix" | "onChange" | "value";
 

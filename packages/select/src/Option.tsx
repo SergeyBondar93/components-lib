@@ -1,6 +1,7 @@
+import { forwardRef, ReactNode, useMemo } from "react";
+
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { CrossIcon } from "@cheaaa/icons/CrossIcon";
-import { forwardRef, ReactNode, useMemo } from "react";
 
 import { useStyles, ComponentNames } from "./styles";
 import { SelectOptionValue } from "./types";

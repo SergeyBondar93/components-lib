@@ -1,5 +1,6 @@
-import { ComponentTheme } from "@cheaaa/theme";
 import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
+
+import { ComponentTheme } from "@cheaaa/theme";
 
 import { MODAL_COMPONENTS_NAMES, DEFAULT_ANIMATION_DURATION } from "./consts";
 import { ComponentNames } from "./types";

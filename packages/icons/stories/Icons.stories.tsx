@@ -1,6 +1,8 @@
 /* eslint-disable  */ 
 import { AccountIcon } from "../src/AccountIcon";
+import { AlertCircleIcon } from "../src/AlertCircleIcon";
 import { AlertIcon } from "../src/AlertIcon";
+import { AlfaIcon } from "../src/AlfaIcon";
 import { BasketIcon } from "../src/BasketIcon";
 import { BlogArt } from "../src/BlogArt";
 import { CalendarIcon } from "../src/CalendarIcon";
@@ -33,22 +35,30 @@ import { Foots } from "../src/Foots";
 import { HomeIcon } from "../src/HomeIcon";
 import { House } from "../src/House";
 import { InfoIcon } from "../src/InfoIcon";
+import { IngosstrahIcon } from "../src/IngosstrahIcon";
 import { JCBIcon } from "../src/JCBIcon";
 import { MastercardIcon } from "../src/MastercardIcon";
 import { MenuIcon } from "../src/MenuIcon";
 import { MirIcon } from "../src/MirIcon";
 import { MoonIcon } from "../src/MoonIcon";
 import { NavArrowIcon } from "../src/NavArrowIcon";
+import { NextStepArrowIcon } from "../src/NextStepArrowIcon";
 import { PCIIcon } from "../src/PCIIcon";
 import { PenIcon } from "../src/PenIcon";
 import { PhoneIcon } from "../src/PhoneIcon";
 import { PlaneIcon } from "../src/PlaneIcon";
+import { RenessansIcon } from "../src/RenessansIcon";
+import { ResoIcon } from "../src/ResoIcon";
 import { RSTIcon } from "../src/RSTIcon";
 import { SendIcon } from "../src/SendIcon";
 import { SettingsIcon } from "../src/SettingsIcon";
+import { ShareTelegramLogo } from "../src/ShareTelegramLogo";
+import { ShareVKLogo } from "../src/ShareVKLogo";
+import { ShareWhatsAppLogo } from "../src/ShareWhatsAppLogo";
 import { SplashArt } from "../src/SplashArt";
 import { StarArt } from "../src/StarArt";
 import { TelegramIcon } from "../src/TelegramIcon";
+import { TinkoffIcon } from "../src/TinkoffIcon";
 import { TriangleIcon } from "../src/TriangleIcon";
 import { TwitterIcon } from "../src/TwitterIcon";
 import { VisaIcon } from "../src/VisaIcon";
@@ -81,7 +91,7 @@ const marginStyles = { margin: "0px 10px" };
 const IconWrapper = ({ icon, iconName }: IIconWrapperProps) => {
   const [, copyToClipboard] = useCopyToClipboard();
 
-  const importString = `import { ${iconName} } from "@che/icons"`;
+  const importString = `import { ${iconName} } from "@cheaaa/icons/${iconName}"`;
 
   return (
     <tr>
@@ -120,7 +130,9 @@ export const Icons = () => {
   return (
     <table style={{ borderCollapse: "collapse" }}>
        <IconWrapper icon={<AccountIcon />} iconName="AccountIcon" />
+ <IconWrapper icon={<AlertCircleIcon />} iconName="AlertCircleIcon" />
  <IconWrapper icon={<AlertIcon />} iconName="AlertIcon" />
+ <IconWrapper icon={<AlfaIcon />} iconName="AlfaIcon" />
  <IconWrapper icon={<BasketIcon />} iconName="BasketIcon" />
  <IconWrapper icon={<BlogArt />} iconName="BlogArt" />
  <IconWrapper icon={<CalendarIcon />} iconName="CalendarIcon" />
@@ -153,22 +165,30 @@ export const Icons = () => {
  <IconWrapper icon={<HomeIcon />} iconName="HomeIcon" />
  <IconWrapper icon={<House />} iconName="House" />
  <IconWrapper icon={<InfoIcon />} iconName="InfoIcon" />
+ <IconWrapper icon={<IngosstrahIcon />} iconName="IngosstrahIcon" />
  <IconWrapper icon={<JCBIcon />} iconName="JCBIcon" />
  <IconWrapper icon={<MastercardIcon />} iconName="MastercardIcon" />
  <IconWrapper icon={<MenuIcon />} iconName="MenuIcon" />
  <IconWrapper icon={<MirIcon />} iconName="MirIcon" />
  <IconWrapper icon={<MoonIcon />} iconName="MoonIcon" />
  <IconWrapper icon={<NavArrowIcon />} iconName="NavArrowIcon" />
+ <IconWrapper icon={<NextStepArrowIcon />} iconName="NextStepArrowIcon" />
  <IconWrapper icon={<PCIIcon />} iconName="PCIIcon" />
  <IconWrapper icon={<PenIcon />} iconName="PenIcon" />
  <IconWrapper icon={<PhoneIcon />} iconName="PhoneIcon" />
  <IconWrapper icon={<PlaneIcon />} iconName="PlaneIcon" />
+ <IconWrapper icon={<RenessansIcon />} iconName="RenessansIcon" />
+ <IconWrapper icon={<ResoIcon />} iconName="ResoIcon" />
  <IconWrapper icon={<RSTIcon />} iconName="RSTIcon" />
  <IconWrapper icon={<SendIcon />} iconName="SendIcon" />
  <IconWrapper icon={<SettingsIcon />} iconName="SettingsIcon" />
+ <IconWrapper icon={<ShareTelegramLogo />} iconName="ShareTelegramLogo" />
+ <IconWrapper icon={<ShareVKLogo />} iconName="ShareVKLogo" />
+ <IconWrapper icon={<ShareWhatsAppLogo />} iconName="ShareWhatsAppLogo" />
  <IconWrapper icon={<SplashArt />} iconName="SplashArt" />
  <IconWrapper icon={<StarArt />} iconName="StarArt" />
  <IconWrapper icon={<TelegramIcon />} iconName="TelegramIcon" />
+ <IconWrapper icon={<TinkoffIcon />} iconName="TinkoffIcon" />
  <IconWrapper icon={<TriangleIcon />} iconName="TriangleIcon" />
  <IconWrapper icon={<TwitterIcon />} iconName="TwitterIcon" />
  <IconWrapper icon={<VisaIcon />} iconName="VisaIcon" />

@@ -1,14 +1,15 @@
+import { memo, useMemo } from "react";
+
 import { AccountIcon } from "@cheaaa/icons/AccountIcon";
 import { PhoneIcon } from "@cheaaa/icons/PhoneIcon";
 import { MenuIcon } from "@cheaaa/icons/MenuIcon";
 import { CherehapaLogoIcon } from "@cheaaa/icons/CherehapaLogoIcon";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { Contacts, IContacts } from "@cheaaa/contacts";
-import { memo, useMemo } from "react";
 
 import { HeaderComponentNames, useHeaderStyles } from "./styles";
 import { Menu } from "./Menu";
-import { HeaderDropdown } from "./HeaderDropdown";
+import { BaseDropdown } from "./BaseDropdown";
 import { IMenuItem } from "./MenuItem";
 
 interface IHeaderProps extends IThemedProps {
@@ -114,10 +115,11 @@ export const Header = memo(
             )}
 
             {contacts && (
-              <HeaderDropdown
+              <BaseDropdown
                 title={<PhoneIcon />}
                 baseAppearance={baseAppearance}
                 appearance={appearance}
+                classes={classes}
               >
                 <div className={classNames.contactsWrapperClassName}>
                   <Contacts
@@ -126,21 +128,22 @@ export const Header = memo(
                     appearance={contactsAppearance}
                   />
                 </div>
-              </HeaderDropdown>
+              </BaseDropdown>
             )}
 
             {!!menu?.length && (
-              <HeaderDropdown
+              <BaseDropdown
                 title={<MenuIcon />}
                 baseAppearance={baseAppearance}
                 appearance={appearance}
+                classes={classes}
               >
                 <Menu
                   menu={menu}
                   baseAppearance={baseAppearance}
                   appearance={appearance}
                 />
-              </HeaderDropdown>
+              </BaseDropdown>
             )}
           </div>
         </div>

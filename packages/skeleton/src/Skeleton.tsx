@@ -1,5 +1,6 @@
-import { getClassName, IThemedProps, Margin, PxSize } from "@cheaaa/theme";
 import { CSSProperties, memo, useMemo } from "react";
+
+import { getClassName, IThemedProps, Margin, PxSize } from "@cheaaa/theme";
 
 import { ComponentNames, useStyles } from "./styles";
 

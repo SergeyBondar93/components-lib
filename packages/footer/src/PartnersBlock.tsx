@@ -1,6 +1,7 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+
 import { Button } from "@cheaaa/button";
 import { getClassName } from "@cheaaa/theme";
-import { useEffect, useMemo, useRef, useState } from "react";
 
 import { ComponentNames, useStyles } from "./styles";
 

@@ -1,4 +1,3 @@
-import { BREAKPOINTS, ComponentTheme } from "@cheaaa/theme";
 import {
   ENTERED,
   ENTERING,
@@ -6,8 +5,10 @@ import {
   EXITED,
 } from "react-transition-group/Transition";
 
+import { BREAKPOINTS, ComponentTheme } from "@cheaaa/theme";
+
 import { HEADER_COMPONENTS_NAMES } from "./consts";
-import { HeaderComponentNames } from "./types";
+import { HeaderComponentNames, SmoothDropdownComponentNames } from "./types";
 
 export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
   [HEADER_COMPONENTS_NAMES.headerWrapper]: {
@@ -95,6 +96,74 @@ export const defaultTheme: Required<ComponentTheme<HeaderComponentNames>> = {
   },
   [HEADER_COMPONENTS_NAMES.dropdownTitle]: {
     width: "32px",
+    height: "32px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexShrink: 0,
+    border: "1px solid rgba(255,255,255,0.55)",
+    background: "transparent",
+    textDecoration: "none",
+    boxSizing: "border-box",
+    borderRadius: "16px",
+    transition: "0.2s",
+    cursor: "pointer",
+    "&:hover": {
+      border: "1px solid rgb(255,255,255)",
+    },
+    "&:active": {
+      transform: "scale(0.95)",
+    },
+  },
+
+  [HEADER_COMPONENTS_NAMES.dropdownBody]: {
+    position: "fixed",
+    transform: "translateX(-100%) translateY(10px)",
+    zIndex: 1,
+    background: "#FFF",
+    maxHeight: "fit-content",
+    boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",
+    borderRadius: "12px",
+    width: "max-content",
+
+    transition: "0.3s",
+    [`&[data-animation-state="${ENTERING}"]`]: {
+      opacity: 0,
+    },
+    [`&[data-animation-state="${ENTERED}"]`]: {
+      opacity: 1,
+    },
+    [`&[data-animation-state="${EXITING}"]`]: {
+      opacity: 0,
+    },
+    [`&[data-animation-state="${EXITED}"]`]: {
+      opacity: 0,
+    },
+
+    "&::-webkit-scrollbar": {
+      width: "4px",
+    },
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "transparent",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "#485B75",
+    },
+  },
+};
+
+export const smoothDropdownDefaultTheme: Required<
+  ComponentTheme<SmoothDropdownComponentNames>
+> = {
+  [HEADER_COMPONENTS_NAMES.dropdownWrapper]: {
+    position: "relative",
+    display: "inline-block",
+    '&[data-shouldfitcontent="true"]': {
+      width: "100%",
+    },
+  },
+  [HEADER_COMPONENTS_NAMES.dropdownTitle]: {
+    padding: "0px 12px",
     height: "32px",
     display: "flex",
     justifyContent: "center",

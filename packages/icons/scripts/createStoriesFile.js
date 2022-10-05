@@ -23,7 +23,7 @@ const marginStyles = { margin: "0px 10px" };
 const IconWrapper = ({ icon, iconName }: IIconWrapperProps) => {
   const [, copyToClipboard] = useCopyToClipboard();
 
-  const importString = \`import { \${iconName} } from "@che/icons"\`;
+  const importString = \`import { \${iconName} } from "@cheaaa/icons/\${iconName}"\`;
 
   return (
     <tr>

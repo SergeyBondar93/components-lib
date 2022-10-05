@@ -1,5 +1,6 @@
-import { createClasses } from "@cheaaa/theme";
 import { createUseStyles } from "react-jss";
+
+import { createClasses } from "@cheaaa/theme";
 
 import {
   CHECKBOX_COMPONENT_NAMESPACE,

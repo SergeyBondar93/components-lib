@@ -1,4 +1,3 @@
-import { getClassName, IThemedProps } from "@cheaaa/theme";
 import React, {
   FC,
   memo,
@@ -9,6 +8,8 @@ import React, {
   useState,
 } from "react";
 import { useContext } from "react";
+
+import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { Context } from "./context";
 import { useStyles } from "./styles";

@@ -1,4 +1,3 @@
-import { BaseAccordion, IAccordionProps } from "@cheaaa/accordion";
 import React, {
   MutableRefObject,
   ReactElement,
@@ -8,6 +7,8 @@ import React, {
   useRef,
   useState,
 } from "react";
+
+import { BaseAccordion, IAccordionProps } from "@cheaaa/accordion";
 import { useClickOutsideComponents, useCombinedRefs } from "@cheaaa/utils";
 import { IThemedProps } from "@cheaaa/theme";
 import { IInputProps } from "@cheaaa/input";

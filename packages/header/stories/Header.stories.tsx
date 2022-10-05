@@ -1,4 +1,6 @@
 import { Meta } from "@storybook/react";
+import { useMemo, useState } from "react";
+
 import { Container } from "@cheaaa/container";
 import { MoonIcon } from "@cheaaa/icons/MoonIcon";
 import { PhoneIcon } from "@cheaaa/icons/PhoneIcon";
@@ -9,13 +11,14 @@ import { DocumentIcon } from "@cheaaa/icons/DocumentIcon";
 import { WalletIcon } from "@cheaaa/icons/WalletIcon";
 import { InfoIcon } from "@cheaaa/icons/InfoIcon";
 import { CommandIcon } from "@cheaaa/icons/CommandIcon";
-import { useMemo, useState } from "react";
+import { Contacts } from "@cheaaa/contacts";
 
 import { Header } from "../src/Header";
+import { SmoothDropdown } from "../src/SmoothDropdown";
 
+import { SunIcon } from "./sunIcon";
 // @ts-ignore
 import bg from "./bg.jpg";
-import { SunIcon } from "./sunIcon";
 
 export default {
   title: "Header",
@@ -77,7 +80,27 @@ interface IBaseProps {
   withContacts: boolean;
   withMenu: boolean;
 }
+const contacts = {
+  availableTime: <AvailableTime />,
+  phones: [
+    {
+      phone: "84952151198",
+      title: "8 (495) 215-11-98",
+      label: "Москва",
+    },
+    {
+      phone: "88005552198",
+      title: "8 (800) 555-21-98",
+      label: "Россия (бесплатно)",
+    },
+  ],
+  email: "support@cherehapa.ru",
 
+  callUsButton: {
+    title: "Позвонить онлайн",
+    onClick: () => {},
+  },
+};
 export const Base = ({
   withLinkToMain,
   withWhyNew,
@@ -145,30 +168,6 @@ export const Base = ({
 
     return [...staticItems, themeItem];
   }, [theme]);
-
-  const contacts = useMemo(() => {
-    return {
-      availableTime: <AvailableTime />,
-      phones: [
-        {
-          phone: "84952151198",
-          title: "8 (495) 215-11-98",
-          label: "Москва",
-        },
-        {
-          phone: "88005552198",
-          title: "8 (800) 555-21-98",
-          label: "Россия (бесплатно)",
-        },
-      ],
-      email: "support@cherehapa.ru",
-
-      callUsButton: {
-        title: "Позвонить онлайн",
-        onClick: () => {},
-      },
-    };
-  }, []);
 
   const whyNew = useMemo(() => {
     return {
@@ -327,4 +326,37 @@ Base.args = {
   withAccount: true,
   withContacts: true,
   withMenu: true,
+};
+
+export const Dropdown = () => {
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#636AFF",
+      }}
+    >
+      <div
+        style={{
+          width: "80%",
+          display: "flex",
+          flexDirection: "row-reverse",
+          paddingTop: "10px",
+        }}
+      >
+        <SmoothDropdown
+          title={
+            <span style={{ color: "white" }}>
+              <PhoneIcon style={{ marginRight: "10px" }} />
+              Нужна помощь?
+            </span>
+          }
+        >
+          <div style={{ padding: "12px" }}>
+            <Contacts contacts={contacts} />
+          </div>
+        </SmoothDropdown>
+      </div>
+    </div>
+  );
 };

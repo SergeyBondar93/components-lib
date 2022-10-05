@@ -1,5 +1,6 @@
-import { createClasses, ITheme } from "@cheaaa/theme";
 import { createUseStyles } from "react-jss";
+
+import { createClasses, ITheme } from "@cheaaa/theme";
 
 import {
   INPUT_COMPONENT_NAMESPACE,

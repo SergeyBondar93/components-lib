@@ -1,5 +1,5 @@
 export * from "./Select";
-export { IOptionProps } from "./Option";
+export type { IOptionProps } from "./Option";
 export * from "./styles/consts";
 export * from "./types";
 export * from "./keyboardIndependSearchFunction";

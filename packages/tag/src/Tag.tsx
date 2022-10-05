@@ -1,5 +1,6 @@
-import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { FC, memo, ReactNode, useCallback, useMemo } from "react";
+
+import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { ComponentNames, useStyles } from "./styles";
 

@@ -1,18 +1,19 @@
+import { useMemo } from "react";
+
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { toggleElementInArray } from "@cheaaa/utils";
-import { useMemo } from "react";
 
 import { Checkbox, ICheckboxProps } from "./Checkbox";
 import { useCheckboxStyles } from "./styles";
 import { CheckboxComponentNames } from "./styles/types";
 
-interface ICheckboxGroupOptions
+export interface ICheckboxGroupOptions
   extends Omit<ICheckboxProps, "value" | "onChange"> {
   value: string;
   onChange?: (clickedBy: string) => void;
 }
 
-interface ICheckboxGroupProps extends IThemedProps {
+export interface ICheckboxGroupProps extends IThemedProps {
   value: string[];
   onChange: (newValue: string[], clickedBy: string) => void;
   options: ICheckboxGroupOptions[];

@@ -1,4 +1,5 @@
 import { createUseStyles } from "react-jss";
+
 import { ITheme } from "@cheaaa/theme";
 
 import { getTypedThemedStyles, getThemedStyles } from "./utils";

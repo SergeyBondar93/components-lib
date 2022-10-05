@@ -1,4 +1,3 @@
-import { getClassName } from "@cheaaa/theme";
 import {
   forwardRef,
   useCallback,
@@ -7,6 +6,8 @@ import {
   useRef,
   useState,
 } from "react";
+
+import { getClassName } from "@cheaaa/theme";
 import { useCombinedRefs } from "@cheaaa/utils";
 
 import { ClearIcon } from "./ClearIcon";

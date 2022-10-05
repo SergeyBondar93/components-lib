@@ -1,6 +1,7 @@
+import { useMemo } from "react";
+
 import { Contacts } from "@cheaaa/contacts";
 import { getClassName } from "@cheaaa/theme";
-import { useMemo } from "react";
 
 import { NavigationLinks } from "./NavigationLinks";
 import { ComponentNames, useStyles } from "./styles";

@@ -1,6 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import { useMemo, useState } from "react";
 import { ThemeProvider } from "react-jss";
+
 import { Checkbox } from "@cheaaa/checkbox";
 
 import { Select } from "../src";

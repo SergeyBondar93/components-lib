@@ -10,10 +10,7 @@
 		"test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
 		"test2": "jest",
 		"createStoriesFile": "node ./scripts/createStoriesFile.js",
-		"compileNew": "node build",
-		"compileNew1": "npx tsc",
-		"compileOld": "tsdx build --format cjs,esm --verbose",
-		"compile": "yarn compileNew1",
+		"compile": "npx tsc",
 		"build": "yarn clean && yarn compile",
 		"build:storybook": "yarn createStoriesFile && yarn build",
 		"clean": "rimraf dist lib .publish node_modules"

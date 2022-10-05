@@ -1,6 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import { useMemo, useState } from "react";
 import { ThemeProvider } from "react-jss";
+
 import { Button } from "@cheaaa/button";
 
 import { addDays, Calendar, IExtraComponentProps } from "../src";

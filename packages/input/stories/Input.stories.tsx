@@ -1,6 +1,7 @@
-import { Button } from "@cheaaa/button";
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { ThemeProvider, JssProvider } from "react-jss";
+
+import { Button } from "@cheaaa/button";
 import { DeleteIcon } from "@cheaaa/icons/DeleteIcon";
 
 import { CodeInput, Input } from "../src";

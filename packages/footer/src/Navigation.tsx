@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+
 import { getClassName, useScreenSizes } from "@cheaaa/theme";
 
 import { ComponentNames, useStyles } from "./styles";

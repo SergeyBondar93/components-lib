@@ -1,6 +1,7 @@
+import { memo, ReactNode, useMemo } from "react";
+
 import { CallIcon } from "@cheaaa/icons/CallIcon";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import { memo, ReactNode, useMemo } from "react";
 
 import { useStyles, ComponentNames } from "./styles";
 

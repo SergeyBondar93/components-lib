@@ -1,5 +1,3 @@
-import { Button, IButtonProps } from "@cheaaa/button";
-import { getClassName, IThemedProps } from "@cheaaa/theme";
 import {
   useState,
   useRef,
@@ -12,6 +10,9 @@ import {
 } from "react";
 import { Classes } from "jss";
 import React from "react";
+
+import { getClassName, IThemedProps } from "@cheaaa/theme";
+import { Button, IButtonProps } from "@cheaaa/button";
 
 import { Icon } from "./Icon";
 import { ComponentNames } from "./styles/types";

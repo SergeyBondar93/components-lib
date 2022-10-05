@@ -1,5 +1,6 @@
-import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { memo, useMemo } from "react";
+
+import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { IMenuItem, MenuItem } from "./MenuItem";
 import { useHeaderStyles, HeaderComponentNames } from "./styles";

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Checkbox, CheckboxGroup, Switcher } from "@cheaaa/checkbox";
 import { Meta } from "@storybook/react";
 import { ThemeProvider } from "react-jss";
 import Select from "react-select";
+
+import { Checkbox, CheckboxGroup, Switcher } from "@cheaaa/checkbox";
 
 import { Accordion, IAccordionChildrenProps } from "../src";
 

@@ -1,4 +1,3 @@
-import { toggleElementInArray, useClickOutsideComponents } from "@cheaaa/utils";
 import {
   createRef,
   useCallback,
@@ -7,6 +6,8 @@ import {
   useRef,
   useState,
 } from "react";
+
+import { toggleElementInArray, useClickOutsideComponents } from "@cheaaa/utils";
 import { getClassName } from "@cheaaa/theme";
 import { Input } from "@cheaaa/input";
 import { TriangleIcon } from "@cheaaa/icons/TriangleIcon";

@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { CheIconFooter } from "@cheaaa/icons/CheIconFooter";
 import { PCIIcon } from "@cheaaa/icons/PCIIcon";
 import { RSTIcon } from "@cheaaa/icons/RSTIcon";
@@ -6,7 +8,6 @@ import { MastercardIcon } from "@cheaaa/icons/MastercardIcon";
 import { VisaIcon } from "@cheaaa/icons/VisaIcon";
 import { MirIcon } from "@cheaaa/icons/MirIcon";
 import { getClassName, IThemedProps } from "@cheaaa/theme";
-import { useMemo } from "react";
 import { Container } from "@cheaaa/container";
 import { Contacts, IContacts, IContactsProps } from "@cheaaa/contacts";
 

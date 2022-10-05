@@ -1,5 +1,6 @@
-import { Input, IInputProps } from "@cheaaa/input";
 import { forwardRef } from "react";
+
+import { Input, IInputProps } from "@cheaaa/input";
 
 interface IInputWithErrorProps extends IInputProps {
   error?: string;

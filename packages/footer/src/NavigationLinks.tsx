@@ -1,5 +1,6 @@
-import { getClassName } from "@cheaaa/theme";
 import { useMemo } from "react";
+
+import { getClassName } from "@cheaaa/theme";
 import { Accordion } from "@cheaaa/accordion";
 
 import { ComponentNames, useStyles } from "./styles";

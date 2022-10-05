@@ -1,4 +1,3 @@
-import { getClassName, IThemedProps } from "@cheaaa/theme";
 import {
   memo,
   MouseEvent,
@@ -8,6 +7,8 @@ import {
   useMemo,
   useRef,
 } from "react";
+
+import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { Context } from "./context";
 import { useStyles } from "./styles";
@@ -28,6 +29,12 @@ export interface ITab extends IThemedProps {
    * отключает таб только здесь. попасть на него можно кинув action tabsActions.setActiveTab
    */
   disabled?: boolean;
+
+  /**
+   * Необходимо ли проскроллить экран до таба после клика
+   */
+  isScrollIntoViewOnClick?: boolean;
+
   /**
    * фнукиця при клике на таб
    */
@@ -46,6 +53,7 @@ export const Tab = memo(
     onRender,
     disabled,
     delayBeforeCreatingCoordsMap,
+    isScrollIntoViewOnClick = true,
   }: ITab) => {
     const { activePanelName, tabsName, setActivePanelName } =
       useContext(Context);
@@ -54,7 +62,8 @@ export const Tab = memo(
 
     const handleClick = useCallback(
       (e: MouseEvent<HTMLButtonElement>) => {
-        elemRef.current?.scrollIntoView({ inline: "center" });
+        isScrollIntoViewOnClick &&
+          elemRef.current?.scrollIntoView({ inline: "center" });
         setActivePanelName({ tabsName, panelName });
         onClick?.(e);
       },

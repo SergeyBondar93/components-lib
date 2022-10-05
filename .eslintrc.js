@@ -49,7 +49,7 @@ module.exports = {
               pathGroupsExcludedImportTypes: ['builtin'],
               pathGroups: [
                   {
-                      pattern: '@che/**',
+                      pattern: '@cheaaa/**',
                       group: 'internal',
                   },
               ],

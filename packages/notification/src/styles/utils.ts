@@ -1,5 +1,6 @@
-import { ITheme } from "@cheaaa/theme";
 import { TypeOptions } from "react-toastify";
+
+import { ITheme } from "@cheaaa/theme";
 
 import {
   NOTIFICATION_COMPONENT_NAMES,

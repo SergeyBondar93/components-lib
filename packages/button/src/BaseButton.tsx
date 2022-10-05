@@ -1,7 +1,8 @@
-import { getClassName } from "@cheaaa/theme";
 import { ReactNode, useCallback, useMemo } from "react";
-import { IThemedProps } from "@cheaaa/theme";
 import { Classes } from "jss";
+
+import { getClassName } from "@cheaaa/theme";
+import { IThemedProps } from "@cheaaa/theme";
 
 import { ButtonComponentNames } from "./styles/types";
 

@@ -1,6 +1,7 @@
-import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { Classes } from "jss";
 import { ReactNode, useCallback, useMemo } from "react";
+
+import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { CheckedIcon } from "./CheckedIcon";
 import { CheckboxComponentNames } from "./styles/types";

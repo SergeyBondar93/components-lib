@@ -1,9 +1,10 @@
+import color from "color";
+
 import {
   BUTTON_COMPONENTS_NAMES,
   BUTTON_COMPONENT_NAMESPACE,
   ICON_BUTTON_COMPONENT_NAMESPACE,
 } from "@cheaaa/button";
-import color from "color";
 
 import {
   DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE,

@@ -1,5 +1,6 @@
-import { getClassName } from "@cheaaa/theme";
 import { useMemo } from "react";
+
+import { getClassName } from "@cheaaa/theme";
 
 import { CheckboxBase, IBaseCheckboxProps } from "./CheckboxBase";
 import { useSwitchStyles } from "./styles";

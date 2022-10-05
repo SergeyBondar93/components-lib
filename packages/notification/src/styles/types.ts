@@ -1,5 +1,6 @@
-import { Styles } from "@cheaaa/theme";
 import { TypeOptions } from "react-toastify";
+
+import { Styles } from "@cheaaa/theme";
 
 import { NOTIFICATION_COMPONENT_NAMES } from "./consts";
 

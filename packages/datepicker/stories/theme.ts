@@ -1,4 +1,5 @@
 import color from "color";
+
 import { BUTTON_COMPONENT_NAMESPACE } from "@cheaaa/button";
 import { INPUT_COMPONENTS_NAMES } from "@cheaaa/input";
 import { INPUT_COMPONENT_NAMESPACE } from "@cheaaa/input";
