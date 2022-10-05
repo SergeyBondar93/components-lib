@@ -185,6 +185,10 @@ export const defaultInputTheme: Required<ComponentTheme<ComponentNames>> = {
     cursor: "text",
     transform: "translateY(-50%)",
 
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+
     '&[data-type-is-button="true"]': {
       caretColor: "transparent",
       cursor: "pointer",

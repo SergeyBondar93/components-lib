@@ -64,6 +64,17 @@ const InputTemplate = (args) => {
           label="Отчество"
         />
       </div>
+      <div style={wrapperStyles}>
+        <Input
+          {...args}
+          value={value}
+          onChange={setValue}
+          placeholder="This is too looong label for testing trunkate"
+          label="This is too looong label for testing trunkate"
+          prefix={<Visa />}
+          postfix={<Visa />}
+        />
+      </div>
 
       <div style={wrapperStyles}>
         <h4>As Button</h4>
