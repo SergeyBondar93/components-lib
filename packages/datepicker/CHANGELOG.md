@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.9.0...@cheaaa/datepicker@1.9.1) (2022-10-06)
+
+**Note:** Version bump only for package @cheaaa/datepicker
+
+
+
+
+
 # [1.9.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.8.0...@cheaaa/datepicker@1.9.0) (2022-10-05)
 
 
