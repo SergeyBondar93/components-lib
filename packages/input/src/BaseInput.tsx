@@ -151,19 +151,30 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       };
     }, [classes, baseAppearance, appearance]);
 
-    const [floatingLeft, setFloatingLeft] = useState(0);
+    const [labelStyles, setLabelStyles] = useState({ width: 0, left: 0 });
 
     useEffect(() => {
+      const { width } = getComputedStyle(mergedRef.current!);
+
+      const { paddingRight } = getComputedStyle(mergedRef.current!);
+
+      const computedWidth = parseInt(width) + parseInt(paddingRight);
+
       const prefixWidth = prefixRef.current?.getBoundingClientRect().width || 0;
       const prefixMarginLeft = prefixRef.current
         ? parseInt(getComputedStyle(prefixRef.current).marginLeft)
+        : 0;
+      const prefixMarginRight = prefixRef.current
+        ? parseInt(getComputedStyle(prefixRef.current).marginRight)
         : 0;
       const inputPaddingLeft = mergedRef.current
         ? parseInt(getComputedStyle(mergedRef.current as any).paddingLeft)
         : 0;
 
-      const left = inputPaddingLeft + prefixWidth! + prefixMarginLeft;
-      setFloatingLeft(left);
+      const left =
+        inputPaddingLeft + prefixWidth! + prefixMarginLeft + prefixMarginRight;
+
+      setLabelStyles({ width: computedWidth, left });
     }, [prefix]);
 
     const dataComponentActiveProp = useMemo(() => {
@@ -273,7 +284,8 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
         {label && (
           <label
             style={{
-              left: floatingLeft,
+              left: labelStyles.left,
+              width: labelStyles.width,
             }}
             data-disabled={String(!!disabled)}
             data-focused={String(isFocused)}
