@@ -41,3 +41,9 @@ export const INPUT_AUTOCOMPLETE_SELECTOR = `&:-webkit-autofill,
 &:-webkit-autofill:hover, 
 &:-webkit-autofill:focus, 
 &:-webkit-autofill:active`;
+
+export const emptyPrefixPostfixStyles = {
+  width: "0px",
+  marginLeft: "0px",
+  marginRight: "0px",
+};
