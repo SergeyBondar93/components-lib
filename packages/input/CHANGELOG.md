@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.32.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.31.0...@cheaaa/input@1.32.0) (2022-10-15)
+
+
+### Bug Fixes
+
+* fix input placeholder truncate ([aceb00f](https://github.com/SergeyBondar93/liba/commit/aceb00f4833d27eefd551f33ceebce5408b7c13c))
+
+
+### Features
+
+* add truncate input label ([9c8bdfd](https://github.com/SergeyBondar93/liba/commit/9c8bdfddc666947d09eee311781fbf14a2158423))
+* eslint fix, update some pkgs ([f722d9c](https://github.com/SergeyBondar93/liba/commit/f722d9c5101b678eb332da44dba85bb9a011cc11))
+
+
+
+
+
 # [1.31.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.30.0...@cheaaa/input@1.31.0) (2022-10-06)
 
 
