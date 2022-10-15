@@ -13,6 +13,7 @@ import { useCombinedRefs } from "@cheaaa/utils";
 import { ClearIcon } from "./ClearIcon";
 import { ComponentNames } from "./styles/types";
 import { IBaseInputProps } from "./types";
+import { emptyPrefixPostfixStyles } from "./styles";
 
 export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
   (
@@ -47,6 +48,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
     const iternalInputRef = useRef<HTMLInputElement>(null);
     const mergedRef = useCombinedRefs(ref, iternalInputRef);
     const prefixRef = useRef<HTMLSpanElement>(null);
+    const postfixRef = useRef<HTMLSpanElement>(null);
     const [isFocused, setIsFocused] = useState(false);
 
     const isButton = type === "button";
@@ -151,28 +153,38 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
       };
     }, [classes, baseAppearance, appearance]);
 
-    const [labelStyles, setLabelStyles] = useState({ width: 0, left: 0 });
+    const [labelStyles, setLabelStyles] = useState({
+      width: "calc(100% - 30px)",
+      left: 0,
+    });
 
     useEffect(() => {
-      const { width } = getComputedStyle(mergedRef.current!);
+      const prefixStyles = prefixRef.current
+        ? getComputedStyle(prefixRef.current)
+        : emptyPrefixPostfixStyles;
+      const prefixWidth = parseInt(prefixStyles.width) || 0;
+      const prefixMarginLeft = parseInt(prefixStyles.marginLeft) || 0;
+      const prefixMarginRight = parseInt(prefixStyles.marginRight) || 0;
+      const fullPrefixWidth =
+        prefixWidth + prefixMarginLeft + prefixMarginRight;
 
-      const { paddingRight } = getComputedStyle(mergedRef.current!);
+      const postfixStyles = postfixRef.current
+        ? getComputedStyle(postfixRef.current!)
+        : emptyPrefixPostfixStyles;
+      const postfixWidth = parseInt(postfixStyles.width) || 0;
+      const postfixMarginLeft = parseInt(postfixStyles.marginLeft) || 0;
+      const postfixMarginRight = parseInt(postfixStyles.marginRight) || 0;
+      const fullPostfixWidth =
+        postfixWidth + postfixMarginLeft + postfixMarginRight;
 
-      const computedWidth = parseInt(width) + parseInt(paddingRight);
-
-      const prefixWidth = prefixRef.current?.getBoundingClientRect().width || 0;
-      const prefixMarginLeft = prefixRef.current
-        ? parseInt(getComputedStyle(prefixRef.current).marginLeft)
-        : 0;
-      const prefixMarginRight = prefixRef.current
-        ? parseInt(getComputedStyle(prefixRef.current).marginRight)
-        : 0;
       const inputPaddingLeft = mergedRef.current
         ? parseInt(getComputedStyle(mergedRef.current as any).paddingLeft)
         : 0;
 
-      const left =
-        inputPaddingLeft + prefixWidth! + prefixMarginLeft + prefixMarginRight;
+      const left = inputPaddingLeft + fullPrefixWidth;
+      const computedWidth = `calc(100% - ${
+        inputPaddingLeft + fullPrefixWidth + fullPostfixWidth
+      }px)`;
 
       setLabelStyles({ width: computedWidth, left });
     }, [prefix]);
@@ -318,6 +330,7 @@ export const BaseInput = forwardRef<HTMLInputElement, IBaseInputProps>(
             data-disabled={String(!!disabled)}
             className={classNames.postfixWrapperClassName}
             onMouseDown={(e) => e.preventDefault()}
+            ref={postfixRef}
             {...dataComponentActiveProp}
             {...postfixProps}
           >
