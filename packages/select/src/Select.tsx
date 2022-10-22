@@ -49,7 +49,6 @@ export const Select = ({
   unselectedHeader,
   noOptionsMessage = "Ничего не найдено",
   inputProps: {
-    onFocus: onFocusInput,
     onChange: onChangeInput,
     onBlur: onBlurInput,
     ...inputProps
@@ -161,23 +160,11 @@ export const Select = ({
     isOptionDisabledFunction,
   ]);
 
-  const handleFocusInput = useCallback(
-    (
-      e:
-        | React.FocusEvent<HTMLElement, Element>
-        | React.MouseEvent<HTMLDivElement, MouseEvent>
-    ) => {
-      setTimeout(() => {
-        if (!isOpen) {
-          setSearchString("");
-          setIsOpen(true);
-          setActiveValue(null);
-          onFocusInput?.(e as any);
-        }
-      }, 100);
-    },
-    [isOpen, onFocusInput]
-  );
+  const handleOpen = useCallback(() => {
+    setSearchString("");
+    setIsOpen(true);
+    setActiveValue(null);
+  }, []);
 
   const handleClose = useCallback(() => {
     setSearchString("");
@@ -185,17 +172,15 @@ export const Select = ({
     setActiveValue(null);
   }, []);
 
-  const handleInputClick: React.MouseEventHandler<HTMLDivElement> = useCallback(
-    (e) => {
+  const handleInputClick: React.MouseEventHandler<HTMLDivElement> =
+    useCallback(() => {
       if (isOpen) {
         handleClose();
         inputRef.current?.blur();
       } else {
-        handleFocusInput(e);
+        handleOpen();
       }
-    },
-    [isOpen, handleClose, handleFocusInput]
-  );
+    }, [isOpen, handleClose, handleOpen]);
 
   useClickOutsideComponents([wrapperRef], handleClose);
 
@@ -307,7 +292,11 @@ export const Select = ({
     );
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
+      if (!isOpen && document.activeElement === inputRef.current) {
+        handleOpen();
+      } else if (!isOpen) {
+        return;
+      }
 
       const activeValueIndex = visibleOptionsValues.findIndex(
         (optionValue) => optionValue === activeValue
@@ -386,6 +375,7 @@ export const Select = ({
     };
   }, [
     handleSelectOption,
+    handleOpen,
     isOpen,
     activeValue,
     selectedOptions,
@@ -404,7 +394,6 @@ export const Select = ({
         placeholder={inputPlaceholder}
         label={label}
         onChange={handleChangeInput}
-        onFocus={handleFocusInput}
         onClick={handleInputClick}
         onBlur={onBlurInput}
         appearance={DEFAULT_SELECT_INPUT_APPEARANCE}
