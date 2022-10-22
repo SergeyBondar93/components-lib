@@ -1,6 +1,6 @@
 {
   "name": "@cheaaa/tabs",
-  "version": "1.5.8",
+  "version": "1.6.0",
   "description": "<>",
   "build:storybook": "src/index.ts",
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
   "private": false,
   "dependencies": {
     "@cheaaa/theme": "^1.6.2",
-    "@cheaaa/utils": "^1.6.4"
+    "@cheaaa/utils": "^1.7.0"
   },
   "optionalDependencies": {
     "@reduxjs/toolkit": "^1.6.1",

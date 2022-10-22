@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.6.0 (2022-10-05)
+
+
+### Features
+
+* eslint fix, update some pkgs ([f722d9c](https://github.com/SergeyBondar93/liba/commit/f722d9c5101b678eb332da44dba85bb9a011cc11))
+
+
+
+
+
 ## 1.5.8 (2022-08-24)
 
 **Note:** Version bump only for package @cheaaa/tabs
