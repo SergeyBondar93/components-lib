@@ -158,14 +158,18 @@ export const Select = ({
     isOptionDisabledFunction,
   ]);
 
-  const handleFocusInput: React.FocusEventHandler<HTMLElement> = useCallback(
-    (...args) => {
-      setSearchString("");
-      setIsOpen(true);
-      setActiveValue(null);
-      onFocusInput?.(...args);
+  const handleFocusInput = useCallback(
+    (e: React.FocusEvent<HTMLElement, Element> | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      setTimeout(() => {
+        if (!isOpen) {
+          setSearchString("");
+          setIsOpen(true);
+          setActiveValue(null);
+          onFocusInput?.(e as any);
+        }
+      }, 100)
     },
-    [onFocusInput]
+    [isOpen, onFocusInput]
   );
 
   const handleClose = useCallback(() => {
@@ -173,6 +177,15 @@ export const Select = ({
     setIsOpen(false);
     setActiveValue(null);
   }, []);
+
+  const handleInputClick: React.MouseEventHandler<HTMLDivElement> = useCallback((e) => {
+    if (isOpen) {
+      handleClose();
+      inputRef.current?.blur();
+    } else {
+      handleFocusInput(e)
+    }
+  }, [isOpen, handleClose, handleFocusInput])
 
   useClickOutsideComponents([wrapperRef], handleClose);
 
@@ -382,6 +395,7 @@ export const Select = ({
         label={label}
         onChange={handleChangeInput}
         onFocus={handleFocusInput}
+        onClick={handleInputClick}
         onBlur={onBlurInput}
         appearance={DEFAULT_SELECT_INPUT_APPEARANCE}
         postfix={
