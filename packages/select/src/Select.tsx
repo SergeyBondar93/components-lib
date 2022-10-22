@@ -6,6 +6,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { Transition } from "react-transition-group";
+import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
 
 import { toggleElementInArray, useClickOutsideComponents } from "@cheaaa/utils";
 import { getClassName } from "@cheaaa/theme";
@@ -59,6 +61,7 @@ export const Select = ({
   const selectedListRef = useRef<HTMLDivElement>(null);
   const unselectedListRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const transitionRef = useRef<HTMLDivElement>(null);
   const optionsRefs = useRef(
     new Array(options.length).fill(null).map(() => createRef<HTMLDivElement>())
   );
@@ -159,7 +162,11 @@ export const Select = ({
   ]);
 
   const handleFocusInput = useCallback(
-    (e: React.FocusEvent<HTMLElement, Element> | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    (
+      e:
+        | React.FocusEvent<HTMLElement, Element>
+        | React.MouseEvent<HTMLDivElement, MouseEvent>
+    ) => {
       setTimeout(() => {
         if (!isOpen) {
           setSearchString("");
@@ -167,7 +174,7 @@ export const Select = ({
           setActiveValue(null);
           onFocusInput?.(e as any);
         }
-      }, 100)
+      }, 100);
     },
     [isOpen, onFocusInput]
   );
@@ -178,14 +185,17 @@ export const Select = ({
     setActiveValue(null);
   }, []);
 
-  const handleInputClick: React.MouseEventHandler<HTMLDivElement> = useCallback((e) => {
-    if (isOpen) {
-      handleClose();
-      inputRef.current?.blur();
-    } else {
-      handleFocusInput(e)
-    }
-  }, [isOpen, handleClose, handleFocusInput])
+  const handleInputClick: React.MouseEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      if (isOpen) {
+        handleClose();
+        inputRef.current?.blur();
+      } else {
+        handleFocusInput(e);
+      }
+    },
+    [isOpen, handleClose, handleFocusInput]
+  );
 
   useClickOutsideComponents([wrapperRef], handleClose);
 
@@ -409,82 +419,111 @@ export const Select = ({
         ref={inputRef}
         disabled={disabled}
       />
+      <Transition
+        timeout={{
+          enter: 0,
+          exit: 300,
+        }}
+        in={isOpen}
+        nodeRef={transitionRef}
+      >
+        {(animationState) => {
+          return (
+            [ENTERING, ENTERED, EXITING].includes(animationState) && (
+              <div
+                className={classNames.dropdownClassName}
+                ref={transitionRef}
+                /**
+                 * Текущее состояние анимации.
+                 * Для стилизации необходимо использовать константы из react-transition-group/Transition
+                 * аналогично описанному в defaultTheme.ts
+                 */
+                data-animation-state={animationState}
+              >
+                {!!selectedOptions.length && (
+                  <div className={classNames.groupWrapperClassName}>
+                    <div className={classNames.groupHeaderClassName}>
+                      {selectedHeader}
+                    </div>
+                    <div
+                      ref={selectedListRef}
+                      className={classNames.listClassName}
+                    >
+                      {selectedOptions.map(({ value, label }, index) => {
+                        const ref = optionsRefs.current[index];
 
-      {isOpen && (
-        <div className={classNames.dropdownClassName}>
-          {!!selectedOptions.length && (
-            <div className={classNames.groupWrapperClassName}>
-              <div className={classNames.groupHeaderClassName}>
-                {selectedHeader}
-              </div>
-              <div ref={selectedListRef} className={classNames.listClassName}>
-                {selectedOptions.map(({ value, label }, index) => {
-                  const ref = optionsRefs.current[index];
+                        return (
+                          <Option
+                            isRemovable
+                            key={value}
+                            label={label}
+                            activeValue={activeValue}
+                            value={value}
+                            index={index}
+                            onClick={() =>
+                              handleSelectOption({
+                                optionValue: value,
+                                disabled: false,
+                                type: "remove",
+                              })
+                            }
+                            onMouseOver={() => handleMouseOver(value)}
+                            onMouseLeave={handleMouseLeave}
+                            ref={ref}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+                <div className={classNames.groupWrapperClassName}>
+                  <div className={classNames.groupHeaderClassName}>
+                    {unselectedHeader}
+                  </div>
+                  <div
+                    ref={unselectedListRef}
+                    className={classNames.listClassName}
+                  >
+                    {filteredOptions.length ? (
+                      filteredOptions.map(
+                        ({ value, label, disabled }, index) => {
+                          const ref =
+                            optionsRefs.current[selectedOptions.length + index];
 
-                  return (
-                    <Option
-                      isRemovable
-                      key={value}
-                      label={label}
-                      activeValue={activeValue}
-                      value={value}
-                      index={index}
-                      onClick={() =>
-                        handleSelectOption({
-                          optionValue: value,
-                          disabled: false,
-                          type: "remove",
-                        })
-                      }
-                      onMouseOver={() => handleMouseOver(value)}
-                      onMouseLeave={handleMouseLeave}
-                      ref={ref}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          )}
-          <div className={classNames.groupWrapperClassName}>
-            <div className={classNames.groupHeaderClassName}>
-              {unselectedHeader}
-            </div>
-            <div ref={unselectedListRef} className={classNames.listClassName}>
-              {filteredOptions.length ? (
-                filteredOptions.map(({ value, label, disabled }, index) => {
-                  const ref =
-                    optionsRefs.current[selectedOptions.length + index];
-
-                  return (
-                    <Option
-                      disabled={disabled}
-                      key={value}
-                      label={label}
-                      activeValue={activeValue}
-                      value={value}
-                      index={index}
-                      onClick={() =>
-                        handleSelectOption({
-                          optionValue: value,
-                          disabled: !!disabled,
-                          type: "select",
-                        })
-                      }
-                      onMouseOver={() => handleMouseOver(value)}
-                      onMouseLeave={handleMouseLeave}
-                      ref={ref}
-                    />
-                  );
-                })
-              ) : (
-                <div className={classNames.noOptionsMessageItemClassName}>
-                  {noOptionsMessage}
+                          return (
+                            <Option
+                              disabled={disabled}
+                              key={value}
+                              label={label}
+                              activeValue={activeValue}
+                              value={value}
+                              index={index}
+                              onClick={() =>
+                                handleSelectOption({
+                                  optionValue: value,
+                                  disabled: !!disabled,
+                                  type: "select",
+                                })
+                              }
+                              onMouseOver={() => handleMouseOver(value)}
+                              onMouseLeave={handleMouseLeave}
+                              ref={ref}
+                            />
+                          );
+                        }
+                      )
+                    ) : (
+                      <div className={classNames.noOptionsMessageItemClassName}>
+                        {noOptionsMessage}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+              </div>
+            )
+          );
+        }}
+      </Transition>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
+
 import { ComponentTheme } from "@cheaaa/theme";
 
 import { SELECT_COMPONENTS_NAMES } from "./consts";
@@ -26,6 +28,20 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     transform: "translateY(10px)",
     boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",
     borderRadius: "0px 0px 12px 12px",
+    transition: "0.3s",
+
+    [`&[data-animation-state="${ENTERING}"]`]: {
+      transform: "scale(0.8) translateY(20px)",
+      opacity: 0,
+    },
+    [`&[data-animation-state="${ENTERED}"]`]: {
+      transform: "scale(1) translateY(10px)",
+      opacity: 1,
+    },
+    [`&[data-animation-state="${EXITING}"]`]: {
+      transform: "scale(0.8) translateY(0px)",
+      opacity: 0,
+    },
   },
   [SELECT_COMPONENTS_NAMES.groupWrapper]: {
     boxSizing: "border-box",

@@ -112,8 +112,8 @@ export const Base: Story<IStoryParams> = (args) => {
         {...args}
       />
       <h2>Single Value</h2>
-      
-      {/* <Select
+
+      <Select
         value={singleValue}
         onChange={setSingleValue}
         options={options}
@@ -124,7 +124,7 @@ export const Base: Story<IStoryParams> = (args) => {
           onFocus,
         }}
         {...args}
-      /> */}
+      />
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio error
         itaque reprehenderit eum neque deleniti et aliquam? Beatae recusandae
@@ -183,7 +183,7 @@ export const Base: Story<IStoryParams> = (args) => {
         molestiae deleniti dolore quibusdam exercitationem similique?
       </p>
       <h2>Multi Value</h2>
-      {/* <Select
+      <Select
         value={multiValue}
         onChange={setMultiValue}
         options={options}
@@ -194,7 +194,7 @@ export const Base: Story<IStoryParams> = (args) => {
           onFocus,
         }}
         {...args}
-      /> */}
+      />
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus quis
         doloribus, incidunt ab necessitatibus labore cumque molestias dolore
