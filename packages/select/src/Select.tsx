@@ -77,6 +77,10 @@ export const Select = ({
   }, [isOpenProps]);
 
   const handleChangeInput = (inputValue: string) => {
+    if (!isOpen) {
+      handleOpen();
+    }
+
     setSearchString(inputValue);
     onChangeInput?.(inputValue);
   };
@@ -292,11 +296,13 @@ export const Select = ({
     );
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen && document.activeElement === inputRef.current) {
+      if (
+        !isOpen &&
+        inputRef.current === document.activeElement &&
+        ["ArrowUp", "ArrowDown"].includes(e.key)
+      ) {
         handleOpen();
-      } else if (!isOpen) {
-        return;
-      }
+      } else if (!isOpen) return;
 
       const activeValueIndex = visibleOptionsValues.findIndex(
         (optionValue) => optionValue === activeValue
