@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.15.0...@cheaaa/select@1.16.0) (2022-10-27)
+
+
+### Features
+
+* add click select after clicn by opened ([ee00a7e](https://github.com/SergeyBondar93/liba/commit/ee00a7eecc57ac5f03cf75d4692174e9a75e5518))
+* eslint fix, update some pkgs ([f722d9c](https://github.com/SergeyBondar93/liba/commit/f722d9c5101b678eb332da44dba85bb9a011cc11))
+* **select:** add open after click up down btns ([18c9202](https://github.com/SergeyBondar93/liba/commit/18c920210da66a1dbca1267752e875b5f522ddc2))
+* WIP add animation to select ([5448f9b](https://github.com/SergeyBondar93/liba/commit/5448f9b2a63123057922773b280d3ad43c979016))
+
+
+
+
+
 # [1.15.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/select@1.14.2...@cheaaa/select@1.15.0) (2022-10-22)
 
 
