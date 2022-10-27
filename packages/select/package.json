@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/select",
-	"version": "1.14.2",
+	"version": "1.15.0",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
