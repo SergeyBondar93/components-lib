@@ -70,6 +70,14 @@ export interface IBaseModalProps extends IThemedProps {
   children: ReactNode;
 
   classes: Classes<string>;
+
+  componentsProps?: {
+    modalContent?: any;
+    headerWrapper?: any;
+    titleWrapper?: any;
+    closeButton?: any;
+    childrenWrapper?: any;
+  };
 }
 
 export const BaseModal: FC<IBaseModalProps> = memo(
@@ -86,6 +94,13 @@ export const BaseModal: FC<IBaseModalProps> = memo(
     closeClickByBlanket = true,
     focusAfterRender = true,
     classes,
+    componentsProps: {
+      modalContent: modalContentProps = {},
+      headerWrapper: headerWrapperProps = {},
+      titleWrapper: titleWrapperProps = {},
+      closeButton: closeButtonProps = {},
+      childrenWrapper: childrenWrapperProps = {},
+    } = {},
   }) => {
     const childrenWrapperRef = useRef<HTMLDivElement>(null);
     const transitionRef = useRef<HTMLDivElement>(null);
@@ -180,15 +195,23 @@ export const BaseModal: FC<IBaseModalProps> = memo(
                    * аналогично описанному в defaultTheme.ts
                    */
                   data-animation-state={animationState}
+                  {...modalContentProps}
                 >
-                  <div className={classNames.headerWrapperClassName}>
-                    <div className={classNames.titleWrapperClassName}>
+                  <div
+                    className={classNames.headerWrapperClassName}
+                    {...headerWrapperProps}
+                  >
+                    <div
+                      className={classNames.titleWrapperClassName}
+                      {...titleWrapperProps}
+                    >
                       {title}
                     </div>
                     {withCloseButton && (
                       <button
                         className={classNames.closeButtonClassName}
                         onClick={handleClose}
+                        {...closeButtonProps}
                       >
                         <CloseIcon />
                       </button>
@@ -199,6 +222,7 @@ export const BaseModal: FC<IBaseModalProps> = memo(
                     tabIndex={1}
                     ref={childrenWrapperRef}
                     className={classNames.childrenWrapperClassName}
+                    {...childrenWrapperProps}
                   >
                     {children}
                   </div>

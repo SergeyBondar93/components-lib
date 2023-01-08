@@ -2,14 +2,18 @@ import { ENTERED, ENTERING, EXITING } from "react-transition-group/Transition";
 
 import { ComponentTheme } from "@cheaaa/theme";
 
-import { DRAWER_COMPONENTS_NAMES, DEFAULT_ANIMATION_DURATION } from "./consts";
+import {
+  DRAWER_COMPONENTS_NAMES,
+  DEFAULT_ANIMATION_DURATION,
+  DRAWER_POSITION_BOTTOM,
+  DRAWER_POSITION_LEFT,
+  DRAWER_POSITION_RIGHT,
+  DRAWER_POSITION_TOP,
+} from "./consts";
 import { ComponentNames } from "./types";
 
 export const defaultDrawerTheme: Required<ComponentTheme<ComponentNames>> = {
   [DRAWER_COMPONENTS_NAMES.modalContent]: {
-    top: "0px",
-    left: "0px",
-    width: "200px",
     border: "1px solid black",
     display: "flex",
     zIndex: "3",
@@ -22,18 +26,72 @@ export const defaultDrawerTheme: Required<ComponentTheme<ComponentNames>> = {
     transition: `${DEFAULT_ANIMATION_DURATION}ms`,
 
     [`&[data-animation-state="${ENTERING}"]`]: {
-      transform: "translateX(-101%)",
       opacity: 0,
     },
     [`&[data-animation-state="${ENTERED}"]`]: {
-      transform: "translateX(0px)",
       opacity: 1,
     },
     [`&[data-animation-state="${EXITING}"]`]: {
-      transform: "translateX(-101%)",
       opacity: 0,
     },
+
+    /** LEFT */
+    [`&[data-animation-state="${ENTERING}"][data-drawer-position="${DRAWER_POSITION_LEFT}"]`]:
+      {
+        transform: "translateX(-101%)",
+      },
+    [`&[data-animation-state="${ENTERED}"][data-drawer-position="${DRAWER_POSITION_LEFT}"]`]:
+      {
+        transform: "translateX(0px)",
+      },
+    [`&[data-animation-state="${EXITING}"][data-drawer-position="${DRAWER_POSITION_LEFT}"]`]:
+      {
+        transform: "translateX(-101%)",
+      },
+
+    /** RIGHT */
+    [`&[data-animation-state="${ENTERING}"][data-drawer-position="${DRAWER_POSITION_RIGHT}"]`]:
+      {
+        transform: "translateX(101%)",
+      },
+    [`&[data-animation-state="${ENTERED}"][data-drawer-position="${DRAWER_POSITION_RIGHT}"]`]:
+      {
+        transform: "translateX(0px)",
+      },
+    [`&[data-animation-state="${EXITING}"][data-drawer-position="${DRAWER_POSITION_RIGHT}"]`]:
+      {
+        transform: "translateX(101%)",
+      },
+
+    /** TOP */
+    [`&[data-animation-state="${ENTERING}"][data-drawer-position="${DRAWER_POSITION_TOP}"]`]:
+      {
+        transform: "translateY(-101%)",
+      },
+    [`&[data-animation-state="${ENTERED}"][data-drawer-position="${DRAWER_POSITION_TOP}"]`]:
+      {
+        transform: "translateY(0px)",
+      },
+    [`&[data-animation-state="${EXITING}"][data-drawer-position="${DRAWER_POSITION_TOP}"]`]:
+      {
+        transform: "translateY(-101%)",
+      },
+
+    /** BOTTOM */
+    [`&[data-animation-state="${ENTERING}"][data-drawer-position="${DRAWER_POSITION_BOTTOM}"]`]:
+      {
+        transform: "translateY(101%)",
+      },
+    [`&[data-animation-state="${ENTERED}"][data-drawer-position="${DRAWER_POSITION_BOTTOM}"]`]:
+      {
+        transform: "translateY(0px)",
+      },
+    [`&[data-animation-state="${EXITING}"][data-drawer-position="${DRAWER_POSITION_BOTTOM}"]`]:
+      {
+        transform: "translateY(101%)",
+      },
   },
+
   [DRAWER_COMPONENTS_NAMES.childrenWrapper]: {
     overflow: "auto",
     padding: "10px",

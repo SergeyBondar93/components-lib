@@ -34,20 +34,27 @@ interface IStoryParams {
 }
 
 export const Base: Story<IStoryParams> = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [params, setParams] = useState<any>({
+    isOpen: false,
+    position: "left",
+  });
 
-  const handleOpen = () => {
-    setIsOpen(true);
+  const handleOpen = (position: any) => () => {
+    setParams({ isOpen: true, position });
   };
   const handleClose = () => {
-    setIsOpen(false);
+    setParams({ isOpen: false, position: params.position });
   };
 
   return (
     <>
-      <button onClick={handleOpen}>Open</button>
+      <button onClick={handleOpen("left")}>LEFT</button>
+      <button onClick={handleOpen("right")}>RIGHT</button>
+      <button onClick={handleOpen("top")}>TOP</button>
+      <button onClick={handleOpen("bottom")}>BOTTOM</button>
       <Drawer
-        isOpen={isOpen}
+        isOpen={params.isOpen}
+        position={params.position}
         onClose={handleClose}
         name={"drawer"}
         title={"Drawer"}
