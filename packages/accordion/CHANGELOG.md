@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.12.0 (2023-01-11)
+
+
+### Features
+
+* add animations to dropdowns ([e3c0110](https://github.com/SergeyBondar93/liba/commit/e3c0110cd946075a135cffb12cc406610767a881))
+
+
+
+
+
 # 2.11.0 (2022-10-05)
 
 

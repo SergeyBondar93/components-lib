@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.10.0 (2023-01-11)
+
+
+### Features
+
+* add animations to dropdowns ([e3c0110](https://github.com/SergeyBondar93/liba/commit/e3c0110cd946075a135cffb12cc406610767a881))
+
+
+
+
+
 ## [1.9.2](https://github.com/SergeyBondar93/liba/compare/@cheaaa/datepicker@1.9.1...@cheaaa/datepicker@1.9.2) (2022-10-15)
 
 **Note:** Version bump only for package @cheaaa/datepicker
