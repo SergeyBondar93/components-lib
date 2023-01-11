@@ -25,12 +25,20 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     zIndex: 1,
     background: "#FFF",
     maxHeight: "fit-content",
-    transform: "translateY(10px)",
     boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",
     borderRadius: "0px 0px 12px 12px",
 
     overflow: "hidden",
+
+    transition: "0.5s",
+    transitionProperty: "transform, opacity",
+    opacity: 0,
+    '&[data-is-opened="fasle"]': {
+      transform: "translateY(-20px)",
+    },
     '&[data-is-opened="true"]': {
+      opacity: 1,
+      transform: "translateY(10px)",
       overflow: "initial",
     },
 

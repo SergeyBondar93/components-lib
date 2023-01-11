@@ -100,6 +100,19 @@ export const DaysTable = ({
     [onChange, disabledCalendar]
   );
 
+  const isStartOfRange = useCallback(
+    (timestamp) => {
+      return rangeDates?.[0]?.timestamp === timestamp;
+    },
+    [rangeDates]
+  );
+  const isEndOfRange = useCallback(
+    (timestamp) => {
+      return rangeDates?.slice(-1)?.[0]?.timestamp === timestamp;
+    },
+    [rangeDates]
+  );
+
   return (
     <>
       <Weekdays
@@ -116,6 +129,10 @@ export const DaysTable = ({
           isSelected,
           inRange,
         }) => {
+          const isRangeStart = isStartOfRange(timestamp);
+          const isRangeEnd = isEndOfRange(timestamp);
+          const isRangeStartEqualsEnd = isRangeStart && isRangeEnd;
+
           return (
             <button
               key={timestamp}
@@ -125,12 +142,15 @@ export const DaysTable = ({
               onClick={() => handleClick(disabledDay, date)}
               disabled={disabledDay || disabledCalendar}
               data-is-today={String(!!isToday)}
-              data-is-selected={String(!!isSelected)}
+              data-is-selected={!rangeDates.length && String(!!isSelected)}
               /**
                * Находится ли день в range между dateStart и dateEnd
                * включается при передаче rangeSelector
                */
               data-in-range={String(!!inRange)}
+              data-is-range-start={isRangeStart}
+              data-is-range-end={isRangeEnd}
+              data-is-start-equals-end={isRangeStartEqualsEnd}
             >
               {date.getDate()}
             </button>

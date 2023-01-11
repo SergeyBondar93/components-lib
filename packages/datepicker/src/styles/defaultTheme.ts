@@ -3,6 +3,8 @@ import { ComponentTheme } from "@cheaaa/theme";
 import { DATEPICKER_COMPONENTS_NAMES } from "./consts";
 import { ComponentNames } from "./types";
 
+const BORDER_RADIUS = "9px";
+
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   /** Accordion Styles */
   [DATEPICKER_COMPONENTS_NAMES.wrapper]: {
@@ -25,10 +27,19 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     zIndex: 1,
     background: "#FFF",
     maxHeight: "fit-content",
-    transform: "translateY(10px)",
     boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",
     borderRadius: "0px 0px 12px 12px",
     overflow: "hidden",
+    transition: "0.5s",
+    transitionProperty: "transform, opacity",
+    opacity: 0,
+    '&[data-is-opened="fasle"]': {
+      transform: "translateY(-20px)",
+    },
+    '&[data-is-opened="true"]': {
+      opacity: 1,
+      transform: "translateY(10px)",
+    },
   },
   /**
    * для отступа внутри children для правильного
@@ -104,7 +115,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     border: "none",
     background: "transparent",
     cursor: "pointer",
-    borderRadius: 9,
+    borderRadius: BORDER_RADIUS,
     fontSize: "14px",
     color: "#101820",
     "&:focus": {
@@ -122,13 +133,29 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     '&[data-is-today="true"]': {
       color: "#FF6666",
     },
-    '&[data-is-selected="true"]': {
+    '&[data-is-selected="true"][data-in-range="false"]': {
       background: "#636AFF",
       color: "#FFF",
     },
     '&[data-in-range="true"]': {
       background: "#EDF4FE",
       color: "#636AFF",
+      borderRadius: "0px 0px 0px 0px",
+    },
+
+    '&[data-is-range-start="true"]': {
+      background: "#636AFF",
+      color: "#FFF",
+      borderRadius: `${BORDER_RADIUS} 0px 0px ${BORDER_RADIUS}`,
+    },
+    '&[data-is-range-end="true"]': {
+      background: "#636AFF",
+      color: "#FFF",
+      borderRadius: `0px ${BORDER_RADIUS} ${BORDER_RADIUS} 0px`,
+    },
+
+    '&[data-is-start-equals-end="true"]': {
+      borderRadius: BORDER_RADIUS,
     },
   },
 };

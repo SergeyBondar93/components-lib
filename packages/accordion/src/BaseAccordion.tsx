@@ -57,9 +57,10 @@ export interface IBaseAccordionProps extends IThemedProps {
 
   /**
    * Длительность анимации разворачивания, не больше 0.5s
+   * none - для отключения установки свойства в inline styles
    *
    */
-  animationDuration?: `0.${number}s`;
+  animationDuration?: `0.${number}s` | "none";
 
   /**
    * Функция для вычисления кастомной высоты body. Принимает isOpen и высчитанную высоту самим компонентом
@@ -270,9 +271,10 @@ export const BaseAccordion = forwardRef<HTMLDivElement, IBaseAccordionProps>(
           className={classNames.bodyClassName}
           style={{
             height: _height,
-            transition: animationRef.current
-              ? animationDurationProps
-              : undefined,
+            transition:
+              animationDurationProps !== "none" && animationRef.current
+                ? animationDurationProps
+                : undefined,
           }}
           /**
            * Открыт ли аккордион полностью

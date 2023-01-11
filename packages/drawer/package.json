@@ -1,6 +1,6 @@
 {
-	"name": "@cheaaa/modal",
-	"version": "2.1.0",
+	"name": "@cheaaa/drawer",
+	"version": "1.0.0",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",

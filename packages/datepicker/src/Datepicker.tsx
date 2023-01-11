@@ -214,7 +214,7 @@ export const Datepicker = ({
       classes={classes}
       titleButtonProps={titleButtonProps}
       ref={accordionRef}
-      animationDuration="0.0s"
+      animationDuration="none"
       defaultTitleButtonAppearance=""
       shouldFitContent={shouldFitContent}
       {...accordionProps}
