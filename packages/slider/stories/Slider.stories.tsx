@@ -20,7 +20,10 @@ export const Base = () => {
     isSliding: false,
   });
 
-  const [doubleValue, setDoubleValue] = useState([0, 100] as [number, number]);
+  const [doubleValue, setDoubleValue] = useState({
+    from: 10,
+    to: 80,
+  });
 
   const [params, setParams] = useState({
     minValue: 100,
@@ -58,6 +61,17 @@ export const Base = () => {
 
     return step4 + (carPrice - 172) * 10000000;
   }, [carPrice]);
+
+  const formattedDoubleValue = useMemo(() => {
+    if (doubleValue.from > doubleValue.to) {
+      return {
+        from: doubleValue.to,
+        to: doubleValue.from,
+      };
+    }
+
+    return doubleValue;
+  }, [doubleValue]);
 
   return (
     <div style={{ padding: "30px" }}>
@@ -146,7 +160,7 @@ export const Base = () => {
       <Slider
         minValue={params.minValue}
         maxValue={params.maxValue}
-        value={value}
+        to={value}
         onChange={handleChange}
       />
 
@@ -160,7 +174,7 @@ export const Base = () => {
         <Slider
           minValue={1}
           maxValue={199}
-          value={carPrice}
+          to={carPrice}
           onChange={setCarPrice}
         />
 
@@ -179,12 +193,13 @@ export const Base = () => {
         <Slider
           minValue={0}
           maxValue={100}
-          value={doubleValue}
+          from={doubleValue.from}
+          to={doubleValue.to}
           onChange={setDoubleValue}
         />
 
         <span>
-          Current value: {doubleValue[0]} - {doubleValue[1]}
+          Current value: {formattedDoubleValue.from} - {formattedDoubleValue.to}
         </span>
       </div>
     </div>

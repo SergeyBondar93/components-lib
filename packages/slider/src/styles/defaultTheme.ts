@@ -25,9 +25,12 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     zIndex: 1,
   },
   [SLIDER_COMPONENTS_NAMES.line]: {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    background: "#EDF4FE",
     width: "100%",
     height: "3px",
-    background: "#EDF4FE",
   },
   [SLIDER_COMPONENTS_NAMES.pointWrapper]: {
     position: "absolute",
