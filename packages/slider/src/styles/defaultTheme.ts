@@ -5,6 +5,7 @@ import { ComponentNames } from "./types";
 
 const isSlidingStyles = {
   boxShadow: "0px 0px 0px 8px #636AFF",
+  zIndex: 2,
 };
 
 export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
@@ -13,7 +14,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     height: "20px",
     display: "flex",
     alignItems: "center",
-    position: "relative",
+    position: "absolute",
   },
   [SLIDER_COMPONENTS_NAMES.filledLine]: {
     height: "3px",
@@ -21,7 +22,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     position: "absolute",
     top: "50%",
     transform: "translateY(-50%)",
-    left: "0%",
+    zIndex: 1,
   },
   [SLIDER_COMPONENTS_NAMES.line]: {
     width: "100%",
@@ -34,6 +35,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     height: "30px",
     transform: "translateX(-50%)",
     borderRadius: "50%",
+    zIndex: 1,
     "&:hover": {
       "& > span": {
         ...isSlidingStyles,

@@ -20,6 +20,8 @@ export const Base = () => {
     isSliding: false,
   });
 
+  const [doubleValue, setDoubleValue] = useState([0, 100] as [number, number]);
+
   const [params, setParams] = useState({
     minValue: 100,
     maxValue: 400,
@@ -33,6 +35,7 @@ export const Base = () => {
   };
 
   const handleChange = useCallback((value, { isSliding }: any) => {
+    console.log(value);
     setValue({ value, isSliding });
   }, []);
 
@@ -163,6 +166,25 @@ export const Base = () => {
 
         <span>
           Current value: {Intl.NumberFormat().format(computedCarPrice)} $
+        </span>
+      </div>
+
+      <div
+        style={{
+          marginTop: "50px",
+        }}
+      >
+        <h4>Double value</h4>
+
+        <Slider
+          minValue={0}
+          maxValue={100}
+          value={doubleValue}
+          onChange={setDoubleValue}
+        />
+
+        <span>
+          Current value: {doubleValue[0]} - {doubleValue[1]}
         </span>
       </div>
     </div>
