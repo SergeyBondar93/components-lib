@@ -7,10 +7,7 @@ import { ComponentNames, useStyles } from "./styles";
 
 interface TagProps extends IThemedProps {
   name?: string;
-
-  from?: number;
-  to: number;
-
+  value: number;
   /**
    * Минимально доступное значение
    */
@@ -40,14 +37,41 @@ export const Slider: FC<TagProps> = memo(
     appearance = "base",
     precision = 0,
     name,
-    from,
-    to,
+    value: valueProps,
     minValue,
     maxValue,
     onChange,
   }) => {
-    const prevRestrictionsRef = useRef({ min: -1, max: -1 });
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const sliderPointRef = useRef<HTMLSpanElement>(null);
+    /**
+     * value - число 0...1
+     */
+    const { isSliding, value } = useSlider(wrapperRef);
+
+    const valuePropsNumber = useMemo(() => Number(valueProps), [valueProps]);
+    const minValueNumber = useMemo(() => Number(minValue), [minValue]);
+    const maxValueNumber = useMemo(() => Number(maxValue), [maxValue]);
+
+    const [wasSliding, setWasSliding] = useState(false);
+
+    const updatedValueFromProps = useMemo(() => {
+      /**
+       * возвращает 0...1 в зависимости от переданных value / min / max
+       */
+      if (valuePropsNumber! < minValueNumber) return 0;
+
+      if (valuePropsNumber! > maxValueNumber) return 1;
+
+      const range = maxValueNumber - minValueNumber;
+      const result = (valuePropsNumber! - minValueNumber) / range;
+
+      return result;
+    }, [valuePropsNumber, minValueNumber, maxValueNumber, precision]);
+    const old = useRef({ min: -1, max: -1 });
+
     const classes = useStyles();
+
     const classNames = useMemo(() => {
       const wrapperClassName = getClassName<ComponentNames>(
         classes,
@@ -93,112 +117,39 @@ export const Slider: FC<TagProps> = memo(
       };
     }, [classes, baseAppearance, appearance]);
 
-    const isDoubleRef = useRef(typeof from === "number");
-
-    const sliderOneRef = useRef<HTMLDivElement>(null);
-    const sliderTwoRef = useRef<HTMLDivElement>(null);
-    /**
-     * value - число 0...1
-     */
-    const { isSliding: isSlidingOne, value: valueUseSliderOne } =
-      useSlider(sliderOneRef);
-    const { isSliding: isSlidingTwo, value: valueUseSliderTwo } =
-      useSlider(sliderTwoRef);
-
-    const minValueNumber = useMemo(() => Number(minValue), [minValue]);
-    const maxValueNumber = useMemo(() => Number(maxValue), [maxValue]);
-
-    const valuePropsNumber = useMemo(() => {
-      if (isDoubleRef.current) {
-        return {
-          from: Number(from),
-          to: Number(to),
-        } as const;
-      } else {
-        return {
-          from: minValueNumber,
-          to: Number(to),
-        } as const;
-      }
-    }, [from, to, minValueNumber]);
-
-    const [wasSliding, setWasSliding] = useState(false);
-
-    const updatedValueFromProps = useMemo(() => {
-      const range = maxValueNumber - minValueNumber;
-
-      const result = {
-        from:
-          valuePropsNumber.from < minValueNumber
-            ? 0
-            : (valuePropsNumber.from - minValueNumber) / range,
-        to:
-          valuePropsNumber.to > maxValueNumber
-            ? 1
-            : (valuePropsNumber.to - minValueNumber) / range,
-      };
-
-      /**
-       * возвращает [0...1, 0...1] в зависимости от переданных value / min / max
-       */
-      return result;
-    }, [valuePropsNumber, minValueNumber, maxValueNumber, precision]);
-
     useEffect(() => {
-      if ((isSlidingOne || isSlidingTwo) && !wasSliding) {
+      if (isSliding && !wasSliding /* && !someDiff*/) {
         setWasSliding(true);
       }
-      // TODO удалить лишние?
-    }, [
-      isSlidingOne,
-      isSlidingTwo,
-      wasSliding,
-      minValueNumber,
-      maxValueNumber,
-    ]);
+    }, [isSliding, wasSliding, minValueNumber, maxValueNumber]);
 
-    const computedValueToCallback = useMemo(() => {
-      const wasRestrictionsChanged =
-        isDiff(prevRestrictionsRef.current.min, minValueNumber) ||
-        isDiff(prevRestrictionsRef.current.max, maxValueNumber);
+    const computedValue = useMemo(() => {
+      const someDiff =
+        isDiff(old.current.min, minValueNumber) ||
+        isDiff(old.current.max, maxValueNumber);
 
-      if (wasSliding && !wasRestrictionsChanged) {
-        const newValue1 =
-          minValueNumber +
-          (maxValueNumber - minValueNumber) * valueUseSliderOne;
-        const newValue2 =
-          minValueNumber +
-          (maxValueNumber - minValueNumber) * valueUseSliderTwo;
+      if (wasSliding && !someDiff) {
+        const newValue =
+          minValueNumber + (maxValueNumber - minValueNumber) * value;
 
-        prevRestrictionsRef.current.min = minValueNumber;
-        prevRestrictionsRef.current.max = maxValueNumber;
+        old.current.min = minValueNumber;
+        old.current.max = maxValueNumber;
 
-        return {
-          from: Number(newValue1.toFixed(precision)),
-          to: Number(newValue2.toFixed(precision)),
-        };
+        return newValue.toFixed(precision);
       } else {
-        prevRestrictionsRef.current.min = minValueNumber;
-        prevRestrictionsRef.current.max = maxValueNumber;
+        if (valuePropsNumber < minValueNumber) return 0;
 
-        return {
-          from: Number(
-            valuePropsNumber.from < minValueNumber
-              ? 0
-              : valuePropsNumber.from.toFixed(precision)
-          ),
-          to: Number(
-            valuePropsNumber.to > maxValueNumber
-              ? maxValueNumber
-              : valuePropsNumber.to.toFixed(precision)
-          ),
-        };
+        if (valuePropsNumber > maxValueNumber) return 1;
+
+        old.current.min = minValueNumber;
+        old.current.max = maxValueNumber;
+
+        return valuePropsNumber.toFixed(precision);
       }
     }, [
       wasSliding,
       valuePropsNumber,
-      valueUseSliderOne,
-      valueUseSliderTwo,
+      value,
       minValueNumber,
       maxValueNumber,
       precision,
@@ -206,84 +157,46 @@ export const Slider: FC<TagProps> = memo(
 
     useEffect(() => {
       if (wasSliding) {
-        if (isDoubleRef.current) {
-          onChange(computedValueToCallback, {
-            isSlidingOne,
-            isSlidingTwo,
-            name,
-          });
-        } else {
-          console.log("!SINGLE", computedValueToCallback);
-          onChange(computedValueToCallback.to, {
-            isSliding: isSlidingTwo,
-            name,
-          });
-        }
+        onChange(computedValue, { isSliding, name });
       }
-    }, [
-      wasSliding,
-      computedValueToCallback,
-      isSlidingOne,
-      isSlidingTwo,
-      onChange,
-      name,
-    ]);
+    }, [wasSliding, computedValue, isSliding, onChange, name]);
 
-    const startOffset = `${updatedValueFromProps.from * 100}%`;
-    const endOffset = `${updatedValueFromProps.to * 100}%`;
-
-    const filledWidth = `${
-      updatedValueFromProps.to * 100 - updatedValueFromProps.from * 100
-    }%`;
+    const filledOffsetLeft = `${updatedValueFromProps * 100}%`;
 
     return (
-      <div
-        style={{
-          position: "relative",
-          height: "20px",
-          width: "400px",
-        }}
-      >
-        <span
-          className={classNames.filledLineClassName}
+      <>
+        <div
           style={{
-            left: startOffset,
-            width: filledWidth,
+            position: "relative",
+            height: "20px",
+            width: "400px",
           }}
-        />
+        >
+          <div ref={wrapperRef} className={classNames.wrapperClassName}>
+            <span className={classNames.lineClassName} />
 
-        <span className={classNames.lineClassName} />
+            <span
+              className={classNames.filledLineClassName}
+              style={{
+                width: filledOffsetLeft,
+              }}
+            />
 
-        {isDoubleRef.current && (
-          <div ref={sliderOneRef} className={classNames.wrapperClassName}>
             <span
               className={classNames.pointWrapperClassName}
+              ref={sliderPointRef}
               style={{
-                left: startOffset,
+                left: filledOffsetLeft,
               }}
             >
               <span
                 className={classNames.pointClassName}
-                data-is-sliding={isSlidingOne}
+                data-is-sliding={isSliding}
               />
             </span>
           </div>
-        )}
-
-        <div ref={sliderTwoRef} className={classNames.wrapperClassName}>
-          <span
-            className={classNames.pointWrapperClassName}
-            style={{
-              left: endOffset,
-            }}
-          >
-            <span
-              className={classNames.pointClassName}
-              data-is-sliding={isSlidingTwo}
-            />
-          </span>
         </div>
-      </div>
+      </>
     );
   }
 );

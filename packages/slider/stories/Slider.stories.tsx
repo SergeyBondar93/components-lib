@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/react";
 import { useCallback, useMemo, useState } from "react";
 
-import { Slider } from "../src";
+import { DoubleSlider, Slider } from "../src";
 
 export default {
   title: "Slider",
@@ -15,14 +15,13 @@ const step4 = step3 + 22 * 1000000; // 150-172  1m
 // 199 steps
 
 export const Base = () => {
-  const [{ value, isSliding }, setValue] = useState({
-    value: 300,
-    isSliding: false,
-  });
-
   const [doubleValue, setDoubleValue] = useState({
     from: 10,
     to: 80,
+  });
+  const [{ value, isSliding }, setValue] = useState({
+    value: 300,
+    isSliding: false,
   });
 
   const [params, setParams] = useState({
@@ -38,7 +37,6 @@ export const Base = () => {
   };
 
   const handleChange = useCallback((value, { isSliding }: any) => {
-    console.log(value);
     setValue({ value, isSliding });
   }, []);
 
@@ -160,7 +158,7 @@ export const Base = () => {
       <Slider
         minValue={params.minValue}
         maxValue={params.maxValue}
-        to={value}
+        value={value}
         onChange={handleChange}
       />
 
@@ -174,7 +172,7 @@ export const Base = () => {
         <Slider
           minValue={1}
           maxValue={199}
-          to={carPrice}
+          value={carPrice}
           onChange={setCarPrice}
         />
 
@@ -190,7 +188,7 @@ export const Base = () => {
       >
         <h4>Double value</h4>
 
-        <Slider
+        <DoubleSlider
           minValue={0}
           maxValue={100}
           from={doubleValue.from}
