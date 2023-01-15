@@ -194,6 +194,7 @@ export const Base = () => {
           from={doubleValue.from}
           to={doubleValue.to}
           onChange={setDoubleValue}
+          difference={15}
         />
 
         <span>

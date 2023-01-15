@@ -22,11 +22,15 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     top: "50%",
     transform: "translateY(-50%)",
     left: "0%",
+    zIndex: 1,
   },
   [SLIDER_COMPONENTS_NAMES.line]: {
     width: "100%",
     height: "3px",
     background: "#EDF4FE",
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
   },
   [SLIDER_COMPONENTS_NAMES.pointWrapper]: {
     position: "absolute",

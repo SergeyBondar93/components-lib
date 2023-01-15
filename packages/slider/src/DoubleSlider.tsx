@@ -8,8 +8,10 @@ import { useDoubleSlider } from "./doubleSliderHook";
 interface TagProps extends IThemedProps {
   name?: string;
 
-  from?: number;
+  from: number;
   to: number;
+
+  difference?: number;
 
   /**
    * Минимально доступное значение
@@ -42,6 +44,7 @@ export const DoubleSlider: FC<TagProps> = memo(
     name,
     from,
     to,
+    difference = 0,
     minValue,
     maxValue,
     onChange,
@@ -95,6 +98,17 @@ export const DoubleSlider: FC<TagProps> = memo(
 
     const isDoubleRef = useRef(typeof from === "number");
 
+    const formattedDifference = useMemo(() => {
+      return difference / (maxValue - minValue);
+    }, [difference, minValue, maxValue]);
+
+    const getMax = () => {
+      return valueUseSliderTwo - formattedDifference;
+    };
+    const getMin = () => {
+      return valueUseSliderOne + formattedDifference;
+    };
+
     const sliderOneRef = useRef<HTMLDivElement>(null);
     const sliderTwoRef = useRef<HTMLDivElement>(null);
     const sliderOneRefPointer = useRef<HTMLDivElement>(null);
@@ -103,9 +117,21 @@ export const DoubleSlider: FC<TagProps> = memo(
      * value - число 0...1
      */
     const { isSliding: isSlidingOne, value: valueUseSliderOne } =
-      useDoubleSlider(sliderOneRef, sliderOneRefPointer);
+      useDoubleSlider(
+        sliderOneRef,
+        sliderOneRefPointer,
+        Number(from) / maxValue,
+        { getMax }
+      );
     const { isSliding: isSlidingTwo, value: valueUseSliderTwo } =
-      useDoubleSlider(sliderTwoRef, sliderTwoRefPointer);
+      useDoubleSlider(
+        sliderTwoRef,
+        sliderTwoRefPointer,
+        Number(to) / maxValue,
+        { getMin }
+      );
+
+    // console.log(valueUseSliderOne,valueUseSliderTwo)
 
     const minValueNumber = useMemo(() => Number(minValue), [minValue]);
     const maxValueNumber = useMemo(() => Number(maxValue), [maxValue]);

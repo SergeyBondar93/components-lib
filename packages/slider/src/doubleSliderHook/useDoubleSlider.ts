@@ -1,8 +1,7 @@
 import { CSSProperties, RefObject, useEffect, useRef } from "react";
+import { useMountedState, useSetState } from "react-use";
 
 import { isBrowser, noop, off, on } from "./utils";
-import useMountedState from "./useMountedState";
-import useSetState from "./useSetState";
 
 export interface State {
   isSliding: boolean;
@@ -10,26 +9,29 @@ export interface State {
 }
 
 export interface Options {
-  onScrub: (value: number) => void;
-  onScrubStart: () => void;
-  onScrubStop: (value: number) => void;
-  reverse: boolean;
-  styles: boolean | CSSProperties;
+  onScrub?: (value: number) => void;
+  onScrubStart?: () => void;
+  onScrubStop?: (value: number) => void;
+  reverse?: boolean;
+  styles?: boolean | CSSProperties;
   vertical?: boolean;
+  getMax?: () => number;
+  getMin?: () => number;
 }
 
 export const useDoubleSlider = (
   refLine: RefObject<HTMLElement>,
   refPoint: RefObject<HTMLElement>,
+  initialValue: number,
   options: Partial<Options> = {}
 ): State => {
   const isMounted = useMountedState();
   const isSliding = useRef(false);
-  const valueRef = useRef(0);
+  const valueRef = useRef(initialValue);
   const frame = useRef(0);
   const [state, setState] = useSetState<State>({
     isSliding: false,
-    value: 0,
+    value: initialValue,
   });
 
   valueRef.current = state.value;
@@ -109,6 +111,14 @@ export const useDoubleSlider = (
 
             let value = (clientXY - pos) / length;
 
+            if (options.getMax && options.getMax() <= value) {
+              return;
+            }
+
+            if (options.getMin && options.getMin() >= value) {
+              return;
+            }
+
             if (value > 1) {
               value = 1;
             } else if (value < 0) {
@@ -138,7 +148,7 @@ export const useDoubleSlider = (
     } else {
       return undefined;
     }
-  }, [options.vertical]);
+  }, [options.vertical, options.getMax, options.getMin]);
 
   return state;
 };
