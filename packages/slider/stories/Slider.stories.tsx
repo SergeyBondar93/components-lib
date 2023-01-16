@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 
-import { DoubleSlider, Slider } from "../src";
+import { DoubleSliderCallbackValue, DoubleSlider, Slider } from "../src";
 
 export default {
   title: "Slider",
@@ -41,10 +41,15 @@ export const Base = () => {
     from: 60,
     to: 100,
   });
+  const [doubleRawValue, setDoubleRawValue] = useState({
+    from: 60,
+    to: 100,
+  });
   const [{ value, isSliding }, setValue] = useState({
     value: 300,
     isSliding: false,
   });
+  const [rawValue, setRawValue] = useState(300);
 
   const [params, setParams] = useState({
     minValue: 100,
@@ -58,20 +63,18 @@ export const Base = () => {
     setParams({ ...params, [name]: Number(value) });
   };
 
-  const handleChange = useCallback((value, { isSliding }: any) => {
+  const handleChange = useCallback((newRawValue, value, { isSliding }: any) => {
+    setRawValue(newRawValue);
     setValue({ value, isSliding });
   }, []);
 
-  const formattedDoubleValue = useMemo(() => {
-    if (doubleValue.from > doubleValue.to) {
-      return {
-        from: doubleValue.to,
-        to: doubleValue.from,
-      };
-    }
-
-    return doubleValue;
-  }, [doubleValue]);
+  const handleChangeDouble = (
+    rawValue: DoubleSliderCallbackValue,
+    value: DoubleSliderCallbackValue
+  ) => {
+    setDoubleRawValue(rawValue);
+    setDoubleValue(value);
+  };
 
   return (
     <div style={{ padding: "30px" }}>
@@ -155,12 +158,15 @@ export const Base = () => {
         }
       />
       <p style={{ textAlign: "center", color: isSliding ? "red" : "green" }}>
-        {value}
+        Raw: {rawValue}
+      </p>
+      <p style={{ textAlign: "center", color: isSliding ? "red" : "green" }}>
+        Current: {value}
       </p>
       <Slider
         minValue={params.minValue}
         maxValue={params.maxValue}
-        value={value}
+        value={rawValue}
         onChange={handleChange}
       />
 
@@ -193,16 +199,21 @@ export const Base = () => {
         <DoubleSlider
           minValue={1}
           maxValue={201}
-          from={doubleValue.from}
-          to={doubleValue.to}
-          onChange={setDoubleValue}
+          from={doubleRawValue.from}
+          to={doubleRawValue.to}
+          onChange={handleChangeDouble}
           difference={10}
         />
 
         <span>
+          RAW value: {formatterNumber.format(formatAmount(doubleRawValue.from))}{" "}
+          - {formatterNumber.format(formatAmount(doubleRawValue.to))}
+        </span>
+        <br></br>
+        <span>
           Current value:{" "}
-          {formatterNumber.format(formatAmount(formattedDoubleValue.from))} -{" "}
-          {formatterNumber.format(formatAmount(formattedDoubleValue.to))}
+          {formatterNumber.format(formatAmount(doubleValue.from))} -{" "}
+          {formatterNumber.format(formatAmount(doubleValue.to))}
         </span>
       </div>
     </div>

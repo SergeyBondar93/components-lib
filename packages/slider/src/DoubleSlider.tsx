@@ -5,6 +5,20 @@ import { getClassName, IThemedProps } from "@cheaaa/theme";
 import { ComponentNames, useStyles } from "./styles";
 import { useDoubleSlider } from "./doubleSliderHook";
 
+export type DoubleSliderCallbackValue = {
+  from: number;
+  to: number;
+};
+export type onChangeDoubleSliderFn = (
+  rawValue: DoubleSliderCallbackValue,
+  value: DoubleSliderCallbackValue,
+  params: {
+    isSlidingOne: boolean;
+    isSlidingTwo: boolean;
+    name?: string;
+  }
+) => void;
+
 interface TagProps extends IThemedProps {
   name?: string;
 
@@ -27,14 +41,13 @@ interface TagProps extends IThemedProps {
    */
   precision?: number;
 
-  onChange?: any;
+  onChange: onChangeDoubleSliderFn;
 }
 
 export const DoubleSlider: FC<TagProps> = memo(
   ({
     baseAppearance = "base",
     appearance = "base",
-    precision = 0,
     name,
     from,
     to,
@@ -133,7 +146,7 @@ export const DoubleSlider: FC<TagProps> = memo(
       } as const;
     }, [from, to, minValueNumber]);
 
-    const computedValueToCallback = useMemo(() => {
+    const rawValue = useMemo(() => {
       const newValue1 =
         minValueNumber + (maxValueNumber - minValueNumber) * valueUseSliderOne;
       const newValue2 =
@@ -153,16 +166,31 @@ export const DoubleSlider: FC<TagProps> = memo(
       valueUseSliderTwo,
       minValueNumber,
       maxValueNumber,
-      precision,
     ]);
 
+    const prevValueRef = useRef({ from, to });
+
+    const value = useMemo(() => {
+      if (isSlidingOne || isSlidingTwo) {
+        return {
+          from: prevValueRef.current.from,
+          to: prevValueRef.current.to,
+        };
+      } else {
+        prevValueRef.current.from = rawValue.from;
+        prevValueRef.current.to = rawValue.to;
+
+        return rawValue;
+      }
+    }, [rawValue, isSlidingOne, isSlidingTwo]);
+
     useEffect(() => {
-      onChange(computedValueToCallback, {
+      onChange(rawValue, value, {
         isSlidingOne,
         isSlidingTwo,
         name,
       });
-    }, [computedValueToCallback, isSlidingOne, isSlidingTwo, onChange, name]);
+    }, [rawValue, isSlidingOne, isSlidingTwo, onChange, name]);
 
     const linesStyles = useMemo(() => {
       const range = maxValueNumber - minValueNumber;
@@ -182,7 +210,7 @@ export const DoubleSlider: FC<TagProps> = memo(
         start: `${result.from * 100}%`,
         end: `${result.to * 100}%`,
       };
-    }, [formattedValueProps, minValueNumber, maxValueNumber, precision]);
+    }, [formattedValueProps, minValueNumber, maxValueNumber]);
 
     return (
       <div

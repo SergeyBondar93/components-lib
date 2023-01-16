@@ -5,6 +5,15 @@ import { getClassName, IThemedProps } from "@cheaaa/theme";
 
 import { ComponentNames, useStyles } from "./styles";
 
+export type onChangeSliderFn = (
+  rawValue: number,
+  value: number,
+  params: {
+    isSliding: boolean;
+    name?: string;
+  }
+) => void;
+
 interface TagProps extends IThemedProps {
   name?: string;
   value: number;
@@ -22,7 +31,7 @@ interface TagProps extends IThemedProps {
    */
   precision?: number;
 
-  onChange?: any;
+  onChange: onChangeSliderFn;
 }
 
 const isDiff = (a: any, b: any) => {
@@ -118,12 +127,12 @@ export const Slider: FC<TagProps> = memo(
     }, [classes, baseAppearance, appearance]);
 
     useEffect(() => {
-      if (isSliding && !wasSliding /* && !someDiff*/) {
+      if (isSliding && !wasSliding) {
         setWasSliding(true);
       }
     }, [isSliding, wasSliding, minValueNumber, maxValueNumber]);
 
-    const computedValue = useMemo(() => {
+    const rawValue = useMemo(() => {
       const someDiff =
         isDiff(old.current.min, minValueNumber) ||
         isDiff(old.current.max, maxValueNumber);
@@ -135,7 +144,7 @@ export const Slider: FC<TagProps> = memo(
         old.current.min = minValueNumber;
         old.current.max = maxValueNumber;
 
-        return newValue.toFixed(precision);
+        return Number(newValue.toFixed(precision));
       } else {
         if (valuePropsNumber < minValueNumber) return 0;
 
@@ -144,7 +153,7 @@ export const Slider: FC<TagProps> = memo(
         old.current.min = minValueNumber;
         old.current.max = maxValueNumber;
 
-        return valuePropsNumber.toFixed(precision);
+        return Number(valuePropsNumber.toFixed(precision));
       }
     }, [
       wasSliding,
@@ -155,11 +164,23 @@ export const Slider: FC<TagProps> = memo(
       precision,
     ]);
 
+    const prevValueRef = useRef(valueProps);
+
+    const newValue = useMemo(() => {
+      if (isSliding) {
+        return prevValueRef.current;
+      } else {
+        prevValueRef.current = rawValue;
+
+        return rawValue;
+      }
+    }, [rawValue, isSliding]);
+
     useEffect(() => {
       if (wasSliding) {
-        onChange(computedValue, { isSliding, name });
+        onChange(rawValue, newValue, { isSliding, name });
       }
-    }, [wasSliding, computedValue, isSliding, onChange, name]);
+    }, [wasSliding, rawValue, isSliding, onChange, name]);
 
     const filledOffsetLeft = `${updatedValueFromProps * 100}%`;
 
