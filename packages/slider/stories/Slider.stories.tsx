@@ -202,6 +202,12 @@ export const Base = () => {
           maxValue={201}
           from={doubleRawValue.from}
           to={doubleRawValue.to}
+          tooltipValueFrom={formatterNumber.format(
+            formatAmount(doubleRawValue.from)
+          )}
+          tooltipValueTo={formatterNumber.format(
+            formatAmount(doubleRawValue.to)
+          )}
           onChange={handleChangeDouble}
           difference={10}
         />

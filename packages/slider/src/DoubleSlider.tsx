@@ -1,4 +1,12 @@
-import { FC, memo, useEffect, useMemo, useRef } from "react";
+import {
+  FC,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 
@@ -42,6 +50,9 @@ interface TagProps extends IThemedProps {
   precision?: number;
 
   onChange: onChangeDoubleSliderFn;
+
+  tooltipValueFrom?: any;
+  tooltipValueTo?: any;
 }
 
 export const DoubleSlider: FC<TagProps> = memo(
@@ -55,7 +66,25 @@ export const DoubleSlider: FC<TagProps> = memo(
     minValue,
     maxValue,
     onChange,
+    tooltipValueFrom = from,
+    tooltipValueTo = to,
   }) => {
+    const [isHoverOne, setIsHoverOne] = useState(false);
+    const handleHoverOnOne = useCallback(() => {
+      setIsHoverOne(true);
+    }, []);
+    const handleHoverOffOne = useCallback(() => {
+      setIsHoverOne(false);
+    }, []);
+
+    const [isHoverTwo, setIsHoverTwo] = useState(false);
+    const handleHoverOnTwo = useCallback(() => {
+      setIsHoverTwo(true);
+    }, []);
+    const handleHoverOffTwo = useCallback(() => {
+      setIsHoverTwo(false);
+    }, []);
+
     const prevRestrictionsRef = useRef({ min: -1, max: -1 });
     const classes = useStyles();
     const classNames = useMemo(() => {
@@ -93,6 +122,19 @@ export const DoubleSlider: FC<TagProps> = memo(
         appearance,
         "point"
       );
+      const tooltipValueClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "tooltipValue"
+      );
+
+      const tooltipWrapperClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "tooltipWrapper"
+      );
 
       return {
         wrapperClassName,
@@ -100,6 +142,8 @@ export const DoubleSlider: FC<TagProps> = memo(
         lineClassName,
         pointWrapperClassName,
         pointClassName,
+        tooltipValueClassName,
+        tooltipWrapperClassName,
       };
     }, [classes, baseAppearance, appearance]);
 
@@ -237,6 +281,8 @@ export const DoubleSlider: FC<TagProps> = memo(
               left: linesStyles.start,
             }}
             ref={sliderOneRefPointer}
+            onMouseEnter={handleHoverOnOne}
+            onMouseLeave={handleHoverOffOne}
           >
             <span
               className={classNames.pointClassName}
@@ -252,11 +298,36 @@ export const DoubleSlider: FC<TagProps> = memo(
               left: linesStyles.end,
             }}
             ref={sliderTwoRefPointer}
+            onMouseEnter={handleHoverOnTwo}
+            onMouseLeave={handleHoverOffTwo}
           >
             <span
               className={classNames.pointClassName}
               data-is-sliding={isSlidingTwo}
             />
+          </span>
+
+          <span
+            data-is-sliding={isSlidingOne || isHoverOne}
+            className={classNames.tooltipWrapperClassName}
+            style={{
+              left: linesStyles.start,
+            }}
+          >
+            <span className={classNames.tooltipValueClassName}>
+              {tooltipValueFrom}
+            </span>
+          </span>
+          <span
+            data-is-sliding={isSlidingTwo || isHoverTwo}
+            className={classNames.tooltipWrapperClassName}
+            style={{
+              left: linesStyles.end,
+            }}
+          >
+            <span className={classNames.tooltipValueClassName}>
+              {tooltipValueTo}
+            </span>
           </span>
         </div>
       </div>

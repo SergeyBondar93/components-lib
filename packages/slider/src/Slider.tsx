@@ -61,6 +61,14 @@ export const Slider: FC<TagProps> = memo(
     maxValue,
     onChange,
   }) => {
+    const [isHover, setIsHover] = useState(false);
+
+    const handleHoverOn = useCallback(() => {
+      setIsHover(true);
+    }, []);
+    const handleHoverOff = useCallback(() => {
+      setIsHover(false);
+    }, []);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const sliderPointRef = useRef<HTMLSpanElement>(null);
     /**
@@ -208,15 +216,6 @@ export const Slider: FC<TagProps> = memo(
     }, [wasSliding, rawValue, isSliding, onChange, name]);
 
     const filledOffsetLeft = `${updatedValueFromProps * 100}%`;
-
-    const [isHover, setIsHover] = useState(false);
-
-    const handleHoverOn = useCallback(() => {
-      setIsHover(true);
-    }, []);
-    const handleHoverOff = useCallback(() => {
-      setIsHover(false);
-    }, []);
 
     return (
       <>

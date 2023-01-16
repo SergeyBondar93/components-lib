@@ -65,13 +65,13 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
 
   [SLIDER_COMPONENTS_NAMES.tooltipWrapper]: {
     position: "absolute",
-    transform: "translateX(-50%)",
+    transform: "translateX(-50%) scale(0.2)",
     minWidth: "40px",
     minHeight: "40px",
     borderRadius: "9px",
     color: "white",
     transition: "0.3s",
-    transitionProperty: "opacity, background, top",
+    transitionProperty: "opacity, background, top, transform",
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
@@ -96,8 +96,8 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
     '&[data-is-sliding="true"]': {
       background: "rgba(0,0,0,0.72)",
       opacity: 1,
-      top: "-52px",
-
+      top: "-58px",
+      transform: "translateX(-50%) scale(1)",
       "&:before": {
         opacity: 1,
       },
