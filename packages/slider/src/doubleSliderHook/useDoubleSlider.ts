@@ -39,7 +39,6 @@ export const useDoubleSlider = (
   useEffect(() => {
     if (isBrowser) {
       const styles = options.styles === undefined ? true : options.styles;
-      const reverse = options.reverse === undefined ? false : options.reverse;
 
       if (refLine.current && styles) {
         refLine.current.style.userSelect = "none";
@@ -112,21 +111,13 @@ export const useDoubleSlider = (
             let value = (clientXY - pos) / length;
 
             if (options.getMax && options.getMax() <= value) {
-              return;
-            }
-
-            if (options.getMin && options.getMin() >= value) {
-              return;
-            }
-
-            if (value > 1) {
+              value = options.getMax();
+            } else if (options.getMin && options.getMin() >= value) {
+              value = options.getMin();
+            } else if (value > 1) {
               value = 1;
             } else if (value < 0) {
               value = 0;
-            }
-
-            if (reverse) {
-              value = 1 - value;
             }
 
             setState({
