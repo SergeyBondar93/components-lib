@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useMemo, useRef, useState } from "react";
+import { FC, memo, useEffect, useMemo, useRef } from "react";
 
 import { getClassName, IThemedProps } from "@cheaaa/theme";
 
@@ -29,12 +29,6 @@ interface TagProps extends IThemedProps {
 
   onChange?: any;
 }
-
-const isDiff = (a: any, b: any) => {
-  if (a === -1) return false;
-
-  return a !== b;
-};
 
 export const DoubleSlider: FC<TagProps> = memo(
   ({
@@ -96,8 +90,6 @@ export const DoubleSlider: FC<TagProps> = memo(
       };
     }, [classes, baseAppearance, appearance]);
 
-    const isDoubleRef = useRef(typeof from === "number");
-
     const formattedDifference = useMemo(() => {
       return difference / (maxValue - minValue);
     }, [difference, minValue, maxValue]);
@@ -131,72 +123,31 @@ export const DoubleSlider: FC<TagProps> = memo(
         { getMin }
       );
 
-    // console.log(valueUseSliderOne,valueUseSliderTwo)
-
     const minValueNumber = useMemo(() => Number(minValue), [minValue]);
     const maxValueNumber = useMemo(() => Number(maxValue), [maxValue]);
 
     const formattedValueProps = useMemo(() => {
-      if (isDoubleRef.current) {
-        return {
-          from: Number(from),
-          to: Number(to),
-        } as const;
-      } else {
-        return {
-          from: minValueNumber,
-          to: Number(to),
-        } as const;
-      }
+      return {
+        from: Number(from),
+        to: Number(to),
+      } as const;
     }, [from, to, minValueNumber]);
 
-    const [wasSliding, setWasSliding] = useState(false);
-
-    useEffect(() => {
-      if ((isSlidingOne || isSlidingTwo) && !wasSliding) {
-        setWasSliding(true);
-      }
-    }, [isSlidingOne, isSlidingTwo, wasSliding]);
-
     const computedValueToCallback = useMemo(() => {
-      const wasRestrictionsChanged =
-        isDiff(prevRestrictionsRef.current.min, minValueNumber) ||
-        isDiff(prevRestrictionsRef.current.max, maxValueNumber);
+      const newValue1 =
+        minValueNumber + (maxValueNumber - minValueNumber) * valueUseSliderOne;
+      const newValue2 =
+        minValueNumber + (maxValueNumber - minValueNumber) * valueUseSliderTwo;
 
-      if (wasSliding && !wasRestrictionsChanged) {
-        const newValue1 =
-          minValueNumber +
-          (maxValueNumber - minValueNumber) * valueUseSliderOne;
-        const newValue2 =
-          minValueNumber +
-          (maxValueNumber - minValueNumber) * valueUseSliderTwo;
+      prevRestrictionsRef.current.min = minValueNumber;
+      prevRestrictionsRef.current.max = maxValueNumber;
 
-        prevRestrictionsRef.current.min = minValueNumber;
-        prevRestrictionsRef.current.max = maxValueNumber;
-
-        return {
-          from: Number(newValue1.toFixed(precision)),
-          to: Number(newValue2.toFixed(precision)),
-        };
-      } else {
-        prevRestrictionsRef.current.min = minValueNumber;
-        prevRestrictionsRef.current.max = maxValueNumber;
-
-        return {
-          from: Number(
-            formattedValueProps.from < minValueNumber
-              ? 0
-              : formattedValueProps.from.toFixed(precision)
-          ),
-          to: Number(
-            formattedValueProps.to > maxValueNumber
-              ? maxValueNumber
-              : formattedValueProps.to.toFixed(precision)
-          ),
-        };
-      }
+      // debugger
+      return {
+        from: Math.floor(Number(newValue1)),
+        to: Math.floor(Number(newValue2)),
+      };
     }, [
-      wasSliding,
       formattedValueProps,
       valueUseSliderOne,
       valueUseSliderTwo,
@@ -206,28 +157,12 @@ export const DoubleSlider: FC<TagProps> = memo(
     ]);
 
     useEffect(() => {
-      if (wasSliding) {
-        if (isDoubleRef.current) {
-          onChange(computedValueToCallback, {
-            isSlidingOne,
-            isSlidingTwo,
-            name,
-          });
-        } else {
-          onChange(computedValueToCallback.to, {
-            isSliding: isSlidingTwo,
-            name,
-          });
-        }
-      }
-    }, [
-      wasSliding,
-      computedValueToCallback,
-      isSlidingOne,
-      isSlidingTwo,
-      onChange,
-      name,
-    ]);
+      onChange(computedValueToCallback, {
+        isSlidingOne,
+        isSlidingTwo,
+        name,
+      });
+    }, [computedValueToCallback, isSlidingOne, isSlidingTwo, onChange, name]);
 
     const linesStyles = useMemo(() => {
       const range = maxValueNumber - minValueNumber;

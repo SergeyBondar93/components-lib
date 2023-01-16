@@ -14,10 +14,32 @@ const step4 = step3 + 22 * 1000000; // 150-172  1m
 // const step5 = step4 + 27 * 10000000; // 172-200 10m
 // 199 steps
 
+const formatAmount = (carPrice) => {
+  if (carPrice < 50) {
+    return carPrice * 10000;
+  }
+
+  if (carPrice < 100) {
+    return step1 + (carPrice - 50) * 50000;
+  }
+
+  if (carPrice < 150) {
+    return step2 + (carPrice - 100) * 100000;
+  }
+
+  if (carPrice < 172) {
+    return step3 + (carPrice - 150) * 1000000;
+  }
+
+  return step4 + (carPrice - 172) * 10000000;
+};
+
+const formatterNumber = Intl.NumberFormat();
+
 export const Base = () => {
   const [doubleValue, setDoubleValue] = useState({
-    from: 10,
-    to: 80,
+    from: 60,
+    to: 100,
   });
   const [{ value, isSliding }, setValue] = useState({
     value: 300,
@@ -39,26 +61,6 @@ export const Base = () => {
   const handleChange = useCallback((value, { isSliding }: any) => {
     setValue({ value, isSliding });
   }, []);
-
-  const computedCarPrice = useMemo(() => {
-    if (carPrice < 50) {
-      return carPrice * 10000;
-    }
-
-    if (carPrice < 100) {
-      return step1 + (carPrice - 50) * 50000;
-    }
-
-    if (carPrice < 150) {
-      return step2 + (carPrice - 100) * 100000;
-    }
-
-    if (carPrice < 172) {
-      return step3 + (carPrice - 150) * 1000000;
-    }
-
-    return step4 + (carPrice - 172) * 10000000;
-  }, [carPrice]);
 
   const formattedDoubleValue = useMemo(() => {
     if (doubleValue.from > doubleValue.to) {
@@ -177,7 +179,7 @@ export const Base = () => {
         />
 
         <span>
-          Current value: {Intl.NumberFormat().format(computedCarPrice)} $
+          Current value: {formatterNumber.format(formatAmount(carPrice))}{" "}
         </span>
       </div>
 
@@ -189,16 +191,18 @@ export const Base = () => {
         <h4>Double value</h4>
 
         <DoubleSlider
-          minValue={0}
-          maxValue={100}
+          minValue={1}
+          maxValue={201}
           from={doubleValue.from}
           to={doubleValue.to}
           onChange={setDoubleValue}
-          difference={15}
+          difference={10}
         />
 
         <span>
-          Current value: {formattedDoubleValue.from} - {formattedDoubleValue.to}
+          Current value:{" "}
+          {formatterNumber.format(formatAmount(formattedDoubleValue.from))} -{" "}
+          {formatterNumber.format(formatAmount(formattedDoubleValue.to))}
         </span>
       </div>
     </div>
