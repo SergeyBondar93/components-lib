@@ -62,4 +62,48 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
       ...isSlidingStyles,
     },
   },
+
+  [SLIDER_COMPONENTS_NAMES.tooltipWrapper]: {
+    position: "absolute",
+    transform: "translateX(-50%)",
+    minWidth: "40px",
+    minHeight: "40px",
+    borderRadius: "9px",
+    color: "white",
+    transition: "0.3s",
+    transitionProperty: "opacity, background, top",
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+
+    "&:before": {
+      content: "''",
+      width: "0px",
+      height: "0px",
+      border: "0.8em solid transparent",
+      position: "absolute",
+      transform: "translateX(-50%)",
+      left: "50%",
+      bottom: "-22px",
+      borderTop: "10px solid #444",
+      opacity: 0,
+      transition: "0.3s",
+    },
+
+    background: "rgba(0,0,0,0)",
+    top: "-30px",
+    opacity: 0,
+    '&[data-is-sliding="true"]': {
+      background: "rgba(0,0,0,0.72)",
+      opacity: 1,
+      top: "-52px",
+
+      "&:before": {
+        opacity: 1,
+      },
+    },
+  },
+  [SLIDER_COMPONENTS_NAMES.tooltipValue]: {
+    padding: "10px",
+  },
 };

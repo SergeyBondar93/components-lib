@@ -182,6 +182,7 @@ export const Base = () => {
           maxValue={199}
           value={carPrice}
           onChange={setCarPrice}
+          tooltipValue={formatterNumber.format(formatAmount(carPrice))}
         />
 
         <span>

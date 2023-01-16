@@ -25,4 +25,7 @@ export const SLIDER_COMPONENTS_NAMES = {
    * point
    */
   point: `point`,
+
+  tooltipWrapper: `tooltipWrapper`,
+  tooltipValue: `tooltipValue`,
 } as const;

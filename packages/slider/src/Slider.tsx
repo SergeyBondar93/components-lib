@@ -1,4 +1,12 @@
-import { FC, memo, useEffect, useMemo, useRef, useState } from "react";
+import {
+  FC,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useSlider } from "react-use";
 
 import { getClassName, IThemedProps } from "@cheaaa/theme";
@@ -17,6 +25,7 @@ export type onChangeSliderFn = (
 interface TagProps extends IThemedProps {
   name?: string;
   value: number;
+  tooltipValue?: any;
   /**
    * Минимально доступное значение
    */
@@ -47,6 +56,7 @@ export const Slider: FC<TagProps> = memo(
     precision = 0,
     name,
     value: valueProps,
+    tooltipValue = valueProps,
     minValue,
     maxValue,
     onChange,
@@ -117,12 +127,27 @@ export const Slider: FC<TagProps> = memo(
         "point"
       );
 
+      const tooltipWrapperClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "tooltipWrapper"
+      );
+      const tooltipValueClassName = getClassName<ComponentNames>(
+        classes,
+        baseAppearance,
+        appearance,
+        "tooltipValue"
+      );
+
       return {
         wrapperClassName,
         filledLineClassName,
         lineClassName,
         pointWrapperClassName,
         pointClassName,
+        tooltipWrapperClassName,
+        tooltipValueClassName,
       };
     }, [classes, baseAppearance, appearance]);
 
@@ -184,6 +209,15 @@ export const Slider: FC<TagProps> = memo(
 
     const filledOffsetLeft = `${updatedValueFromProps * 100}%`;
 
+    const [isHover, setIsHover] = useState(false);
+
+    const handleHoverOn = useCallback(() => {
+      setIsHover(true);
+    }, []);
+    const handleHoverOff = useCallback(() => {
+      setIsHover(false);
+    }, []);
+
     return (
       <>
         <div
@@ -195,25 +229,36 @@ export const Slider: FC<TagProps> = memo(
         >
           <div ref={wrapperRef} className={classNames.wrapperClassName}>
             <span className={classNames.lineClassName} />
-
             <span
               className={classNames.filledLineClassName}
               style={{
                 width: filledOffsetLeft,
               }}
             />
-
             <span
               className={classNames.pointWrapperClassName}
               ref={sliderPointRef}
               style={{
                 left: filledOffsetLeft,
               }}
+              onMouseEnter={handleHoverOn}
+              onMouseLeave={handleHoverOff}
             >
               <span
                 className={classNames.pointClassName}
                 data-is-sliding={isSliding}
               />
+            </span>{" "}
+            <span
+              data-is-sliding={isSliding || isHover}
+              className={classNames.tooltipWrapperClassName}
+              style={{
+                left: filledOffsetLeft,
+              }}
+            >
+              <span className={classNames.tooltipValueClassName}>
+                {tooltipValue}
+              </span>
             </span>
           </div>
         </div>
