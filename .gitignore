@@ -45,9 +45,6 @@ package-lock.json
 
 # Optional REPL history
 
-# VS Code folder
-.vscode/
-
 storybook-static
 
 

@@ -4,7 +4,7 @@
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
-	"module": "dist/input.esm.js",
+	"module": "dist/form.esm.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
@@ -24,7 +24,7 @@
 	"private": false,
 	"dependencies": {
 		"@cheaaa/utils": "^1.7.0",
-		"@reduxjs/toolkit": "^1.6.1",
+		"@reduxjs/toolkit": "^1.9.3",
 		"lodash.get": "^4.4.2",
 		"lodash.set": "^4.3.2",
 		"react-redux": "^7.2.4"

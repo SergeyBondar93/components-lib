@@ -4,7 +4,7 @@
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
-	"module": "dist/input.esm.js",
+	"module": "dist/notification.esm.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
