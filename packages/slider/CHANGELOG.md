@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/slider@1.5.1...@cheaaa/slider@1.6.0) (2023-03-30)
+
+
+### Features
+
+* update dependencies ([e8e1fac](https://github.com/SergeyBondar93/liba/commit/e8e1fac7a255d1524324ae2731accc13c51f0a16))
+
+
+
+
+
 ## [1.5.1](https://github.com/SergeyBondar93/liba/compare/@cheaaa/slider@1.5.0...@cheaaa/slider@1.5.1) (2023-02-14)
 
 **Note:** Version bump only for package @cheaaa/slider
