@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.8.0 (2023-03-30)
+
+
+### Features
+
+* update dependencies ([e8e1fac](https://github.com/SergeyBondar93/liba/commit/e8e1fac7a255d1524324ae2731accc13c51f0a16))
+
+
+
+
+
 ## 1.7.1 (2023-01-11)
 
 **Note:** Version bump only for package @cheaaa/footer

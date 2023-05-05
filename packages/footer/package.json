@@ -1,6 +1,6 @@
 {
 	"name": "@cheaaa/footer",
-	"version": "1.7.1",
+	"version": "1.8.0",
 	"description": "<>",
 	"build:storybook": "src/index.ts",
 	"main": "dist/index.js",
@@ -30,11 +30,11 @@
 	},
 	"private": false,
 	"dependencies": {
-		"@cheaaa/accordion": "^2.12.0",
+		"@cheaaa/accordion": "^2.13.0",
 		"@cheaaa/button": "^1.11.0",
-		"@cheaaa/contacts": "^1.5.0",
-		"@cheaaa/container": "^1.3.0",
-		"@cheaaa/icons": "^1.12.0",
+		"@cheaaa/contacts": "^1.6.0",
+		"@cheaaa/container": "^1.4.0",
+		"@cheaaa/icons": "^1.13.0",
 		"@cheaaa/theme": "^1.6.2"
 	},
 	"peerDependencies": {
