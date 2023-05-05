@@ -7,6 +7,7 @@
 	"module": "dist/icons.esm.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
+		"size": "npx size-limit",
 		"test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
 		"test2": "jest",
 		"createStoriesFile": "node ./scripts/createStoriesFile.js",
@@ -15,6 +16,12 @@
 		"build:storybook": "yarn createStoriesFile && yarn build",
 		"clean": "rimraf dist lib .publish node_modules"
 	},
+	"size-limit": [
+		{
+			"path": "*.js",
+			"brotli": true
+		}
+	],
 	"author": "Cherehapa",
 	"license": "MIT",
 	"publishConfig": {

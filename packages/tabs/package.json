@@ -7,12 +7,19 @@
   "module": "dist/tabs.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "size": "npx size-limit",
     "test": " mocha 'tests/**/*.test.{js,ts,tsx}'",
     "test2": "jest",
     "compile": "tsdx build --format cjs,esm --verbose",
     "build": "yarn clean && yarn compile",
     "clean": "rimraf dist lib .publish node_modules"
   },
+  "size-limit": [
+    {
+      "path": "dist/*.esm.js",
+      "brotli": true
+    }
+  ],
   "files": [
     "dist"
   ],
