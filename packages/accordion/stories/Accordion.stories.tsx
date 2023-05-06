@@ -5,7 +5,7 @@ import Select from "react-select";
 
 import { Checkbox, CheckboxGroup, Switcher } from "@cheaaa/checkbox";
 
-import { Accordion, IAccordionChildrenProps } from "../src";
+import { Accordion } from "../src";
 
 import { theme } from "./theme";
 
@@ -31,7 +31,7 @@ export default {
   },
 } as Meta;
 
-const Weekdays = ({ setIsOpen }: IAccordionChildrenProps) => {
+const Weekdays = () => {
   const [value, setValue] = useState<string[]>([]);
 
   const handleChange = (newValue: string[], clickedBy: string) => {
@@ -45,55 +45,62 @@ const Weekdays = ({ setIsOpen }: IAccordionChildrenProps) => {
       return;
     }
 
+    if (["saturday", "sunday"].includes(clickedBy)) {
+      if (newValue.includes("sunday") && newValue.includes("saturday")) {
+        const newValues = [...new Set([...newValue, "fullWeekend"])];
+        setValue(newValues);
+
+        return;
+      }
+
+      if (!newValue.includes("sunday") || !newValue.includes("saturday")) {
+        const newValues = newValue.filter((v) => v !== "fullWeekend");
+        setValue(newValues);
+
+        return;
+      }
+    }
+
     setValue(newValue);
   };
 
-  const isFullWeekend = value.includes("fullWeekend");
   const options = [
     {
       value: "monday",
-      label: "Понедельник",
+      label: "Monday",
     },
     {
       value: "tuesday",
-      label: "Вторник",
+      label: "Tuesday",
     },
     {
       value: "wednesday",
-      label: "Среда",
+      label: "Wednesday",
     },
     {
       value: "thursday",
-      label: "Четверг",
+      label: "Thursday",
     },
     {
       value: "friday",
-      label: "Пятница",
+      label: "Friday",
     },
     {
       value: "fullWeekend",
-      label: "Полные выходные",
+      label: "Weekend",
     },
     {
       value: "saturday",
-      label: "Суббота",
-      disabled: isFullWeekend,
+      label: "Saturday",
     },
     {
       value: "sunday",
-      label: "Воскресенье",
-      disabled: isFullWeekend,
+      label: "Sunday",
     },
   ].map((option) => ({ ...option, appearance: "filters" }));
 
   return (
     <CheckboxGroup value={value} onChange={handleChange} options={options} />
-  );
-
-  return (
-    <div>
-      <button onClick={() => setIsOpen?.(false)}>Закрыть</button>
-    </div>
   );
 };
 
@@ -114,7 +121,7 @@ const AccordionTemplate = (props) => {
           {...props}
           // passSetIsOpenToChildren
           isOpen={isOpenAll}
-          title={"Дни недели"}
+          title={"Weekdays"}
         >
           <Weekdays />
         </Accordion>
@@ -122,7 +129,7 @@ const AccordionTemplate = (props) => {
           {...props}
           animationDuration="0.6s"
           isOpen={isOpenAll}
-          title={"Дни недели + animationDiraion 0.6s"}
+          title={"Weekdays + animationDiraion 0.6s"}
         >
           <Weekdays />
         </Accordion>
@@ -130,7 +137,7 @@ const AccordionTemplate = (props) => {
           {...props}
           passSetIsOpenToChildren
           isOpen={isOpenAll}
-          title={"Дни недели"}
+          title={"Weekdays"}
         >
           <Weekdays />
         </Accordion>
@@ -138,7 +145,7 @@ const AccordionTemplate = (props) => {
           {...props}
           passSetIsOpenToChildren
           isOpen={isOpenAll}
-          title={"Дни недели"}
+          title={"Weekdays"}
         >
           <Weekdays />
         </Accordion>
@@ -151,7 +158,7 @@ export const AccordionStory = AccordionTemplate.bind({});
 
 AccordionStory.args = {
   disabled: false,
-  shouldFitContent: false,
+  shouldFitContent: true,
 };
 
 const CustomHeightTemplate = () => {
@@ -165,8 +172,11 @@ const CustomHeightTemplate = () => {
         }}
       >
         <Accordion
-          getHeightStyles={({ isOpen }) => (isOpen ? window.innerHeight : 0)}
-          title={"Дни недели"}
+          shouldFitContent
+          getHeightStyles={({ isOpen }) =>
+            isOpen ? window.innerHeight - 35 : 0
+          }
+          title={"Weekdays"}
         >
           <Weekdays />
         </Accordion>
@@ -181,9 +191,7 @@ const Component = ({ isOpen, ...props }: any) => {
   return (
     <Checkbox
       {...props}
-      label={`Custom component - checkbox ${
-        isOpen ? " (Открыто)" : "(Закрыто)"
-      }`}
+      label={`Custom component - checkbox ${isOpen ? " (Opened)" : "(Closed)"}`}
     />
   );
 };
@@ -241,12 +249,10 @@ export const WithIternalAccordionAndTitleAsAFunction = () => {
         }}
       >
         <Accordion
-          title={({ isOpen }) =>
-            `Дни недели (${isOpen ? "Закрыть" : "Открыть"}) `
-          }
+          title={({ isOpen }) => `Weekdays (${isOpen ? "Close" : "Open"}) `}
         >
-          <Accordion title={"Дни недели"}>
-            <Accordion title={"Дни недели"}>
+          <Accordion title={"Weekdays"}>
+            <Accordion title={"Weekdays"}>
               <Weekdays />
             </Accordion>
           </Accordion>
@@ -263,7 +269,7 @@ const options = new Array(30)
 const Title = ({ selectedOptions }) => {
   return (
     <>
-      Дни недели
+      Weekdays
       {selectedOptions ? ` (Selected in Select: ${selectedOptions})` : null}
     </>
   );
