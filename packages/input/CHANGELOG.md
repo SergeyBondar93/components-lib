@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.33.0 (2023-05-06)
+
+
+### Features
+
+* add size limit util ([9692c4c](https://github.com/SergeyBondar93/liba/commit/9692c4cf6de4a8a8795c1a0df5c6642e6e180c13))
+
+
+
+
+
 # [1.32.0](https://github.com/SergeyBondar93/liba/compare/@cheaaa/input@1.31.0...@cheaaa/input@1.32.0) (2022-10-15)
 
 

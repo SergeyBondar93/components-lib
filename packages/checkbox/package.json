@@ -1,6 +1,6 @@
 {
   "name": "@cheaaa/checkbox",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "<>",
   "build:storybook": "src/index.ts",
   "main": "dist/index.js",
@@ -30,8 +30,8 @@
   },
   "private": false,
   "dependencies": {
-    "@cheaaa/theme": "^1.6.2",
-    "@cheaaa/utils": "^1.7.0"
+    "@cheaaa/theme": "^1.7.0",
+    "@cheaaa/utils": "^1.8.0"
   },
   "peerDependencies": {
     "@cheaaa/theme": "^1.2.9",
