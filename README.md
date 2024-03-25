@@ -1,4 +1,4 @@
-Update
+Demo: https://6601cb495e06bc34baeaa1b6--cherehap.netlify.app/?path=/story/accordion--accordion-story
 
 ### Начинать чтение Readme отдельных пакетов следует с пакета theme
 
