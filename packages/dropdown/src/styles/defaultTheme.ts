@@ -22,7 +22,7 @@ export const defaultTheme: Required<ComponentTheme<ComponentNames>> = {
   },
   [DROPDOWN_COMPONENTS_NAMES.body]: {
     position: "absolute",
-    zIndex: 1,
+    zIndex: 3,
     background: "#FFF",
     maxHeight: "fit-content",
     boxShadow: "0 2px 12px rgb(0 0 0 / 15%)",

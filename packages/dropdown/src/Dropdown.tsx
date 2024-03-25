@@ -89,16 +89,21 @@ export const Dropdown = ({
   }, [children, passSetIsOpenToChildren, setIsOpen, isOpen]);
 
   return (
-    <BaseAccordion
-      {...props}
-      isOpen={isOpen}
-      classes={classes}
-      titleButtonProps={titleButtonProps}
-      ref={accordionRef}
-      defaultTitleButtonAppearance={DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE}
-      animationDuration="none"
-    >
-      {mappedChildren}
-    </BaseAccordion>
+    <>
+      {/* <Portal> */}
+      {/* {withBlanket ? <Blanket isVisible={isOpen} /> : null} */}
+      <BaseAccordion
+        {...props}
+        isOpen={isOpen}
+        classes={classes}
+        titleButtonProps={titleButtonProps}
+        ref={accordionRef}
+        defaultTitleButtonAppearance={DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE}
+        animationDuration="none"
+      >
+        {mappedChildren}
+      </BaseAccordion>
+      {/* </Portal> */}
+    </>
   );
 };

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ThemeProvider } from "react-jss";
 import { Meta, Story } from "@storybook/react";
 
 import { CloseIcon } from "@cheaaa/icons/CloseIcon";
 import { Input } from "@cheaaa/input";
 import { Button, IconButton } from "@cheaaa/button";
+import { Portal } from "@cheaaa/portal";
+import { Blanket } from "@cheaaa/blanket";
 
 import { Dropdown, IDropdownChildrenProps, IDropdownTitleProps } from "../src";
 
@@ -23,6 +25,7 @@ export default {
 
 interface IStoryParams {
   shouldFitContent: boolean;
+  withBlanket: boolean;
 }
 
 export const Base: Story<IStoryParams> = (props) => {
@@ -105,6 +108,109 @@ export const Base: Story<IStoryParams> = (props) => {
 Base.args = {
   shouldFitContent: false,
 };
+
+export const WithBlanket: Story<IStoryParams> = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const MyButton = useCallback((props) => {
+    const handleClick = () => {
+      props.onClick();
+      setIsOpen(!props.isOpen);
+    };
+
+    return <Button {...props} onClick={handleClick} />;
+  }, []);
+  useEffect(() => {}, []);
+
+  return (
+    <Portal>
+      <Blanket isVisible={isOpen} onClick={() => setIsOpen(false)} />
+
+      <Dropdown
+        passSetIsOpenToTitle
+        titleButtonProps={{
+          component: MyButton,
+        }}
+        title={"Open text"}
+        {...props}
+      >
+        <div style={{ padding: "10px", color: "#3926e6", minWidth: "200px" }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, eum
+          quasi quas quod ducimus, distinctio, laboriosam rem tempora vitae
+          quidem perferendis odit deleniti sed ea incidunt?
+          <Dropdown title="Iternal dropdown" {...props}>
+            <div
+              style={{ padding: "10px", color: "#20df12", minWidth: "200px" }}
+            >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
+              non velit a exercitationem expedita, ab placeat. Possimus nulla
+              commodi incidunt sit eius expedita quasi eos modi harum facilis
+              unde odit, voluptates ea fugiat ut ducimus quae sed suscipit
+              numquam inventore. voluptatum!
+              <Dropdown title="Super Iternal dropdown" {...props}>
+                <div
+                  style={{
+                    padding: "10px",
+                    color: "#d013d0cc",
+                    minWidth: "200px",
+                  }}
+                >
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Fugiat non velit a exercitationem expedita, ab placeat.
+                  Possimus nulla commodi incidunt sit eius expedita quasi eos
+                  modi harum facilis unde odit, voluptates ea fugiat ut ducimus
+                  quae sed suscipit numquam inventore. Ullam quod, reprehenderit
+                  molestias tenetur nobis dicta consectetur eligendi aperiam
+                  asperiores deleniti quis porro ducimus nostrum consequuntur
+                  quos perspiciatis.
+                </div>
+              </Dropdown>
+            </div>
+          </Dropdown>
+        </div>
+      </Dropdown>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quam
+        magnam vel tenetur! Repellat sit tempora, dolorum amet autem eaque natus
+        libero mollitia voluptatibus expedita at laudantium facere nisi placeat
+        voluptates porro! Inventore laborum praesentium harum autem nam
+        doloribus. Quas inventore iusto ipsa, corporis, quos voluptatibus neque
+        repudiandae enim nam facilis nemo ratione ullam cumque fuga! Inventore,
+        at distinctio. Iste quisquam quis eaque nihil ipsam nesciunt in suscipit
+        earum facilis iusto totam quas vitae tempore, consequatur quaerat sequi
+        quasi. Nihil ad autem quod, delectus dolores voluptas eaque ratione fuga
+        ipsam, officia repellendus excepturi dolorem aperiam consequuntur quae
+        deserunt modi quos. Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Vero provident, quae eligendi est corrupti error reiciendis! Porro
+        provident vero nobis odit nihil a error atque totam, exercitationem
+        voluptatum rem in. Explicabo quos sed placeat tempora perferendis
+        consequatur repellat ipsum nostrum quam soluta dolore, vero cupiditate
+        eius. Quis tenetur possimus culpa minus, maiores exercitationem
+        accusamus aliquam dolorem veniam cupiditate mollitia porro velit dolore
+        ad architecto nobis, assumenda molestiae! Tenetur consequatur rerum
+        maiores ea iusto incidunt omnis quod eaque enim aspernatur facilis totam
+        quo perferendis repudiandae, assumenda neque ipsam voluptatem voluptates
+        quis. At eius, aliquam asperiores reprehenderit, eos sit numquam facere
+        alias fuga veritatis sed. Laudantium dolorum perspiciatis repellat, quis
+        consequuntur quidem sequi id earum, ipsum ullam eveniet veritatis quo.
+        Et nesciunt facere repellat asperiores totam, non commodi laudantium
+        officiis, eius repudiandae dolorum consequuntur quia reiciendis quasi,
+        ipsum molestiae cupiditate voluptate aliquid! Porro neque cumque
+        veritatis nam possimus doloremque libero, fuga placeat nostrum itaque
+        nesciunt distinctio ullam molestiae magnam exercitationem laboriosam
+        perferendis quibusdam sunt aspernatur corporis quia sapiente. Error
+        dolorum pariatur, a iste eveniet, sit magnam deserunt fugiat voluptates
+        illo aliquid voluptatibus. Laudantium, delectus dignissimos? Nam facere
+        eos officia et ab voluptates magni culpa dicta, ipsa id? Porro doloribus
+        cupiditate dicta ab!
+      </p>
+    </Portal>
+  );
+};
+WithBlanket.args = {
+  shouldFitContent: false,
+};
+
 interface IAgesProps extends IDropdownChildrenProps {
   onClick: (age: number) => void;
   selectedAge?: number;
@@ -298,4 +404,6 @@ export const Themed: Story<IStoryParams> = (props) => {
   );
 };
 
-Themed.args = Base.args;
+Themed.args = {
+  shouldFitContent: false,
+};
