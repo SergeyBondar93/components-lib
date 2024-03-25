@@ -10,6 +10,7 @@ import React from "react";
 
 import { useClickOutsideComponents } from "@cheaaa/utils";
 import { BaseAccordion, IBaseAccordionProps } from "@cheaaa/accordion";
+import { Blanket } from "@cheaaa/blanket";
 
 import { DEFAULT_DROPDOWN_TITLE_BUTTON_APPEARANCE, useStyles } from "./styles";
 
@@ -36,6 +37,7 @@ export interface IDropdownProps
     "classes" | "defaultTitleButtonAppearance"
   > {
   children: ReactElement<IDropdownChildrenProps>;
+  withBlanket?: boolean;
 }
 
 export const Dropdown = ({
@@ -44,6 +46,7 @@ export const Dropdown = ({
   children,
   passSetIsOpenToChildren,
   passSetIsOpenToTitle,
+  withBlanket,
   ...props
 }: IDropdownProps) => {
   const classes = useStyles();
@@ -91,7 +94,7 @@ export const Dropdown = ({
   return (
     <>
       {/* <Portal> */}
-      {/* {withBlanket ? <Blanket isVisible={isOpen} /> : null} */}
+      {withBlanket ? <Blanket isVisible={isOpen} /> : null}
       <BaseAccordion
         {...props}
         isOpen={isOpen}
