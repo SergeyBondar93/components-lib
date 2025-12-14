@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/SergeyBondar93/components-lib/compare/@cheaaa/dropdown@1.15.2...@cheaaa/dropdown@1.16.0) (2024-03-25)
+
+
+### Features
+
+* **dropdown:** added withBlanket prop ([02e2042](https://github.com/SergeyBondar93/components-lib/commit/02e2042b2ecd9ed65ed97cd670cf201db063d3b3))
+
+
+
+
+
 ## [1.15.2](https://github.com/SergeyBondar93/components-lib/compare/@cheaaa/dropdown@1.15.1...@cheaaa/dropdown@1.15.2) (2024-03-25)
 
 **Note:** Version bump only for package @cheaaa/dropdown
