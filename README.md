@@ -1,59 +1,59 @@
 Demo: https://6601cb495e06bc34baeaa1b6--cherehap.netlify.app/?path=/story/accordion--accordion-story
 
-### Начинать чтение Readme отдельных пакетов следует с пакета theme
+### Start reading individual package READMEs from the theme package
 
-### Всё использование компонентов и их стилизацию следует смотреть в stories.
+### All component usage and styling should be viewed in stories.
 
 # README #
 
 
-Библиотека компонентов
+Component Library
 
-Локально доступен по адресу [http://localhost:9009/](http://localhost:9009/)
+Locally available at [http://localhost:9009/](http://localhost:9009/)
 
-## Технологический стек
+## Tech Stack
 
 - React [React](https://www.reactjs.org/)
-- Используется [монорепозиторий](https://monorepo.tools/). Для обработки команд и работы с монорепозиторием используется [lerna](https://github.com/lerna/lerna)
-- Пакетный менеджер [Yarn](https://yarnpkg.com/)
-- Языком разработки является [Typescript](https://www.typescriptlang.org/)
-- Сборщики- TSDX / TSC [TSDX](https://github.com/jaredpalmer/tsdx) / [TSC](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
-- Стейт [Redux](https://redux.js.org/)
-- Контроль стиля кода [Eslint](https://eslint.org/)
-- Описание коммитов [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
-- Контроль описания коммитов [Commitlint](https://github.com/conventional-changelog/commitlint)
+- Uses [monorepo](https://monorepo.tools/). [Lerna](https://github.com/lerna/lerna) is used for command processing and working with the monorepo
+- Package manager [Yarn](https://yarnpkg.com/)
+- Development language is [Typescript](https://www.typescriptlang.org/)
+- Builders - TSDX / TSC [TSDX](https://github.com/jaredpalmer/tsdx) / [TSC](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+- State [Redux](https://redux.js.org/)
+- Code style control [Eslint](https://eslint.org/)
+- Commit description [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- Commit description control [Commitlint](https://github.com/conventional-changelog/commitlint)
 
 
-### Пайплайн
-Перед каждым коммитом локально запускаются git hooks husky для контроля за описанием коммита и проверкой линтинга кода, если есть сильная необходимость запушить без этих проверок то это можно сделать добавив флаг --no-verify при пуше. Но лучше сначала пофиксить все ошибки
+### Pipeline
+Before each commit, git hooks husky are run locally to control commit descriptions and check code linting. If there is a strong need to push without these checks, this can be done by adding the --no-verify flag when pushing. But it's better to fix all errors first.
 
-Коммиты должны быть оформлены по Conventional Commits, и состоять из префикса, скоупа(при наличии), и описания коммита,
-например: `feat(input): Add some important prop`
-В случае изменения критичных изменений в API и отсутствии совместимости с прошлой версией, для поддержания semVer и поднятия `MAJOR` версии компонента, необходимо добавить footer коммита `BREAKING CHANGE: {some description}`. Между footer и header должна быть пустая строка, например:  
+Commits should be formatted according to Conventional Commits, and consist of a prefix, scope (if present), and commit description,
+for example: `feat(input): Add some important prop`
+In case of critical API changes and lack of compatibility with the previous version, to maintain semVer and raise the `MAJOR` version of the component, it is necessary to add a commit footer `BREAKING CHANGE: {some description}`. There should be an empty line between the footer and header, for example:  
 ```
 feat(input): remove some props, change critical api
 
 BREAKING CHANGE: update input api
 ```
 
-Каждый коммит проходит пайплайн на [TeamCity](http://tc.aws.che.lo/), где настроены
-джобы на проверку успешного прохождения автотестов и отсутствия ошибок линтера.
+Each commit goes through a pipeline on [TeamCity](http://tc.aws.che.lo/), where jobs are configured
+to check for successful test runs and absence of linter errors.
 
-Если какая-либо из джоб не прошла, заливать пулл-реквест не допускается,следует сначала исправить все ошибки,
-чтобы убедиться, что изменения не нарушают принятых для проекта стандартов.
+If any of the jobs fail, merging the pull request is not allowed. All errors should be fixed first
+to ensure that the changes do not violate the project's accepted standards.
 
-Успешное прохождение всего пайплайна является обязательным критерием слития ветки в мастер.
+Successful completion of the entire pipeline is a mandatory criterion for merging a branch into master.
 
 
-### Оформление Pull-request
+### Pull Request Formatting
 
-У любой ветки название должно состоять из имени/фамилии/ника автора пулла, названия проекта (в данном случае, `che-ui-kit`)
-и краткого описания сути изменения. Для удобства восприятия оптимально, чтобы название ветки не превышало пяти-шести слов,
-включая необходимые префиксы.
+Any branch name should consist of the author's first name/last name/nickname, project name (in this case, `che-ui-kit`)
+and a brief description of the essence of the change. For ease of perception, it is optimal for the branch name not to exceed five or six words,
+including necessary prefixes.
 
-Описание пулла опционально.
+Pull description is optional.
 
-### Начало работы
+### Getting Started
 
 ```
     git clone git clone git@gitlab.com:cheins/che-ui-kit.git
@@ -66,23 +66,23 @@ BREAKING CHANGE: update input api
 
 ```
 
-## Инструментарий
+## Tooling
 
-### Форматрирование кода
+### Code Formatting
 
-Стилистика написания кода контролируется при помощи [ESLint](https://eslint.org/), полный список настроенных правил можно
-увидеть в файлах конфига `.eslintrc.js`.
+Code writing style is controlled using [ESLint](https://eslint.org/). The full list of configured rules can be
+seen in the config files `.eslintrc.js`.
 
-Хоть модуль линтера сам по себе работает в качестве исполняемого модуля на Node, для удобства работы рекомендуется
-установить соответствующее расширение для IDE, чтобы все ошибки и предупреждения отображались в файлах визуально.
+Although the linter module itself works as an executable module on Node, for convenience it is recommended
+to install the corresponding IDE extension so that all errors and warnings are displayed visually in files.
 
-Проверить весь код на отсутствие стилистических ошибок в нём можно при помощи команды
+You can check all code for the absence of stylistic errors using the command
 ```
 yarn run lint
 ```
 
-Отсутствие ошибок линтера является одним из обязательных критериев успешного прохождения пайплайна.
-По этому перед коммитом необходимо сделать 
+The absence of linter errors is one of the mandatory criteria for successful pipeline completion.
+Therefore, before committing, you must run
 ```
 yarn lint:fix
 ```
